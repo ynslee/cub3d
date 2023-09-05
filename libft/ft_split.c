@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:20:31 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/05/17 14:25:56 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:11:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	ft_putintostr(char **str, char const *s, char c)
 	*str = NULL;
 }
 
+/*split the string when it matches character*/
 char	**ft_split(char const *s, char c)
 {
 	char	**out;

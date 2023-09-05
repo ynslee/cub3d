@@ -7,8 +7,10 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include "file_validation.h"
-# include "../libft/libft.h"
+# include "map_validation.h"
+# include "libft.h"
 
 typedef enum e_error
 {
@@ -16,5 +18,6 @@ typedef enum e_error
 	MALLOC_ERROR,
 	MAP_INVALID
 }	t_error;
+
 
 #endif
