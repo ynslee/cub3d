@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
+#    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/05 12:19:04 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/09/05 13:05:55 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = main.c
-OBJS= $(SRCS:.c=.o)
+SRCS = src/main.c src/file_validation/check_textures.c
+OBJS = $(patsubst $S/%,$O/%,$(SRCS:.c=.o))
 CC = cc
-HEADER = cub3d.h
+HEADER = include/cub3d.h
 FLAGS = -Wall -Wextra -Werror -g
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -22,7 +22,7 @@ all:$(NAME)
 
 $(NAME):$(OBJS)
 	make -C libft all
-	$(CC) $(FLAGS) $(OBJS) -I$(HEADER) ./libft/libft.a $(MLX_FLAGS) -o $(NAME) 
+	$(CC) $(FLAGS) $(OBJS) -I$(HEADER) ./libft/libft.a $(MLX_FLAGS) -o $(NAME)
 
 $(OBJS):$(SRCS)
 	$(CC) -c $(FLAGS) $(SRCS) -I$(HEADER)
