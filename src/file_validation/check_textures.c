@@ -1,4 +1,4 @@
-#include "../../include/file_validation.h"
+#include "file_validation.h"
 
 int	valid_file(char *file_name)
 {

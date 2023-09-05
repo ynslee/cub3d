@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:15:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/05 13:24:23 by yoonslee         ###   ########.fr       */
+/*   Created: 2023/08/21 17:35:31 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/08/21 17:35:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_arrlen(char **array)
 {
-	char	*str;
-	size_t	i;
-	size_t	amount;
+	int	counter;
 
-	i = 0;
-	if (count == 0 || size == 0)
-		return (ft_calloc(1, 1));
-	amount = count * size;
-	if (amount % size != 0 || amount % count != 0)
-		return (NULL);
-	str = (void *)malloc(count * size);
-	if (!str)
-		return (0);
-	while (i < count * size)
+	counter = 0;
+	while (*array)
 	{
-		str[i] = 0;
-		i++;
+		counter++;
+		array++;
 	}
-	return (str);
+	return (counter);
 }
