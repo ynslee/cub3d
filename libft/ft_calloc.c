@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:15:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/05/04 13:08:25 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:24:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	char	*str;
 	size_t	i;
+	size_t	amount;
 
 	i = 0;
 	if (count == 0 || size == 0)
-	{
-		str = malloc (1);
-		if (!str)
-			return (NULL);
-		return (str);
-	}
-	if (count * size / size != count)
+		return (ft_calloc(1, 1));
+	amount = count * size;
+	if (amount % size != 0 || amount % count != 0)
 		return (NULL);
 	str = (void *)malloc(count * size);
 	if (!str)

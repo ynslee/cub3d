@@ -6,12 +6,14 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/05 12:19:04 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/09/05 13:27:17 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = main.c
+SRCS := main.c \
+	src/map_validation/basic_check.c \
+	
 OBJS= $(SRCS:.c=.o)
 CC = cc
 HEADER = cub3d.h
