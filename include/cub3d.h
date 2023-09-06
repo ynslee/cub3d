@@ -20,12 +20,13 @@ typedef enum e_error
 
 typedef struct s_cub
 {
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	char *f_color;
-	char *c_color;
-}	t_cub;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f_color;
+	char	*c_color;
+	int		id_flag;
+}			t_cub;
 
 #endif
