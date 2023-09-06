@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_error.c                             :+:      :+:    :+:   */
+/*   index_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/05 17:06:46 by yoonslee         ###   ########.fr       */
+/*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/09/06 12:31:14 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 
-/*prints out error message accordingly and free the parsed contents
-data struct should be added later.*/
-void	print_error(char *str)
+/**
+ * @brief return the index of the last occurence if c in the string
+ * returns -1 if can't find c
+ */
+int	ft_lastchr(char *str, char c)
 {
-	printf("%s\n", str);
+	int	i;
+	int	index;
+
+	i = 0;
+	index = -1;
+	while (str[i])
+	{
+		if (str[i] == c)
+			index = i;
+		i++;
+	}
+	return (index);
 }

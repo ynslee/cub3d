@@ -12,12 +12,5 @@
 # include "map_validation.h"
 # include "libft.h"
 
-typedef enum e_error
-{
-	SUCCESS,
-	MALLOC_ERROR,
-	MAP_INVALID
-}	t_error;
-
 
 #endif
