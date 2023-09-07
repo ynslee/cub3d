@@ -6,16 +6,9 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 12:43:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:46:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// First check of the map
-//  Is there a player? or multiple players (also if map only ones, it would be caught here)
-//  is there invalid character
-//  more than 2 consecutive '\n'
-// If there is two different maps?
-//  Changing the wall element with floodfill algo -> if there is two maps, invalid -> if player is inside wall, invalid?
 
 #include "../../include/map_validation.h"
 
