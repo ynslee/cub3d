@@ -41,9 +41,9 @@ int	check_line(char *line, t_cub *cub)
 
 	line_elem = ft_split(line, ' ');
 	free(line);
-	// int i = -1;
-	// while (++i < 2)
-	// 	printf("splited line[%i] = %s\n", i, line_elem[i]);
+	int i = -1;
+	while (++i < 2)
+		printf("splited line[%i] = %s\t%p\n", i, line_elem[i], line_elem[i]);
 	if (ft_strncmp_all(line_elem[0], "NO") == 0
 		|| ft_strncmp_all(line_elem[0], "SO") == 0
 		|| ft_strncmp_all(line_elem[0], "WE") == 0
@@ -58,30 +58,23 @@ int	check_line(char *line, t_cub *cub)
 /*Add check that elements are in right order!*/
 int	valid_elements(int fd, t_cub *cub)
 {
+	(void)cub;
 	char *line;
 	char *trim_line;
-
-	line = get_next_line(fd);
-	if (line == NULL)
+	while (42)
 	{
-		return (0);
-		// printf("error in get_next_line!\n");
-		// return (-1);
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		else if (ft_strncmp_all(line, "\n") != 0)
+		{
+			trim_line = ft_strtrim(line, " \t");
+			printf("trim_line = %s\t%p\n", trim_line, trim_line);
+			check_line(trim_line, cub);
+			free(trim_line);
+		}
+		free(line);
 	}
-	trim_line = ft_strtrim(line, " \t");
-	// if (line)
-	free(line);
-	printf("trim_line = %s\n", trim_line);
-	if (ft_strncmp_all(trim_line, "\n") == 0)
-		valid_elements(fd, cub);
-	else
-	{
-		check_line(trim_line, cub);
-		valid_elements(fd, cub);
-	}
-	// if (trim_line)
-	// 	free(trim_line);
-	// print_struct(cub);
 	return (0);
 }
 
