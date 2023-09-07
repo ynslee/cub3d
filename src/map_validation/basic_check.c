@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/06 12:46:25 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 09:11:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ int	fill_the_wall(t_data *mv)
 	while (mv->map_cpy[x])
 	{
 		index = ft_lastchr(mv->map_cpy[x], 2 + '0');
-		printf("index is %d\n", index);
 		while (mv->map_cpy[x][index])
 		{
-			if (mv->map_cpy[x][index] == 1)
+			if (mv->map_cpy[x][index] == '1')
 				return (1);
 			index++;
 		}
