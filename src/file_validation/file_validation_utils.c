@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 16:01:44 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/07 16:03:50 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	is_map(char *line)
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	if (ft_isdigit(line[i]))
-		return (1); //if is map
-	return (0); //if its not map
+		return (1);
+	return (0);
 }

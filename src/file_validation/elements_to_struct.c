@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 15:59:37 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/07 16:14:10 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 		cub->c_color = ft_strdup(element[1]);
 }
 
-static int	check_line(char *line, t_cub *cub)
+static void	find_element(char *line, t_cub *cub)
 {
 	char	**line_elem;
 	char	*trim_line;
@@ -45,35 +45,12 @@ static int	check_line(char *line, t_cub *cub)
 	cub->id_flag++;
 	free(trim_line);
 	free_char_array(line_elem);
-	return (0);
 }
 
 int	valid_elements(int fd, t_cub *cub)
 {
-	char	*line;
-
-	while (42)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6
-			&& !is_map(line))
-			check_line(line, cub);
-		else if (is_map(line) && cub->id_flag != 6)
-		{
-			file_print_error(cub, "File does not have required elements!\n", 1);
-			return (-1);
-		}
-		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)
-		{
-			if (!cub->map_str)
-				cub->map_str = ft_strdup(line);
-			else
-				cub->map_str = ft_strjoin_gnl(cub->map_str, line);
-		}
-		free(line);
-	}
+	check_required_elements(fd, cub);
+	check_textures(cub);
 	return (0);
 }
 

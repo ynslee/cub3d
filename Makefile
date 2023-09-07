@@ -6,7 +6,7 @@
 #    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/07 16:02:45 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/07 16:15:02 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ I = include
 
 FILES = main\
 		elements_to_struct\
+		check_elements\
 		file_validation_utils\
 		basic_check\
 		map_validation_utils\
