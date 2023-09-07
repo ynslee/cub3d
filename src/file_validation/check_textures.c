@@ -52,6 +52,8 @@ int	check_line(char *line, t_cub *cub)
 		|| ft_strncmp_all(line_elem[0], "C") == 0)
 		put_elem_to_struct(line_elem, cub);
 	// printf("==============================================\n");
+	cub->id_flag++;
+	// printf("cub->id_flag = %i\n", cub->id_flag);
 	free_char_array(line_elem);
 	return (0);
 }
@@ -66,14 +68,21 @@ int	valid_elements(int fd, t_cub *cub)
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		else if (ft_strncmp_all(line, "\n") != 0)
+		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6)
 		{
 			trim_line = ft_strtrim(line, " \t");
-			printf("trim_line = %s\t%p\n", trim_line, trim_line);
+			// printf("trim_line = %s\t%p\n", trim_line, trim_line);
 			check_line(trim_line, cub);
-			free(trim_line);
+			// free(trim_line);
 		}
-		free(line);
+		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)
+		{
+			if (!cub->map_str)
+				cub->map_str = ft_strdup(line);
+			else
+				cub->map_str = ft_strjoin_gnl(cub->map_str, line);
+		}
+		// free(line);
 	}
 	return (0);
 }

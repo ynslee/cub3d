@@ -26,6 +26,7 @@ typedef struct s_cub
 	char	*ea;
 	char	*f_color;
 	char	*c_color;
+	char	*map_str;
 	int		id_flag;
 }			t_cub;
 

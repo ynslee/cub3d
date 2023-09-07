@@ -2,7 +2,7 @@
 
 static void	print_struct(t_cub *cub)
 {
-	// printf("*****************************\n");
+	printf("*****************************\n");
 	if (cub->no)
 		printf("cub->no = %s\n", cub->no);
 	if (cub->so)
@@ -15,6 +15,8 @@ static void	print_struct(t_cub *cub)
 		printf("cub->f_color = %s\n", cub->f_color);
 	if (cub->c_color)
 		printf("cub->c_color = %s\n", cub->c_color);
+	if (cub->map_str)
+		printf("cub->map_str =\n%s\n", cub->map_str);
 	printf("*****************************\n");
 }
 
@@ -26,6 +28,8 @@ static void	init_struct(t_cub *cub)
 	cub->ea = 0;
 	cub->f_color = 0;
 	cub->c_color = 0;
+	cub->id_flag = 0;
+	cub->map_str = 0;
 }
 
 int main(int argc, char **argv)
