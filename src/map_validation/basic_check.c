@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 12:46:52 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:14:24 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 
 	i = 0;
 	if (cub->map_str == NULL)
-		print_error(cub, mv, "map is null", 1);
+		print_error(cub, mv, "map is null\n", 1);
 	mv->map = ft_calloc((height + 1), sizeof(char *));
 	if (!mv->map)
-		print_error(cub, mv, "malloc_error", 1);
+		print_error(cub, mv, "malloc_error\n", 1);
 	temp = ft_split(cub->map_str, '\n');
 	if (!temp)
-		print_error(cub, mv, "split error", 1);
+		print_error(cub, mv, "split error\n", 1);
 	while (temp[i])
 	{
 		mv->map[i] = ft_strdup(temp[i]);
@@ -130,22 +130,22 @@ int	map_check(t_cub	*cub, t_data *mv)
 	init_mv(mv);
 	index = ft_strchr_index(cub->map_str, '\n');
 	if (cub->map_str[index + 1] == '\n')
-		print_error(cub, mv, "two consecutive new lines!", 1);
+		print_error(cub, mv, "two consecutive new lines!\n", 1);
 	index = 0;
 	while (cub->map_str[index])
 	{
 		if (!map_character_check(cub->map_str[index]))
 		{
-			print_error(cub, mv, "map has invalid character!", 1);
+			print_error(cub, mv, "map has invalid character!\n", 1);
 			break ;
 		}
 		index++;
 	}
 	if (duplicate_player(cub->map_str))
-		print_error(cub, mv, "There are no player or more than one player!", 1);
+		print_error(cub, mv, "No player or more than one player!\n", 1);
 	// printf("there has been no errors! yay!\n");
 	height = height_check(cub->map_str, mv);
 	if (two_maps_check(cub, height, mv))
-		print_error(cub, mv, "there are more than one map in the file!", 2);
+		print_error(cub, mv, "there are more than one map in the file!\n", 2);
 	return (0);
 }
