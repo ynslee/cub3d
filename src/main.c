@@ -1,6 +1,38 @@
 
 #include "../include/map_validation.h"
 #include "../include/cub3d.h"
+
+static void	print_struct(t_cub *cub)
+{
+	printf("*****************************\n");
+	if (cub->no)
+		printf("cub->no = %s\n", cub->no);
+	if (cub->so)
+		printf("cub->so = %s\n", cub->so);
+	if (cub->we)
+		printf("cub->we = %s\n", cub->we);
+	if (cub->ea)
+		printf("cub->ea = %s\n", cub->ea);
+	if (cub->f_color)
+		printf("cub->f_color = %s\n", cub->f_color);
+	if (cub->c_color)
+		printf("cub->c_color = %s\n", cub->c_color);
+	if (cub->map_str)
+		printf("cub->map_str =\n%s\n", cub->map_str);
+	printf("*****************************\n");
+}
+
+static void	init_struct(t_cub *cub)
+{
+	cub->no = 0;
+	cub->so = 0;
+	cub->we = 0;
+	cub->ea = 0;
+	cub->f_color = 0;
+	cub->c_color = 0;
+	cub->id_flag = 0;
+	cub->map_str = 0;
+}
 #include "../mlx/mlx.h"
 #include "../libft/libft.h"
 
@@ -35,35 +67,18 @@ void	mlx_functions(t_cbd *cub)
 int	main(int argc, char **argv)
 {
 	int		fd;
-	char	*line;
-	char	*map_line;
-	int		height;
-	t_data	mv;
-	t_cbd	cub;
+	t_cub	cub;
 
-	height = 0;
 	if (argc == 2)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd < 0)
-			return (-1);
-		line = get_next_line(fd);
-		map_line = ft_strdup(line);
-		free(line);
-		while (++height)
-		{
-			line = get_next_line(fd);
-			if (!line)
-				break ;
-			map_line = ft_strjoin_gnl(map_line, line);
-			free(line);
-		}
-		if (map_check(map_line, &mv) < 0)
-			printf("map_validation_error\n");
-		free(map_line);
-		printf("here\n");
-		mlx_functions(&cub);
-		// init();
+		fd = valid_file(argv[1]);
+		if (fd == -1)
+			printf("Invalid file\n");
+		init_struct(&cub);
+		valid_elements(fd, &cub);
+		print_struct(&cub);
+		// if (valid_elements(fd) == -1)
+		// 	printf("Elements not valid\n");
 	}
 	return (0);
 }

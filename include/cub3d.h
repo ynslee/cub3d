@@ -3,6 +3,7 @@
 # define CUB3D_H
 
 # include <mlx.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
@@ -20,5 +21,17 @@ typedef struct s_cbd
 	int		img_len;
 }	t_cbd;
 
+
+typedef struct s_cub
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f_color;
+	char	*c_color;
+	char	*map_str;
+	int		id_flag;
+}			t_cub;
 
 #endif
