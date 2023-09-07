@@ -34,7 +34,6 @@ typedef struct s_cub
 	int		id_flag;
 }			t_cub;
 
-static void	print_struct(t_cub *cub);
 void	free_struct(t_cub *cub);
 
 #endif

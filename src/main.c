@@ -2,7 +2,7 @@
 #include "../include/map_validation.h"
 #include "../include/cub3d.h"
 
-static void	print_struct(t_cub *cub)
+void	print_struct(t_cub *cub)
 {
 	printf("*****************************\n");
 	if (cub->no)
@@ -18,7 +18,7 @@ static void	print_struct(t_cub *cub)
 	if (cub->c_color)
 		printf("cub->c_color = %s\n", cub->c_color);
 	if (cub->map_str)
-		printf("cub->map_str =\n%s\n", cub->map_str);
+		printf("cub->map_str =\n%s", cub->map_str);
 	printf("*****************************\n");
 }
 
@@ -96,6 +96,7 @@ int	main(int argc, char **argv)
 		// print_struct(&cub);
 		map_check(&cub, &mv);
 		free_struct(&cub);
+		free_mv_struct(&mv);
 		// if (valid_elements(fd) == -1)
 		// 	printf("Elements not valid\n");
 	}

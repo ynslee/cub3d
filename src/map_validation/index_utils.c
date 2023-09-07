@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 11:57:27 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:41:59 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	player_location(t_data *mv)
 		}
 		i++;
 	}
-	printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
+	// printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
 }
 
 /**

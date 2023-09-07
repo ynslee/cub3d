@@ -39,7 +39,6 @@ void	put_elem_to_struct(char **element, t_cub *cub)
 int	check_line(char *line, t_cub *cub)
 {
 	char	**line_elem;
-	int		i;
 
 	line_elem = ft_split(line, ' ');
 	// int i = -1;

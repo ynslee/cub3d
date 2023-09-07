@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 11:43:02 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:43:39 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	fill_the_wall(t_data *mv)
 	while (mv->map_cpy[x][y] == ' ')
 		y++;
 	flood_fill(mv, x, y, mv->map_cpy[x][y]);
-	print_map(mv->map_cpy);
+	// print_map(mv->map_cpy);
 	x = 0;
 	while (mv->map_cpy[x])
 	{
@@ -55,7 +55,7 @@ int	height_check(char *map, t_data *mv)
 	int		height;
 
 	i = 0;
-	height = 1;
+	height = 0;
 	while (map[i])
 	{
 		if (map[i] == '\n')
@@ -63,7 +63,7 @@ int	height_check(char *map, t_data *mv)
 		i++;
 	}
 	mv->height = height;
-	printf("height is %d\n", height);
+	// printf("height is %d\n", height);
 	return (height);
 }
 
@@ -78,13 +78,13 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 
 	i = 0;
 	if (cub->map_str == NULL)
-		print_error("map is null", 1);
+		print_error(cub, mv, "map is null", 1);
 	mv->map = ft_calloc((height + 1), sizeof(char *));
 	if (!mv->map)
-		print_error("malloc_error", 1);
+		print_error(cub, mv, "malloc_error", 1);
 	temp = ft_split(cub->map_str, '\n');
 	if (!temp)
-		print_error("split error", 1);
+		print_error(cub, mv, "split error", 1);
 	while (temp[i])
 	{
 		mv->map[i] = ft_strdup(temp[i]);
@@ -93,7 +93,7 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 		i++;
 	}
 	free(temp);
-	copy_map(mv);
+	copy_map(cub, mv);
 	if (fill_the_wall(mv))
 		return (1);
 	return (0);
@@ -137,22 +137,22 @@ int	map_check(t_cub	*cub, t_data *mv)
 	init_mv(mv);
 	index = ft_strchr_index(cub->map_str, '\n');
 	if (cub->map_str[index + 1] == '\n')
-		print_error("two consecutive new lines!", 1);
+		print_error(cub, mv, "two consecutive new lines!", 1);
 	index = 0;
 	while (cub->map_str[index])
 	{
 		if (!map_character_check(cub->map_str[index]))
 		{
-			print_error("map has invalid character!", 1);
+			print_error(cub, mv, "map has invalid character!", 1);
 			break ;
 		}
 		index++;
 	}
 	if (duplicate_player(cub->map_str))
-		print_error("There are no player or more than one player!", 1);
-	printf("there has been no errors! yay!\n");
+		print_error(cub, mv, "There are no player or more than one player!", 1);
+	// printf("there has been no errors! yay!\n");
 	height = height_check(cub->map_str, mv);
 	if (two_maps_check(cub, height, mv))
-		print_error("there are more than one map in the file!");
+		print_error(cub, mv, "there are more than one map in the file!", 2);
 	return (0);
 }
