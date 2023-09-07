@@ -6,17 +6,22 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/06 12:24:00 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:57:10 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
+#include "../../include/cub3d.h"
 
 /*prints out error message accordingly and free the parsed contents
 data struct should be added later.*/
-void	print_error(char *str)
+void	print_error(char *str, int code)
 {
 	printf("%s\n", str);
+	if (code == 1)
+	{
+		
+	}
 }
 
 /**
@@ -59,29 +64,6 @@ void	print_map(char **map)
 		printf("%s\n", map[i]);
 		i++;
 	}
-}
-
-void	player_location(t_data *mv)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (mv->map[i])
-	{
-		j = 0;
-		while (mv->map[i][j])
-		{
-			if (ft_strchr("NSEW", mv->map[i][j]))
-			{
-				mv->player_x = i;
-				mv->player_y = j;
-			}
-			j++;
-		}
-		i++;
-	}
-	printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
 }
 
 void	flood_fill(t_data *mv, int x, int y, char c)

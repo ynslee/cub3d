@@ -33,8 +33,6 @@ static void	init_struct(t_cub *cub)
 	cub->id_flag = 0;
 	cub->map_str = 0;
 }
-#include "../mlx/mlx.h"
-#include "../libft/libft.h"
 
 // void	init(void)
 // {
@@ -68,6 +66,7 @@ int	main(int argc, char **argv)
 {
 	int		fd;
 	t_cub	cub;
+	t_data	mv;
 
 	if (argc == 2)
 	{
@@ -76,7 +75,8 @@ int	main(int argc, char **argv)
 			printf("Invalid file\n");
 		init_struct(&cub);
 		valid_elements(fd, &cub);
-		print_struct(&cub);
+		// print_struct(&cub);
+		map_check(&cub, &mv);
 		// if (valid_elements(fd) == -1)
 		// 	printf("Elements not valid\n");
 	}

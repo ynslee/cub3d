@@ -37,11 +37,12 @@ void	put_elem_to_struct(char **element, t_cub *cub)
 
 int	check_line(char *line, t_cub *cub)
 {
-	char **line_elem;
+	char	**line_elem;
+	int		i;
 
 	line_elem = ft_split(line, ' ');
 	free(line);
-	int i = -1;
+	i = -1;
 	while (++i < 2)
 		// printf("splited line[%i] = %s\t%p\n", i, line_elem[i], line_elem[i]);
 	if (ft_strncmp_all(line_elem[0], "NO") == 0
@@ -60,18 +61,17 @@ int	check_line(char *line, t_cub *cub)
 /*Add check that elements are in right order!*/
 int	valid_elements(int fd, t_cub *cub)
 {
-	(void)cub;
-	char *line;
-	char *trim_line;
+	char	*line;
+	char	*trim_line;
+
 	while (42)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6)
 		{
 			trim_line = ft_strtrim(line, " \t");
-			// printf("trim_line = %s\t%p\n", trim_line, trim_line);
 			check_line(trim_line, cub);
 			// free(trim_line);
 		}
@@ -98,6 +98,5 @@ int	valid_file(char *file_name)
 	if (ft_strlen(ret) != 4)
 		return (-1);
 	fd = open(file_name, O_RDONLY);
-		return (fd);
 	return (fd);
 }
