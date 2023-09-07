@@ -6,17 +6,16 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 16:03:50 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:00:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
 
-void	file_print_error(t_cub *cub, char *str, int line_flag)
+void	file_print_error(t_cub *cub, char *str)
 {
 	ft_putstr_fd(str, 2);
-	if (line_flag == 1)
-		free_struct(cub);
+	free_struct(cub);
 	exit(1);
 }
 

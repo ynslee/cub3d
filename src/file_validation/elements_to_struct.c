@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 16:14:10 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:15:10 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,26 @@
 
 static void	put_elem_to_struct(char **element, t_cub *cub)
 {
-	if (ft_strncmp_all(element[0], "NO") == 0)
-		cub->no = ft_strdup(element[1]);
-	else if (ft_strncmp_all(element[0], "SO") == 0)
-		cub->so = ft_strdup(element[1]);
-	else if (ft_strncmp_all(element[0], "WE") == 0)
-		cub->we = ft_strdup(element[1]);
-	else if (ft_strncmp_all(element[0], "EA") == 0)
-		cub->ea = ft_strdup(element[1]);
-	else if (ft_strncmp_all(element[0], "F") == 0)
-		cub->f_color = ft_strdup(element[1]);
-	else if (ft_strncmp_all(element[0], "C") == 0)
-		cub->c_color = ft_strdup(element[1]);
+	if (check_textures(element[1]) == -1)
+		file_print_error(cub, "Invalid texture file!\n");
+	else
+	{
+		if (ft_strncmp_all(element[0], "NO") == 0)
+			cub->no = ft_strdup(element[1]);
+		else if (ft_strncmp_all(element[0], "SO") == 0)
+			cub->so = ft_strdup(element[1]);
+		else if (ft_strncmp_all(element[0], "WE") == 0)
+			cub->we = ft_strdup(element[1]);
+		else if (ft_strncmp_all(element[0], "EA") == 0)
+			cub->ea = ft_strdup(element[1]);
+		else if (ft_strncmp_all(element[0], "F") == 0)
+			cub->f_color = ft_strdup(element[1]);
+		else if (ft_strncmp_all(element[0], "C") == 0)
+			cub->c_color = ft_strdup(element[1]);
+	}
 }
 
-static void	find_element(char *line, t_cub *cub)
+void	find_element(char *line, t_cub *cub)
 {
 	char	**line_elem;
 	char	*trim_line;
@@ -50,7 +55,7 @@ static void	find_element(char *line, t_cub *cub)
 int	valid_elements(int fd, t_cub *cub)
 {
 	check_required_elements(fd, cub);
-	check_textures(cub);
+	// check_textures(cub);
 	return (0);
 }
 

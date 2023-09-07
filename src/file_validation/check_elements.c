@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 16:16:08 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/07 17:15:11 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 
 /*
 Valid textures:
-first info is the identifier
 ends with .xpm
 file exists, rights to open
-all four files are different textures
-have to find NO, SO, WE, EA first thing on the line
 */
 
-void	check_textures(t_cub *cub)
+int	check_textures(char *element)
 {
+	char	*ret;
+	int		fd;
 
+	printf("element in check textures = %s\n", element);
+	ret = ft_strnstr(element, ".xpm", ft_strlen(element));
+	if (ret == NULL)
+		return (-1);
+	// printf("ret = %s\n", ret);
+	if (ft_strlen(ret) != 5)
+	{
+		// printf("coming here ret len = %zu\n", ft_strlen(ret));
+		return (-1);
+	}
+	fd = open(element, O_RDONLY);
+	printf("fd in check_textures = %i\n", fd);
+	return (fd);
 }
 
 void	check_required_elements(int fd, t_cub *cub)
@@ -39,7 +51,7 @@ void	check_required_elements(int fd, t_cub *cub)
 			&& !is_map(line))
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
-			file_print_error(cub, "File does not have required elements!\n", 1);
+			file_print_error(cub, "File does not have required elements!\n");
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)
 		{
 			if (!cub->map_str)
