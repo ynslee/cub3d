@@ -92,9 +92,9 @@ int	main(int argc, char **argv)
 		if (fd == -1)
 			printf("Invalid file\n");
 		init_struct(&cub);
-		valid_elements(fd, &cub);
-		// print_struct(&cub);
-		map_check(&cub, &mv);
+		if (valid_elements(fd, &cub) == -1)
+			exit(0);
+		print_struct(&cub);
 		free_struct(&cub);
 		free_mv_struct(&mv);
 		// if (valid_elements(fd) == -1)

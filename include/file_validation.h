@@ -5,10 +5,15 @@
 
 typedef struct s_cub t_cub;
 
-// check_textures.c
-void	put_elem_to_struct(char **element, t_cub *cub);
-int		check_line(char *line, t_cub *cub);
+// elements_to_struct.c
 int		valid_elements(int fd, t_cub *cub);
 int		valid_file(char *file_name);
+
+// check_textures.c
+
+//file_validation_utils.c
+int	is_map(char *line);
+
+
 
 #endif
