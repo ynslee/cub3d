@@ -43,7 +43,7 @@ int	check_line(char *line, t_cub *cub)
 	free(line);
 	int i = -1;
 	while (++i < 2)
-		printf("splited line[%i] = %s\t%p\n", i, line_elem[i], line_elem[i]);
+		// printf("splited line[%i] = %s\t%p\n", i, line_elem[i], line_elem[i]);
 	if (ft_strncmp_all(line_elem[0], "NO") == 0
 		|| ft_strncmp_all(line_elem[0], "SO") == 0
 		|| ft_strncmp_all(line_elem[0], "WE") == 0
@@ -51,7 +51,7 @@ int	check_line(char *line, t_cub *cub)
 		|| ft_strncmp_all(line_elem[0], "F") == 0
 		|| ft_strncmp_all(line_elem[0], "C") == 0)
 		put_elem_to_struct(line_elem, cub);
-	printf("==============================================\n");
+	// printf("==============================================\n");
 	free_char_array(line_elem);
 	return (0);
 }
