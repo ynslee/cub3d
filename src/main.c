@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-static void	print_struct(t_cub *cub)
+void	print_struct(t_cub *cub)
 {
 	printf("*****************************\n");
 	if (cub->no)
@@ -61,7 +61,8 @@ int main(int argc, char **argv)
 		if (fd == -1)
 			printf("Invalid file\n");
 		init_struct(&cub);
-		valid_elements(fd, &cub);
+		if (valid_elements(fd, &cub) == -1)
+			exit(0);
 		print_struct(&cub);
 		free_struct(&cub);
 		// if (valid_elements(fd) == -1)

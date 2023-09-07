@@ -6,7 +6,7 @@
 #    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/07 11:46:20 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/07 12:49:48 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOUR_END=\033[0m
 ### SET UP ###
 CC = cc
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS =  -I$I -Wall -Wextra -Werror #-fsanitize=address,undefined
+CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address,undefined
 
 RM = /bin/rm -f
 RMDIR = /bin/rmdir -p
@@ -32,7 +32,8 @@ O = obj
 I = include
 
 FILES = main\
-		check_textures\
+		elements_to_struct\
+		file_validation_utils\
 		basic_check\
 
 HEADER = cub3d.h libft.h file_validation.h
