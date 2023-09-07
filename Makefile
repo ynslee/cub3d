@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/07 12:49:48 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/07 13:06:43 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ FILES = main\
 		elements_to_struct\
 		file_validation_utils\
 		basic_check\
+		map_validation_utils\
+		index_utils\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

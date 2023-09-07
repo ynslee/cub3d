@@ -8,15 +8,19 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include "file_validation.h"
+# include "map_validation.h"
 # include "../libft/libft.h"
 
-typedef enum e_error
+typedef struct s_cbd
 {
-	SUCCESS,
-	MALLOC_ERROR,
-	MAP_INVALID
-}	t_error;
+	void	*mlx;
+	void	*window;
+	void	*background;
+	int		img_len;
+}	t_cbd;
+
 
 typedef struct s_cub
 {

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:55:16 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/05 13:24:56 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:28:37 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ char	*save_line_bonus(char	*stash);
 void	free_char_array(char **str);
 int		ft_strncmp_all(const char *s1, const char *s2);
 int		ft_arrlen(char **array);
+int		ft_strchr_index(const char *s, int c);
 
 #endif
