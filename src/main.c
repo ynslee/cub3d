@@ -22,6 +22,24 @@ static void	print_struct(t_cub *cub)
 	printf("*****************************\n");
 }
 
+void	free_struct(t_cub *cub)
+{
+	if (cub->no)
+		free(cub->no);
+	if (cub->so)
+		free(cub->so);
+	if (cub->we)
+		free(cub->we);
+	if (cub->ea)
+		free(cub->ea);
+	if (cub->f_color)
+		free(cub->f_color);
+	if (cub->c_color)
+		free(cub->c_color);
+	if (cub->map_str)
+		free(cub->map_str);
+}
+
 static void	init_struct(t_cub *cub)
 {
 	cub->no = 0;
@@ -77,6 +95,7 @@ int	main(int argc, char **argv)
 		valid_elements(fd, &cub);
 		// print_struct(&cub);
 		map_check(&cub, &mv);
+		free_struct(&cub);
 		// if (valid_elements(fd) == -1)
 		// 	printf("Elements not valid\n");
 	}
