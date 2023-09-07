@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   elements_to_struct.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
+/*   Updated: 2023/09/07 15:59:37 by jhusso           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "file_validation.h"
 
 static void	put_elem_to_struct(char **element, t_cub *cub)
@@ -38,19 +50,19 @@ static int	check_line(char *line, t_cub *cub)
 
 int	valid_elements(int fd, t_cub *cub)
 {
-	char *line;
+	char	*line;
 
 	while (42)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
-		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6 && !is_map(line))
+			break ;
+		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6
+			&& !is_map(line))
 			check_line(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
 		{
-			printf("Elements in wrong order!\n");
-			free(line);
+			file_print_error(cub, "File does not have required elements!\n", 1);
 			return (-1);
 		}
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)

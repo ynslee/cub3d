@@ -12,7 +12,8 @@ int		valid_file(char *file_name);
 // check_textures.c
 
 //file_validation_utils.c
-int	is_map(char *line);
+void	file_print_error(t_cub *cub, char *str, int file_flag);
+int		is_map(char *line);
 
 
 
