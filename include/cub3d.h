@@ -3,6 +3,7 @@
 # define CUB3D_H
 
 # include <mlx.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
@@ -16,5 +17,17 @@ typedef enum e_error
 	MALLOC_ERROR,
 	MAP_INVALID
 }	t_error;
+
+typedef struct s_cub
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f_color;
+	char	*c_color;
+	char	*map_str;
+	int		id_flag;
+}			t_cub;
 
 #endif
