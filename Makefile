@@ -6,7 +6,7 @@
 #    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/08 10:04:34 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/08 13:17:18 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOUR_END=\033[0m
 ### SET UP ###
 CC = cc
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS =  -I$I -Wall -Wextra -Werror #-fsanitize=address,undefined
+CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address,undefined
 
 RM = /bin/rm -f
 RMDIR = /bin/rmdir -p
@@ -35,9 +35,10 @@ FILES = main\
 		elements_to_struct\
 		check_elements\
 		file_validation_utils\
-		basic_check\
+		map_check\
 		map_validation_utils\
 		index_utils\
+		fill_width\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))
