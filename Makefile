@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
+#    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/08 11:07:03 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/09/08 13:17:18 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOUR_END=\033[0m
 ### SET UP ###
 CC = cc
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address
+CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address,undefined
 
 RM = /bin/rm -f
 RMDIR = /bin/rmdir -p
@@ -33,6 +33,7 @@ I = include
 
 FILES = main\
 		elements_to_struct\
+		check_elements\
 		file_validation_utils\
 		map_check\
 		map_validation_utils\
