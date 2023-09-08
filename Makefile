@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/07 13:06:43 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/09/08 11:07:03 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOUR_END=\033[0m
 ### SET UP ###
 CC = cc
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address,undefined
+CFLAGS =  -I$I -Wall -Wextra -Werror -fsanitize=address
 
 RM = /bin/rm -f
 RMDIR = /bin/rmdir -p
@@ -34,9 +34,10 @@ I = include
 FILES = main\
 		elements_to_struct\
 		file_validation_utils\
-		basic_check\
+		map_check\
 		map_validation_utils\
 		index_utils\
+		fill_width\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

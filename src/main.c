@@ -52,34 +52,6 @@ static void	init_struct(t_cub *cub)
 	cub->map_str = 0;
 }
 
-// void	init(void)
-// {
-
-// }
-
-void	mlx_functions(t_cbd *cub)
-{
-	int	height;
-	int	width;
-	int	img_len;
-
-	height = 512;
-	width = 1024;
-	img_len = 200;
-	cub->mlx = mlx_init();
-	printf("here2\n");
-	cub->window = mlx_new_window(cub->mlx, width, height, \
-				"cub3d");
-	printf("here3\n");
-	mlx_clear_window(cub->mlx, cub->window);
-	printf("here4\n");
-	cub->background = mlx_xpm_file_to_image(cub->mlx, "./grey.xpm", \
-				&img_len, &img_len);
-	printf("here5\n");
-	mlx_put_image_to_window(cub->mlx, cub->window, cub->background, 0, 0);
-	printf("here6\n");
-}
-
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -94,11 +66,10 @@ int	main(int argc, char **argv)
 		init_struct(&cub);
 		if (valid_elements(fd, &cub) == -1)
 			exit(0);
-		print_struct(&cub);
+		// print_struct(&cub);
+		map_check(&cub, &mv);
 		free_struct(&cub);
 		free_mv_struct(&mv);
-		// if (valid_elements(fd) == -1)
-		// 	printf("Elements not valid\n");
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 16:14:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:23:09 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,20 @@ void	copy_map(t_cub *cub, t_data *mv)
 	int	j;
 	int	width;
 
-	i = -1;
+	i = 0;
 	j = 0;
 	width = 0;
 	mv->map_cpy = ft_calloc((mv->height + 1), sizeof(char *));
 	if (!mv->map_cpy)
 		print_error(cub, mv, "malloc_error\n", 2);
-	while (++i < mv->height)
+	while (i < mv->height && mv->map[i])
 	{
 		mv->map_cpy[i] = ft_strdup(mv->map[i]);
 		if (!mv->map_cpy[i])
 			print_error(cub, mv, "malloc_error\n", 2);
 		if ((int)ft_strlen(mv->map_cpy[i]) > width)
 			width = ft_strlen(mv->map_cpy[i]);
+		i++;
 	}
 	mv->width = width;
 	// printf("width is %d\n", width);
@@ -81,14 +82,19 @@ void	print_map(char **map)
 		printf("%s\n", map[i]);
 		i++;
 	}
+	printf("\n");
 }
 
+/**
+ * @brief floodfill the walls. it goes down, right up, left filling
+ */
 void	flood_fill(t_data *mv, int x, int y, char c)
 {
-	if (x < 0 || y < 0 || x > mv->height || y > mv->width || \
-			mv->map_cpy[x][y] != c)
+	if (x < 0 || y < 0 || x > mv->height - 1 || y > mv->width - 1 || \
+			mv->map_cpy[x][y] != c || !mv->map_cpy[x][y])
 		return ;
-	else if (x >= 0 && y >= 0 && x < mv->height && y < mv->width)
+	else if (x >= 0 && y >= 0 && x < mv->height && y < mv->width \
+	&& mv->map_cpy[x][y])
 	{
 		if (mv->map_cpy[x][y] == c)
 		{

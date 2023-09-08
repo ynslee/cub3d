@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_check.c                                      :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 16:14:24 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:11:02 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 	}
 	free(temp);
 	copy_map(cub, mv);
+	fill_width(mv);
 	if (fill_the_wall(mv))
 		return (1);
 	return (0);
