@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 17:15:10 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/08 12:29:43 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	put_elem_to_struct(char **element, t_cub *cub)
 {
-	if (check_textures(element[1]) == -1)
-		file_print_error(cub, "Invalid texture file!\n");
+	if (check_elements(element, cub) == -1)
+		file_print_error(cub, "Invalid texture file!\n", 0);
 	else
 	{
 		if (ft_strncmp_all(element[0], "NO") == 0)
@@ -55,7 +55,6 @@ void	find_element(char *line, t_cub *cub)
 int	valid_elements(int fd, t_cub *cub)
 {
 	check_required_elements(fd, cub);
-	// check_textures(cub);
 	return (0);
 }
 

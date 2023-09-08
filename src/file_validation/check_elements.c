@@ -6,36 +6,70 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/07 17:15:11 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/08 13:11:54 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
 
-/*
-Valid textures:
-ends with .xpm
-file exists, rights to open
-*/
+static int	check_colors(char *element)
+{
+	char	**colors;
+	int		i;
 
-int	check_textures(char *element)
+	colors = ft_split(element, ',');
+	if (ft_arrlen(colors) != 3)
+		return (-1);
+	i = 0;
+	while (i < 3)
+	{
+		if (colors[i][0] == '\n' || colors[i] == NULL)
+			return (-1);
+		if (ft_atoi(colors[i]) >= 0 && ft_atoi(colors[i]) < 256)
+			i++;
+		else
+			return (-1);
+	}
+	return (0);
+}
+
+/// @brief checks validation of texture files
+/// @param element path to file
+/// @return returns -1 in case of failure, positive integer(fd) if succesfull
+static int	check_textures(char *element)
 {
 	char	*ret;
 	int		fd;
+	char	*sub_elem;
 
 	printf("element in check textures = %s\n", element);
 	ret = ft_strnstr(element, ".xpm", ft_strlen(element));
 	if (ret == NULL)
 		return (-1);
-	// printf("ret = %s\n", ret);
 	if (ft_strlen(ret) != 5)
-	{
-		// printf("coming here ret len = %zu\n", ft_strlen(ret));
 		return (-1);
-	}
-	fd = open(element, O_RDONLY);
-	printf("fd in check_textures = %i\n", fd);
+	sub_elem = ft_substr(element, 0, ft_strlen(element) - 1);
+	fd = open(sub_elem, O_RDONLY);
+	free(sub_elem);
 	return (fd);
+}
+
+int	check_elements(char **element, t_cub *cub)
+{
+	if (!ft_strncmp_all(element[0], "NO") || !ft_strncmp_all(element[0], "SO")
+		|| !ft_strncmp_all(element[0], "WE")
+		|| !ft_strncmp_all(element[0], "EA"))
+	{
+		if (check_textures(element[1]) == -1)
+			file_print_error(cub, "invalid wall texture files!\n", 0);
+	}
+	else if (!ft_strncmp_all(element[0], "F")
+		|| !ft_strncmp_all(element[0], "C"))
+	{
+		if (check_colors(element[1]) == -1)
+			file_print_error(cub, "Invalid colors for ceiling or floor!\n", 0);
+	}
+	return (0);
 }
 
 void	check_required_elements(int fd, t_cub *cub)
@@ -51,7 +85,7 @@ void	check_required_elements(int fd, t_cub *cub)
 			&& !is_map(line))
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
-			file_print_error(cub, "File does not have required elements!\n");
+			file_print_error(cub, "File does not have required elements!\n", 0);
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)
 		{
 			if (!cub->map_str)
