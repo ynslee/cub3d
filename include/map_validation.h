@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 12:18:49 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:06:40 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ int		ft_lastchr(char *str, char c);
 void	player_location(t_data *mv);
 int		map_character_check(char c);
 void	init_mv(t_data *mv);
+
+//fill_width.c
+void	fill_width(t_data *mv);
 
 #endif
