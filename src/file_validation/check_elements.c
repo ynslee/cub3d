@@ -6,24 +6,44 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/08 13:11:54 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/08 17:10:15 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
 
+static int	all_digits(char *number)
+{
+	int	i;
+	int	len;
+
+	len = ft_strlen(number);
+	i = -1;
+	while (++i < len)
+	{
+		if (!ft_isdigit(number[i]))
+			return (-1);
+	}
+	return (0);
+}
+
+/// free
 static int	check_colors(char *element)
 {
 	char	**colors;
+	char	*sub_color;
 	int		i;
 
-	colors = ft_split(element, ',');
+	sub_color = ft_substr(element, 0, ft_strlen(element) - 1);
+	colors = ft_split(sub_color, ',');
 	if (ft_arrlen(colors) != 3)
 		return (-1);
 	i = 0;
 	while (i < 3)
 	{
 		if (colors[i][0] == '\n' || colors[i] == NULL)
+			return (-1);
+		if (all_digits(colors[i]) == -1)
 			return (-1);
 		if (ft_atoi(colors[i]) >= 0 && ft_atoi(colors[i]) < 256)
 			i++;
@@ -42,7 +62,7 @@ static int	check_textures(char *element)
 	int		fd;
 	char	*sub_elem;
 
-	printf("element in check textures = %s\n", element);
+	// printf("element in check textures = %s\n", element);
 	ret = ft_strnstr(element, ".xpm", ft_strlen(element));
 	if (ret == NULL)
 		return (-1);
@@ -72,10 +92,20 @@ int	check_elements(char **element, t_cub *cub)
 	return (0);
 }
 
+void	check_empty_file(t_cub *cub, char *line, int line_flag)
+{
+	if (!line && line_flag == 0)
+		file_print_error(cub, "File empty!\n", 0);
+	 if (!cub->map_str)
+	 	file_print_error(cub, "No map in file!\n", 1);
+}
+
 void	check_required_elements(int fd, t_cub *cub)
 {
 	char	*line;
+	int		line_flag;
 
+	line_flag = 0;
 	while (42)
 	{
 		line = get_next_line(fd);
@@ -86,13 +116,15 @@ void	check_required_elements(int fd, t_cub *cub)
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
 			file_print_error(cub, "File does not have required elements!\n", 0);
-		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag == 6)
+		else if (cub->id_flag == 6) //ft_strncmp_all(line, "\n") != 0 &&
 		{
 			if (!cub->map_str)
 				cub->map_str = ft_strdup(line);
 			else
 				cub->map_str = ft_strjoin_gnl(cub->map_str, line);
 		}
+		line_flag = 1;
 		free(line);
 	}
+	check_empty_file(cub, line, line_flag);
 }

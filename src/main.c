@@ -62,14 +62,15 @@ int	main(int argc, char **argv)
 	{
 		fd = valid_file(argv[1]);
 		if (fd == -1)
-			printf("Invalid file\n");
+			file_print_error(&cub, "Invalid file\n", 0);
 		init_struct(&cub);
 		if (valid_elements(fd, &cub) == -1)
 			exit(0);
-		// print_struct(&cub);
+		print_struct(&cub);
 		map_check(&cub, &mv);
 		free_struct(&cub);
 		free_mv_struct(&mv);
+		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 	}
 	return (0);
 }
