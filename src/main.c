@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 {
 	int		fd;
 	t_cub	cub;
-	t_data	mv;
+	// t_data	mv;
 
 	if (argc == 2)
 	{
@@ -64,12 +64,11 @@ int	main(int argc, char **argv)
 		if (fd == -1)
 			file_print_error(&cub, "Invalid file\n", 0);
 		init_struct(&cub);
-		if (valid_elements(fd, &cub) == -1)
-			exit(0);
+		read_file(fd, &cub);
 		print_struct(&cub);
-		map_check(&cub, &mv);
-		free_struct(&cub);
-		free_mv_struct(&mv);
+		// map_check(&cub, &mv);
+		// free_struct(&cub);
+		// free_mv_struct(&mv);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 	}
 	return (0);

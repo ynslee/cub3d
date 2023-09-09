@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_validation_utils.c                            :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/09 13:53:23 by jhusso           ###   ########.fr       */
+/*   Created: 2023/09/09 13:54:20 by jhusso            #+#    #+#             */
+/*   Updated: 2023/09/09 14:03:02 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
 
-int	all_digits(char *number)
+static void	parse_map(char *line, t_cub *cub)
 {
-	int	i;
-	int	len;
-
-	len = ft_strlen(number);
-	i = -1;
-	while (++i < len)
+	if (line)
 	{
-		if (!ft_isdigit(number[i]))
-			return (-1);
+		if (!cub->map_str)
+			cub->map_str = ft_strdup(line);
+		else
+			cub->map_str = ft_strjoin_gnl(cub->map_str, line);
 	}
-	return (0);
 }
 
-void	file_print_error(t_cub *cub, char *str, int struct_flag)
+void	read_map(int fd, t_cub *cub)
 {
-	ft_putstr_fd(str, 2);
-	if (struct_flag == 1)
-		free_struct(cub);
-	exit(1);
-}
+	char	*line;
 
-int	is_map(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (ft_isdigit(line[i]))
-		return (1);
-	return (0);
+	while (42)
+	{
+		line = get_next_line(fd);
+		if (ft_strncmp_all(line, "\n") != 0)
+			break ;
+	}
+	while (42)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		else
+			parse_map(line, cub);
+	}
 }
