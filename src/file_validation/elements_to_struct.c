@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/09 14:00:05 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/09 17:53:19 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 		file_print_error(cub, "Invalid texture file!\n", 0);
 	else
 	{
-		if (ft_strncmp_all(element[0], "NO") == 0)
+		if (ft_strncmp_all(element[0], "NO") == 0 && !cub->no)
 			cub->no = ft_strdup(element[1]);
-		else if (ft_strncmp_all(element[0], "SO") == 0)
+		else if (ft_strncmp_all(element[0], "SO") == 0 && !cub->so)
 			cub->so = ft_strdup(element[1]);
-		else if (ft_strncmp_all(element[0], "WE") == 0)
+		else if (ft_strncmp_all(element[0], "WE") == 0 && !cub->we)
 			cub->we = ft_strdup(element[1]);
-		else if (ft_strncmp_all(element[0], "EA") == 0)
+		else if (ft_strncmp_all(element[0], "EA") == 0 && !cub->ea)
 			cub->ea = ft_strdup(element[1]);
-		else if (ft_strncmp_all(element[0], "F") == 0)
+		else if (ft_strncmp_all(element[0], "F") == 0 && !cub->f_color)
 			cub->f_color = ft_strdup(element[1]);
-		else if (ft_strncmp_all(element[0], "C") == 0)
+		else if (ft_strncmp_all(element[0], "C") == 0 && !cub->c_color)
 			cub->c_color = ft_strdup(element[1]);
+		else
+			file_print_error(cub, "Texture file duplicates!\n", 1);
 	}
 }
 
