@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 10:56:47 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 12:14:26 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 void	free_mv_struct(t_data *mv)
 {
 	// commented out, because segfaulted??
-	// if (mv->map)
-	// 	free_char_array(mv->map);
+	if (mv->map)
+		free_char_array(mv->map);
 	if (mv->map_cpy)
 		free_char_array(mv->map_cpy);
 }
@@ -46,11 +46,9 @@ void	print_error(t_cub *cub, t_data *mv, char *str, int code)
 void	copy_map(t_cub *cub, t_data *mv)
 {
 	int	i;
-	int	j;
 	int	width;
 
 	i = 0;
-	j = 0;
 	width = 0;
 	mv->map_cpy = ft_calloc((mv->height + 1), sizeof(char *));
 	if (!mv->map_cpy)
