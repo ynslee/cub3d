@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/09 13:58:51 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 11:56:33 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	check_colors(char *element)
 
 	sub_color = ft_substr(element, 0, ft_strlen(element) - 1);
 	colors = ft_split(sub_color, ',');
+	free(sub_color);
 	if (ft_arrlen(colors) != 3)
 		return (-1);
 	i = 0;
@@ -35,6 +36,7 @@ static int	check_colors(char *element)
 		else
 			return (-1);
 	}
+	free_char_array(colors);
 	return (0);
 }
 

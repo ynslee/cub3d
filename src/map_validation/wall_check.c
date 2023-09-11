@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 07:51:46 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/11 11:00:37 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 11:52:44 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	set_buffer(t_data *data)
 	ft_bx(buffer_cpy[0], data->width + 2);
 	i = 1;
 	j = 0;
-	while (i < data->height - 1)
+	while (i < data->height + 1)
 	{
 		buffer_cpy[i] = ft_strjoin("X", data->map[j]);
 		buffer_cpy[i] = ft_strjoin(buffer_cpy[i], "X");
@@ -54,6 +54,7 @@ void	set_buffer(t_data *data)
 	printf("%i\n", i);
 	ft_bx(buffer_cpy[i], data->width + 2);
 	print_map(buffer_cpy);
+	free_char_array(buffer_cpy);
 }
 
 int	wall_check(t_data *data)
