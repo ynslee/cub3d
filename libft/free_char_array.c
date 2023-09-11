@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_char_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:35:25 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/07 08:12:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 12:18:14 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ void	free_char_array(char **str)
 		i++;
 	}
 	if (str)
+	{
 		free(str);
+		str = NULL;
+	}
 }
