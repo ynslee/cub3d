@@ -6,7 +6,7 @@
 #    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/08 13:17:18 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/11 09:15:02 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ FILES = main\
 		map_validation_utils\
 		index_utils\
 		fill_width\
+		wall_check\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

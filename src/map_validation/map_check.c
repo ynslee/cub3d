@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/08 11:11:02 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/11 09:52:23 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 
 /**
  * @brief returns 0 if there is only one player.
- * returns 1 if there is no player or more than one player. * 
+ * returns 1 if there is no player or more than one player. *
  */
 int	duplicate_player(char *map)
 {

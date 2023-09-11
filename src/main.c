@@ -68,6 +68,7 @@ int	main(int argc, char **argv)
 			exit(0);
 		print_struct(&cub);
 		map_check(&cub, &mv);
+		wall_check(&mv);
 		free_struct(&cub);
 		free_mv_struct(&mv);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
