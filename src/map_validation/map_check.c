@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 07:54:05 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 10:48:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	fill_the_wall(t_data *mv)
 	y = 0;
 	while (mv->map_cpy[x][y] == ' ')
 		y++;
-	flood_fill(mv, x, y, mv->map_cpy[x][y]);
+	if (mv->map_cpy[x][y] == 1)
+		flood_fill(mv, x, y, mv->map_cpy[x][y]);
+	else
+		return (0);
 	x = 0;
 	while (mv->map_cpy[x])
 	{
@@ -30,10 +33,7 @@ int	fill_the_wall(t_data *mv)
 		while (mv->map_cpy[x][index])
 		{
 			if (mv->map_cpy[x][index] == '1')
-			{
-				printf("found second map in = [%i][%i]\n", x, index);
 				return (1);
-			}
 			index++;
 		}
 		x++;
@@ -48,9 +48,11 @@ int	height_check(char *map, t_data *mv)
 {
 	int		i;
 	int		height;
+	int		width;
 
 	i = 0;
-	height = 0;
+	height = 1;
+	width = 0;
 	while (map[i])
 	{
 		if (map[i] == '\n')
@@ -58,7 +60,7 @@ int	height_check(char *map, t_data *mv)
 		i++;
 	}
 	mv->height = height;
-	// printf("height is %d\n", height);
+	printf("height is %d\n", height);
 	return (height);
 }
 
@@ -131,32 +133,22 @@ int	map_check(t_cub	*cub, t_data *mv)
 	int		height;
 
 	init_mv(mv);
-	// index = ft_strchr_index(cub->map_str, '\n');
-	// // if (cub->map_str[index + 1] == '\n')
-	// // 	print_error(cub, mv, "two consecutive new lines!\n", 1);
-	// int map_strlen = ft_strlen(cub->map_str);
-	// printf("map string len  %i\n", map_strlen);
-	index = 0;
-	while (cub->map_str[index])
+	consecutive_new_lines(cub, mv);
+	index = -1;
+	while (cub->map_str[++index])
 	{
-		// printf("index in map_check = %i -> %c\n", index, cub->map_str[index]);
 		if (!map_character_check(cub->map_str[index]))
 		{
 			print_error(cub, mv, "map has invalid character!\n", 1);
 			break ;
 		}
-		else if (cub->map_str[index] == '\n' && cub->map_str[index + 1] == '\n')
-		{
-			print_error(cub, mv, "two consecutive new lines!\n", 1);
-			break ;
-		}
-		index++;
 	}
 	if (duplicate_player(cub->map_str))
 		print_error(cub, mv, "No player or more than one player!\n", 1);
-	// // printf("there has been no errors! yay!\n");
 	height = height_check(cub->map_str, mv);
 	if (two_maps_check(cub, height, mv))
 		print_error(cub, mv, "there are more than one map in the file!\n", 2);
+	if (mv->map_cpy)
+		free(mv->map_cpy);
 	return (0);
 }

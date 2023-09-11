@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/10 14:38:48 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 10:40:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	player_location(t_data *mv)
 		}
 		i++;
 	}
-	printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
+	// printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
 }
 
 /**

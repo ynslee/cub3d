@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/08 11:06:40 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:03:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	init_mv(t_data *mv);
 
 //fill_width.c
 void	fill_width(t_data *mv);
+void	consecutive_new_lines(t_cub *cub, t_data *mv);
 
 #endif

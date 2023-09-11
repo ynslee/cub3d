@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 07:51:46 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/11 08:15:56 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 09:55:25 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 
 */
 
-void	set_buffer(t_data *data)
-{
-	map_cpy = ft_calloc(data->height + 2, sizeof(char*));
-}
+// void	set_buffer(t_data *data)
+// {
+// 	map_cpy = ft_calloc(data->height + 2, sizeof(char*));
+// }
 
-int	wall_check(t_data *data)
-{
-	set_buffer(data);
-}
+// int	wall_check(t_data *data)
+// {
+// 	set_buffer(data);
+// }
