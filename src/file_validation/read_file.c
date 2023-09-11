@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/10 13:20:18 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 11:58:30 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	read_map(int fd, t_cub *cub)
 			map_str = ft_strdup(line);
 		else
 			map_str = ft_strjoin_gnl(map_str, line);
+		free(line);
 	}
 	cub->map_str = ft_strtrim(map_str, "\n");
 	free (map_str);
@@ -71,9 +72,10 @@ void	read_file(int fd, t_cub *cub)
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
 			file_print_error(cub, "File does not have required elements!\n", 0);
+		free(line);
 	}
 	read_map(fd, cub);
 	line_flag = 1;
-	free(line);
 	check_empty_file(cub, line, line_flag);
+	free(line);
 }
