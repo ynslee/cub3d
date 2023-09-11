@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 11:01:57 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 12:25:16 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 	char	**map_cpy;
 	int		player_x;
 	int		player_y;
+	char	player_view;
 }	t_data;
 
 typedef struct s_cub	t_cub;
