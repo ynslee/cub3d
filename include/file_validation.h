@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:08:23 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/09 14:02:35 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/10 13:21:13 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	file_print_error(t_cub *cub, char *str, int struct_flag);
 int		is_map(char *line);
 
 //read_file.c
-void	check_empty_file(t_cub *cub, char *line, int line_flag);
+// void	check_empty_file(t_cub *cub, char *line, int line_flag);
 int		valid_file(char *file_name);
 void	read_file(int fd, t_cub *cub);
 
 //read_map.c
-void	read_map(int fd, t_cub *cub);
+// void	read_map(int fd, t_cub *cub);
 
 #endif

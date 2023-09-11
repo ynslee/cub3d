@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/09 13:48:05 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 07:44:26 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
  */
 void	free_mv_struct(t_data *mv)
 {
-	if (mv->map)
-		free_char_array(mv->map);
+	// commented out, because segfaulted??
+	// if (mv->map)
+	// 	free_char_array(mv->map);
 	if (mv->map_cpy)
 		free_char_array(mv->map_cpy);
 }
@@ -64,8 +65,6 @@ void	copy_map(t_cub *cub, t_data *mv)
 		i++;
 	}
 	mv->width = width;
-	// printf("width is %d\n", width);
-	// print_map(mv->map_cpy);
 	player_location(mv);
 }
 
