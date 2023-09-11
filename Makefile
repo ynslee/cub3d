@@ -6,7 +6,7 @@
 #    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/11 09:15:02 by jhusso           ###   ########.fr        #
+#    Updated: 2023/09/11 10:56:03 by jhusso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ FILES = main\
 		elements_to_struct\
 		check_elements\
 		file_validation_utils\
+		read_file\
 		map_check\
 		map_validation_utils\
 		index_utils\

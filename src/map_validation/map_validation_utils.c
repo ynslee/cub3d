@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 09:46:13 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 10:56:47 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	copy_map(t_cub *cub, t_data *mv)
 		i++;
 	}
 	mv->width = width;
+	// printf("width is %d\n", width);
+	// print_map(mv->map_cpy);
 	player_location(mv);
 }
 

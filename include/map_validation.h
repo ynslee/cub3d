@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 09:14:36 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/11 10:58:33 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,5 @@ void	init_mv(t_data *mv);
 
 //fill_width.c
 void	fill_width(t_data *mv);
-
-//wall_check.c
-void	set_buffer(t_data *data);
-int		wall_check(t_data *data);
 
 #endif

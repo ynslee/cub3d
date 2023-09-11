@@ -19,7 +19,7 @@ void	print_struct(t_cub *cub)
 		printf("cub->c_color = %s\n", cub->c_color);
 	if (cub->map_str)
 		printf("cub->map_str =\n%s", cub->map_str);
-	printf("*****************************\n");
+	printf("\n*****************************\n");
 }
 
 void	free_struct(t_cub *cub)
@@ -64,13 +64,16 @@ int	main(int argc, char **argv)
 		if (fd == -1)
 			file_print_error(&cub, "Invalid file\n", 0);
 		init_struct(&cub);
-		if (valid_elements(fd, &cub) == -1)
-			exit(0);
-		print_struct(&cub);
+		read_file(fd, &cub);
+		// print_struct(&cub);
 		map_check(&cub, &mv);
 		wall_check(&mv);
-		free_struct(&cub);
-		free_mv_struct(&mv);
+		// printf("map copy:\n");
+		// int k = -1;
+		// while (++k < mv.height)
+		// 	printf("%s\n", mv.map_cpy[k]);
+		// free_struct(&cub);
+		// free_mv_struct(&mv);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 	}
 	return (0);
