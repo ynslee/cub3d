@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/08 11:11:33 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:30:13 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ char	*fill_temp(t_data *mv, char *temp, int i)
 {
 	int	j;
 
-	j = -1;
-	while (mv->map_cpy[i][++j])
+	j = 0;
+	temp = ft_calloc(mv->width + 1, sizeof(char));
+	while (mv->map_cpy[i][j])
+	{
 		temp[j] = mv->map_cpy[i][j];
+		j++;
+	}
 	while (j < mv->width)
 	{
 		temp[j] = 'X';
@@ -33,15 +37,13 @@ void	fill_width(t_data *mv)
 {
 	int		i;
 	char	*temp;
-	int		len;
 
 	i = 0;
+	temp = NULL;
 	while (mv->map_cpy[i])
 	{
 		if ((int)ft_strlen(mv->map_cpy[i]) < mv->width)
 		{
-			len = mv->width - (int)ft_strlen(mv->map_cpy[i]);
-			temp = ft_calloc(mv->width + 1, sizeof(char));
 			temp = fill_temp(mv, temp, i);
 			free(mv->map_cpy[i]);
 			mv->map_cpy[i] = ft_strdup(temp);
@@ -50,4 +52,17 @@ void	fill_width(t_data *mv)
 		i++;
 	}
 	print_map(mv->map_cpy);
+}
+
+void	consecutive_new_lines(t_cub *cub, t_data *mv)
+{
+	int	i;
+
+	i = 0;
+	while (cub->map_str[i])
+	{
+		if (cub->map_str[i] == '\n' && cub->map_str[i + 1] == '\n')
+			print_error(cub, mv, "two consecutive new lines!\n", 1);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/08 12:23:09 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:31:51 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	copy_map(t_cub *cub, t_data *mv)
 		i++;
 	}
 	mv->width = width;
-	// printf("width is %d\n", width);
+	printf("width is %d\n", width);
 	// print_map(mv->map_cpy);
 	player_location(mv);
 }

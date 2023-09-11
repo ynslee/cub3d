@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/08 11:05:41 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:40:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	player_location(t_data *mv)
 	int	j;
 
 	i = 0;
-	while (mv->map[i])
+	while (i < mv->height) // while(mv->map[i])
 	{
 		j = 0;
 		while (mv->map[i][j])
