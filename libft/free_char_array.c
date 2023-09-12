@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_char_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:35:25 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 12:18:14 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:38:40 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_char_array(char **str)
 	{
 		if (str[i])
 		{
-			// printf("freeing %p\n", str[i]);
 			free(str[i]);
 			str[i] = NULL;
 		}

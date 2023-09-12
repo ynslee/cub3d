@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 12:19:16 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:17:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,6 @@ int	map_check(t_cub	*cub, t_data *mv)
 	height = height_check(cub->map_str, mv);
 	if (two_maps_check(cub, height, mv))
 		print_error(cub, mv, "there are more than one map in the file!\n", 2);
+	wall_check(cub, mv);
 	return (0);
 }

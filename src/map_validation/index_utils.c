@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 12:25:59 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/12 10:27:10 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_mv(t_data *mv)
 	mv->width = 0;
 	mv->map = NULL;
 	mv->map_cpy = NULL;
+	mv->buffer_cpy = NULL;
 	mv->player_x = 0;
 	mv->player_y = 0;
 	mv->player_view = -1;

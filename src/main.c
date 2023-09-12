@@ -67,7 +67,6 @@ int	main(int argc, char **argv)
 		read_file(fd, &cub);
 		print_struct(&cub);
 		map_check(&cub, &mv);
-		wall_check(&mv);
 		// printf("map copy:\n");
 		// int k = -1;
 		// while (++k < mv.height)
