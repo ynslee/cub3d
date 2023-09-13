@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/12 12:17:31 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 11:19:15 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 
-int	fill_the_wall(t_data *mv)
+int	fill_the_wall(t_cub *cub, t_data *mv)
 {
 	int		x;
 	int		y;
@@ -22,10 +22,9 @@ int	fill_the_wall(t_data *mv)
 	y = 0;
 	while (mv->map_cpy[x][y] == ' ')
 		y++;
-	if (mv->map_cpy[x][y] == 1)
-		flood_fill(mv, x, y, mv->map_cpy[x][y]);
-	else
-		return (0);
+	if (mv->map_cpy[x][y] != '1')
+		print_error(cub, mv, "map is not closed\n", 2);
+	flood_fill(mv, x, y, mv->map_cpy[x][y]);
 	x = 0;
 	while (mv->map_cpy[x])
 	{
@@ -60,7 +59,6 @@ int	height_check(char *map, t_data *mv)
 		i++;
 	}
 	mv->height = height;
-	printf("height is %d\n", height);
 	return (height);
 }
 
@@ -92,7 +90,7 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 		free(temp);
 	copy_map(cub, mv);
 	fill_width(mv);
-	if (fill_the_wall(mv))
+	if (fill_the_wall(cub, mv))
 		return (1);
 	return (0);
 }

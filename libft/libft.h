@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:55:16 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/05 16:27:51 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:27:11 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim_last(char const *s1, char const *set);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char	*));
@@ -94,5 +95,6 @@ void	free_char_array(char **str);
 int		ft_strncmp_all(const char *s1, const char *s2);
 int		ft_arrlen(char **array);
 int		ft_strchr_index(const char *s, int c);
+void	print_char_array(char **str);
 
 #endif
