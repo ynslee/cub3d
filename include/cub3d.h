@@ -11,6 +11,7 @@
 # include <fcntl.h>
 # include "file_validation.h"
 # include "map_validation.h"
+# include "ray_casting.h"
 # include "../libft/libft.h"
 
 typedef struct s_cbd
