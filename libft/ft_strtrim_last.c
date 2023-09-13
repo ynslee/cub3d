@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim_last.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 16:26:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/13 12:06:58 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:29:29 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,26 @@ static	char	is_set(char const c, const char *set)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim_last(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
-	int		k;
 	char	*trim;
 
 	if (s1 == 0)
 		return (0);
 	i = 0;
-	while (s1[i] && is_set(s1[i], set))
-		i ++;
 	j = ft_strlen(s1);
 	while (j > i && is_set(s1[j - 1], set))
 		j --;
-	trim = (char *)malloc(sizeof(char) * (j - i + 1));
+	trim = (char *)malloc(sizeof(char) * (j + 1));
 	if (trim == 0)
 		return (0);
-	k = 0;
 	while (i < j)
-		trim[k++] = s1[i++];
-	trim[k] = '\0';
+	{
+		trim[i] = s1[i];
+		i++;
+	}
+	trim[i] = '\0';
 	return (trim);
 }
