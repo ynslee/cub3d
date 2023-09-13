@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/12 10:42:50 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 11:11:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ void	print_map(char **map)
  */
 void	flood_fill(t_data *mv, int x, int y, char c)
 {
-	if (x < 0 || y < 0 || x > mv->height - 1 || y > mv->width - 1 || \
+	if (x < 0 || y < 0 || x >= mv->height || y >= mv->width || \
 			mv->map_cpy[x][y] != c || !mv->map_cpy[x][y])
 		return ;
-	else if (x >= 0 && y >= 0 && x < mv->height && y < mv->width \
-	&& mv->map_cpy[x][y])
+	else if (x >= 0 && y >= 0 && x < mv->height && \
+	y < mv->width && mv->map_cpy[x][y])
 	{
 		if (mv->map_cpy[x][y] == c)
 		{

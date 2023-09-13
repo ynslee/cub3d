@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 11:48:56 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 13:41:56 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray)
 		printf("Error creating mlx window!\n");
 	player_orientation_to_angle(mv, ray);
 	ray->ra = fix_angle(ray->pa + FOV / 2); //starting point for rays, -- with rai
-	// ray->rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
+	ray->rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
 
 }
