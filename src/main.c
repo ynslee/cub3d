@@ -52,12 +52,14 @@ static void	init_struct(t_cub *cub)
 	cub->map_str = 0;
 }
 
+
 int	main(int argc, char **argv)
 {
 	int		fd;
 	t_cub	cub;
 	t_data	mv;
 	t_ray	ray;
+	t_cbd	cbd;
 
 	if (argc == 2)
 	{
@@ -68,6 +70,7 @@ int	main(int argc, char **argv)
 		read_file(fd, &cub);
 		print_struct(&cub);
 		map_check(&cub, &mv);
+		init_render_utils(&cbd, &mv, &ray);
 		// printf("map copy:\n");
 		// int k = -1;
 		// while (++k < mv.height)

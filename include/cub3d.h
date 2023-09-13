@@ -14,6 +14,9 @@
 # include "ray_casting.h"
 # include "../libft/libft.h"
 
+#  define WIN_SIZE_X 1920
+#  define WIN_SIZE_Y 1080
+
 typedef struct s_cbd
 {
 	void	*mlx;
