@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 10:40:32 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/12 10:27:10 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	player_location(t_data *mv)
 			{
 				mv->player_x = i;
 				mv->player_y = j;
+				mv->player_view = mv->map[i][j];
 			}
 			j++;
 		}
@@ -74,6 +75,8 @@ void	init_mv(t_data *mv)
 	mv->width = 0;
 	mv->map = NULL;
 	mv->map_cpy = NULL;
+	mv->buffer_cpy = NULL;
 	mv->player_x = 0;
 	mv->player_y = 0;
+	mv->player_view = -1;
 }

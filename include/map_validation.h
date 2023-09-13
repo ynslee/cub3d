@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 11:01:57 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 09:40:27 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@
 // 	MAP_INVALID
 // }
 
+typedef struct s_cub	t_cub;
+
 typedef struct s_data
 {
 	int		height;
 	int		width;
 	char	**map;
 	char	**map_cpy;
+	char	**buffer_cpy;
 	int		player_x;
 	int		player_y;
+	char	player_view;
 }	t_data;
-
-typedef struct s_cub	t_cub;
 
 //basic_check.c
 int		map_check(t_cub	*cub, t_data *mv);
@@ -55,7 +57,7 @@ void	consecutive_new_lines(t_cub *cub, t_data *mv);
 void	fill_width(t_data *mv);
 
 //wall_check.c
-void	set_buffer(t_data *data);
-int		wall_check(t_data *data);
+void	set_buffer(t_cub *cub, t_data *data);
+int		wall_check(t_cub *cub, t_data *data);
 
 #endif

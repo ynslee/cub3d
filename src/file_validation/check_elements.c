@@ -6,13 +6,12 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/11 11:56:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/12 12:12:32 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
 
-/// free
 static int	check_colors(char *element)
 {
 	char	**colors;
@@ -22,19 +21,17 @@ static int	check_colors(char *element)
 	sub_color = ft_substr(element, 0, ft_strlen(element) - 1);
 	colors = ft_split(sub_color, ',');
 	free(sub_color);
-	if (ft_arrlen(colors) != 3)
-		return (-1);
 	i = 0;
 	while (i < 3)
 	{
-		if (colors[i][0] == '\n' || colors[i] == NULL)
-			return (-1);
-		if (all_digits(colors[i]) == -1)
-			return (-1);
+		if (colors[i][0] == '\n' || colors[i] == NULL \
+			|| all_digits(colors[i]) == -1 || ft_arrlen(colors) != 3)
+			{
+				free_char_array(colors);
+				return (-1);
+			}
 		if (ft_atoi(colors[i]) >= 0 && ft_atoi(colors[i]) < 256)
 			i++;
-		else
-			return (-1);
 	}
 	free_char_array(colors);
 	return (0);

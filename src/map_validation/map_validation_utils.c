@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 12:14:26 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:11:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
  */
 void	free_mv_struct(t_data *mv)
 {
-	// commented out, because segfaulted??
 	if (mv->map)
 		free_char_array(mv->map);
 	if (mv->map_cpy)
 		free_char_array(mv->map_cpy);
+	if (mv->buffer_cpy)
+		free_char_array(mv->buffer_cpy);
 }
 
 /*prints out error message accordingly and free the parsed contents
@@ -48,6 +49,7 @@ void	copy_map(t_cub *cub, t_data *mv)
 	int	i;
 	int	width;
 
+	(void)cub;
 	i = 0;
 	width = 0;
 	mv->map_cpy = ft_calloc((mv->height + 1), sizeof(char *));
@@ -63,8 +65,6 @@ void	copy_map(t_cub *cub, t_data *mv)
 		i++;
 	}
 	mv->width = width;
-	// printf("width is %d\n", width);
-	// print_map(mv->map_cpy);
 	player_location(mv);
 }
 
@@ -89,11 +89,11 @@ void	print_map(char **map)
  */
 void	flood_fill(t_data *mv, int x, int y, char c)
 {
-	if (x < 0 || y < 0 || x > mv->height - 1 || y > mv->width - 1 || \
+	if (x < 0 || y < 0 || x >= mv->height || y >= mv->width || \
 			mv->map_cpy[x][y] != c || !mv->map_cpy[x][y])
 		return ;
-	else if (x >= 0 && y >= 0 && x < mv->height && y < mv->width \
-	&& mv->map_cpy[x][y])
+	else if (x >= 0 && y >= 0 && x < mv->height && \
+	y < mv->width && mv->map_cpy[x][y])
 	{
 		if (mv->map_cpy[x][y] == c)
 		{

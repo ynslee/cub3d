@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/11 12:04:30 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/12 11:08:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	fill_width(t_data *mv)
 		}
 		i++;
 	}
-	print_map(mv->map_cpy);
+	// print_map(mv->map_cpy);
 }
 
 void	consecutive_new_lines(t_cub *cub, t_data *mv)
