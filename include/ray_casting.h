@@ -29,6 +29,6 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray);
 
 //making_map.c
 int		close_game(t_cbd *cbd);
-void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray);
+void	make_map(t_cbd *cbd, t_data *mv);
 
 #endif

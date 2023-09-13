@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 15:36:26 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:39:06 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray)
 	cbd->window = mlx_new_window(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y, "cue3d");
 	if (cbd->window == NULL)
 		printf("Error creating mlx window!\n");
-	make_map(cbd, mv, ray);
+	make_map(cbd, mv);
+	(void)ray;
 	// player_orientation_to_angle(mv, ray);
 	// ray->ra = fix_angle(ray->pa + FOV / 2); //starting point for rays, -- with rai
 	// ray->rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle

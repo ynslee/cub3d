@@ -19,7 +19,7 @@ static void	put_image(t_cbd *cbd, char c, int x, int y)
 		mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->background, x, y);
 }
 
-void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray)
+void	make_map(t_cbd *cbd, t_data *mv)
 {
 	int	i;
 	int	j;
