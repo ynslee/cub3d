@@ -10,7 +10,7 @@ typedef struct s_cbd	t_cbd;
 
 typedef struct s_ray
 {
-	/* data */
+	float	pa;
 	t_data	*mv;
 	t_cub	*cub;
 	t_cbd	*cbd;
@@ -18,5 +18,7 @@ typedef struct s_ray
 
 
 // ray_casting_utils.c
+float	deg_to_rad(float a);
+void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 #endif

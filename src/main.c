@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_cub	cub;
 	t_data	mv;
+	t_ray	ray;
 
 	if (argc == 2)
 	{
