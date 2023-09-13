@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 12:51:08 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:02:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	read_file(int fd, t_cub *cub)
 	while (42)
 	{
 		line = get_next_line(fd);
-		if (line && cub->id_flag == 6 && !is_map(line))
-			file_print_error(cub, "Texture file duplicates!\n", 1);
-		else if (!line || cub->id_flag == 6)
+		// if (line && cub->id_flag == 6 && !is_map(line))
+		// 	file_print_error(cub, "Texture file duplicates!\n", 1);
+		if (!line || cub->id_flag == 6)
 			break ;
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6
 			&& !is_map(line))
