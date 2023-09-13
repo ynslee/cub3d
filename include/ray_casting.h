@@ -3,6 +3,7 @@
 # define RAY_CASTING_H
 
 # define FOV 60
+# define GRID_PIX 64
 
 # include "cub3d.h"
 
@@ -25,5 +26,9 @@ typedef struct s_ray
 float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray);
+
+//making_map.c
+int		close_game(t_cbd *cbd);
+void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray);
 
 #endif

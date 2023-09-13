@@ -46,6 +46,7 @@ FILES = main\
 		fill_width\
 		wall_check\
 		ray_casting_utils\
+		making_map\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))
