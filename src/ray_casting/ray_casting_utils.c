@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 13:41:56 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 13:47:41 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ float	fix_angle(float a)
 	return (a);
 }
 
-float	deg_to_rad(float a)
+float	deg_to_rad(float degree)
 {
-	return (a * M_PI / 180.0);
+	float	radians;
+
+	radians = degree * (M_PI / 180.0);
+	return (radians);
 }
+
 void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 {
 	if (mv->player_view == 'N')
@@ -37,6 +41,8 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 	if (mv->player_view == 'E')
 		ray->pa = 0.0;
 	// printf("player angle = %f\n", ray->pa);
+	ray->cbd->x_angle = cos(deg_to_rad(ray->pa));
+	ray->cbd->y_angle = -sin(deg_to_rad(ray->pa));
 }
 
 void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray)

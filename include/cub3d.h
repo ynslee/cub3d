@@ -23,6 +23,8 @@ typedef struct s_cbd
 	void	*window;
 	void	*background;
 	int		img_len;
+	double	x_angle;
+	double	y_angle;
 }	t_cbd;
 
 
