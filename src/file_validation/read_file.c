@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/11 11:58:30 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 12:28:59 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	read_map(int fd, t_cub *cub)
 {
 	char	*line;
 	char	*map_str;
+	char	*temp;
 
 	map_str = NULL;
 	while (42)
@@ -51,7 +52,9 @@ static void	read_map(int fd, t_cub *cub)
 			map_str = ft_strjoin_gnl(map_str, line);
 		free(line);
 	}
-	cub->map_str = ft_strtrim(map_str, "\n");
+	temp = ft_strtrim(map_str, "\n");
+	cub->map_str = ft_strtrim_last(temp, " \n");
+	free(temp);
 	free (map_str);
 	free (line);
 }

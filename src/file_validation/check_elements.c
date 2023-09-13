@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/12 12:12:32 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/13 12:13:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 static int	check_colors(char *element)
 {
 	char	**colors;
-	char	*sub_color;
 	int		i;
 
-	sub_color = ft_substr(element, 0, ft_strlen(element) - 1);
-	colors = ft_split(sub_color, ',');
-	free(sub_color);
+	colors = ft_split(element, ',');
 	i = 0;
 	while (i < 3)
 	{
 		if (colors[i][0] == '\n' || colors[i] == NULL \
 			|| all_digits(colors[i]) == -1 || ft_arrlen(colors) != 3)
-			{
-				free_char_array(colors);
-				return (-1);
-			}
+		{
+			free_char_array(colors);
+			return (-1);
+		}
 		if (ft_atoi(colors[i]) >= 0 && ft_atoi(colors[i]) < 256)
 			i++;
 	}
@@ -44,16 +41,13 @@ static int	check_textures(char *element)
 {
 	char	*ret;
 	int		fd;
-	char	*sub_elem;
 
 	ret = ft_strnstr(element, ".xpm", ft_strlen(element));
 	if (ret == NULL)
 		return (-1);
-	if (ft_strlen(ret) != 5)
+	if (ft_strlen(ret) != 4)
 		return (-1);
-	sub_elem = ft_substr(element, 0, ft_strlen(element) - 1);
-	fd = open(sub_elem, O_RDONLY);
-	free(sub_elem);
+	fd = open(element, O_RDONLY);
 	return (fd);
 }
 
