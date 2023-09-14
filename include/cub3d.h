@@ -21,9 +21,12 @@ typedef struct s_cbd
 {
 	void	*mlx;
 	void	*window;
-	void	*background;
+	void	*img;
 	void	*wall;
 	int		img_len;
+	char	*img_addr;
+	int		img_bpp;
+	int		endian;
 	double	x_angle;
 	double	y_angle;
 }	t_cbd;

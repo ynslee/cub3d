@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/13 15:37:56 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/09/14 08:52:06 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,10 @@ FILES = main\
 		fill_width\
 		wall_check\
 		ray_casting_utils\
+		draw_image\
+		render\
+		mlx_utils\
+		hooks\
 		making_map\
 
 HEADER = cub3d.h libft.h file_validation.h
