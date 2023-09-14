@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 16:30:25 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/14 08:28:39 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ static void	read_map(int fd, t_cub *cub)
 	while (42)
 	{
 		line = get_next_line(fd);
-		printf("line is %s\n", line);
 		if (line == NULL)
 			break ;
-		if (ft_strncmp_all(line, "\n") != 0 && !is_map(line)) //here! something is happening
-			file_print_error(cub, "Texture file duplicates!\n", 1);
+		if (cub->id_flag == 6 && !is_map(line) && ft_strncmp_all(line, "\n") != 0)
+			file_print_error(cub, "Duplicate elements!\n", 1);
 		if (!map_str)
 			map_str = ft_strdup(line);
 		else
