@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 12:51:08 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/14 08:28:39 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_empty_file(t_cub *cub, char *line, int line_flag)
 {
 	if (!line && line_flag == 0)
 		file_print_error(cub, "File empty!\n", 0);
-	if (!cub->map_str)
+	if (!cub->map_str || cub->map_str[0] == '\0')
 		file_print_error(cub, "No map in file!\n", 1);
 }
 
@@ -46,6 +46,8 @@ static void	read_map(int fd, t_cub *cub)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
+		if (cub->id_flag == 6 && !is_map(line) && ft_strncmp_all(line, "\n") != 0)
+			file_print_error(cub, "Duplicate elements!\n", 1);
 		if (!map_str)
 			map_str = ft_strdup(line);
 		else
@@ -65,12 +67,10 @@ void	read_file(int fd, t_cub *cub)
 	int		line_flag;
 
 	line_flag = 0;
-	while (42)
+	while (cub->id_flag != 6)
 	{
 		line = get_next_line(fd);
-		if (line && cub->id_flag == 6 && !is_map(line))
-			file_print_error(cub, "Texture file duplicates!\n", 1);
-		else if (!line || cub->id_flag == 6)
+		if (!line)
 			break ;
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6
 			&& !is_map(line))
@@ -82,5 +82,4 @@ void	read_file(int fd, t_cub *cub)
 	read_map(fd, cub);
 	line_flag = 1;
 	check_empty_file(cub, line, line_flag);
-	free(line);
 }
