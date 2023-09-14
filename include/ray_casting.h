@@ -3,7 +3,17 @@
 # define RAY_CASTING_H
 
 # define FOV 60
+# define GRID_PIX 64
 # define K_ESC 53
+
+# define BLACK 0x000000
+# define WHITE 0xffffff
+# define GREEN 0x009933
+# define OLIVE 0x808000
+# define KHAKI 0xE519EFC
+# define GREY 0x808080
+# define LIGHTBLUE 0xADD8E6
+# define BLUE 0x4169e1
 
 # include "cub3d.h"
 
@@ -23,10 +33,10 @@ typedef struct s_ray
 
 // draw_image.c
 void	draw_player(t_cbd *cbd, t_ray *ray);
-void	draw_image(t_cbd *cbd, t_ray *ray);
+// void	draw_image(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
-void	set_hooks(t_cbd *cbd);
+void	set_hooks(t_cbd *cbd, t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
@@ -39,8 +49,11 @@ float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 // render.c
-void	draw_background(t_cbd *cbd);
-void	render_image(t_cbd *cbd, t_ray *ray);
+// void	draw_background(t_cbd *cbd);
+void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
 void	init_render_utils(t_cbd *cbd, t_data *mv);
+
+//making_map.c
+void	make_map(t_cbd *cbd, t_data *mv);
 
 #endif

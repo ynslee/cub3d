@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:27:53 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/14 10:51:20 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/14 12:21:34 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 	int	y = 0;
 
 	(void)cbd;
-	while (x < 5)
+	while (x < 10)
 	{
 		y = 0;
-		while (y < 5)
+		while (y < 10)
 		{
-			my_mlx_pixel_put(cbd, x + ray->data->player_x, y + ray->data->player_y, 0x00000000);
+			my_mlx_pixel_put(cbd, y + (GRID_PIX * ray->data->player_y + GRID_PIX / 2.5), \
+				x + (GRID_PIX * ray->data->player_x + GRID_PIX / 2.5), 0x00000000);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	draw_image(t_cbd *cbd, t_ray *ray)
-{
-	(void)cbd;
-	//draw_map
-	draw_player(cbd, ray);
-	draw_nose()
-}
+// void	draw_image(t_cbd *cbd, t_ray *ray)
+// {
+// 	(void)cbd;
+// 	//draw_map
+// 	// draw_nose()
+// }

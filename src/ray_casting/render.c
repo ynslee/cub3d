@@ -6,35 +6,37 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/14 10:32:40 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/14 12:25:32 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
-void	draw_background(t_cbd *cbd)
-{
-	int	x = 0;
-	int	y = 0;
+// void	draw_background(t_cbd *cbd)
+// {
+// 	int	x = 0;
+// 	int	y = 0;
 
-	while (x < WIN_SIZE_X)
-	{
-		y = 0;
-		while (y < WIN_SIZE_Y)
-		{
-			my_mlx_pixel_put(cbd, x, y, 0x0000FF00);
-			y++;
-		}
-		x++;
-	}
-}
+// 	while (x < WIN_SIZE_X)
+// 	{
+// 		y = 0;
+// 		while (y < WIN_SIZE_Y)
+// 		{
+// 			my_mlx_pixel_put(cbd, x, y, 0x0000FF00);
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// }
 
-void	render_image(t_cbd *cbd, t_ray *ray)
+void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
 	(void)ray;
 	mlx_clear_window(cbd->mlx, cbd->window);
-	draw_background(cbd);
-	draw_image(cbd, ray);
+	make_map(cbd, mv);
+	draw_player(cbd, ray);
+	// draw_background(cbd);
+	// draw_image(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 
@@ -65,8 +67,8 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
-	render_image(cbd, &ray);
-	set_hooks(cbd);
+	render_image(cbd, &ray, mv);
+	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);
 	player_orientation_to_angle(mv, &ray);
 	ray.ra = fix_angle(ray.pa + FOV / 2); //starting point for rays, -- with rai
