@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/14 08:28:39 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/14 09:30:23 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ void	read_file(int fd, t_cub *cub)
 	while (cub->id_flag != 6)
 	{
 		line = get_next_line(fd);
-		if (!line)
+		if (line && cub->id_flag == 6 && !is_map(line))
+			file_print_error(cub, "Texture file duplicates!\n", 1);
+		else if (!line || cub->id_flag == 6)
 			break ;
 		else if (ft_strncmp_all(line, "\n") != 0 && cub->id_flag != 6
 			&& !is_map(line))
