@@ -9,18 +9,18 @@ void	draw_grid(t_cbd *cbd, t_data *mv)
 	int	y;
 
 	x = 0;
-	while (x < mv->height * 64)
+	while (x < mv->width * 64)
 	{
 		y = -1;
-		while (++y < mv->width * 64)
+		while (++y < mv->height * 64)
 			my_mlx_pixel_put(cbd, x, y, BLACK);
 		x = x + 64;
 	}
 	x = -1;
-	while (++x < mv->height * 64)
+	while (++x < mv->width * 64)
 	{
 		y = 0;
-		while (y < mv->width * 64)
+		while (y < mv->height * 64)
 		{
 			my_mlx_pixel_put(cbd, x, y, BLACK);
 			y = y + 64;
@@ -62,7 +62,7 @@ void	make_map(t_cbd *cbd, t_data *mv)
 				color = BLUE;
 			else
 				color = LIGHTBLUE;
-			draw_map(cbd, i * GRID_PIX, j * GRID_PIX, color);
+			draw_map(cbd, j * GRID_PIX, i * GRID_PIX, color);
 			j++;
 		}
 		i++;

@@ -53,6 +53,5 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray);
 
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
-void	init_image(t_cbd *cbd);
 
 #endif
