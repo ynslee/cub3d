@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:55 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/09/14 11:09:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
+	(void)ray;
+	make_map(cbd, mv);
 	set_hooks(cbd);
 	mlx_loop(cbd->mlx);
-	player_orientation_to_angle(mv, ray);
-	ray->ra = fix_angle(ray->pa + FOV / 2); //starting point for rays, -- with rai
-	ray->rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
+	// player_orientation_to_angle(mv, ray);
+	// ray->ra = fix_angle(ray->pa + FOV / 2); //starting point for rays, -- with rai
+	// ray->rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
 	// draw_image(cbd, ray);
 }

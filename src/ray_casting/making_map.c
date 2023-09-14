@@ -2,45 +2,71 @@
 #include "ray_casting.h"
 #include "cub3d.h"
 
-static void	init_image(t_cbd *cbd)
+
+void	draw_grid(t_cbd *cbd, t_data *mv)
 {
-	cbd->img_len = 64;
-	cbd->background = mlx_xpm_file_to_image(cbd->mlx, \
-		"../textures/simple/grey.xpm", &cbd->img_len, &cbd->img_len);
-	cbd->wall = mlx_xpm_file_to_image(cbd->mlx, "../textures/simple/black.xpm", \
-				&cbd->img_len, &cbd->img_len);
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < mv->height * 64)
+	{
+		y = -1;
+		while (++y < mv->width * 64)
+			my_mlx_pixel_put(cbd, x, y, BLACK);
+		x = x + 64;
+	}
+	x = -1;
+	while (++x < mv->height * 64)
+	{
+		y = 0;
+		while (y < mv->width * 64)
+		{
+			my_mlx_pixel_put(cbd, x, y, BLACK);
+			y = y + 64;
+		}
+	}
 }
 
-static void	put_image(t_cbd *cbd, char c, int x, int y)
+void	draw_map(t_cbd *cbd, int x, int y, int color)
 {
-	if (c == '1')
-		mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->wall, x, y);
-	else
-		mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->background, x, y);
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < GRID_PIX)
+	{
+		j = -1;
+		while (++j < GRID_PIX)
+		{
+			my_mlx_pixel_put(cbd, x + i, y + j, color);
+		}
+	}
+
 }
 
 void	make_map(t_cbd *cbd, t_data *mv)
 {
 	int	i;
 	int	j;
+	int	color;
 
 	i = 0;
-	init_image(cbd);
-	while (i > mv->height)
+	mlx_clear_window(cbd->mlx, cbd->window);
+	while (i < mv->height)
 	{
 		j = 0;
 		while (j < mv->width)
 		{
-			put_image(cbd, mv->map[i][j], j * 64, i * 64);
+			if (mv->map[i][j] == '1')
+				color = BLUE;
+			else
+				color = LIGHTBLUE;
+			draw_map(cbd, i * GRID_PIX, j * GRID_PIX, color);
 			j++;
 		}
 		i++;
 	}
-}
-
-int	close_game(t_cbd *cbd)
-{
-	mlx_destroy_window(cbd->mlx, cbd->window);
-	exit(0);
-	return (0);
+	draw_grid(cbd, mv);
+	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }

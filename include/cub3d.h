@@ -14,8 +14,8 @@
 # include "ray_casting.h"
 # include "../libft/libft.h"
 
-#  define WIN_SIZE_X 1920
-#  define WIN_SIZE_Y 1080
+# define WIN_SIZE_X 1920
+# define WIN_SIZE_Y 1080
 
 typedef struct s_cbd
 {
@@ -23,6 +23,7 @@ typedef struct s_cbd
 	void	*window;
 	void	*img;
 	void	*wall;
+	void	*background;
 	int		img_len;
 	char	*img_addr;
 	int		img_bpp;
