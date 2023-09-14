@@ -13,16 +13,16 @@ typedef struct s_cbd	t_cbd;
 
 typedef struct s_ray
 {
-	float	pa;
-	float	ra; //ray angle starting position
-	float	rai; //ray angle iteration
-	t_data	*mv;
-	t_cub	*cub;
-	t_cbd	*cbd;
+	float			pa;
+	float			ra; //ray angle starting position
+	float			rai; //ray angle iteration
+	struct s_data	*data;
+	struct s_cbd	*cbd;
+	// struct s_cub	*cub;
 }	t_ray;
 
 // draw_image.c
-void	draw_player(t_ray *ray);
+void	draw_player(t_cbd *cbd, t_ray *ray);
 void	draw_image(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
@@ -39,6 +39,8 @@ float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 // render.c
-void	init_render_utils(t_cbd *cbd, t_data *mv, t_ray *ray);
+void	draw_background(t_cbd *cbd);
+void	render_image(t_cbd *cbd, t_ray *ray);
+void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 #endif
