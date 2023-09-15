@@ -21,15 +21,34 @@ typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
 typedef struct s_cbd	t_cbd;
 
+/**
+ * @param ra ray angle starting position
+ * @param rai ray angle iteration
+ * @param center_x center of the window_width
+ * @param center_y center of the window_height
+ * @param pix_x_pos player's x position in pixel
+ * @param pix_y_pos player's y position in pixel
+ * @param rai ray angle iteration
+ */
 typedef struct s_ray
 {
 	float			pa;
-	float			ra; //ray angle starting position
-	float			rai; //ray angle iteration
+	float			ra;
+	float			rai;
+	float			center_width;
+	float			center_height;
+	float			pix_x_pos;
+	float			pix_y_pos;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	// struct s_cub	*cub;
 }	t_ray;
+
+typedef struct s_vector
+{
+	float	x;
+	float	y;
+}	t_vector;
 
 // draw_image.c
 void	draw_player(t_cbd *cbd, t_ray *ray);
