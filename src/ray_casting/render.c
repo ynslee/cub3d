@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/15 10:46:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:12:15 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	mlx_clear_window(cbd->mlx, cbd->window);
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
+	draw_nose(ray);
 	// draw_background(cbd);
 	// draw_image(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
@@ -50,9 +51,11 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
 	ray->pix_x_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5; 
+	ray->pix_y_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
+	ray->pdx = deg_to_rad(cos(ray->pa));
+	ray->pdy = deg_to_rad(sin(ray->pa));
 }
 
 void	init_render_utils(t_cbd *cbd, t_data *mv)

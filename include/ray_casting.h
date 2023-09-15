@@ -5,6 +5,7 @@
 # define FOV 60
 # define GRID_PIX 64
 # define K_ESC 53
+# define NOSE_LEN 1
 
 # define BLACK 0x000000
 # define WHITE 0xffffff
@@ -20,6 +21,7 @@
 typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
 typedef struct s_cbd	t_cbd;
+typedef struct s_line	t_line;
 typedef struct s_vector
 {
 	float	x;
@@ -37,6 +39,21 @@ typedef struct s_vector
  * @param pix_y_pos player's y position in pixel
  * @param rai ray angle iteration
  */
+
+typedef	struct s_line
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	error;
+	int	error2;
+}	t_line;
+
 typedef struct s_ray
 {
 	float			pa;
@@ -46,13 +63,17 @@ typedef struct s_ray
 	float			center_height;
 	float			pix_x_pos;
 	float			pix_y_pos;
+	// float			nose_end_x;
+	// float			nose_end_y;
 	float			pdx;
 	float			pdy;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
+	struct s_line	*line;
 	// struct s_cub	*cub;
 }	t_ray;
+
 
 
 // draw_image.c
@@ -61,6 +82,10 @@ void	draw_player(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
 void	set_hooks(t_cbd *cbd, t_ray *ray);
+
+// line_drawing_utils.c
+void	bresenham(t_ray *ray);
+void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
