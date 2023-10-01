@@ -34,11 +34,13 @@ void	draw_map(t_cbd *cbd, int x, int y, int color)
 	int	j;
 
 	i = -1;
+	// printf("in draw_map x: %i\ty: %i\n", x, y);
 	while (++i < GRID_PIX)
 	{
 		j = -1;
 		while (++j < GRID_PIX)
 		{
+			// printf("x:%i y:%i\n", i, j);
 			my_mlx_pixel_put(cbd, x + i, y + j, color);
 		}
 	}
@@ -52,12 +54,14 @@ void	make_map(t_cbd *cbd, t_data *mv)
 	int	color;
 
 	i = 0;
-	// mlx_clear_window(cbd->mlx, cbd->window);
-	while (i < mv->height)
+	printf("mv->height: %i\tmv->width: %i\n", mv->height, mv->width);
+	while (i < mv->height) // i = y = height
 	{
+		printf("i: %i\n", i);
 		j = 0;
-		while (j < mv->width)
+		while (j < mv->width) // j = x = width
 		{
+			printf("j: %i\n", j);
 			if (mv->map[i][j] == '1')
 				color = BLUE;
 			else
@@ -68,5 +72,4 @@ void	make_map(t_cbd *cbd, t_data *mv)
 		i++;
 	}
 	draw_grid(cbd, mv);
-	// mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
