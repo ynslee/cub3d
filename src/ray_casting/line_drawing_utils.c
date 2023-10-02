@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/01 16:53:24 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/02 10:52:07 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	init_line(t_line *line, t_ray *ray)
 {
-	line->x0 = ray->pix_x_pos;
-	line->y0 = ray->pix_y_pos;
+	line->x0 = ray->pix_y_pos;
+	line->y0 = ray->pix_x_pos;
 	line->x1 = ray->pix_x_pos + ray->pdx * 5 + 10; //  317;
 	line->y1 = ray->pix_y_pos + ray->pdy * 5; //  317;
 	// printf("line->x0 = %i\n", line->x0);
@@ -47,9 +47,7 @@ static void	init_line(t_line *line, t_ray *ray)
 		// printf("line->sy = %i\n", line->sy);
 	}
 	line->error = line->dx + line->dy;
-	// printf("line->error = %i\n", line->error);
 	line->error2 = line->error * 2;
-	// printf("line.error2 = %i\n", line->error2);
 }
 
 void	bresenham(t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/15 10:55:13 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:32:51 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 	ray->cbd->x_angle = cos(deg_to_rad(ray->pa));
 	ray->cbd->y_angle = -sin(deg_to_rad(ray->pa));
 	ray->vector->pa = deg_to_rad(ray->pa);
+	ray->pdx = cos(ray->vector->pa) * 5;
+	ray->pdy = sin(ray->vector->pa) * 5;
 }

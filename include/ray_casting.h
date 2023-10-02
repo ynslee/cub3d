@@ -27,6 +27,7 @@ typedef struct s_vector
 	float	x;
 	float	y;
 	float	pa;
+	float	ray_angle;
 }	t_vector;
 
 /**

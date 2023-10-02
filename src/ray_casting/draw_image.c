@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:27:53 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/15 12:50:37 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 09:43:59 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 
 // static void	horixontal_ray(t_cbd *cbd, t_ray *ray)
 // {
-// 	t_vector	*line;
-	
+// 	t_vector	line[2];
+
+// 	line[0] = ray->pix_x_pos;
+// 	line[1] = ray->pix_y_pos;
 	
 // }
 
