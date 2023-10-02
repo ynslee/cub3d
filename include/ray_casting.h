@@ -22,6 +22,7 @@ typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
 typedef struct s_cbd	t_cbd;
 typedef struct s_line	t_line;
+
 typedef struct s_vector
 {
 	float	x;
@@ -31,16 +32,15 @@ typedef struct s_vector
 }	t_vector;
 
 /**
- * @param pa angle of the player
- * @param ra ray angle starting position
- * @param rai ray angle iteration
- * @param center_x center of the window_width
- * @param center_y center of the window_height
- * @param pix_x_pos player's x position in pixel
- * @param pix_y_pos player's y position in pixel
- * @param rai ray angle iteration
- */
-
+ * @param x0 line starting x position
+ * @param y0 line starting y position
+ * @param x1 line ending x
+ * @param y1 line ending y
+ * @param dx absolute difference between x0 and x1
+ * @param dy absolute difference between y0 and y1
+ * @param sx sign of x -> sx = 1 if x1 > x0 | sx = -1 if x1 < x0
+ * @param sy sign of y -> sy = 1 if y1 > y0 | sy = -1 if y1 < y0
+*/
 typedef	struct s_line
 {
 	int	x0;
@@ -55,6 +55,15 @@ typedef	struct s_line
 	int	error2;
 }	t_line;
 
+/**
+ * @param pa angle of the player Degrees
+ * @param ra ray angle starting position
+ * @param rai ray angle iteration
+ * @param center_x center of the window_width
+ * @param center_y center of the window_height
+ * @param pix_x_pos player's x position in pixel
+ * @param pix_y_pos player's y position in pixel
+ */
 typedef struct s_ray
 {
 	float			pa;
@@ -64,8 +73,6 @@ typedef struct s_ray
 	float			center_height;
 	float			pix_x_pos;
 	float			pix_y_pos;
-	// float			nose_end_x;
-	// float			nose_end_y;
 	float			pdx;
 	float			pdy;
 	struct s_data	*data;
@@ -85,7 +92,7 @@ void	draw_player(t_cbd *cbd, t_ray *ray);
 void	set_hooks(t_cbd *cbd, t_ray *ray);
 
 // line_drawing_utils.c
-void	bresenham(t_ray *ray);
+void	bresenham(t_line *line, t_ray *ray);
 void	draw_nose(t_ray *ray);
 
 // mlx_utils.c

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 10:38:50 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/02 18:01:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
-	ray->pix_x_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
+	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
+	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
 	ray->pdx = deg_to_rad(cos(ray->pa));
@@ -64,6 +64,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 	t_ray	ray;
 
 	init_ray_struct(&ray, mv, cbd);
+	player_orientation_to_angle(mv, &ray);
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
 		printf("Error connecting to mlx!\n");
@@ -80,7 +81,6 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 	render_image(cbd, &ray, mv);
 	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);
-	player_orientation_to_angle(mv, &ray);
 	// draw_rays(cbd, &ray);
-	ray.rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
+	// ray.rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
 }

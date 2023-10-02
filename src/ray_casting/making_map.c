@@ -57,11 +57,9 @@ void	make_map(t_cbd *cbd, t_data *mv)
 	// mlx_clear_window(cbd->mlx, cbd->window);
 	while (i < mv->height)
 	{
-		printf("i: %i\n", i);
 		j = 0;
 		while (j < mv->width)
 		{
-			printf("j: %i\n", j);
 			if (mv->map[i][j] == '1')
 				color = BLUE;
 			else
