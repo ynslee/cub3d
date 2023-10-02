@@ -5,6 +5,8 @@
 # define FOV 60
 # define GRID_PIX 64
 # define K_ESC 53
+# define ANGLE 5
+# define SPEED 5
 
 # define BLACK 0x000000
 # define WHITE 0xffffff
@@ -25,15 +27,17 @@ typedef struct s_vector
 	float	x;
 	float	y;
 	float	pa;
-	float	ray_angle;
 }	t_vector;
 
 /**
  * @param pa angle of the player
  * @param ra ray angle starting position
  * @param rai ray angle iteration
+ * @param cotan line length(cotan)
  * @param center_x center of the window_width
  * @param center_y center of the window_height
+ * @param xo x's offset
+ * @param yo y's offset
  * @param pix_x_pos player's x position in pixel
  * @param pix_y_pos player's y position in pixel
  * @param rai ray angle iteration
@@ -43,10 +47,15 @@ typedef struct s_ray
 	float			pa;
 	float			ra;
 	float			rai;
+	float			cotan;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
 	float			pix_y_pos;
+	float			ray_x;
+	float			ray_y;
+	float			xo;
+	float			yo;
 	float			pdx;
 	float			pdy;
 	struct s_data	*data;

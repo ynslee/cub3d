@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 10:54:36 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:03:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	angle_left_right(char *direction, t_ray *ray)
 {
 	if (!ft_strncmp_all(direction, "left"))
 	{
-		ray->vector->pa -= 0.1;
-		if (ray->vector->pa < 0)
-			ray->vector->pa += 2 * M_PI;
-		ray->pdx = cos(ray->vector->pa) * 5;
-		ray->pdy = sin(ray->vector->pa) * 5;
+		ray->pa -= ANGLE;
+		if (ray->pa < 0)
+			ray->pa += 360;
+		ray->pdx = cos(deg_to_rad(ray->pa)) * SPEED;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * SPEED;
 	}
 	else if (!ft_strncmp_all(direction, "right"))
 	{
-		ray->vector->pa += 0.1;
-		if (ray->vector->pa > 2 * M_PI)
-			ray->vector->pa -= 2 * M_PI;
-		ray->pdx = cos(ray->vector->pa) * 5;
-		ray->pdy = sin(ray->vector->pa) * 5;
+		ray->pa += ANGLE;
+		if (ray->pa > 360)
+			ray->pa -= 360;
+		ray->pdx = cos(deg_to_rad(ray->pa)) * SPEED;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * SPEED;
 	}
 }
 
