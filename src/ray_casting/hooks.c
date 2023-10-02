@@ -6,13 +6,13 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 17:03:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:05:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
-void	angle_left_right(char *direction, t_ray *ray)
+void	turn_left_right(char *direction, t_ray *ray)
 {
 	if (!ft_strncmp_all(direction, "left"))
 	{
@@ -47,20 +47,20 @@ void	arrow_moves(int keysym, t_ray *ray)
 
 void	angle_moves(int keysym, t_ray *ray)
 {
-	if (keysym == 123) // LEFT
-		angle_left_right("left", ray);
-	if (keysym == 124) // RIGHT
-		angle_left_right("right", ray);
-	if (keysym == 126) // UP
-	{
-		ray->pix_x_pos += ray->pdx;
-		ray->pix_y_pos += ray->pdy;
-	}
-	if (keysym == 125) // DOWN
-	{
-		ray->pix_x_pos -= ray->pdx;
-		ray->pix_y_pos -= ray->pdy;
-	}
+	if (keysym == 123) // TURN_LEFT
+		turn_left_right("left", ray);
+	if (keysym == 124) // TURN_RIGHT
+		turn_left_right("right", ray);
+	// if (keysym == 126) // FORWARD
+	// {
+	// 	ray->pix_x_pos += ray->pdx;
+	// 	ray->pix_y_pos += ray->pdy;
+	// }
+	// if (keysym == 125) // BACKWARD
+	// {
+	// 	ray->pix_x_pos -= ray->pdx;
+	// 	ray->pix_y_pos -= ray->pdy;
+	// }
 	render_image(ray->cbd, ray, ray->data);
 }
 
