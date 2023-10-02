@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:27:53 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 09:43:59 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:53:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 		y = 0;
 		while (y < 5)
 		{
-			my_mlx_pixel_put(cbd, y + ray->pix_y_pos, x + \
-			ray->pix_x_pos, 0x00000000);
+			my_mlx_pixel_put(cbd, x + ray->pix_x_pos, y + ray->pix_y_pos, 0x00000000);
 			y++;
 		}
 		x++;

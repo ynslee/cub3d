@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/15 11:08:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:54:36 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	angle_left_right(char *direction, t_ray *ray)
 void	arrow_moves(int keysym, t_ray *ray)
 {
 	if (keysym == 0) // LEFT
-		ray->pix_y_pos = ray->pix_y_pos - 1;
-	if (keysym == 2) // RIGHT
-		ray->pix_y_pos = ray->pix_y_pos + 1;
-	if (keysym == 13) // UP
 		ray->pix_x_pos = ray->pix_x_pos - 1;
-	if (keysym == 1) // DOWN
+	if (keysym == 2) // RIGHT
 		ray->pix_x_pos = ray->pix_x_pos + 1;
+	if (keysym == 13) // UP
+		ray->pix_y_pos = ray->pix_y_pos - 1;
+	if (keysym == 1) // DOWN
+		ray->pix_y_pos = ray->pix_y_pos + 1;
 	render_image(ray->cbd, ray, ray->data);
 }
 
