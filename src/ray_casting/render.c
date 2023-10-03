@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 09:58:37 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:06:08 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
 	render_image(cbd, &ray, mv);
-	player_orientation_to_angle(mv, &ray);
 	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);
 	// draw_rays(cbd, &ray);
