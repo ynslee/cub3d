@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 12:20:52 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:23:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ static void	angle_left_right(char *direction, t_ray *ray)
 		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
 	}
+}
+
+/**
+ * @brief check if next movement is movable
+ * 
+ * @param x next x position
+ * @param y next y position
+ * @return returns 1 if movable, if not, returns 1
+ */
+int	movable(int x, int y, t_ray *ray)
+{
+	return (1);
 }
 
 void	move_sideway(t_ray *ray, char *direction)
