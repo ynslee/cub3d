@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 12:12:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:20:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,16 @@ static void	angle_left_right(char *direction, t_ray *ray)
 	// printf("ray->pa: %f\nray->pdx: %f\nray->pdy: %f\n", ray->pa, ray->pdx, ray->pdy);
 	if (!ft_strncmp_all(direction, "left"))
 	{
-		// ray->pa = deg_to_rad(ray->pa) + PLAYER_S;
-		// ray->pa = fix_angle(ray->pa);
 		ray->pa = fix_angle(ray->pa + PLAYER_S);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
 	}
-	// else if (!ft_strncmp_all(direction, "right"))
-	// {
-	// 	ray->vector->pa += 0.1;
-	// 	if (ray->vector->pa > 2 * M_PI)
-	// 		ray->vector->pa -= 2 * M_PI;
-	// 	ray->pdx = cos(ray->vector->pa) * 5;
-	// 	ray->pdy = sin(ray->vector->pa) * 5;
-	// }
+	else if (!ft_strncmp_all(direction, "right"))
+	{
+		ray->pa = fix_angle(ray->pa - PLAYER_S);
+		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+	}
 }
 
 void	move_sideway(t_ray *ray, char *direction)
@@ -52,7 +48,6 @@ void	move_sideway(t_ray *ray, char *direction)
 		ray->pix_x_pos = y;
 	}
 }
-
 
 static void	player_moves(int keysym, t_ray *ray)
 {

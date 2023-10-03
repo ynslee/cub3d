@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_drawing_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 10:09:45 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:10:18 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ static void	init_line(t_line *line, t_ray *ray)
 
 	line->x0 = ray->pix_x_pos;
 	line->y0 = ray->pix_y_pos;
-
-	// line->x1 = ray->pix_x_pos + (ray->pdx * 20);
-	// line->y1 = ray->pix_y_pos + (ray->pdy * 20);
 	line->x1 = ray->pix_x_pos + ray->pdx;
 	line->y1 = ray->pix_y_pos + ray->pdy;
 	line->dx = ft_abs(line->x1 - line->x0);
@@ -58,8 +55,6 @@ void	bresenham(t_ray *ray)
 		line.error2 = line.error * 2;
 		if (line.error2 <= (int)line.dx)
 		{
-			if ((int)line.x0 == (int)line.x1)
-				break ;
 			line.error += (int)line.dx;
 			line.y0 += (int)line.sy;
 		}
