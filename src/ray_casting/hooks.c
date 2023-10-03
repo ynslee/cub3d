@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 18:43:52 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/03 08:44:33 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	angle_left_right(char *direction, t_ray *ray)
 {
-	printf("ray->pa: %f\n", ray->pa);
+	printf("coming to angle_left_right\n");
+	printf("ray->pa: %f\nray->pdx: %f\nray->pdy: %f\n", ray->pa, ray->pdx, ray->pdy);
 	if (!ft_strncmp_all(direction, "left"))
 	{
-		ray->vector->pa -= 0.1;
-		// ray->vector->pa = fix_angle(ray->vector->pa);
-		if (ray->vector->pa < 0)
-			ray->vector->pa += 2 * M_PI;
-		ray->pdx = cos(ray->vector->pa) * 5;
-		ray->pdy = sin(ray->vector->pa) * 5;
+		// ray->pa = deg_to_rad(ray->pa) + PLAYER_S;
+		// ray->pa = fix_angle(ray->pa);
+		ray->pa = fix_angle(ray->pa + PLAYER_S);
+		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
-	else if (!ft_strncmp_all(direction, "right"))
-	{
-		ray->vector->pa += 0.1;
-		// ray->vector->pa = fix_angle(ray->vector->pa);
-		if (ray->vector->pa > 2 * M_PI)
-			ray->vector->pa -= 2 * M_PI;
-		ray->pdx = cos(ray->vector->pa) * 5;
-		ray->pdy = sin(ray->vector->pa) * 5;
-	}
+	// else if (!ft_strncmp_all(direction, "right"))
+	// {
+	// 	ray->vector->pa += 0.1;
+	// 	// ray->vector->pa = fix_angle(ray->vector->pa);
+	// 	if (ray->vector->pa > 2 * M_PI)
+	// 		ray->vector->pa -= 2 * M_PI;
+	// 	ray->pdx = cos(ray->vector->pa) * 5;
+	// 	ray->pdy = sin(ray->vector->pa) * 5;
+	// }
 }
 
 static void	player_moves(int keysym, t_ray *ray)
@@ -50,6 +50,8 @@ static void	player_moves(int keysym, t_ray *ray)
 
 static void	angle_moves(int keysym, t_ray *ray)
 {
+	// ray->pdx = cos(deg_to_rad(ray->pa));
+	// ray->pdy = -sin(deg_to_rad(ray->pa));
 	if (keysym == 123) // LEFT
 		angle_left_right("left", ray);
 	if (keysym == 124) // RIGHT
@@ -64,6 +66,8 @@ static void	angle_moves(int keysym, t_ray *ray)
 	// 	ray->pix_x_pos -= ray->pdx;
 	// 	ray->pix_y_pos -= ray->pdy;
 	// }
+	// ray->pdx = cos(deg_to_rad(ray->pa));
+	// ray->pdy = -sin(deg_to_rad(ray->pa));
 	render_image(ray->cbd, ray, ray->data);
 }
 

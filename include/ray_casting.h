@@ -5,7 +5,8 @@
 # define FOV 60
 # define GRID_PIX 64
 # define K_ESC 53
-# define NOSE_LEN 1
+# define PLAYER_S 5
+// # define NOSE_LEN 1
 
 # define BLACK 0x000000
 # define WHITE 0xffffff

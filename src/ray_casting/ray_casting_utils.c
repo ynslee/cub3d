@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 06:39:03 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/03 07:56:47 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 		ray->pa = 180.0;
 	if (mv->player_view == 'E')
 		ray->pa = 0.0;
-	// printf("player angle = %f\n", ray->pa); THIS SEGFAULTED, var not needed right now
 	ray->pdx = cos(deg_to_rad(ray->pa));
 	ray->pdy = -sin(deg_to_rad(ray->pa));
-	// printf("ray->pdx: %f\tray->pdy: %f\n", ray->pdx, ray->pdy);
 	// ray->vector->pa = deg_to_rad(ray->pa);
 }

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 06:41:31 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/03 08:56:34 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,15 @@ static void	init_line(t_line *line, t_ray *ray)
 	line->x1 = ray->pix_x_pos + (ray->pdx * 20);
 	line->y1 = ray->pix_y_pos + (ray->pdy * 20);
 	line->dx = abs(line->x1 - line->x0);
-	line->dy = -abs(line->y1 - line->y0);
-	// printf("line->dx = %i\n", line->dx);
-	// printf("line->dy = %i\n", line->dy);
+	line->dy = abs(line->y1 - line->y0) * -1;
 	if (line->x1 > ray->pix_x_pos)
-	{
 		line->sx = 1;
-		// printf("line->sx = %i\n", line->sx);
-	}
 	else
-	{
 		line->sx = -1;
-	}
 	if (line->y1 > ray->pix_y_pos)
-	{
 		line->sy = 1;
-		// printf("line->sy = %i\n", line->sy);
-	}
 	else
-	{
 		line->sy = -1;
-		// printf("line->sy = %i\n", line->sy);
-	}
 	line->error = line->dx + line->dy;
 	line->error2 = line->error * 2;
 }
