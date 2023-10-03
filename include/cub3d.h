@@ -28,8 +28,8 @@ typedef struct s_cbd
 	char	*img_addr;
 	int		img_bpp;
 	int		endian;
-	double	x_angle;
-	double	y_angle;
+	// double	x_angle;
+	// double	y_angle;
 }	t_cbd;
 
 

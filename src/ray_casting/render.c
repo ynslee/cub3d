@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 18:01:00 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/03 06:39:39 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 {
 	t_vector	vector;
-
+	player_orientation_to_angle(data, ray);
 	ray->pa = 0;
 	ray->ra = 0;
 	ray->rai = 0;
@@ -55,8 +55,6 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
-	ray->pdx = deg_to_rad(cos(ray->pa));
-	ray->pdy = deg_to_rad(sin(ray->pa));
 }
 
 void	init_render_utils(t_cbd *cbd, t_data *mv)
@@ -64,7 +62,6 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 	t_ray	ray;
 
 	init_ray_struct(&ray, mv, cbd);
-	player_orientation_to_angle(mv, &ray);
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
 		printf("Error connecting to mlx!\n");
