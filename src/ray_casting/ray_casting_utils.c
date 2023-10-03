@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 10:32:51 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 08:58:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ float	deg_to_rad(float degree)
 	radians = degree * (M_PI / 180.0);
 	return (radians);
 }
+
 
 void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 {
