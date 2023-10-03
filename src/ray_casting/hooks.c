@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 09:34:53 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:12:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,32 @@ static void	angle_left_right(char *direction, t_ray *ray)
 	// }
 }
 
+void	move_sideway(t_ray *ray, char *direction)
+{
+	double	angle;
+	float	x;
+	float	y;
+
+	if (ft_strncmp_all(direction, "left"))
+		angle = fix_angle(ray->pa + 90);
+	else
+		angle = fix_angle(ray->pa - 90);
+	x = ray->pix_x_pos + cos(deg_to_rad(angle)) * PLAYER_S;
+	y = ray->pix_y_pos + -sin(deg_to_rad(angle)) * PLAYER_S;
+	if (movable(x, y, ray))
+	{
+		ray->pix_x_pos = x;
+		ray->pix_x_pos = y;
+	}
+}
+
+
 static void	player_moves(int keysym, t_ray *ray)
 {
 	if (keysym == 0) // LEFT
-		ray->pix_x_pos = ray->pix_x_pos - 1;
+		move_sideway(ray, "left");
 	if (keysym == 2) // RIGHT
-		ray->pix_x_pos = ray->pix_x_pos + 1;
+		move_sideway(ray, "right");
 	if (keysym == 13) // UP
 		ray->pix_y_pos = ray->pix_y_pos - 1;
 	if (keysym == 1) // DOWN
