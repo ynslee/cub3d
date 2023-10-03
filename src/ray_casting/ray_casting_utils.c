@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 08:58:18 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:16:43 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ float	fix_angle(float a)
 		a += 360;
 	if (a > 359)
 		a -= 360;
-	printf("in fix angle: %f\n", a);
 	return (a);
 }
 
@@ -41,10 +40,7 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 		ray->pa = 180.0;
 	if (mv->player_view == 'E')
 		ray->pa = 0.0;
-	// printf("player angle = %f\n", ray->pa);
-	ray->cbd->x_angle = cos(deg_to_rad(ray->pa));
-	ray->cbd->y_angle = -sin(deg_to_rad(ray->pa));
-	ray->vector->pa = deg_to_rad(ray->pa);
-	ray->pdx = cos(ray->vector->pa) * 5;
-	ray->pdy = sin(ray->vector->pa) * 5;
+	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
+	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+	// ray->vector->pa = deg_to_rad(ray->pa);
 }

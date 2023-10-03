@@ -7,6 +7,8 @@
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
+# define PLAYER_S 5
+// # define NOSE_LEN 1
 
 # define BLACK 0x000000
 # define WHITE 0xffffff
@@ -22,6 +24,8 @@
 typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
 typedef struct s_cbd	t_cbd;
+typedef struct s_line	t_line;
+
 typedef struct s_vector
 {
 	float	x;
@@ -30,7 +34,31 @@ typedef struct s_vector
 }	t_vector;
 
 /**
- * @param pa angle of the player
+ * @param x0 line starting x position
+ * @param y0 line starting y position
+ * @param x1 line ending x
+ * @param y1 line ending y
+ * @param dx absolute difference between x0 and x1
+ * @param dy absolute difference between y0 and y1
+ * @param sx sign of x -> sx = 1 if x1 > x0 | sx = -1 if x1 < x0
+ * @param sy sign of y -> sy = 1 if y1 > y0 | sy = -1 if y1 < y0
+*/
+typedef	struct s_line
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	error;
+	int	error2;
+}	t_line;
+
+/**
+ * @param pa angle of the player Degrees
  * @param ra ray angle starting position
  * @param rai ray angle iteration
  * @param cotan line length(cotan)
@@ -40,7 +68,6 @@ typedef struct s_vector
  * @param yo y's offset
  * @param pix_x_pos player's x position in pixel
  * @param pix_y_pos player's y position in pixel
- * @param rai ray angle iteration
  */
 typedef struct s_ray
 {
@@ -61,8 +88,10 @@ typedef struct s_ray
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
+	struct s_line	*line;
 	// struct s_cub	*cub;
 }	t_ray;
+
 
 
 // draw_image.c
@@ -71,6 +100,10 @@ void	draw_player(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
 void	set_hooks(t_cbd *cbd, t_ray *ray);
+
+// line_drawing_utils.c
+void	bresenham(t_ray *ray);
+void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
