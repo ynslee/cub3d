@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 10:54:53 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 09:39:28 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ static void	angle_left_right(char *direction, t_ray *ray)
 
 static void	player_moves(int keysym, t_ray *ray)
 {
+	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
+	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
 	if (keysym == 0) // LEFT
-		ray->pix_x_pos = ray->pix_x_pos - 1;
+		move_sideway(ray, "left");
 	if (keysym == 2) // RIGHT
-		ray->pix_x_pos = ray->pix_x_pos + 1;
-	if (keysym == 13) // UP
-		ray->pix_y_pos = ray->pix_y_pos - 1;
-	if (keysym == 1) // DOWN
-		ray->pix_y_pos = ray->pix_y_pos + 1;
+		move_sideway(ray, "right");
+	if (keysym == 13)
+		move_frontback(ray, "up");
+	if (keysym == 1)
+		move_frontback(ray, "down");
 	render_image(ray->cbd, ray, ray->data);
 }
 
@@ -58,7 +60,7 @@ static void	angle_moves(int keysym, t_ray *ray)
 	// }
 	// if (keysym == 125) // DOWN
 	// {
-	// 	ray->pix_x_pos -= ray->pdx;
+	// 	ray->pix_x_pos -= ray->pdx;d
 	// 	ray->pix_y_pos -= ray->pdy;
 	// }
 	// ray->pdx = cos(deg_to_rad(ray->pa));
