@@ -127,4 +127,7 @@ void	draw_player(t_cbd *cbd, t_ray *ray);
 void	move_frontback(t_ray *ray, char *direction);
 void	move_sideway(t_ray *ray, char *direction);
 
+//draw_background.c
+void	draw_background(t_ray *ray);
+
 #endif

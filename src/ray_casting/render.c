@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 12:06:08 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 10:37:14 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
 	mlx_clear_window(cbd->mlx, cbd->window);
+	draw_background(ray);
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
 	draw_nose(ray);
