@@ -12,24 +12,6 @@
 
 #include "../../include/ray_casting.h"
 
-void	draw_player(t_cbd *cbd, t_ray *ray)
-{
-	int	x = 0;
-	int	y = 0;
-
-	(void)cbd;
-	while (x < 5)
-	{
-		y = 0;
-		while (y < 5)
-		{
-			my_mlx_pixel_put(cbd, x + ray->pix_x_pos, y + ray->pix_y_pos, 0x00000000);
-			y++;
-		}
-		x++;
-	}
-}
-
 // static void	check_wall_hits(t_cbd *cbd, t_ray *ray, int dof)
 // {
 // 	if (dof == 10000)
