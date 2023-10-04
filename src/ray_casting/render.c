@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 11:09:04 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 12:11:54 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
 	ray->ray_count = 0;
+	ray->ra = fix_angle(ray->pa - FOV / 2);
 	cast_rays(ray);
 	// draw_nose(ray);
 	// draw_background(cbd);

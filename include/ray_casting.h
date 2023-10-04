@@ -81,7 +81,7 @@ typedef struct s_ray
 	float			ra;
 	// float			rai;
 	// float			cotan;
-	int				ray_count;
+	float				ray_count;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
@@ -92,8 +92,6 @@ typedef struct s_ray
 	// float			yo;
 	float			pdx;
 	float			pdy;
-	float			r_cos;
-	float			r_sin;
 	float			r_end_x;
 	float			r_end_y;
 	struct s_data	*data;
@@ -134,5 +132,9 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
+
+//movement.c
+void	move_frontback(t_ray *ray, char *direction);
+void	move_sideway(t_ray *ray, char *direction);
 
 #endif
