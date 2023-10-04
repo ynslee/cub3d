@@ -82,7 +82,6 @@ void	make_map(t_cbd *cbd, t_data *mv)
 	int	color;
 
 	i = 0;
-	// mlx_clear_window(cbd->mlx, cbd->window);
 	while (i < mv->height)
 	{
 		j = 0;

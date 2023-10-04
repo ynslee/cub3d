@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/04 15:40:37 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/04 16:59:21 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ FILES = main\
 		fill_width\
 		wall_check\
 		ray_casting_utils\
+		ray_casting\
 		draw_background\
 		render\
 		mlx_utils\

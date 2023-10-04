@@ -59,13 +59,19 @@ typedef	struct s_line
 
 /**
  * @param pa angle of the player Degrees
- * @param ra ray angle starting position
+ * @param ra ray angle starting position (pa + FOV / 2),
+ * rays are casted from player right to left
  * @param rai ray angle iteration
- * @param cotan line length(cotan)
+//  * @param cotan line length(cotan)
  * @param center_x center of the window_width
  * @param center_y center of the window_height
- * @param xo x's offset
- * @param yo y's offset
+//  * @param xo x's offset
+//  * @param yo y's offset
+ * @param pdx position delta x, delta represents a change
+ * in variable
+ * @param pdy position delta y
+ * @param r_cos rays cos incrementation
+ * @param r_sin rays sin incrementation
  * @param pix_x_pos player's x position in pixel
  * @param pix_y_pos player's y position in pixel
  */
@@ -73,26 +79,27 @@ typedef struct s_ray
 {
 	float			pa;
 	float			ra;
-	float			rai;
-	float			cotan;
+	// float			rai;
+	// float			cotan;
+	float				ray_count;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
 	float			pix_y_pos;
-	float			ray_x;
-	float			ray_y;
-	float			xo;
-	float			yo;
+	// float			ray_x;
+	// float			ray_y;
+	// float			xo;
+	// float			yo;
 	float			pdx;
 	float			pdy;
+	float			r_end_x;
+	float			r_end_y;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
 	struct s_line	*line;
 	// struct s_cub	*cub;
 }	t_ray;
-
-
 
 // draw_image.c
 // void	draw_image(t_cbd *cbd, t_ray *ray);
@@ -113,6 +120,9 @@ int		destroy(t_cbd *cbd);
 float	fix_angle(float a);
 float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
+
+//ray_casting.c
+void	cast_rays(t_ray *ray);
 
 // render.c
 // void	draw_background(t_cbd *cbd);
