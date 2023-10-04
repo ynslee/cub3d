@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/02 10:25:24 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:41:49 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,7 @@ int	map_check(t_cub	*cub, t_data *mv)
 	if (two_maps_check(cub, height, mv))
 		print_error(cub, mv, "there are more than one map in the file!\n", 2);
 	wall_check(cub, mv);
+	mv->ceiling_rgb = change_colour(cub->c_color);
+	mv->floor_rgb = change_colour(cub->f_color);
 	return (0);
 }

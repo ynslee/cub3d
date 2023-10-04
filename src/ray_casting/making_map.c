@@ -1,7 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   making_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/10/04 10:23:44 by yoonslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ray_casting.h"
 #include "cub3d.h"
 
+void	draw_player(t_cbd *cbd, t_ray *ray)
+{
+	int	x = 0;
+	int	y = 0;
+
+	(void)cbd;
+	while (x < 3)
+	{
+		y = 0;
+		while (y < 3)
+		{
+			my_mlx_pixel_put(cbd, x + ray->pix_x_pos, y + ray->pix_y_pos, 0x00000000);
+			y++;
+		}
+		x++;
+	}
+}
 
 void	draw_grid(t_cbd *cbd, t_data *mv)
 {
@@ -9,21 +37,21 @@ void	draw_grid(t_cbd *cbd, t_data *mv)
 	int	y;
 
 	x = 0;
-	while (x < mv->width * 64)
+	while (x < mv->width * GRID_PIX)
 	{
 		y = -1;
-		while (++y < mv->height * 64)
+		while (++y < mv->height * GRID_PIX)
 			my_mlx_pixel_put(cbd, x, y, BLACK);
-		x = x + 64;
+		x = x + GRID_PIX;
 	}
 	x = -1;
-	while (++x < mv->width * 64)
+	while (++x < mv->width * GRID_PIX)
 	{
 		y = 0;
-		while (y < mv->height * 64)
+		while (y < mv->height * GRID_PIX)
 		{
 			my_mlx_pixel_put(cbd, x, y, BLACK);
-			y = y + 64;
+			y = y + GRID_PIX;
 		}
 	}
 }

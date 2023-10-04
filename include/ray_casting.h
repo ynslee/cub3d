@@ -3,7 +3,7 @@
 # define RAY_CASTING_H
 
 # define FOV 60
-# define GRID_PIX 64
+# define GRID_PIX 24
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
@@ -102,7 +102,6 @@ typedef struct s_ray
 }	t_ray;
 
 // draw_image.c
-void	draw_player(t_cbd *cbd, t_ray *ray);
 // void	draw_image(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
@@ -132,9 +131,14 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
+void	draw_player(t_cbd *cbd, t_ray *ray);
 
 //movement.c
 void	move_frontback(t_ray *ray, char *direction);
 void	move_sideway(t_ray *ray, char *direction);
+
+//draw_background.c
+void	draw_background(t_ray *ray);
+// void	init_xpm_images(t_data *data);
 
 #endif

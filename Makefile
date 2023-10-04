@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/04 11:54:42 by jhusso           ###   ########.fr        #
+#    Updated: 2023/10/04 16:59:21 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,14 @@ FILES = main\
 		wall_check\
 		ray_casting_utils\
 		ray_casting\
-		draw_image\
+		draw_background\
 		render\
 		mlx_utils\
 		hooks\
 		making_map\
 		line_drawing_utils\
 		movement\
+		rgb_colour\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

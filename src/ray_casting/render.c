@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 12:11:54 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:02:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
 	mlx_clear_window(cbd->mlx, cbd->window);
+	draw_background(ray);
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
 	ray->ray_count = 0;
@@ -46,6 +47,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 {
 	t_vector	vector;
+
 	player_orientation_to_angle(data, ray);
 	ray->ra = fix_angle(ray->pa - FOV / 2);
 	printf("RA ray->ra: %f\n", ray->ra);
@@ -62,6 +64,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
+	// init_xpm_images(data);
+	// ray.rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
 }
 
 void	init_render_utils(t_cbd *cbd, t_data *mv)
