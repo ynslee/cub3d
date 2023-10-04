@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 12:30:22 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 14:44:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	cast_rays(t_ray *ray)
 			ray->ra = fix_angle(ray->ra + 0.5);
 			cast_rays(ray);
 			break;
-		}
+	}
 	}
 }
