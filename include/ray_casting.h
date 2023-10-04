@@ -123,4 +123,8 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
 
+//movement.c
+void	move_frontback(t_ray *ray, char *direction);
+void	move_sideway(t_ray *ray, char *direction);
+
 #endif
