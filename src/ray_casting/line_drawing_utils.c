@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 09:24:31 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 09:50:58 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_abs(int a)
 	return (a);
 }
 
-//pdx is absolute difference between x0 and x1
-//pdy is absolute difference between y0 and y1
 static void	init_line(t_line *line, t_ray *ray)
 {
 
@@ -30,6 +28,7 @@ static void	init_line(t_line *line, t_ray *ray)
 	line->y1 = ray->r_end_y;
 	// line->x1 = ray->pix_x_pos + ray->pdx;
 	// line->y1 = ray->pix_y_pos + ray->pdy;
+	// ray->ra = fix_angle(ray->pa - FOV / 2);
 	line->dx = ft_abs(line->x1 - line->x0);
 	if (line->x1 > line->x0)
 		line->sx = 1;
@@ -68,8 +67,8 @@ void	bresenham(t_ray *ray)
 	}
 }
 
-void	draw_nose(t_ray *ray)
-{
-	bresenham(ray);
-	// render_image(ray->cbd, ray, ray->data);
-}
+// void	draw_nose(t_ray *ray)
+// {
+// 	bresenham(ray);
+// 	// render_image(ray->cbd, ray, ray->data);
+// }

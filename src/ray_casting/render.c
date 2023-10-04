@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 09:38:59 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 11:09:04 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	mlx_clear_window(cbd->mlx, cbd->window);
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
+	ray->ray_count = 0;
 	cast_rays(ray);
-	draw_nose(ray);
+	// draw_nose(ray);
 	// draw_background(cbd);
 	// draw_image(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
