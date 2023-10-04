@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 14:59:43 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:58:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	cast_rays(t_ray *ray)
 		x += ray->pdx;
 		y += ray->pdy;
 		if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' \
-		|| is_wall(ray, x, y))
+		|| is_wall(ray, x, y))3
 		{
 			ray->r_end_x = x;
 			ray->r_end_y = y;
