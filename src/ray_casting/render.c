@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 14:52:55 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:49:37 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 {
 	t_vector	vector;
+
 	player_orientation_to_angle(data, ray);
 	ray->ra = 0;
 	ray->rai = 0;
@@ -57,6 +58,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
+	// init_xpm_images(data);
 	// ray.rai = fix_angle(FOV / WIN_SIZE_X); //iteration for next rays angle
 }
 

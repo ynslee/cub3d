@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:33:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 12:54:50 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:49:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,8 @@ void	draw_background(t_ray *ray)
 		y++;
 	}
 }
+
+// void	init_xpm_images(t_data *data)
+// {
+// 	void(data);
+// }

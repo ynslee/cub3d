@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 10:20:02 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:11:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,14 @@ int	movable(float x, float y, t_ray *ray)
 	printf("next.x is %d(%f)\n", (int)next.x, next.x);
 	printf("next.y is %d(%f)\n", (int)next.y, next.y);
 	if (ray->data->map[(int)next.y][(int)next.x] && \
-	ray->data->map[(int)next.y][(int)next.x] == '1')
+	(ray->data->map[(int)(next.y + 0.02)][(int)next.x] == '1' || \
+	ray->data->map[(int)(next.y - 0.02)][(int)next.x] == '1' || \
+	ray->data->map[(int)next.y][(int)(next.x + 0.02)] == '1' || \
+	ray->data->map[(int)next.y][(int)(next.x - 0.02)] == '1'))
 		return (0);
+	// if (ray->data->map[(int)next.y][(int)next.x] && \
+	// ray->data->map[(int)next.y][(int)next.x] == '1' )
+	// 	return (0);
 	if (((int)current.y == (int)next.y) && (int)current.x == (int)next.x)
 		return (1);
 	else

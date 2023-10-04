@@ -129,5 +129,6 @@ void	move_sideway(t_ray *ray, char *direction);
 
 //draw_background.c
 void	draw_background(t_ray *ray);
+// void	init_xpm_images(t_data *data);
 
 #endif

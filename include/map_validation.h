@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 12:41:36 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:29:41 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	char			player_view;
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
+
 }	t_data;
 
 //basic_check.c
