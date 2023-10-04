@@ -3,7 +3,7 @@
 # define RAY_CASTING_H
 
 # define FOV 60
-# define GRID_PIX 64
+# define GRID_PIX 24
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
@@ -59,13 +59,19 @@ typedef	struct s_line
 
 /**
  * @param pa angle of the player Degrees
- * @param ra ray angle starting position
+ * @param ra ray angle starting position (pa + FOV / 2),
+ * rays are casted from player right to left
  * @param rai ray angle iteration
- * @param cotan line length(cotan)
+//  * @param cotan line length(cotan)
  * @param center_x center of the window_width
  * @param center_y center of the window_height
- * @param xo x's offset
- * @param yo y's offset
+//  * @param xo x's offset
+//  * @param yo y's offset
+ * @param pdx position delta x, delta represents a change
+ * in variable
+ * @param pdy position delta y
+ * @param r_cos rays cos incrementation
+ * @param r_sin rays sin incrementation
  * @param pix_x_pos player's x position in pixel
  * @param pix_y_pos player's y position in pixel
  */
@@ -73,18 +79,21 @@ typedef struct s_ray
 {
 	float			pa;
 	float			ra;
-	float			rai;
-	float			cotan;
+	// float			rai;
+	// float			cotan;
+	float				ray_count;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
 	float			pix_y_pos;
-	float			ray_x;
-	float			ray_y;
-	float			xo;
-	float			yo;
+	// float			ray_x;
+	// float			ray_y;
+	// float			xo;
+	// float			yo;
 	float			pdx;
 	float			pdy;
+	float			r_end_x;
+	float			r_end_y;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
@@ -92,10 +101,7 @@ typedef struct s_ray
 	// struct s_cub	*cub;
 }	t_ray;
 
-
-
 // draw_image.c
-void	draw_player(t_cbd *cbd, t_ray *ray);
 // void	draw_image(t_cbd *cbd, t_ray *ray);
 
 // hooks.c
@@ -115,6 +121,9 @@ float	fix_angle(float a);
 float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
+//ray_casting.c
+void	cast_rays(t_ray *ray);
+
 // render.c
 // void	draw_background(t_cbd *cbd);
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
@@ -122,9 +131,14 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
+void	draw_player(t_cbd *cbd, t_ray *ray);
 
 //movement.c
 void	move_frontback(t_ray *ray, char *direction);
 void	move_sideway(t_ray *ray, char *direction);
+
+//draw_background.c
+void	draw_background(t_ray *ray);
+// void	init_xpm_images(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/04 09:40:16 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/04 16:59:21 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,13 +42,15 @@ FILES = main\
 		fill_width\
 		wall_check\
 		ray_casting_utils\
-		draw_image\
+		ray_casting\
+		draw_background\
 		render\
 		mlx_utils\
 		hooks\
 		making_map\
 		line_drawing_utils\
 		movement\
+		rgb_colour\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

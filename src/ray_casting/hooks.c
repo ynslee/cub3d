@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 09:39:28 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:06:25 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	angle_left_right(char *direction, t_ray *ray)
 	if (!ft_strncmp_all(direction, "left"))
 	{
 		ray->pa = fix_angle(ray->pa + PLAYER_S);
+		printf("ray->pa: %f\n", ray->pa);
+		printf("ray->ra: %f\n", ray->ra);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
 	}
@@ -53,18 +55,10 @@ static void	angle_moves(int keysym, t_ray *ray)
 		angle_left_right("left", ray);
 	if (keysym == 124) // RIGHT
 		angle_left_right("right", ray);
-	// if (keysym == 126) // UP
-	// {
-	// 	ray->pix_x_pos += ray->pdx;
-	// 	ray->pix_y_pos += ray->pdy;
-	// }
-	// if (keysym == 125) // DOWN
-	// {
-	// 	ray->pix_x_pos -= ray->pdx;d
-	// 	ray->pix_y_pos -= ray->pdy;
-	// }
-	// ray->pdx = cos(deg_to_rad(ray->pa));
-	// ray->pdy = -sin(deg_to_rad(ray->pa));
+	if (keysym == 126) // UP
+		move_frontback(ray, "up");
+	if (keysym == 125) // DOWN
+		move_frontback(ray, "down");
 	render_image(ray->cbd, ray, ray->data);
 }
 
