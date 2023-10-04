@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 12:10:18 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 09:24:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ static void	init_line(t_line *line, t_ray *ray)
 
 	line->x0 = ray->pix_x_pos;
 	line->y0 = ray->pix_y_pos;
-	line->x1 = ray->pix_x_pos + ray->pdx;
-	line->y1 = ray->pix_y_pos + ray->pdy;
+	line->x1 = ray->r_end_x;
+	line->y1 = ray->r_end_y;
+	// line->x1 = ray->pix_x_pos + ray->pdx;
+	// line->y1 = ray->pix_y_pos + ray->pdy;
 	line->dx = ft_abs(line->x1 - line->x0);
 	if (line->x1 > line->x0)
 		line->sx = 1;

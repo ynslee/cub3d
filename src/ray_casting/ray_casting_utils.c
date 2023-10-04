@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/03 12:06:32 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/04 07:24:15 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,4 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 		ray->pa = 0.0;
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
-	// ray->vector->pa = deg_to_rad(ray->pa);
 }
