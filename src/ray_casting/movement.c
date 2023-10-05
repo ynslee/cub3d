@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 15:11:47 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/05 09:27:15 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	side_wall_check(t_ray *ray, t_vector *next, float degree)
 
 /**
  * @brief check if next movement is movable
- * 
+ *
  * @param x next x position
  * @param y next y position
  * @return returns 1 if movable, if not, returns 0
@@ -83,10 +83,10 @@ int	movable(float x, float y, t_ray *ray)
 	current.y = ray->pix_y_pos / GRID_PIX;
 	next.x = x / GRID_PIX;
 	next.y = y / GRID_PIX;
-	printf("current.x is %d(%f)\n", (int)current.x, current.x);
-	printf("current.y is %d(%f)\n", (int)current.y, current.y);
-	printf("next.x is %d(%f)\n", (int)next.x, next.x);
-	printf("next.y is %d(%f)\n", (int)next.y, next.y);
+	// printf("current.x is %d(%f)\n", (int)current.x, current.x);
+	// printf("current.y is %d(%f)\n", (int)current.y, current.y);
+	// printf("next.x is %d(%f)\n", (int)next.x, next.x);
+	// printf("next.y is %d(%f)\n", (int)next.y, next.y);
 	if (ray->data->map[(int)next.y][(int)next.x] && \
 	(ray->data->map[(int)(next.y + 0.02)][(int)next.x] == '1' || \
 	ray->data->map[(int)(next.y - 0.02)][(int)next.x] == '1' || \
@@ -124,9 +124,9 @@ void	move_sideway(t_ray *ray, char *direction)
 
 /**
  * @brief move forward and backwards as a player.
- *  pdx is divided by PLAYER_S so we slow down the player's movement. 
- * @param ray 
- * @param direction 
+ *  pdx is divided by PLAYER_S so we slow down the player's movement.
+ * @param ray
+ * @param direction
  */
 void	move_frontback(t_ray *ray, char *direction)
 {

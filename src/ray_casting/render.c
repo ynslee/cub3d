@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 17:02:34 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/05 09:34:25 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
+	ray->distance = 0;
+	ray->wall_height = 0;
 	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
 	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
 	vector.x = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;

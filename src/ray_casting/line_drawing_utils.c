@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 09:50:58 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/05 09:42:22 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ static void	init_line(t_line *line, t_ray *ray)
 	line->error2 = line->error * 2;
 }
 
-void	bresenham(t_ray *ray)
+void	bresenham(t_ray *ray, int color)
 {
 	t_line	line;
 
 	init_line(&line, ray);
 	while (42)
 	{
-		my_mlx_pixel_put(ray->cbd, line.x0, line.y0, 0x00000000);
+		my_mlx_pixel_put(ray->cbd, line.x0, line.y0, color);
 		if ((int)line.x0 == (int)line.x1 && (int)line.y0 == (int)line.y1)
 			break ;
 		line.error2 = line.error * 2;

@@ -94,6 +94,8 @@ typedef struct s_ray
 	float			pdy;
 	float			r_end_x;
 	float			r_end_y;
+	float			distance;
+	float			wall_height;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
@@ -108,7 +110,7 @@ typedef struct s_ray
 void	set_hooks(t_cbd *cbd, t_ray *ray);
 
 // line_drawing_utils.c
-void	bresenham(t_ray *ray);
+void	bresenham(t_ray *ray, int color);
 void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
@@ -117,11 +119,13 @@ int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
 // ray_casting_utils.c
+int		is_wall(t_ray *ray, float x, float y);
 float	fix_angle(float a);
 float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 //ray_casting.c
+void	draw_ray(t_ray *ray);
 void	cast_rays(t_ray *ray);
 
 // render.c
