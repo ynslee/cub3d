@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 09:41:52 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/05 13:25:28 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ static void	calculate_distance(t_ray *ray)
 {
 	ray->distance = sqrt(pow(ray->r_end_x - ray->pix_x_pos, 2)
 		+ pow(ray->r_end_y - ray->pix_y_pos, 2));
-	printf("ray->distance: %f\n", ray->distance);
+	// printf("ray->distance: %f\n", ray->distance);
 	ray->wall_height = (WIN_SIZE_X / 2) / ray->distance;
-	printf("ray->wall_height: %f\n", ray->wall_height);
+	// printf("ray->wall_height: %f\n", ray->wall_height);
 }
 
-// static void	color_wall(t_ray *ray);
+// static void	color_wall(t_ray *ray)
 // {
+// 	my_mlx_pixel_put(ray->cbd, )
+// 	drawLine(rayCount, 0, rayCount, data.screen.halfHeight - wallHeight, "cyan");
+// 	drawLine(rayCount, data.screen.halfHeight - wallHeight, rayCount, data.screen.halfHeight + wallHeight, "red");
+// 	drawLine(rayCount, data.screen.halfHeight + wallHeight, rayCount, data.screen.height, "green");
 
 // }
 
@@ -41,21 +45,24 @@ void	cast_rays(t_ray *ray)
 
 	x = ray->pix_x_pos;
 	y = ray->pix_y_pos;
+	 ray->ray_count = 0;
 	while (ray->ray_count < FOV)
 	{
-		ray->pdx = cos(deg_to_rad(ray->ra));
-		ray->pdy = -sin(deg_to_rad(ray->ra));
+		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
+		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
 		x += ray->pdx;
 		y += ray->pdy;
 		if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' \
 		|| is_wall(ray, x, y))
 		{
-			ray->r_end_x = x;
-			ray->r_end_y = y;
+			ray->r_end_x = floor(x);
+			ray->r_end_y = floor(y);
 			draw_ray(ray);
 			// bresenham(ray);
-			ray->ray_count += 0.1;
-			ray->ra = fix_angle(ray->ra + 0.1);
+			ray->ray_count += (float)FOV / WIN_SIZE_X;
+			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
+			// printf("fov / win_size = %f\n", (float)FOV / WIN_SIZE_X);
+			// printf("fixed RA: %f!\n", ray->ra);
 			x = ray->pix_x_pos;
 			y = ray->pix_y_pos;
 			// break ;

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 09:34:25 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/05 10:03:27 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	printf("RA ray->ra: %f\n", ray->ra);
 	// ray->rai = fix_angle(FOV / WIN_SIZE_Y);
 	// printf("RAI ray->rai: %f\n", ray->rai);
-	ray->ray_count = 0;
+	ray->ray_count = -1;
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
