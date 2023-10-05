@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 13:25:28 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/05 14:57:11 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,43 @@ static void	calculate_distance(t_ray *ray)
 // 	drawLine(rayCount, data.screen.halfHeight + wallHeight, rayCount, data.screen.height, "green");
 
 // }
+// WEST = BLACK
+// EAST = WHITE
+// SOUTH = GREY
+// NORTH = GREEN
+
+static int	set_wall_direction(t_ray *ray)
+{
+	if (ray->pa >= 0 && ray->pa < 90)
+	{
+		if (ray->ra >= 0 && ray->ra < 45)
+			return (BLACK);
+		if (ray->ra >=45 && ray->ra < 90)
+			return (GREY);
+	}
+	if (ray->pa >= 90 && ray->pa < 180)
+	{
+		if (ray->ra >= 90 && ray->ra < 135)
+			return (GREY);
+		if (ray->ra >= 135 && ray->ra < 180)
+			return (WHITE);
+	}
+	if (ray->pa >= 180 && ray->pa < 270)
+	{
+		if (ray->ra >= 180 && ray->ra < 225)
+			return (WHITE);
+		if (ray->ra >= 225 && ray->ra < 270)
+			return (GREEN);
+	}
+	if (ray->pa >= 270 && ray->pa < 360)
+	{
+		if (ray->ra >= 270 && ray->ra < 315)
+			return (GREEN);
+		if (ray->ra >= 315 && ray->ra < 360)
+			return (BLACK);
+	}
+
+}
 
 void	draw_ray(t_ray *ray)
 {
@@ -46,7 +83,7 @@ void	cast_rays(t_ray *ray)
 	x = ray->pix_x_pos;
 	y = ray->pix_y_pos;
 	 ray->ray_count = 0;
-	while (ray->ray_count < FOV)
+	while (ray->ray_count < WIN_SIZE_X)
 	{
 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
 		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
@@ -59,7 +96,7 @@ void	cast_rays(t_ray *ray)
 			ray->r_end_y = floor(y);
 			draw_ray(ray);
 			// bresenham(ray);
-			ray->ray_count += (float)FOV / WIN_SIZE_X;
+			ray->ray_count += 1;
 			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 			// printf("fov / win_size = %f\n", (float)FOV / WIN_SIZE_X);
 			// printf("fixed RA: %f!\n", ray->ra);
