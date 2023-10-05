@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 09:41:52 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/05 14:17:30 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,32 @@ static void	calculate_distance(t_ray *ray)
 	printf("ray->wall_height: %f\n", ray->wall_height);
 }
 
-// static void	color_wall(t_ray *ray);
-// {
+/**
+ * @brief 
+ * 
+ * @param ray 
+ * @param ray_count (0 to 599)
+ */
+static void	color_wall(t_ray *ray, float ray_count, float wall)
+{
+	float	line;
+	float	wall_start;
+	float	wall_end;
 
-// }
+	line = WIN_SIZE_X / ray_count;
+	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
+	wall_end = wall_start + wall;
+	while (wall_start + i <= wall_end)
+	{
+		
+	}
+}
 
 void	draw_ray(t_ray *ray)
 {
 	bresenham(ray, BLACK);
 	calculate_distance(ray);
-	// color_wall(ray);
+	color_wall(ray, ray->ray_count * 10, ray->wall_height);
 	//render the walls
 }
 
