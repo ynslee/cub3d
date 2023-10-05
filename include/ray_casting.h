@@ -95,7 +95,7 @@ typedef struct s_ray
 	float			r_end_x;
 	float			r_end_y;
 	float			distance;
-	int				wall_height;
+	float			wall_height;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
