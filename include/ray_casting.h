@@ -51,12 +51,18 @@ typedef	struct s_line
 	float	y1;
 	float	xa;
 	float	ya;
-	float	dx;
-	float	dy;
-	float	sx;
-	float	sy;
-	float	error;
-	float	error2;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	error;
+	int	error2;
+	// float	dx;
+	// float	dy;
+	// float	sx;
+	// float	sy;
+	// float	error;
+	// float	error2;
 }	t_line;
 
 /**

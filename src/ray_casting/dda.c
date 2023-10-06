@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 10:46:04 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:17:00 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	check_horizontal_gridline(t_ray *ray)
 	/* finding the first intersection cordinates */
 	t_line	line;
 
-	init_line(&line, ray);
+	line.x0 = ray->pix_x_pos;
+	line.y0 = ray->pix_y_pos;
+	line.x1 = 0;
+	line.y1 = 0;
 	if (ray->ra >= 0 && ray->ra < 181) // going upwards
 	{
 		printf("line->y0: %f\n", line.y0 / GRID_PIX * GRID_PIX);
-		line.y1 = (int)(line.y0 / GRID_PIX) * GRID_PIX -1; //if y1 is part of the block above the grid line needs to add 1?
+		line.y1 = (int)(line.y0 / GRID_PIX) * GRID_PIX - 1; //if y1 is part of the block above the grid line needs to add 1?
 		line.ya = -(GRID_PIX);
 	}
 	if (ray->ra > 180 && ray->ra <= 360)
