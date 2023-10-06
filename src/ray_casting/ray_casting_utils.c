@@ -6,19 +6,31 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 09:37:26 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/06 10:47:22 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
+/*
+Converts the (x, y) coordinates to respective grid coordinates while checking
+coordinate for wall ('1')
+*/
 int	is_wall(t_ray *ray, float x, float y)
 {
-	if ((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
+	printf("MOIKKA froom is wall\n");
+	if ((ray->data->map[(int)(y- 0.01)][(int)x] == '1') || \
+	(ray->data->map[(int)(y + 0.01)][(int)x] == '1') || \
+	(ray->data->map[(int)y][(int)(x - 0.01)] == '1') || \
+	(ray->data->map[(int)y][(int)(x + 0.01)] == '1'))
+	{
 		return (1);
+	}
+	// if ((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
+	// (ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
+	// (ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
+	// (ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
+	// 	return (1);
 	return (0);
 }
 

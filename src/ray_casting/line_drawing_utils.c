@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/05 09:42:22 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/06 10:40:36 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	ft_abs(int a)
 	return (a);
 }
 
-static void	init_line(t_line *line, t_ray *ray)
+void	init_line(t_line *line, t_ray *ray)
 {
 
 	line->x0 = ray->pix_x_pos;
 	line->y0 = ray->pix_y_pos;
-	line->x1 = ray->r_end_x;
-	line->y1 = ray->r_end_y;
-	// line->x1 = ray->pix_x_pos + ray->pdx;
-	// line->y1 = ray->pix_y_pos + ray->pdy;
-	// ray->ra = fix_angle(ray->pa - FOV / 2);
+	line->x1 = 0;
+	line->y1 = 0;
+	line->x1 = ray->pix_x_pos + ray->pdx;
+	line->y1 = ray->pix_y_pos + ray->pdy;
+	ray->ra = fix_angle(ray->pa - FOV / 2);
 	line->dx = ft_abs(line->x1 - line->x0);
 	if (line->x1 > line->x0)
 		line->sx = 1;
@@ -43,26 +43,26 @@ static void	init_line(t_line *line, t_ray *ray)
 	line->error2 = line->error * 2;
 }
 
-void	bresenham(t_ray *ray, int color)
+void	bresenham(t_ray *ray, t_line *line, int color)
 {
-	t_line	line;
+	// t_line	line;
 
-	init_line(&line, ray);
+	// init_line(&line, ray);
 	while (42)
 	{
-		my_mlx_pixel_put(ray->cbd, line.x0, line.y0, color);
-		if ((int)line.x0 == (int)line.x1 && (int)line.y0 == (int)line.y1)
+		my_mlx_pixel_put(ray->cbd, line->x0, line->y0, color);
+		if ((int)line->x0 == (int)line->x1 && (int)line->y0 == (int)line->y1)
 			break ;
-		line.error2 = line.error * 2;
-		if (line.error2 <= (int)line.dx)
+		line->error2 = line->error * 2;
+		if (line->error2 <= (int)line->dx)
 		{
-			line.error += (int)line.dx;
-			line.y0 += (int)line.sy;
+			line->error += (int)line->dx;
+			line->y0 += (int)line->sy;
 		}
-		if (line.error2 >= (int)line.dy)
+		if (line->error2 >= (int)line->dy)
 		{
-			line.error += (int)line.dy;
-			line.x0 += line.sx;
+			line->error += (int)line->dy;
+			line->x0 += line->sx;
 		}
 	}
 }
