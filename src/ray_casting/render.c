@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 16:47:52 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/09 09:40:25 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
 	check_horizontal_gridline(ray);
+	// check_vertical_gridline(ray);
 	// cast_rays(ray);
 	// draw_nose(ray);
 	// draw_background(cbd);

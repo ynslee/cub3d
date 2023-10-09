@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 17:06:25 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:54:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ static void	angle_left_right(char *direction, t_ray *ray)
 		ray->pa = fix_angle(ray->pa + PLAYER_S);
 		printf("ray->pa: %f\n", ray->pa);
 		printf("ray->ra: %f\n", ray->ra);
-		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
-		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
 	else if (!ft_strncmp_all(direction, "right"))
 	{
 		ray->pa = fix_angle(ray->pa - PLAYER_S);
-		ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
-		ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
+		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
+	render_image(ray->cbd, ray, ray->data);
 }
 
 static void	player_moves(int keysym, t_ray *ray)
@@ -59,7 +60,7 @@ static void	angle_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 125) // DOWN
 		move_frontback(ray, "down");
-	render_image(ray->cbd, ray, ray->data);
+	// render_image(ray->cbd, ray, ray->data);
 }
 
 int	key_event(int keysym, t_ray *ray)
