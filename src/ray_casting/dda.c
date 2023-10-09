@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 16:20:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:55:10 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,14 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 	line->v_y1 = 0;
 	printf("ray->pa: %f\n", ray->pa);
 	printf("ray->ra: %f\n", ray->ra);
-	if (cos(deg_to_rad(ray->ra) > 0.001)) //right pointing diagonal line like this /
+	if (cos(deg_to_rad(ray->ra)) > 0.001)
 	{
 		line->v_x1 = (int)(line->x0) / GRID_PIX * GRID_PIX + GRID_PIX;
 		line->v_y1 = line->y0 + ((line->x0 - line->v_x1) * tan(deg_to_rad(ray->ra)));
 		line->v_xa = GRID_PIX;
 		line->v_ya = -line->v_xa * tan(deg_to_rad(ray->ra));
 	}
-	else if (cos(deg_to_rad(ray->ra) < -0.001)) //left pointing diagonal line like this '\'
+	else if (cos(deg_to_rad(ray->ra)) < -0.001)
 	{
 		line->v_x1 = (int)(line->x0) / GRID_PIX * GRID_PIX - 0.0001;
 		line->v_y1 = line->y0 + ((line->x0 - line->v_x1) * tan(deg_to_rad(ray->ra)));
@@ -140,16 +140,34 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 	{
 		line->v_x1 = line->x0;
 		line->v_y1 = line->y0;
+		dof = 8;
+		return ;
 	}
 	printf("before while loop: line.x1 is %f\n", line->v_x1);
 	printf("before while loop: line.y1 is %f\n", line->v_y1);
-	while (!is_wall(ray, line->v_x1, line->v_y1))
+	// while (!is_wall(ray, line->v_x1, line->v_y1))
+	// {
+	// 	printf("do you come here?");
+	// 	// if ((int)line->v_y1 / GRID_PIX < 0 || (int)line->v_y1 / GRID_PIX >= ray->data->height)
+	// 	// 	break ;
+	// 	line->v_y1 = (line->v_y1 + line->v_ya);
+	// 	line->v_x1 = (line->v_x1 + line->v_xa);
+	// }
+	while (dof < 8) 
 	{
-		printf("do you come here?");
-		if ((int)line->v_y1 <= 0 || (int)line->v_y1 >= GRID_PIX * ray->data->height)
-			break ;
-		line->v_y1 = (line->v_y1 + line->v_ya);
-		line->v_x1 = (line->v_x1 + line->v_xa);
+		if ((int)line->v_y1 / GRID_PIX > 0 && \
+		(int)line->v_y1 / GRID_PIX < ray->data->height && \
+		is_wall(ray, line->v_x1, line->v_y1))
+		{
+			dof = 8;
+			disV = cos(deg_to_rad(ray->ra)) * (line->v_x1 - line->x0) - sin(deg_to_rad(ray->ra)) * (line->v_y1 - line->y0);
+		}
+		else
+		{
+			line->v_y1 = (line->v_y1 + line->v_ya);
+			line->v_x1 = (line->v_x1 + line->v_xa);
+			dof += 1;
+		}
 	}
 	printf("line.x1 is %f\n", line->v_x1);
 	printf("line.y1 is %f\n", line->v_y1);
