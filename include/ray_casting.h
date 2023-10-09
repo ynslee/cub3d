@@ -87,6 +87,7 @@ typedef struct s_ray
 {
 	float			pa;
 	float			ra;
+	int				dof;
 	// float			rai;
 	// float			cotan;
 	float				ray_count;
@@ -138,8 +139,8 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 // void	cast_rays(t_ray *ray);
 
 // dda.c
-void	check_horizontal_gridline(t_ray *ray);
-void	check_vertical_gridline(t_ray *ray);
+void	check_horizontal_gridline(t_ray *ray, t_line *line);
+// void	check_vertical_gridline(t_ray *ray);
 
 // render.c
 // void	draw_background(t_cbd *cbd);
