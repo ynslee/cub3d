@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 14:44:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:45:58 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,7 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 	}
 	printf("line.x1 is %f\n", line->v_x1);
 	printf("line.y1 is %f\n", line->v_y1);
-	line->x0 = (int)line->x0;
 	line->x1 = (int)line->v_x1;
-	line->y0 = (int)line->y0;
 	line->y1 = (int)line->v_y1;
 	bresenham(ray, line, BLACK);
 }
