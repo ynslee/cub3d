@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 16:50:28 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:35:55 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	ft_abs(int a)
 void	init_line(t_line *line, t_ray *ray)
 {
 
-	line->x0 = (int)line->x0;
-	line->y0 = (int)line->y0;
-	line->x1 = (int)line->x1;
-	line->y1 = (int)line->y1;
+	// line->x0 = (int)line->x0;
+	// line->y0 = (int)line->y0;
+	// line->x1 = (int)line->x1;
+	// line->y1 = (int)line->y1;
 	// line->x1 = ray->pix_x_pos + ray->pdx;
 	// line->y1 = ray->pix_y_pos + ray->pdy;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
@@ -48,8 +48,8 @@ void	bresenham(t_ray *ray, t_line *line, int color)
 	init_line(line, ray);
 	// printf("line.x0 is %f\n", line->x0);
 	// printf("line.y0 is %f\n", line->y0);
-	// printf("line.x1 is %f\n", line->x1);
-	// printf("line.y1 is %f\n", line->y1);
+	printf("line.x1 is %f\n", line->x1);
+	printf("line.y1 is %f\n", line->y1);
 	// printf("line.error is %d\n", line->error);
 	// printf("line.error2 is %d\n", line->error2);
 	// printf("line.dx is %d\n", line->dx);

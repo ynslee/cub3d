@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 18:29:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:40:40 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	draw_player(cbd, ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	check_horizontal_gridline(ray);
-	// check_vertical_gridline(ray);
+	// check_horizontal_gridline(ray);
+	check_vertical_gridline(ray, ray->line);
 	// cast_rays(ray);
 	// draw_nose(ray);
 	// draw_background(cbd);
@@ -46,7 +46,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 
-void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
+void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 {
 	t_vector	vector;
 
@@ -59,6 +59,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
+	ray->line = (t_line *)line;
 	ray->distance = 0;
 	ray->wall_height = 0;
 	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
@@ -75,8 +76,9 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 void	init_render_utils(t_cbd *cbd, t_data *mv)
 {
 	t_ray	ray;
+	t_line	line;
 
-	init_ray_struct(&ray, mv, cbd);
+	init_ray_struct(&ray, mv, cbd, &line);
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
 		printf("Error connecting to mlx!\n");

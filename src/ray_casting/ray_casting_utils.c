@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 17:00:31 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:08:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	is_wall(t_ray *ray, float x, float y)
 	// 	return (1);
 	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
 		return (0);
-	if ((ray->data->map[(int)(y / GRID_PIX)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)(y / GRID_PIX)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX)] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX)] == '1'))
+	if ((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
 		return (1);
-	return (0);
+	return(0);
 }
 
 float	fix_angle(float a)
