@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 16:20:07 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:20:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,60 @@
 
 
 //we need to do something about when x1 and y1 goes to minus! :)
-// void	check_horizontal_gridline(t_ray *ray)
+void	check_horizontal_gridline(t_ray *ray, t_line *line)
+{
+	/* finding the first intersection cordinates */
+	// printf("data->width: %i\n", ray->data->width);
+	// printf("data->height: %i\n", ray->data->height);
+	printf("*****IN CHECK HORIZONTAL GRIDLINE*****\n");
+	printf("ra: %f\n", ray->ra);
+	printf("pa: %f\n", ray->pa);
+	line->x0 = ray->pix_x_pos;
+	line->y0 = ray->pix_y_pos;
+	// printf("line x0 value is %f\n", line->x0);
+	// printf("line y0 value is %f\n", line->y0);
+	line->x1 = 0;
+	line->y1 = 0;
+	if (sin(deg_to_rad(ray->ra)) > 0.001) // going upwards
+	{
+		line->y1 = (int)line->y0 / GRID_PIX * GRID_PIX - GRID_PIX;
+		line->x1 = line->x0 + ((line->y0 - line->y1) / tan(deg_to_rad(ray->ra)));
+		line->ya = -(GRID_PIX);
+		ray->dof = 0;
+	}
+	else if (sin(deg_to_rad(ray->ra)) < -0.001) // going downwards
+	{
+		line->y1 = (int)(line->y0) / GRID_PIX * GRID_PIX + GRID_PIX;
+		line->x1 = line->x0 + ((line->y0 - line->y1) / tan(deg_to_rad(ray->ra)));
+		line->ya = GRID_PIX;
+		ray->dof = 0;
+	}
+	else
+	{
+		//add  if ray is towards left
+		line->x1 = (ray->data->width * GRID_PIX);
+		line->y1 = line->x0;
+		// printf("line->x1 is %f\n", line->x1);
+		// printf("line->y1 is %f\n", line->y1);
+		ray->dof = 100000;
+		// return ;
+	}
+	// printf("x grid pos: %d\n", (int)(line->x1 / GRID_PIX));
+	// printf("y grid pos: %d\n", (int)(line->y1 / GRID_PIX));
+	while (!is_wall(ray, line->x1, line->y1) && ray->dof < 100000)
+	{
+		// printf("in is_wall while loop\n");
+		// line->xa = -line->ya / tan(deg_to_rad(ray->ra));
+
+		printf("xa: %f\n", line->xa);
+		printf("ya: %f\n", line->ya);
+		line->x1 = (line->x1 + line->xa); /// GRID_PIX;
+		line->y1 = (line->y1 + line->ya); /// GRID_PIX;make
+	}
+	bresenham(ray, line, BLACK);
+}
+
+// void	check_vertical_gridline(t_ray *ray)
 // {
 // 	/* finding the first intersection cordinates */
 // 	t_line	line;

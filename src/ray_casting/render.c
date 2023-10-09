@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 14:40:40 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:57:44 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@
 
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
+	t_line	line;
+
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
 	make_map(cbd, mv);
 	draw_player(cbd, ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	// check_horizontal_gridline(ray);
-	check_vertical_gridline(ray, ray->line);
+	check_horizontal_gridline(ray, &line);
+	// check_vertical_gridline(ray, &line);
 	// cast_rays(ray);
 	// draw_nose(ray);
 	// draw_background(cbd);
@@ -52,9 +54,10 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 
 	player_orientation_to_angle(data, ray);
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	printf("RA ray->ra: %f\n", ray->ra);
+	// printf("RA ray->ra: %f\n", ray->ra);
 	// ray->rai = fix_angle(FOV / WIN_SIZE_Y);
 	// printf("RAI ray->rai: %f\n", ray->rai);
+	ray->dof = 0;
 	ray->ray_count = -1;
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
