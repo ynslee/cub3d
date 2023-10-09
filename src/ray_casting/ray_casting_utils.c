@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 11:03:05 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:47:33 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ coordinate for wall ('1')
 */
 int	is_wall(t_ray *ray, float x, float y)
 {
-	printf("MOIKKA froom is wall\n");
+	// printf("MOIKKA froom is wall\n");
 	// if ((ray->data->map[(int)(y - 0.01)][(int)x] == '1') || \
 	// (ray->data->map[(int)(y + 0.01)][(int)x] == '1') || \
 	// (ray->data->map[(int)y][(int)(x - 0.01)] == '1') || \

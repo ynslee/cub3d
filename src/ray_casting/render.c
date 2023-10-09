@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 10:30:48 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/06 16:47:52 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd)
 
 	player_orientation_to_angle(data, ray);
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	printf("RA ray->ra: %f\n", ray->ra);
+	// printf("RA ray->ra: %f\n", ray->ra);
 	// ray->rai = fix_angle(FOV / WIN_SIZE_Y);
 	// printf("RAI ray->rai: %f\n", ray->rai);
 	ray->ray_count = -1;

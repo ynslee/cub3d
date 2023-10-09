@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 11:17:00 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:07:04 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_horizontal_gridline(t_ray *ray)
 	line.y1 = 0;
 	if (ray->ra >= 0 && ray->ra < 181) // going upwards
 	{
-		printf("line->y0: %f\n", line.y0 / GRID_PIX * GRID_PIX);
+		// printf("line->y0: %f\n", line.y0 / GRID_PIX * GRID_PIX);
 		line.y1 = (int)(line.y0 / GRID_PIX) * GRID_PIX - 1; //if y1 is part of the block above the grid line needs to add 1?
 		line.ya = -(GRID_PIX);
 	}
@@ -33,14 +33,14 @@ void	check_horizontal_gridline(t_ray *ray)
 		line.ya = GRID_PIX;
 	}
 	line.x1 = line.x0 + (line.y0 - line.y1) / tan(ray->ra);
+	line.xa = GRID_PIX / tan(ray->ra);
 	while (!is_wall(ray, line.x1, line.y1))
 	{
 		// if no wall at (x1, y1) increment to new (x1, y1) coordinates
-		line.xa = GRID_PIX / tan(ray->ra);
 		line.y1 = (line.y1 + line.ya) / GRID_PIX;
 		line.x1 = (line.x1 + line.xa) / GRID_PIX;
 	}
-	printf("MOIKKA\n");
+	// printf("MOIKKA\n");
 	bresenham(ray, &line, BLACK);
 	// if wall at (x1, y1), return to caller function
 }
