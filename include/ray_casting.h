@@ -57,6 +57,10 @@ typedef	struct s_line
 	int	sy;
 	int	error;
 	int	error2;
+	float	v_x1;
+	float	v_y1;
+	float	v_xa;
+	float	v_ya;
 	// float	dx;
 	// float	dy;
 	// float	sx;
@@ -88,6 +92,8 @@ typedef struct s_ray
 	float			pa;
 	float			ra;
 	int				dof;
+	float			xa;
+	float			ya;
 	// float			rai;
 	// float			cotan;
 	float				ray_count;
@@ -140,7 +146,7 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 // dda.c
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
-// void	check_vertical_gridline(t_ray *ray);
+void	check_vertical_gridline(t_ray *ray, t_line *line);
 
 // render.c
 // void	draw_background(t_cbd *cbd);

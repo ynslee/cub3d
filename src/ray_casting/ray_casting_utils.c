@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 14:29:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:33:44 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,25 @@ int	is_wall(t_ray *ray, float x, float y)
 	// printf("line y1 value is %f\n", line.y1);
 	// printf("x grid pos: %d\n", (int)(line.x1 / GRID_PIX));
 	// printf("y grid pos: %d\n", (int)(line.y1 / GRID_PIX));
-	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
-		return (0);
-	// else if (ray->line->x1 <= 0 || ray->line->x1 < ray->data->width || ray->line->y1 <= 0 || ray->line->y1 < ray->data->height)
-	// 	return (0);
-	else if ((int)y / GRID_PIX >= 0 && (int)x / GRID_PIX >= 0 && (int)x / GRID_PIX < ray->data->width \
-	&& (int)y / GRID_PIX < ray->data->height && \
-	((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
-	(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1')))
+	if ((int)x >= (ray->data->width * GRID_PIX) || (int)x < 0)
 	{
-		// printf("returning from is wall 1\n");
+		printf("in is wall first if returning 1\n");
 		return (1);
 	}
-	printf("returning from is wall 0\n");
+	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
+	{
+		printf("in is wall first if returning 1\n");
+		return (0);
+	}
+	if ((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
+	{
+
+		printf("in is wall first if returning 1\n");
+		return (1);
+	}
 	return(0);
 }
 
