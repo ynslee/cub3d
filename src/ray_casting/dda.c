@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/09 14:45:58 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:48:08 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@
 
 void	check_vertical_gridline(t_ray *ray, t_line *line)
 {
+	int		dof;
+	float	disV;
+
+	dof = 0;
+	disV = 100000;
 	line->x0 = ray->pix_x_pos;
 	line->y0 = ray->pix_y_pos;
 	line->v_x1 = 0;
