@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 11:31:09 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:50:28 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	init_line(t_line *line, t_ray *ray)
 void	bresenham(t_ray *ray, t_line *line, int color)
 {
 	init_line(line, ray);
-	printf("line.x0 is %f\n", line->x0);
-	printf("line.y0 is %f\n", line->y0);
-	printf("line.x1 is %f\n", line->x1);
-	printf("line.y1 is %f\n", line->y1);
-	printf("line.error is %d\n", line->error);
-	printf("line.error2 is %d\n", line->error2);
-	printf("line.dx is %d\n", line->dx);
-	printf("line.dy is %d\n", line->dy);
-	printf("line.sx is %d\n", line->sx);
-	printf("line.sy is %d\n", line->sy);
+	// printf("line.x0 is %f\n", line->x0);
+	// printf("line.y0 is %f\n", line->y0);
+	// printf("line.x1 is %f\n", line->x1);
+	// printf("line.y1 is %f\n", line->y1);
+	// printf("line.error is %d\n", line->error);
+	// printf("line.error2 is %d\n", line->error2);
+	// printf("line.dx is %d\n", line->dx);
+	// printf("line.dy is %d\n", line->dy);
+	// printf("line.sx is %d\n", line->sx);
+	// printf("line.sy is %d\n", line->sy);
 	while (42)
 	{
 		my_mlx_pixel_put(ray->cbd, (int)line->x0, (int)line->y0, color);
