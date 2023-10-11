@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 12:38:12 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:51:28 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	color_wall(t_ray *ray, int pos, int wall)
 
 void	draw_image(t_cbd *cbd, t_ray *ray)
 {
-	ray->wall_height = GRID_PIX * WIN_SIZE_Y / ray->distance;
+	ray->wall_height = WIN_SIZE_Y  * GRID_PIX / ray->distance ;
 	printf("wall height is %f\n", ray->wall_height);
 	color_wall(ray, ray->ray_count, ray->wall_height);
 	(void)cbd;
