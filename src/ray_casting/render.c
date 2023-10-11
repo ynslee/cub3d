@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:29:21 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 12:34:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
 		compare_draw_rays(ray, &line);
+		set_wall_direction(ray);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 	}

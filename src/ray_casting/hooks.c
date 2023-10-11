@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:33:07 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 12:06:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	angle_left_right(char *direction, t_ray *ray)
 		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
-	// render_image(ray->cbd, ray, ray->data);
 }
 
 static void	player_moves(int keysym, t_ray *ray)

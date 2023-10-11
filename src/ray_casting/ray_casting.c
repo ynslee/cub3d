@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 09:39:51 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 12:48:08 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,51 @@
 // SOUTH = GREY
 // NORTH = GREEN
 
-// static unsigned int	set_wall_direction(t_ray *ray)
-// {
-// 	if (ray->ra >= 0 && ray->ra < 45)
-// 		return (BLACK);
-// 	if (ray->ra >= 45 && ray->ra < 90)
-// 		return (GREY);
-// 	if (ray->ra >= 90 && ray->ra < 135)
-// 		return (GREY);
-// 	if (ray->ra >= 135 && ray->ra < 180)
-// 		return (WHITE);
-// 	if (ray->ra >= 180 && ray->ra < 215)
-// 		return (WHITE);
-// 	if (ray->ra >= 215 && ray->ra < 270)
-// 		return (GREEN);
-// 	if (ray->ra >= 270 && ray->ra < 315)
-// 		return (GREEN);
-// 	if (ray->ra >= 315 && ray->ra < 360)
-// 		return (BLACK);
-// 	return (0);
-// }
+static unsigned int	rays_looking_up(int shortest)
+{
+	if (shortest >= 0 && shortest < 90)
+	{
+		if (shortest == 118) // v
+			return (BLACK);
+		if (shortest == 104) // h
+			return (GREY);
+	}
+	if (shortest >= 90 && shortest < 180)
+	{
+		if (shortest == 118) // v
+			return (WHITE);
+		if (shortest == 104) // h
+			return (GREY);
+	}
+	return (0);
+}
+
+static unsigned int rays_loking_down(int shortest)
+{
+	if (shortest >= 180 && shortest < 270)
+	{
+		if (shortest == 118) // v
+			return (WHITE);
+		if (shortest == 104) // h
+			return (GREEN);
+	}
+	if (shortest >= 270 && shortest < 360)
+	{
+		if (shortest == 118) // v
+			return (BLACK);
+		if (shortest == 104) // h
+			return (GREEN);
+	}
+}
+unsigned int	set_wall_direction(t_ray *ray)
+{
+	// printf("shortest: %i\n", ray->shortest);
+	if (ray->ra >= 0 && ray->ra < 180)
+		return (rays_looking_up(ray->shortest));
+	if (ray->ra >= 180 && ray->ra < 360)
+		return (rays_looking_down(ray->shortest));
+	return (0);
+}
 
 /**
  * @brief

@@ -146,6 +146,7 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 //ray_casting.c
 // void	draw_ray(t_ray *ray);
 // void	cast_rays(t_ray *ray);
+unsigned int	set_wall_direction(t_ray *ray);
 
 // dda.c
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
