@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:37:28 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:38:12 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,33 @@
  * @param ray
  * @param ray_count (0 to 599)
  */
-// static void	color_wall(t_ray *ray, int pos, int wall)
-// {
-// 	float		wall_start;
-// 	float		wall_end;
-// 	float		i;
+static void	color_wall(t_ray *ray, int pos, int wall)
+{
+	float		wall_start;
+	float		wall_end;
+	float		i;
 
-// 	i = 0;
-// 	pos = WIN_SIZE_X - pos;
-// 	wall_start = WIN_SIZE_Y / 2 - (wall);
-// 	wall_end = WIN_SIZE_Y / 2 + (wall);
-// 	printf("wall start is %f\n", wall_start);
-// 	printf("wall end is %f\n", wall_end);
-// 	while (wall_start + i < wall_end)
-// 	{
-// 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, BLACK);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	pos = WIN_SIZE_X - pos;
+	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
+	wall_end = wall_start + wall;
+	printf("wall start is %f\n", wall_start);
+	printf("wall end is %f\n", wall_end);
+	while (wall_start + i < wall_end)
+	{
+		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, BLACK);
+		i++;
+	}
+}
 
-// void	draw_ray(t_ray *ray)
-// {
-// 	bresenham(ray, BLACK);
-// 	calculate_distance(ray);
-// 	color_wall(ray, ray->ray_count, ray->wall_height);
-// 	//render the walls
-// }
+void	draw_image(t_cbd *cbd, t_ray *ray)
+{
+	ray->wall_height = GRID_PIX * WIN_SIZE_Y / ray->distance;
+	printf("wall height is %f\n", ray->wall_height);
+	color_wall(ray, ray->ray_count, ray->wall_height);
+	(void)cbd;
+	//render the walls
+}
 
 // void	cast_rays(t_ray *ray)
 // {
