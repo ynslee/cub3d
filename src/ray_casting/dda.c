@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:05:36 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:19:39 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 		line->v_y1 = line->y0;
 		dof = 8;
 	}
-	while (dof < 8) 
+	while (dof < 8)
 	{
 		if ((int)line->v_y1 / GRID_PIX >= 0 && \
 		(int)line->v_y1 / GRID_PIX < ray->data->height && \
@@ -98,16 +98,16 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 	}
 }
 
-void	calculate_rays(t_ray *ray, t_line *line)
+void	compare_draw_rays(t_ray *ray, t_line *line)
 {
 	float	h_length;
 	float	v_length;
 
 	h_length = sqrt(pow(line->x0 - line->x1, 2) + pow(line->y0 - line->y1, 2));
 	v_length = sqrt(pow(line->x0 - line->v_x1, 2) + pow(line->y0 - line->v_y1, 2));
-	printf("h_length is %f\n", h_length);
-	printf("v_length is %f\n", v_length);
-	printf("cos is %f\n", cos(deg_to_rad(ray->ra - ray->pa)));
+	// printf("h_length is %f\n", h_length);
+	// printf("v_length is %f\n", v_length);
+	// printf("cos is %f\n", cos(deg_to_rad(ray->ra - ray->pa)));
 	if (h_length != 0 && h_length < v_length) //this is added to remove fisheye distortion
 	{
 		ray->shortest = 'h';
@@ -122,6 +122,6 @@ void	calculate_rays(t_ray *ray, t_line *line)
 		line->x1 = (int)line->v_x1;
 		line->y1 = (int)line->v_y1;
 	}
-	printf("ray->distance is %f\n", ray->distance);
+	// printf("ray->distance is %f\n", ray->distance);
 	bresenham(ray, line, BLACK);
 }

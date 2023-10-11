@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_drawing_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 09:50:29 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:26:47 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	ft_abs(int a)
 
 void	init_line(t_line *line, t_ray *ray)
 {
-
+	(void)ray;
 	line->x0 = (int)line->x0;
 	line->y0 = (int)line->y0;
 	// line->x1 = (int)line->x1;
 	// line->y1 = (int)line->y1;
 	// line->x1 = ray->pix_x_pos + ray->pdx;
 	// line->y1 = ray->pix_y_pos + ray->pdy;
-	ray->ra = fix_angle(ray->pa + FOV / 2);
+	// ray->ra = fix_angle(ray->pa + FOV / 2);
 	line->dx = ft_abs(line->x1 - line->x0);
 	if (line->x1 > line->x0)
 		line->sx = 1;
