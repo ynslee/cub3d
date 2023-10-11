@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/06 09:39:51 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 10:37:28 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,3 +114,32 @@
 // 		}
 // 	}
 // }
+
+/**
+ * @brief calculate and check the distance between horizontal and vertical length.
+ * cosine function is to remove the fish-eye distortion.
+ */
+void	compare_draw_rays(t_ray *ray, t_line *line)
+{
+	float	h_length;
+	float	v_length;
+
+	h_length = sqrt(pow(line->x0 - line->x1, 2) + pow(line->y0 - line->y1, 2));
+	v_length = sqrt(pow(line->x0 - line->v_x1, 2) + \
+	pow(line->y0 - line->v_y1, 2));
+	if (h_length != 0 && h_length < v_length)
+	{
+		ray->shortest = 'h';
+		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
+		line->x1 = (int)line->x1;
+		line->y1 = (int)line->y1;
+	}
+	else if (v_length != 0)
+	{
+		ray->shortest = 'v';
+		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
+		line->x1 = (int)line->v_x1;
+		line->y1 = (int)line->v_y1;
+	}
+	bresenham(ray, line, BLACK);
+}

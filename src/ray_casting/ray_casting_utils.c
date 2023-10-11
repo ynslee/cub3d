@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 09:56:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:09:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,8 @@ coordinate for wall ('1')
 
 int	is_wall(t_ray *ray, float x, float y)
 {
-	// printf("line x1 value is %f\n", line.x1);
-	// printf("line y1 value is %f\n", line.y1);
-	// printf("x grid pos: %d\n", (int)(line.x1 / GRID_PIX));
-	// printf("y grid pos: %d\n", (int)(line.y1 / GRID_PIX));
-	// if ((int)x >= (ray->data->width * GRID_PIX) || (int)x < 0)
-	// {
-	// 	printf("in is wall first if returning 1\n");
-	// 	return (1);
-	// }
-	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
+	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && \
+	((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
 	{
 		printf("in is wall first if returning 0 \n");
 		return (0);
@@ -39,11 +31,9 @@ int	is_wall(t_ray *ray, float x, float y)
 		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
 		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
 	{
-		printf("in is wall first if returning 1\n");
 		return (1);
 	}
-	printf("came to wall check and just returning cuz didn't find the wall\n");
-	return(0);
+	return (0);
 }
 
 float	fix_angle(float a)

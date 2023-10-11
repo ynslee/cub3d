@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:02:44 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:10:58 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	ray->ra = fix_angle(ray->pa - FOV / 2);
 	check_horizontal_gridline(ray, &line);
 	check_vertical_gridline(ray, &line);
-	calculate_rays(ray, &line);
+	compare_draw_rays(ray, &line);
 	// cast_rays(ray);
 	// draw_nose(ray);
 	// draw_background(cbd);
