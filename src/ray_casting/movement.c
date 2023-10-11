@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/11 10:37:14 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 12:28:23 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,12 @@ int	movable(float x, float y, t_ray *ray)
 	current.y = ray->pix_y_pos / GRID_PIX;
 	next.x = x / GRID_PIX;
 	next.y = y / GRID_PIX;
-	// printf("current.x is %d(%f)\n", (int)current.x, current.x);
-	// printf("current.y is %d(%f)\n", (int)current.y, current.y);
-	// printf("next.x is %d(%f)\n", (int)next.x, next.x);
-	// printf("next.y is %d(%f)\n", (int)next.y, next.y);
 	if (ray->data->map[(int)next.y][(int)next.x] && \
 	(ray->data->map[(int)(next.y + 0.02)][(int)next.x] == '1' || \
 	ray->data->map[(int)(next.y - 0.02)][(int)next.x] == '1' || \
 	ray->data->map[(int)next.y][(int)(next.x + 0.02)] == '1' || \
 	ray->data->map[(int)next.y][(int)(next.x - 0.02)] == '1'))
 		return (0);
-	// if (ray->data->map[(int)next.y][(int)next.x] && \
-	// ray->data->map[(int)next.y][(int)next.x] == '1' )
-	// 	return (0);
 	if (((int)current.y == (int)next.y) && (int)current.x == (int)next.x)
 		return (1);
 	else

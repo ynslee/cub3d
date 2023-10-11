@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 12:51:28 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:02:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,52 @@
 // SOUTH = GREY
 // NORTH = GREEN
 
-// static unsigned int	set_wall_direction(t_ray *ray)
-// {
-// 	if (ray->ra >= 0 && ray->ra < 45)
-// 		return (BLACK);
-// 	if (ray->ra >= 45 && ray->ra < 90)
-// 		return (GREY);
-// 	if (ray->ra >= 90 && ray->ra < 135)
-// 		return (GREY);
-// 	if (ray->ra >= 135 && ray->ra < 180)
-// 		return (WHITE);
-// 	if (ray->ra >= 180 && ray->ra < 215)
-// 		return (WHITE);
-// 	if (ray->ra >= 215 && ray->ra < 270)
-// 		return (GREEN);
-// 	if (ray->ra >= 270 && ray->ra < 315)
-// 		return (GREEN);
-// 	if (ray->ra >= 315 && ray->ra < 360)
-// 		return (BLACK);
-// 	return (0);
-// }
+static unsigned int	rays_looking_up(t_ray *ray)
+{
+	if (ray->ra >= 0 && ray->ra < 90)
+	{
+		if (ray->shortest == 118) // v
+			return (BLACK);
+		if (ray->shortest == 104) // h
+			return (GREY);
+	}
+	else if (ray->ra >= 90 && ray->ra < 180)
+	{
+		if (ray->shortest == 118) // v
+			return (WHITE);
+		if (ray->shortest == 104) // h
+			return (GREY);
+	}
+	return (0);
+}
+
+static unsigned int rays_looking_down(t_ray *ray)
+{
+	if (ray->ra >= 180 && ray->ra < 270)
+	{
+		if (ray->shortest == 118) // v
+			return (WHITE);
+		if (ray->shortest == 104) // h
+			return (GREEN);
+	}
+	else if (ray->ra >= 270 && ray->ra < 360)
+	{
+		if (ray->shortest == 118) // v
+			return (BLACK);
+		if (ray->shortest == 104) // h
+			return (GREEN);
+	}
+	return (0);
+}
+unsigned int	set_wall_direction(t_ray *ray)
+{
+	// printf("shortest: %i\n", ray->shortest);
+	if (ray->ra >= 0 && ray->ra < 180)
+		return (rays_looking_up(ray));
+	else if (ray->ra >= 180 && ray->ra < 360)
+		return (rays_looking_down(ray));
+	return (0);
+}
 
 /**
  * @brief
@@ -69,7 +95,7 @@ static void	color_wall(t_ray *ray, int pos, int wall)
 	printf("wall end is %f\n", wall_end);
 	while (wall_start + i < wall_end)
 	{
-		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, BLACK);
+		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, set_wall_direction(ray));
 		i++;
 	}
 }
