@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/04 12:22:48 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/11 10:39:50 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
+
+int	is_wall(t_ray *ray, float x, float y)
+{
+	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
+		return (0);
+	if ((ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
+		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
+		return (1);
+	return(0);
+}
 
 float	fix_angle(float a)
 {
@@ -28,7 +41,6 @@ float	deg_to_rad(float degree)
 	radians = degree * (M_PI / 180.0);
 	return (radians);
 }
-
 
 void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 {

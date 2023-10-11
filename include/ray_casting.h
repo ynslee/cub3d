@@ -45,16 +45,30 @@ typedef struct s_vector
 */
 typedef	struct s_line
 {
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
+	float	x0;
+	float	y0;
+	float	x1;
+	float	y1;
+	float	xa;
+	float	ya;
 	int	dx;
 	int	dy;
 	int	sx;
 	int	sy;
 	int	error;
 	int	error2;
+	float	v_x1;
+	float	v_y1;
+	float	v_xa;
+	float	v_ya;
+	float	rx;
+	float	ry;
+	// float	dx;
+	// float	dy;
+	// float	sx;
+	// float	sy;
+	// float	error;
+	// float	error2;
 }	t_line;
 
 /**
@@ -79,6 +93,9 @@ typedef struct s_ray
 {
 	float			pa;
 	float			ra;
+	int				dof;
+	float			xa;
+	float			ya;
 	// float			rai;
 	// float			cotan;
 	float				ray_count;
@@ -94,6 +111,9 @@ typedef struct s_ray
 	float			pdy;
 	float			r_end_x;
 	float			r_end_y;
+	char			shortest;
+	float			distance;
+	float			wall_height;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
@@ -108,7 +128,8 @@ typedef struct s_ray
 void	set_hooks(t_cbd *cbd, t_ray *ray);
 
 // line_drawing_utils.c
-void	bresenham(t_ray *ray);
+void	init_line(t_line *line, t_ray *ray);
+void	bresenham(t_ray *ray, t_line *line, int color);
 void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
@@ -117,12 +138,19 @@ int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
 // ray_casting_utils.c
+int		is_wall(t_ray *ray, float x, float y);
 float	fix_angle(float a);
 float	deg_to_rad(float a);
 void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 //ray_casting.c
-void	cast_rays(t_ray *ray);
+// void	draw_ray(t_ray *ray);
+// void	cast_rays(t_ray *ray);
+
+// dda.c
+void	check_horizontal_gridline(t_ray *ray, t_line *line);
+void	check_vertical_gridline(t_ray *ray, t_line *line);
+void	compare_draw_rays(t_ray *ray, t_line *line);
 
 // render.c
 // void	draw_background(t_cbd *cbd);
