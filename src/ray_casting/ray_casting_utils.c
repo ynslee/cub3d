@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/10 15:15:31 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 07:51:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	is_wall(t_ray *ray, float x, float y)
 		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
 		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
 	{
-
 		printf("in is wall first if returning 1\n");
 		return (1);
 	}
@@ -61,7 +60,6 @@ float	deg_to_rad(float degree)
 	radians = degree * (M_PI / 180.0);
 	return (radians);
 }
-
 
 void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 {
