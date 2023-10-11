@@ -161,6 +161,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //making_map.c
 void	make_map(t_cbd *cbd, t_data *mv);
+void	draw_grid(t_cbd *cbd, t_data *mv);
 void	draw_player(t_cbd *cbd, t_ray *ray);
 
 //movement.c

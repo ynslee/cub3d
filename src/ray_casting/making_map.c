@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 10:23:44 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:33:40 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	make_map(t_cbd *cbd, t_data *mv)
 		}
 		i++;
 	}
-	draw_grid(cbd, mv);
+	// draw_grid(cbd, mv);
 }
