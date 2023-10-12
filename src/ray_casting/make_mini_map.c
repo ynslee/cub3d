@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 12:35:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:55:13 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 	int	y = 0;
 
 	(void)cbd;
-	while (x < 3)
+	while (x < 5)
 	{
 		y = 0;
-		while (y < 3)
+		while (y < 5)
 		{
-			my_mlx_pixel_put(cbd, x + ray->pix_x_pos, y + ray->pix_y_pos, 0x00000000);
+			my_mlx_pixel_put(cbd, x + (ray->pix_x_pos - 2), y + (ray->pix_y_pos - 2), PINK);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	draw_grid(t_cbd *cbd, t_data *mv)
+static void	draw_grid(t_cbd *cbd, t_data *mv)
 {
 	int	x;
 	int	y;
@@ -56,7 +56,7 @@ void	draw_grid(t_cbd *cbd, t_data *mv)
 	}
 }
 
-void	draw_map(t_cbd *cbd, int x, int y, int color)
+static void	draw_map(t_cbd *cbd, int x, int y, int color)
 {
 	int	i;
 	int	j;

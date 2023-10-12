@@ -20,6 +20,17 @@
 # define GREY 0x808080
 # define LIGHTBLUE 0xADD8E6
 # define BLUE 0x4169e1
+# define RED 0xFF0000
+# define YELLOW 0xFFFF00
+# define ORANGE 0xFFA500
+# define PINK 0xFFC0CB
+# define PURPLE 0x800080
+# define CYAN 0x00FFFF
+# define LAVENDER 0xE6E6FA
+# define BROWN 0xA52A2A
+# define MAGENTA 0xFF00FF
+# define TEAL 0x008080
+
 
 # include "cub3d.h"
 
@@ -160,8 +171,8 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
 void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //make_mini_map.c
-void	make_map(t_cbd *cbd, t_data *mv);
 void	draw_player(t_cbd *cbd, t_ray *ray);
+void	make_map(t_cbd *cbd, t_data *mv);
 
 //movement.c
 void	move_frontback(t_ray *ray, char *direction);
