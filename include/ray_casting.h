@@ -98,9 +98,7 @@ typedef struct s_ray
 	int				dof;
 	float			xa;
 	float			ya;
-	// float			rai;
-	// float			cotan;
-	float				ray_count;
+	float			ray_count;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
@@ -116,6 +114,8 @@ typedef struct s_ray
 	char			shortest;
 	float			distance;
 	float			wall_height;
+	float			tex_x;
+	float			tex_y;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
