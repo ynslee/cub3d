@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 12:43:20 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:48:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static unsigned int	rays_looking_up(t_ray *ray)
 	if ((int)ray->ra >= 0 && (int)ray->ra < 90)
 	{
 		if (ray->shortest == 'v') // v
-			return (BLACK);
+			return (BLUE);
 		if (ray->shortest == 'h') // h
 			return (GREY);
 	}
@@ -45,7 +45,7 @@ static unsigned int	rays_looking_up(t_ray *ray)
 		if (ray->shortest == 'h') // h
 			return (GREY);
 	}
-	return (0);
+	return (-1);
 }
 
 static unsigned int rays_looking_down(t_ray *ray)
@@ -60,11 +60,11 @@ static unsigned int rays_looking_down(t_ray *ray)
 	else if ((int)ray->ra >= 270 && (int)ray->ra < 360)
 	{
 		if (ray->shortest == 'v') // v
-			return (BLACK);
+			return (BLUE);
 		if (ray->shortest == 'h') // h
 			return (GREEN);
 	}
-	return (0);
+	return (-1);
 }
 unsigned int	set_wall_direction(t_ray *ray)
 {
@@ -73,14 +73,21 @@ unsigned int	set_wall_direction(t_ray *ray)
 		return (rays_looking_up(ray));
 	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
 		return (rays_looking_down(ray));
-	return (0);
+	return (-1);
 }
 
+/*
+PR_PLANE is Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
+y_count is step size of traversing the image in y axis(top to bottom)*/
 void	draw_image(t_cbd *cbd, t_ray *ray)
 {
-	ray->wall_height = WIN_SIZE_Y * 10 / ray->distance ;
+	float	y_count;
+
+	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
+	y_count = TEX_PIX / ray->wall_height;
+	if (ray->shortest == 'v')
 	// printf("wall height is %f\n", ray->wall_height);
-	color_wall(ray, ray->ray_count, ray->wall_height);
+	color_wall(ray, ray->ray_count, (int)ray->wall_height);
 	(void)cbd;
 	//render the walls
 }

@@ -9,6 +9,7 @@
 # define ANGLE 5
 # define SPEED 5
 # define PLAYER_S 5
+# define PR_PLANE 1663
 // # define NOSE_LEN 1
 
 # define BLACK 0x000000
