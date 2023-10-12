@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 15:07:05 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:36:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
 	t_line	line;
+	(void)line;
 
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
-	make_map(cbd, mv);
-	draw_player(cbd, ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
 	while (ray->ray_count < WIN_SIZE_X)
@@ -48,7 +47,9 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 	}
-	draw_grid(cbd, mv);
+	ray->ra = fix_angle(ray->pa - FOV / 2);
+	make_map(cbd, mv, ray);
+	cast_rays(ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 

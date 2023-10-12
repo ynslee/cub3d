@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 12:32:16 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:36:36 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,38 +113,35 @@ void	draw_image(t_cbd *cbd, t_ray *ray)
 	//render the walls
 }
 
-// void	cast_rays(t_ray *ray)
-// {
-// 	float	x;
-// 	float	y;
+void	cast_rays(t_ray *ray)
+{
+	float	x;
+	float	y;
 
-// 	x = ray->pix_x_pos;
-// 	y = ray->pix_y_pos;
-// 	ray->ray_count = 0;
-// 	while (ray->ray_count < WIN_SIZE_X)
-// 	{
-// 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
-// 		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
-// 		x += ray->pdx;
-// 		y += ray->pdy;
-// 		if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' \
-// 		|| is_wall(ray, x, y))
-// 		{
-// 			ray->r_end_x = floor(x);
-// 			ray->r_end_y = floor(y);
-// 			draw_ray(ray);
-// 			// bresenham(ray);
-// 			ray->ray_count += 1;
-// 			ray->ray_count += 1;
-// 			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
-// 			// printf("fov / win_size = %f\n", (float)FOV / WIN_SIZE_X);
-// 			// printf("fixed RA: %f!\n", ray->ra);
-// 			x = ray->pix_x_pos;
-// 			y = ray->pix_y_pos;
-// 			// break ;
-// 		}
-// 	}
-// }
+	x = ray->pix_x_pos;
+	y = ray->pix_y_pos;
+	ray->ray_count = 0;
+	// printf("COMING TO CAST RAYS\n");
+	while (ray->ray_count < WIN_SIZE_X)
+	{
+		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
+		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
+		x += ray->pdx;
+		y += ray->pdy;
+		if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' \
+		|| is_wall(ray, x, y))
+		{
+			ray->r_end_x = floor(x);
+			ray->r_end_y = floor(y);
+			bresenham(ray, ray->line, BLACK);
+			// printf("found wall\n");
+			ray->ray_count += 1;
+			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
+			x = ray->pix_x_pos;
+			y = ray->pix_y_pos;
+		}
+	}
+}
 
 /**
  * @brief calculate and check the distance between horizontal and vertical length.
@@ -177,6 +174,5 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 		line->x1 = (int)line->v_x1;
 		line->y1 = (int)line->v_y1;
 	}
-	// printf("ray->shortest is %c\n", ray->shortest);
-	bresenham(ray, line, GREEN);
+	// bresenham(ray, line, BLACK);
 }
