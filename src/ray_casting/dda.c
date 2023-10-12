@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:39:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:57:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ static void	hray_hits_wall(t_ray *ray, t_line *line)
 	while (ray->dof < 10000)
 	{
 		if ((int)line->x1 / GRID_PIX >= 0 && \
+		(int)line->y1 / GRID_PIX >= 0 && \
 		(int)line->x1 / GRID_PIX < ray->data->width && \
+		(int)line->y1 / GRID_PIX < ray->data->height && \
 		is_wall(ray, line->x1, line->y1))
 			ray->dof = 10000;
 		else
@@ -51,7 +53,9 @@ static void	vray_hits_wall(t_ray *ray, t_line *line)
 	while (ray->dof < 10000)
 	{
 		if ((int)line->v_y1 / GRID_PIX >= 0 && \
+		(int)line->v_x1 / GRID_PIX >= 0 && \
 		(int)line->v_y1 / GRID_PIX < ray->data->height && \
+		(int)line->v_x1 / GRID_PIX < ray->data->width && \
 		is_wall(ray, line->v_x1, line->v_y1))
 			ray->dof = 10000;
 		else
@@ -85,7 +89,10 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
 		ray->dof = 10000;
 	}
 	line->xa = -line->ya * (1.0 / tan(deg_to_rad(ray->ra)));
+	// printf("h before wall hitting check is : x1 is %f, y1 is %f\n", line->x1, line->y1);
+	// printf("xa is %f, ya is %f\n", line->xa, line->ya);
 	hray_hits_wall(ray, line);
+	// printf("h : x1 is %f, y1 is %f\n", line->x1, line->y1);
 }
 
 void	check_vertical_gridline(t_ray *ray, t_line *line)
@@ -110,5 +117,8 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 		ray->dof = 10000;
 	}
 	line->v_ya = -line->v_xa * tan(deg_to_rad(ray->ra));
+	// printf("v before wall hitting check is : x1 is %f, y1 is %f\n", line->v_x1, line->v_y1);
+	// printf("xa is %f, ya is %f\n", line->v_xa, line->v_ya);
 	vray_hits_wall(ray, line);
+	// printf("v : x1 is %f, y1 is %f\n", line->v_x1, line->v_y1);
 }

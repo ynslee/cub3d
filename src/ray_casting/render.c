@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 09:53:36 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/12 10:38:09 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 	}
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	make_map(cbd, mv, ray);
+	make_map(cbd, mv);
 	cast_rays(ray);
+	draw_player(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 

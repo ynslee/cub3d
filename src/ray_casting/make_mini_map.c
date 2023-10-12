@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/11 14:21:25 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/12 10:28:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 	int	y = 0;
 
 	(void)cbd;
-	while (x < 3)
+	while (x < 5)
 	{
 		y = 0;
-		while (y < 3)
+		while (y < 5)
 		{
-			my_mlx_pixel_put(cbd, x + ray->pix_x_pos, y + ray->pix_y_pos, 0x00000000);
+			my_mlx_pixel_put(cbd, x + (ray->pix_x_pos - 2), y + (ray->pix_y_pos - 2), PINK);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	draw_grid(t_cbd *cbd, t_data *mv)
+static void	draw_grid(t_cbd *cbd, t_data *mv)
 {
 	int	x;
 	int	y;
@@ -56,24 +56,26 @@ void	draw_grid(t_cbd *cbd, t_data *mv)
 	}
 }
 
-void	draw_map(t_cbd *cbd, int x, int y, int color)
+static void	draw_map(t_cbd *cbd, int x, int y, int color)
 {
 	int	i;
 	int	j;
 
 	i = -1;
+	// printf("in draw_map x: %i\ty: %i\n", x, y);
 	while (++i < GRID_PIX)
 	{
 		j = -1;
 		while (++j < GRID_PIX)
 		{
+			// printf("x:%i y:%i\n", i, j);
 			my_mlx_pixel_put(cbd, x + i, y + j, color);
 		}
 	}
 
 }
 
-void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray)
+void	make_map(t_cbd *cbd, t_data *mv)
 {
 	int	i;
 	int	j;
@@ -95,6 +97,4 @@ void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray)
 		i++;
 	}
 	draw_grid(cbd, mv);
-	draw_player(cbd, ray);
-	// cast_rays(ray);
 }

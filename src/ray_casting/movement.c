@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/11 12:28:23 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/12 09:50:43 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	side_wall_check(t_ray *ray, t_vector *next, float degree)
  * @param y next y position
  * @return returns 1 if movable, if not, returns 0
  */
-int	movable(float x, float y, t_ray *ray)
+int	 movable(float x, float y, t_ray *ray)
 {
 	t_vector	next;
 	t_vector	current;
@@ -125,7 +125,12 @@ void	move_frontback(t_ray *ray, char *direction)
 {
 	float	x;
 	float	y;
+	// int		xo;
 
+	// if (ray->pdx < 0)
+	// 	xo -= 20;
+	// else
+	// 	xo = 20;
 	if (ft_strncmp_all(direction, "up"))
 	{
 		x = ray->pix_x_pos - ray->pdx / PLAYER_S;

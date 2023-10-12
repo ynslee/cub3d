@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 09:42:51 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/12 12:29:24 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,47 +30,47 @@
 
 static unsigned int	rays_looking_up(t_ray *ray)
 {
-	if (ray->ra >= 0 && ray->ra < 90)
+	if ((int)ray->ra >= 0 && (int)ray->ra < 90)
 	{
-		if (ray->shortest == 118) // v
-			return (BLACK);
-		if (ray->shortest == 104) // h
-			return (GREY);
+		if (ray->shortest == 'v') // v
+			return (PINK);
+		if (ray->shortest == 'h') // h
+			return (YELLOW);
 	}
-	else if (ray->ra >= 90 && ray->ra < 180)
+	else if ((int)ray->ra >= 90 && (int)ray->ra < 180)
 	{
-		if (ray->shortest == 118) // v
+		if (ray->shortest == 'v') // v
 			return (WHITE);
-		if (ray->shortest == 104) // h
-			return (GREY);
+		if (ray->shortest == 'h') // h
+			return (YELLOW);
 	}
 	return (0);
 }
 
 static unsigned int rays_looking_down(t_ray *ray)
 {
-	if (ray->ra >= 180 && ray->ra < 270)
+	if ((int)ray->ra >= 180 && (int)ray->ra < 270)
 	{
-		if (ray->shortest == 118) // v
+		if (ray->shortest == 'v') // v
 			return (WHITE);
-		if (ray->shortest == 104) // h
-			return (GREEN);
+		if (ray->shortest == 'h') // h
+			return (ORANGE);
 	}
-	else if (ray->ra >= 270 && ray->ra < 360)
+	else if ((int)ray->ra >= 270 && (int)ray->ra < 360)
 	{
-		if (ray->shortest == 118) // v
-			return (BLACK);
-		if (ray->shortest == 104) // h
-			return (GREEN);
+		if (ray->shortest == 'v') // v
+			return (PINK);
+		if (ray->shortest == 'h') // h
+			return (ORANGE);
 	}
 	return (0);
 }
 unsigned int	set_wall_direction(t_ray *ray)
 {
 	// printf("shortest: %i\n", ray->shortest);
-	if (ray->ra >= 0 && ray->ra < 180)
+	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
 		return (rays_looking_up(ray));
-	else if (ray->ra >= 180 && ray->ra < 360)
+	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
 		return (rays_looking_down(ray));
 	return (0);
 }
@@ -93,6 +93,10 @@ static void	color_wall(t_ray *ray, int pos, int wall)
 	wall_end = wall_start + wall;
 	// printf("wall start is %f\n", wall_start);
 	// printf("wall end is %f\n", wall_end);
+	if (wall_start < 0)
+		wall_start = 0;
+	if (wall_end > WIN_SIZE_Y)
+		wall_end = WIN_SIZE_Y;
 	while (wall_start + i < wall_end)
 	{
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, set_wall_direction(ray));
@@ -102,7 +106,7 @@ static void	color_wall(t_ray *ray, int pos, int wall)
 
 void	draw_image(t_cbd *cbd, t_ray *ray)
 {
-	ray->wall_height = WIN_SIZE_Y  * GRID_PIX / ray->distance ;
+	ray->wall_height = WIN_SIZE_Y * 10 / ray->distance ;
 	// printf("wall height is %f\n", ray->wall_height);
 	color_wall(ray, ray->ray_count, ray->wall_height);
 	(void)cbd;
@@ -148,9 +152,14 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 	float	h_length;
 	float	v_length;
 
-	h_length = sqrt(pow(line->x0 - line->x1, 2) + pow(line->y0 - line->y1, 2));
-	v_length = sqrt(pow(line->x0 - line->v_x1, 2) + \
-	pow(line->y0 - line->v_y1, 2));
+	h_length = sqrt(pow((line->x0 - line->x1), 2) + pow((line->y0 - line->y1), 2));
+	v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
+	pow((line->y0 - line->v_y1), 2));
+	// printf("h calculation is %f and %f\n", line->x0 - line->x1, line->y0 - line->y1);
+	// printf("v calculation is %f and %f\n", line->x0 - line->v_x1, line->y0 - line->v_y1);
+	// printf("ray angle is %f\n", ray->ra);
+	// printf("h_length is %f\n", h_length);
+	// printf("v_length is %f\n", v_length);
 	if (h_length != 0 && h_length < v_length)
 	{
 		ray->shortest = 'h';
@@ -158,7 +167,7 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 		line->x1 = (int)line->x1;
 		line->y1 = (int)line->y1;
 	}
-	else if (v_length != 0)
+	else if (v_length != 0 && v_length < h_length)
 	{
 		ray->shortest = 'v';
 		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
