@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   making_map.c                                       :+:      :+:    :+:   */
+/*   make_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 10:23:44 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:21:25 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,18 @@ void	draw_map(t_cbd *cbd, int x, int y, int color)
 	int	j;
 
 	i = -1;
-	// printf("in draw_map x: %i\ty: %i\n", x, y);
 	while (++i < GRID_PIX)
 	{
 		j = -1;
 		while (++j < GRID_PIX)
 		{
-			// printf("x:%i y:%i\n", i, j);
 			my_mlx_pixel_put(cbd, x + i, y + j, color);
 		}
 	}
 
 }
 
-void	make_map(t_cbd *cbd, t_data *mv)
+void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray)
 {
 	int	i;
 	int	j;
@@ -97,4 +95,6 @@ void	make_map(t_cbd *cbd, t_data *mv)
 		i++;
 	}
 	draw_grid(cbd, mv);
+	draw_player(cbd, ray);
+	// cast_rays(ray);
 }
