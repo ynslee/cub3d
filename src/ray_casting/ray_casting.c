@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 07:11:05 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:32:16 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@
 
 static unsigned int	rays_looking_up(t_ray *ray)
 {
-	if (ray->ra >= 0 && ray->ra < 90)
+	if ((int)ray->ra >= 0 && (int)ray->ra < 90)
 	{
 		if (ray->shortest == 'v') // v
 			return (BLACK);
 		if (ray->shortest == 'h') // h
 			return (GREY);
 	}
-	else if (ray->ra >= 90 && ray->ra < 180)
+	else if ((int)ray->ra >= 90 && (int)ray->ra < 180)
 	{
 		if (ray->shortest == 'v') // v
 			return (WHITE);
@@ -49,14 +49,14 @@ static unsigned int	rays_looking_up(t_ray *ray)
 
 static unsigned int rays_looking_down(t_ray *ray)
 {
-	if (ray->ra >= 180 && ray->ra < 270)
+	if ((int)ray->ra >= 180 && (int)ray->ra < 270)
 	{
 		if (ray->shortest == 'v') // v
 			return (WHITE);
 		if (ray->shortest == 'h') // h
 			return (GREEN);
 	}
-	else if (ray->ra >= 270 && ray->ra < 360)
+	else if ((int)ray->ra >= 270 && (int)ray->ra < 360)
 	{
 		if (ray->shortest == 'v') // v
 			return (BLACK);
@@ -68,9 +68,9 @@ static unsigned int rays_looking_down(t_ray *ray)
 unsigned int	set_wall_direction(t_ray *ray)
 {
 	// printf("shortest: %i\n", ray->shortest);
-	if (ray->ra >= 0 && ray->ra < 180)
+	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
 		return (rays_looking_up(ray));
-	else if (ray->ra >= 180 && ray->ra < 360)
+	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
 		return (rays_looking_down(ray));
 	return (0);
 }
