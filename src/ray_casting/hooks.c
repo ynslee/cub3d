@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 14:20:47 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:51:38 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	angle_left_right(char *direction, t_ray *ray)
 {
 	if (!ft_strncmp_all(direction, "left"))
 	{
-		ray->pa = fix_angle(ray->pa + PLAYER_S);
+		ray->pa = fix_angle(ray->pa + 5);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
 	else if (!ft_strncmp_all(direction, "right"))
 	{
-		ray->pa = fix_angle(ray->pa - PLAYER_S);
+		ray->pa = fix_angle(ray->pa - 5);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}

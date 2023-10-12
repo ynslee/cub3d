@@ -4,6 +4,7 @@
 
 # define FOV 60
 # define GRID_PIX 24
+# define TEX_PIX 64
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
