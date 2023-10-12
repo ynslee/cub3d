@@ -147,8 +147,6 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 //ray_casting.c
 // void	draw_ray(t_ray *ray);
 void	cast_rays(t_ray *ray);
-unsigned int	set_wall_direction(t_ray *ray);
-void	draw_image(t_cbd *cbd, t_ray *ray);
 
 // dda.c
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
@@ -161,7 +159,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
 void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //make_mini_map.c
-void	make_map(t_cbd *cbd, t_data *mv, t_ray *ray);
+void	make_map(t_cbd *cbd, t_data *mv);
 void	draw_player(t_cbd *cbd, t_ray *ray);
 
 //movement.c
@@ -171,5 +169,10 @@ void	move_sideway(t_ray *ray, char *direction);
 //draw_background.c
 void	draw_background(t_ray *ray);
 // void	init_xpm_images(t_data *data);
+
+//draw_utils.c
+unsigned int	set_wall_direction(t_ray *ray);
+void	draw_image(t_cbd *cbd, t_ray *ray);
+void	color_wall(t_ray *ray, int pos, int wall);
 
 #endif
