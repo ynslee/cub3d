@@ -6,10 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 09:41:00 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:53:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/ray_casting.h"
 #include "../../include/cub3d.h"
 
 // unsigned int	ft_pixel_get()
@@ -91,7 +92,7 @@ void	draw_image(t_cbd *cbd, t_ray *ray)
 		texture_location(ray, y_count, ray->line->x1, ray->line->y1);
 	else
 		texture_location(ray, y_count, ray->line->v_x1, ray->line->v_y1);
-	// printf("wall height is %f\n", ray->wall_height);
-	color_wall(ray, ray->ray_count, (int)ray->wall_height);
+	// color_wall(ray, ray->ray_count, (int)ray->wall_height);
+	texture_wall(ray, ray->ray_count, (int)ray->wall_height, y_count);
 	(void)cbd;
 }

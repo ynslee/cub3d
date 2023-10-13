@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 12:33:47 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:46:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	my_mlx_pixel_get(t_cbd *cbd, int x, int y, int color)
+unsigned int	my_mlx_pixel_get(t_cbd *cbd, int x, int y)
 {
 	unsigned int	dst;
 

@@ -6,19 +6,13 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 12:33:56 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:52:05 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
-/**
- * @brief
- *
- * @param ray
- * @param ray_count (0 to 599)
- */
-void	color_wall(t_ray *ray, int pos, int wall)
+void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
 {
 	float			wall_start;
 	float			wall_end;
@@ -35,8 +29,36 @@ void	color_wall(t_ray *ray, int pos, int wall)
 		wall_end = WIN_SIZE_Y;
 	while ((int)(wall_start + i) < (int)wall_end)
 	{
-		texture = my_mlx_pixel_get()
-		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, set_wall_direction(ray));
+		texture = my_mlx_pixel_get(ray->cbd, ray->tex_x, ray->tex_y);
+		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
+		i++;
+		ray->tex_y += y_count;
+	}
+}
+
+/**
+ * @brief
+ *
+ * @param ray
+ * @param ray_count (0 to 599)
+ */
+void	color_wall(t_ray *ray, int pos, int wall)
+{
+	float		wall_start;
+	float		wall_end;
+	float		i;
+
+	i = 0;
+	pos = WIN_SIZE_X - (pos + 1);
+	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
+	wall_end = wall_start + wall;
+	if (wall_start < 0)
+		wall_start = 0;
+	if (wall_end > WIN_SIZE_Y)
+		wall_end = WIN_SIZE_Y;
+	while ((int)(wall_start + i) < (int)wall_end)
+	{
+		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, GREY);
 		i++;
 	}
 }

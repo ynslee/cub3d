@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 12:37:11 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:40:08 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 static void	set_draw_texture(t_ray *ray, char *dir)
 {
-	if (ray->data)
+	if (!ft_strncmp_all(dir, "NO"))
+		ray->texture = ray->data->no_tex;
+	else if (!ft_strncmp_all(dir, "WE"))
+		ray->texture = ray->data->we_tex;
+	else if (!ft_strncmp_all(dir, "SO"))
+		ray->texture = ray->data->so_tex;
+	else if (!ft_strncmp_all(dir, "EA"))
+		ray->texture = ray->data->ea_tex;
 }
 
 

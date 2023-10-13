@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 09:16:37 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:18:43 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
 		compare_draw_rays(ray, &line);
+		printf("here\n");
 		draw_image(cbd, ray);
+		printf("here2\n");
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 	}
@@ -65,6 +67,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
 	ray->line = (t_line *)line;
+	// ray->cub = (t_cub *)cub;
 	ray->distance = 0;
 	ray->wall_height = 0;
 	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
@@ -77,7 +80,33 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	// init_xpm_images(data);
 }
 
-void	init_render_utils(t_cbd *cbd, t_data *mv)
+void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
+{
+	char	*temp;
+
+	data->img_width = 64;
+	printf("it-here1\n");
+	temp  = ft_strjoin("./", cub->no);
+	printf("temp %s\n", temp);
+	data->no_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &(data->img_width), &(data->img_height));
+	free(temp);
+	// temp = NULL;
+	printf("it-here2\n");
+	// temp = ft_strjoin("./", cub->so);
+	// data->so_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
+	// free(temp);
+	// printf("it-here3\n");
+	// temp = ft_strjoin("./", cub->we);
+	// data->we_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
+	// free(temp);
+	// printf("it-here4\n");
+	// temp = ft_strjoin("./", cub->ea);
+	// data->ea_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
+	// free(temp);
+	// printf("it-here5\n");
+}
+
+void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 {
 	t_ray	ray;
 	t_line	line;
@@ -96,6 +125,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
+	init_textures(cub, cbd, mv);
 	render_image(cbd, &ray, mv);
 	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);

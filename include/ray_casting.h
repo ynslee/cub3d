@@ -148,7 +148,7 @@ void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
-void	my_mlx_pixel_get(t_cbd *cbd, int x, int y, int color);
+unsigned int	my_mlx_pixel_get(t_cbd *cbd, int x, int y);
 int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
@@ -161,6 +161,7 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 //ray_casting.c
 // void	draw_ray(t_ray *ray);
 void	cast_rays(t_ray *ray);
+void	texture_wall(t_ray *ray, int pos, int wall, float y_count);
 
 // dda.c
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
@@ -170,7 +171,7 @@ void	compare_draw_rays(t_ray *ray, t_line *line);
 // render.c
 // void	draw_background(t_cbd *cbd);
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
-void	init_render_utils(t_cbd *cbd, t_data *mv);
+void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
 
 //make_mini_map.c
 void	draw_player(t_cbd *cbd, t_ray *ray);
