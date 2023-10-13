@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 10:14:35 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/13 12:29:54 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
 	char	*temp;
 
 	temp  = ft_strjoin("./", cub->no);
-	data->no_tex = mlx_xpm_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
+	data->no_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
 	free(temp);
 	temp = ft_strjoin("./", cub->so);
-	data->so_tex = mlx_xpm_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
+	data->so_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
 	free(temp);
 	temp = ft_strjoin("./", cub->we);
-	data->we_tex = mlx_xpm_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
+	data->we_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
 	free(temp);
 	temp = ft_strjoin("./", cub->ea);
-	data->ea_tex = mlx_xpm_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
+	data->ea_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
 	free(temp);
 }
 
