@@ -35,15 +35,15 @@ typedef struct s_cbd
 
 typedef struct s_cub
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f_color;
-	char	*c_color;
-	char	*map_str;
-	int		id_flag;
-}			t_cub;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*f_color;
+	char			*c_color;
+	char			*map_str;
+	int				id_flag;
+}					t_cub;
 
 void	print_struct(t_cub *cub);
 void	free_struct(t_cub *cub);

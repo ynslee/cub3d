@@ -68,13 +68,13 @@ int	main(int argc, char **argv)
 		init_struct(&cub);
 		read_file(fd, &cub);
 		print_struct(&cub);
-		map_check(&cub, &mv);
+		map_check(&cub, &mv, &cbd);
 		if (mv.height * GRID_PIX > WIN_SIZE_Y || mv.width * GRID_PIX > WIN_SIZE_X)
 		{
 			printf("map is bigger than the window size\n");
 			return (-1);
 		}
-		init_render_utils(&cbd, &mv);
+		// init_render_utils(&cbd, &mv);
 		// printf("map copy:\n");
 		// int k = -1;
 		// while (++k < mv.height)

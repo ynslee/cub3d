@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 09:04:21 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:32:18 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/ray_casting.h"
+#include "../../include/cub3d.h"
 
 // unsigned int	ft_pixel_get()
 //depth of view
@@ -83,11 +84,11 @@ PR_PLANE is Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
 y_count is step size of traversing the image in y axis(top to bottom)*/
 void	draw_image(t_cbd *cbd, t_ray *ray)
 {
-	float	y_count;
+	// float	y_count;
 
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
-	y_count = TEX_PIX / ray->wall_height;
-	if (ray->shortest == 'v')
+	// y_count = TEX_PIX / ray->wall_height;
+	// if (ray->shortest == 'v')
 	// 	texture_location(ray);
 	// printf("wall height is %f\n", ray->wall_height);
 	color_wall(ray, ray->ray_count, (int)ray->wall_height);

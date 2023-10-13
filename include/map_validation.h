@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 12:27:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/13 10:05:43 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 typedef struct s_cub	t_cub;
 typedef struct s_ray	t_ray;
+typedef struct s_cbd	t_cbd;
 
 typedef struct s_data
 {
@@ -37,11 +38,16 @@ typedef struct s_data
 	char			player_view;
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
-
+	void			*no_tex;
+	void			*so_tex;
+	void			*we_tex;
+	void			*ea_tex;
+	int				img_width;
+	int				img_height;
 }	t_data;
 
 //basic_check.c
-int				map_check(t_cub	*cub, t_data *mv);
+int				map_check(t_cub	*cub, t_data *mv, t_cbd *cbd);
 
 //map_validation_utils.c
 void			free_mv_struct(t_data *mv);
@@ -65,6 +71,7 @@ void			set_buffer(t_cub *cub, t_data *data);
 int				wall_check(t_cub *cub, t_data *data);
 
 //rgb_colour.c
+void			init_textures(t_cub *cub, t_cbd *cbd, t_data *data);
 unsigned int	change_colour(char *colour);
 
 #endif
