@@ -127,6 +127,7 @@ typedef struct s_ray
 	float			wall_height;
 	float			tex_x;
 	float			tex_y;
+	void			*texture;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
@@ -147,6 +148,7 @@ void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
+void	my_mlx_pixel_get(t_cbd *cbd, int x, int y, int color);
 int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
@@ -183,8 +185,11 @@ void	draw_background(t_ray *ray);
 // void	init_xpm_images(t_data *data);
 
 //draw_utils.c
-unsigned int	set_wall_direction(t_ray *ray);
+char	*set_wall_direction(t_ray *ray);
 void	draw_image(t_cbd *cbd, t_ray *ray);
 void	color_wall(t_ray *ray, int pos, int wall);
+
+//texture.c
+void	texture_location(t_ray *ray, float y_count, float x, float y);
 
 #endif

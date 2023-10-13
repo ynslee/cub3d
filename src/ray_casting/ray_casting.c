@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 09:15:31 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:33:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
  */
 void	color_wall(t_ray *ray, int pos, int wall)
 {
-	float		wall_start;
-	float		wall_end;
-	float		i;
+	float			wall_start;
+	float			wall_end;
+	float			i;
+	unsigned int	texture;
 
 	i = 0;
 	pos = WIN_SIZE_X - (pos + 1);
@@ -34,6 +35,7 @@ void	color_wall(t_ray *ray, int pos, int wall)
 		wall_end = WIN_SIZE_Y;
 	while ((int)(wall_start + i) < (int)wall_end)
 	{
+		texture = my_mlx_pixel_get()
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, set_wall_direction(ray));
 		i++;
 	}

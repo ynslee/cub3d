@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 09:04:21 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:41:00 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 // unsigned int	ft_pixel_get()
 //depth of view
@@ -24,55 +24,55 @@
 // 	printf("ray->wall_height: %f\n", ray->wall_height);
 // }
 
-// WEST = BLACK
-// EAST = WHITE
-// SOUTH = GREY
-// NORTH = GREEN
+// "WEST" = BLACK
+// "EAST" = WHITE
+// "SOUTH" = GREY
+// "NORTH" = GREEN
 
-static unsigned int	rays_looking_up(t_ray *ray)
+static char	*rays_looking_up(t_ray *ray)
 {
 	if ((int)ray->ra >= 0 && (int)ray->ra < 90)
 	{
 		if (ray->shortest == 'v') // v
-			return (BLUE);
+			return ("WE");
 		if (ray->shortest == 'h') // h
-			return (GREY);
+			return ("SO");
 	}
 	else if ((int)ray->ra >= 90 && (int)ray->ra < 180)
 	{
 		if (ray->shortest == 'v') // v
-			return (WHITE);
+			return ("EA");
 		if (ray->shortest == 'h') // h
-			return (GREY);
+			return ("SO");
 	}
-	return (-1);
+	return (NULL);
 }
 
-static unsigned int rays_looking_down(t_ray *ray)
+static char	*rays_looking_down(t_ray *ray)
 {
 	if ((int)ray->ra >= 180 && (int)ray->ra < 270)
 	{
 		if (ray->shortest == 'v') // v
-			return (WHITE);
+			return ("EA");
 		if (ray->shortest == 'h') // h
-			return (GREEN);
+			return ("NO");
 	}
 	else if ((int)ray->ra >= 270 && (int)ray->ra < 360)
 	{
 		if (ray->shortest == 'v') // v
-			return (BLUE);
+			return ("WE");
 		if (ray->shortest == 'h') // h
-			return (GREEN);
+			return ("NO");
 	}
-	return (-1);
+	return (NULL);
 }
-unsigned int	set_wall_direction(t_ray *ray)
+char	*set_wall_direction(t_ray *ray)
 {
 	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
 		return (rays_looking_up(ray));
 	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
 		return (rays_looking_down(ray));
-	return (-1);
+	return (NULL);
 }
 
 // void	texture_location
@@ -87,8 +87,10 @@ void	draw_image(t_cbd *cbd, t_ray *ray)
 
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
 	y_count = TEX_PIX / ray->wall_height;
-	if (ray->shortest == 'v')
-	// 	texture_location(ray);
+	if (ray->shortest == 'h')
+		texture_location(ray, y_count, ray->line->x1, ray->line->y1);
+	else
+		texture_location(ray, y_count, ray->line->v_x1, ray->line->v_y1);
 	// printf("wall height is %f\n", ray->wall_height);
 	color_wall(ray, ray->ray_count, (int)ray->wall_height);
 	(void)cbd;
