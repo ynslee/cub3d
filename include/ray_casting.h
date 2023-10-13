@@ -172,7 +172,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv);
 
 //make_mini_map.c
 void	draw_player(t_cbd *cbd, t_ray *ray);
-void	make_map(t_cbd *cbd, t_data *mv);
+void	make_mini_map(t_cbd *cbd, t_data *mv);
 
 //movement.c
 void	move_frontback(t_ray *ray, char *direction);

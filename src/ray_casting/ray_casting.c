@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 14:56:18 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:15:31 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,14 @@ void	color_wall(t_ray *ray, int pos, int wall)
 	float		i;
 
 	i = 0;
-	pos = WIN_SIZE_X - pos;
+	pos = WIN_SIZE_X - (pos + 1);
 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
 	wall_end = wall_start + wall;
-	// printf("wall start is %f\n", wall_start);
-	// printf("wall end is %f\n", wall_end);
 	if (wall_start < 0)
 		wall_start = 0;
 	if (wall_end > WIN_SIZE_Y)
 		wall_end = WIN_SIZE_Y;
-	while (wall_start + i < wall_end)
+	while ((int)(wall_start + i) < (int)wall_end)
 	{
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, set_wall_direction(ray));
 		i++;
@@ -61,7 +59,6 @@ void	cast_rays(t_ray *ray)
 	x = ray->pix_x_pos;
 	y = ray->pix_y_pos;
 	ray->ray_count = 0;
-	// printf("COMING TO CAST RAYS\n");
 	while (ray->ray_count < WIN_SIZE_X)
 	{
 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
@@ -74,7 +71,6 @@ void	cast_rays(t_ray *ray)
 			ray->r_end_x = floor(x);
 			ray->r_end_y = floor(y);
 			bresenham(ray, ray->line, BLACK);
-			// printf("found wall\n");
 			ray->ray_count += 1;
 			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 			x = ray->pix_x_pos;
@@ -114,5 +110,4 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 		line->x1 = (int)line->v_x1;
 		line->y1 = (int)line->v_y1;
 	}
-	// bresenham(ray, line, BLACK);
 }

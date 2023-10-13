@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 14:55:13 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:01:13 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	draw_map(t_cbd *cbd, int x, int y, int color)
 
 }
 
-void	make_map(t_cbd *cbd, t_data *mv)
+void	make_mini_map(t_cbd *cbd, t_data *mv)
 {
 	int	i;
 	int	j;

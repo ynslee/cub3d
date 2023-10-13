@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 14:57:02 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:04:21 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static unsigned int rays_looking_down(t_ray *ray)
 }
 unsigned int	set_wall_direction(t_ray *ray)
 {
-	// printf("shortest: %i\n", ray->shortest);
 	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
 		return (rays_looking_up(ray));
 	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
@@ -88,10 +87,9 @@ void	draw_image(t_cbd *cbd, t_ray *ray)
 
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
 	y_count = TEX_PIX / ray->wall_height;
-	// if (ray->shortest == 'v')
+	if (ray->shortest == 'v')
 	// 	texture_location(ray);
 	// printf("wall height is %f\n", ray->wall_height);
 	color_wall(ray, ray->ray_count, (int)ray->wall_height);
 	(void)cbd;
-	//render the walls
 }
