@@ -40,7 +40,7 @@ void	free_struct(t_cub *cub)
 		free(cub->map_str);
 }
 
-static void	init_struct(t_cub *cub)
+static void	init_cub_struct(t_cub *cub)
 {
 	cub->no = 0;
 	cub->so = 0;
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 		fd = valid_file(argv[1]);
 		if (fd == -1)
 			file_print_error(&cub, "Invalid file\n", 0);
-		init_struct(&cub);
+		init_cub_struct(&cub);
 		read_file(fd, &cub);
 		print_struct(&cub);
 		map_check(&cub, &mv, &cbd);
@@ -74,14 +74,14 @@ int	main(int argc, char **argv)
 			printf("map is bigger than the window size\n");
 			return (-1);
 		}
-		// init_render_utils(&cbd, &mv);
+		init_render_utils(&cbd, &mv, &cub);
 		// printf("map copy:\n");
 		// int k = -1;
 		// while (++k < mv.height)
 		// 	printf("%s\n", mv.map_cpy[k]);
+		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 		free_struct(&cub);
 		free_mv_struct(&mv);
-		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 	}
 	return (0);
 }

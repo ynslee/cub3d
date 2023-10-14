@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 10:12:00 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/14 12:19:46 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,6 @@ int	map_check(t_cub	*cub, t_data *mv, t_cbd *cbd)
 	wall_check(cub, mv);
 	mv->ceiling_rgb = change_colour(cub->c_color);
 	mv->floor_rgb = change_colour(cub->f_color);
-	init_textures(cub, cbd, mv);
+	// init_textures(cub, cbd, mv);
 	return (0);
 }

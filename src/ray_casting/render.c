@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 09:16:08 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:25:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	// init_xpm_images(data);
 }
 
-void	init_render_utils(t_cbd *cbd, t_data *mv)
+void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 {
 	t_ray	ray;
 	t_line	line;
@@ -96,6 +96,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
+	init_textures(cub, cbd, mv);
 	render_image(cbd, &ray, mv);
 	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);
