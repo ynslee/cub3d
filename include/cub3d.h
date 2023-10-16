@@ -46,6 +46,6 @@ typedef struct s_cub
 }					t_cub;
 
 void	print_struct(t_cub *cub);
-void	free_struct(t_cub *cub);
+void	free_cub_struct(t_cub *cub);
 
 #endif

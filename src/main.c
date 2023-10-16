@@ -22,7 +22,7 @@ void	print_struct(t_cub *cub)
 	printf("\n*****************************\n");
 }
 
-void	free_struct(t_cub *cub)
+void	free_cub_struct(t_cub *cub)
 {
 	if (cub->no)
 		free(cub->no);
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 		// while (++k < mv.height)
 		// 	printf("%s\n", mv.map_cpy[k]);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
-		free_struct(&cub);
+		free_cub_struct(&cub);
 		free_mv_struct(&mv);
 	}
 	return (0);

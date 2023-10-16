@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/14 08:14:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 06:36:55 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	file_print_error(t_cub *cub, char *str, int struct_flag)
 {
 	ft_putstr_fd(str, 2);
 	if (struct_flag == 1)
-		free_struct(cub);
+		free_cub_struct(cub);
 	exit(1);
 }
 
