@@ -3,13 +3,13 @@
 # define RAY_CASTING_H
 
 # define FOV 60
-# define GRID_PIX 24
+# define GRID_PIX 48
 # define TEX_PIX 64
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
 # define PLAYER_S 5
-# define PR_PLANE 1663
+# define PR_PLANE 770
 // # define NOSE_LEN 1
 
 # define BLACK 0x000000
@@ -166,6 +166,7 @@ void	cast_rays(t_ray *ray);
 void	texture_wall(t_ray *ray, int pos, int wall, float y_count);
 
 // dda.c
+void	check_inits(t_ray *ray, t_line *line);
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
 void	check_vertical_gridline(t_ray *ray, t_line *line);
 void	compare_draw_rays(t_ray *ray, t_line *line);
