@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 07:09:58 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:00:12 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ t_tex_img	*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path)
 {
 	t_tex_img	*img;
 
+	(void)data;
 	img = (t_tex_img *)ft_calloc(1, sizeof(t_tex_img));
 	if (!img)
 		printf("ERROR callocin\n");
-	printf("");
 	img->img_ptr = mlx_xpm_file_to_image(cbd->mlx, file_path, \
-		 &(data->img_width), &(data->img_height));
+		&(img->width), &(img->height));
 	if (!img->img_ptr)
 		printf("ERROR generating img_ptr to texture\n");
 	img->img_addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), \

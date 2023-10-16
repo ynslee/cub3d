@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 06:36:27 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 09:41:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@
 // 	MAP_INVALID
 // }
 
-#define NO 0
-#define SO 1
-#define WE 2
-#define EA 3
-
 typedef struct s_cub	t_cub;
 typedef struct s_ray	t_ray;
 typedef struct s_cbd	t_cbd;
@@ -38,6 +33,8 @@ typedef struct s_tex_img
 	int		bpp;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 }			t_tex_img;
 
 typedef struct s_data

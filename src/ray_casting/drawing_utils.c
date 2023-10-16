@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 12:53:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:17:33 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,69 +30,71 @@
 // "SOUTH" = GREY
 // "NORTH" = GREEN
 
-static char	*rays_looking_up(t_ray *ray)
+static int rays_looking_up(t_ray *ray)
 {
 	if ((int)ray->ra >= 0 && (int)ray->ra < 90)
 	{
 		if (ray->shortest == 'v') // v
-			return ("WE");
+			return (WE);
 		if (ray->shortest == 'h') // h
-			return ("SO");
+			return (SO);
 	}
 	else if ((int)ray->ra >= 90 && (int)ray->ra < 180)
 	{
 		if (ray->shortest == 'v') // v
-			return ("EA");
+			return (EA);
 		if (ray->shortest == 'h') // h
-			return ("SO");
+			return (SO);
 	}
-	return (NULL);
+	return (-1);
 }
 
-static char	*rays_looking_down(t_ray *ray)
+static int rays_looking_down(t_ray *ray)
 {
 	if ((int)ray->ra >= 180 && (int)ray->ra < 270)
 	{
 		if (ray->shortest == 'v') // v
-			return ("EA");
+			return (EA);
 		if (ray->shortest == 'h') // h
-			return ("NO");
+			return (NO);
 	}
 	else if ((int)ray->ra >= 270 && (int)ray->ra < 360)
 	{
 		if (ray->shortest == 'v') // v
-			return ("WE");
+			return (WE);
 		if (ray->shortest == 'h') // h
-			return ("NO");
+			return (NO);
 	}
-	return (NULL);
+	return (-1);
 }
-char	*set_wall_direction(t_ray *ray)
+int	set_wall_direction(t_ray *ray)
 {
 	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
 		return (rays_looking_up(ray));
 	else if ((int)ray->ra >= 180 && (int)ray->ra < 360)
 		return (rays_looking_down(ray));
-	return (NULL);
+	return (-1);
 }
-
-// void	texture_location
-
 
 /*
 PR_PLANE is Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
 y_count is step size of traversing the image in y axis(top to bottom)*/
-void	draw_image(t_cbd *cbd, t_ray *ray)
+void	draw_image(t_ray *ray, t_line *line)
 {
 	float	y_count;
 
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
 	y_count = TEX_PIX / ray->wall_height;
 	if (ray->shortest == 'h')
-		texture_location(ray, y_count, ray->line->x1, ray->line->y1);
+	{
+		printf("horizontal: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->x1, line->y1);
+		texture_location(ray, y_count, line->x1, line->y1);
+	}
 	else
-		texture_location(ray, y_count, ray->line->v_x1, ray->line->v_y1);
+	{
+		printf("vertical: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->v_x1, line->v_y1);
+		texture_location(ray, y_count, line->v_x1, line->v_y1);
+	}
 	// color_wall(ray, ray->ray_count, (int)ray->wall_height);
 	texture_wall(ray, ray->ray_count, (int)ray->wall_height, y_count);
-	(void)cbd;
 }

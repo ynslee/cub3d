@@ -33,11 +33,13 @@
 
 
 # include "cub3d.h"
+# include "map_validation.h"
 
-typedef struct s_data	t_data;
-typedef struct s_cub	t_cub;
-typedef struct s_cbd	t_cbd;
-typedef struct s_line	t_line;
+typedef struct s_data		t_data;
+typedef struct s_cub		t_cub;
+typedef struct s_cbd		t_cbd;
+typedef struct s_line		t_line;
+typedef struct s_tex_img	t_tex_img;
 
 typedef struct s_vector
 {
@@ -56,7 +58,7 @@ typedef struct s_vector
  * @param sx sign of x -> sx = 1 if x1 > x0 | sx = -1 if x1 < x0
  * @param sy sign of y -> sy = 1 if y1 > y0 | sy = -1 if y1 < y0
 */
-typedef	struct s_line
+typedef struct s_line
 {
 	float	x0;
 	float	y0;
@@ -148,7 +150,7 @@ void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
-unsigned int	my_mlx_pixel_get(t_cbd *cbd, int x, int y);
+unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
@@ -186,8 +188,8 @@ void	draw_background(t_ray *ray);
 // void	init_xpm_images(t_data *data);
 
 //draw_utils.c
-char	*set_wall_direction(t_ray *ray);
-void	draw_image(t_cbd *cbd, t_ray *ray);
+int		set_wall_direction(t_ray *ray);
+void	draw_image(t_ray *ray, t_line *line);
 void	color_wall(t_ray *ray, int pos, int wall);
 
 //texture.c

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 07:10:27 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:58:11 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
 		compare_draw_rays(ray, &line);
-		printf("here\n");
-		draw_image(cbd, ray);
-		printf("here2\n");
+		draw_image(ray, &line);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
 	}
