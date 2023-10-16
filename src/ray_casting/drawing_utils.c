@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 10:17:33 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:57:46 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ void	draw_image(t_ray *ray, t_line *line)
 	y_count = TEX_PIX / ray->wall_height;
 	if (ray->shortest == 'h')
 	{
-		printf("horizontal: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->x1, line->y1);
+		// printf("horizontal: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->x1, line->y1);
 		texture_location(ray, y_count, line->x1, line->y1);
 	}
 	else
 	{
-		printf("vertical: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->v_x1, line->v_y1);
+		// printf("vertical: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->v_x1, line->v_y1);
 		texture_location(ray, y_count, line->v_x1, line->v_y1);
 	}
 	// color_wall(ray, ray->ray_count, (int)ray->wall_height);

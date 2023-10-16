@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 09:50:07 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:43:13 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,21 @@ void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
 
 	i = 0;
 	pos = WIN_SIZE_X - (pos + 1);
-	if (wall > WIN_SIZE_Y)
-		wall = WIN_SIZE_Y;
+	// if (wall > WIN_SIZE_Y)
+	// 	wall = WIN_SIZE_Y;
 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
 	wall_end = wall_start + wall;
 	// if (wall_start < 0)
 	// 	wall_start = 0;
 	// if (wall_end > WIN_SIZE_Y)
 	// 	wall_end = WIN_SIZE_Y;
+	// printf("texture_wall : tex_x is %f, tex_y is %f, y_count is %f\n", ray->tex_x, ray->tex_y, y_count);
+	// printf("wall start is %f, wall_end is %f\n", wall_start, wall_end);
 	while ((int)(wall_start + i) < (int)wall_end)
 	{
+		// printf("tex_x is %f(%d), tex_y is %f(%d)\n", ray->tex_x, (int)ray->tex_x, ray->tex_y, (int)ray->tex_y);
 		texture = my_mlx_pixel_get(ray->data->texture[set_wall_direction(ray)], \
-		(int)ray->tex_x, (int)ray->tex_y);
+		ray->tex_x, ray->tex_y);
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
 		i++;
 		ray->tex_y += y_count;
@@ -118,19 +121,15 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 	h_length = sqrt(pow((line->x0 - line->x1), 2) + pow((line->y0 - line->y1), 2));
 	v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
 	pow((line->y0 - line->v_y1), 2));
-	// printf("h calculation is %f and %f\n", line->x0 - line->x1, line->y0 - line->y1);
-	// printf("v calculation is %f and %f\n", line->x0 - line->v_x1, line->y0 - line->v_y1);
-	// printf("ray angle is %f\n", ray->ra);
-	// printf("h_length is %f\n", h_length);
-	// printf("v_length is %f\n", v_length);
-	if (h_length != 0 && h_length < v_length)
+	if (h_length != 0.0f && (h_length < v_length || v_length == 0.0f))
 	{
 		ray->shortest = 'h';
 		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
 	}
-	else if (v_length != 0 && v_length < h_length)
+	else
 	{
 		ray->shortest = 'v';
 		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
 	}
+	// printf("ray.ra is %f, ray pa is %f\n", ray->ra, ray->pa);
 }
