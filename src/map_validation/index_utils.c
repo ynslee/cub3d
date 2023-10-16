@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 10:06:45 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/14 11:13:32 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,6 @@ void	init_mv(t_data *mv)
 	mv->player_x = 0;
 	mv->player_y = 0;
 	mv->player_view = -1;
-	mv->no_tex = 0;
-	mv->so_tex = 0;
-	mv->we_tex = 0;
-	mv->ea_tex = 0;
-	mv->img_width = 64;
-	mv->img_height = 64;
+	// mv->img_width = 64;
+	// mv->img_height = 64;
 }

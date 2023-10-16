@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 10:05:43 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 06:36:27 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,23 @@
 // 	MAP_INVALID
 // }
 
+#define NO 0
+#define SO 1
+#define WE 2
+#define EA 3
+
 typedef struct s_cub	t_cub;
 typedef struct s_ray	t_ray;
 typedef struct s_cbd	t_cbd;
+
+typedef struct s_tex_img
+{
+	void	*img_ptr;
+	void	*img_addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}			t_tex_img;
 
 typedef struct s_data
 {
@@ -38,10 +52,11 @@ typedef struct s_data
 	char			player_view;
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
-	void			*no_tex;
-	void			*so_tex;
-	void			*we_tex;
-	void			*ea_tex;
+	t_tex_img		*texture[4];
+	// void			*no_tex;
+	// void			*so_tex;
+	// void			*we_tex;
+	// void			*ea_tex;
 	int				img_width;
 	int				img_height;
 }	t_data;

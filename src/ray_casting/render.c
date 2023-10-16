@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 13:18:43 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 07:10:27 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,32 +78,6 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
 	// init_xpm_images(data);
-}
-
-void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
-{
-	char	*temp;
-
-	data->img_width = 64;
-	printf("it-here1\n");
-	temp  = ft_strjoin("./", cub->no);
-	printf("temp %s\n", temp);
-	data->no_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &(data->img_width), &(data->img_height));
-	free(temp);
-	// temp = NULL;
-	printf("it-here2\n");
-	// temp = ft_strjoin("./", cub->so);
-	// data->so_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
-	// free(temp);
-	// printf("it-here3\n");
-	// temp = ft_strjoin("./", cub->we);
-	// data->we_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
-	// free(temp);
-	// printf("it-here4\n");
-	// temp = ft_strjoin("./", cub->ea);
-	// data->ea_tex = mlx_xpm_file_to_image(cbd->mlx, temp, &data->img_width, &data->img_width);
-	// free(temp);
-	// printf("it-here5\n");
 }
 
 void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
