@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 06:37:00 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 07:13:32 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	free_mv_struct(t_data *mv)
 	while (i < 4)
 	{
 		if (mv->texture[i])
+		{
 			free (mv->texture[i]);
+			mv->texture[i] = NULL;
+		}
 		i++;
 	}
 }

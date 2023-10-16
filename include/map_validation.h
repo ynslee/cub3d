@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 06:36:27 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 07:07:01 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ typedef struct s_data
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
 	t_tex_img		*texture[4];
-	// void			*no_tex;
-	// void			*so_tex;
-	// void			*we_tex;
-	// void			*ea_tex;
 	int				img_width;
 	int				img_height;
 }	t_data;

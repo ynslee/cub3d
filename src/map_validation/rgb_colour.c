@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/14 12:27:59 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 07:00:43 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_tex_img	*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path)
 	img = (t_tex_img *)ft_calloc(1, sizeof(t_tex_img));
 	if (!img)
 		printf("ERROR callocin\n");
-	printf("");
+	// printf("");
 	img->img_ptr = mlx_xpm_file_to_image(cbd->mlx, file_path, \
 		 &(data->img_width), &(data->img_height));
 	if (!img->img_ptr)

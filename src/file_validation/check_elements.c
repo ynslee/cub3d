@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/09/13 12:13:34 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:50:04 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_validation.h"
-
+/// @brief checks that floor and ceiling colors have three numbers separated by comma
+/// and that color values are correct
+/// @param element rgb colorvalues separated by comma (second element of an array of splitted line)
+/// @return 0 upon success, -1 if failure
 static int	check_colors(char *element)
 {
 	char	**colors;
@@ -35,7 +38,7 @@ static int	check_colors(char *element)
 }
 
 /// @brief checks validation of texture files
-/// @param element path to file
+/// @param element path to file (second element of an array of splitted line)
 /// @return returns -1 in case of failure, positive integer(fd) if succesfull
 static int	check_textures(char *element)
 {
@@ -50,7 +53,10 @@ static int	check_textures(char *element)
 	fd = open(element, O_RDONLY);
 	return (fd);
 }
-
+/// @brief Checks that the line that contains wall texture information in file is correct
+/// @param element line from file splitted by spaces
+/// @param cub
+/// @return 0 if no problems
 int	check_elements(char **element, t_cub *cub)
 {
 	if (!ft_strncmp_all(element[0], "NO") || !ft_strncmp_all(element[0], "SO")
