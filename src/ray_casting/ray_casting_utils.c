@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 15:27:23 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:32:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,29 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray)
 		ray->pa = 0.0;
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+}
+
+/**
+ * @brief calculate and check the distance between horizontal and vertical length.
+ * cosine function is to remove the fish-eye distortion.
+ */
+void	compare_draw_rays(t_ray *ray, t_line *line)
+{
+	float	h_length;
+	float	v_length;
+
+	h_length = sqrt(pow((line->x0 - line->x1), 2) + \
+	pow((line->y0 - line->y1), 2));
+	v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
+	pow((line->y0 - line->v_y1), 2));
+	if (h_length != 0.0f && (h_length < v_length || v_length == 0.0f))
+	{
+		ray->shortest = 'h';
+		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
+	}
+	else
+	{
+		ray->shortest = 'v';
+		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
+	}
 }

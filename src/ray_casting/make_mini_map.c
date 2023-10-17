@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 09:14:03 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:27:14 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 void	draw_player(t_cbd *cbd, t_ray *ray)
 {
-	int	x = 0;
-	int	y = 0;
+	int	x;
+	int	y;
 
-	(void)cbd;
+	x = 0;
+	y = 0;
 	while (x < 5)
 	{
 		y = 0;
 		while (y < 5)
 		{
-			my_mlx_pixel_put(cbd, x + ((ray->pix_x_pos / 4) - 2), y + ((ray->pix_y_pos / 4) - 2), PINK);
+			my_mlx_pixel_put(cbd, x + ((ray->pix_x_pos / 4) - 2), \
+			y + ((ray->pix_y_pos / 4) - 2), PINK);
 			y++;
 		}
 		x++;
@@ -62,17 +64,14 @@ static void	draw_map(t_cbd *cbd, int x, int y, int color)
 	int	j;
 
 	i = -1;
-	// printf("in draw_map x: %i\ty: %i\n", x, y);
 	while (++i < MINI_PIX)
 	{
 		j = -1;
 		while (++j < MINI_PIX)
 		{
-			// printf("x:%i y:%i\n", i, j);
 			my_mlx_pixel_put(cbd, x + i, y + j, color);
 		}
 	}
-
 }
 
 void	make_mini_map(t_cbd *cbd, t_data *mv)
