@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/10/17 09:33:13 by yoonslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef RAY_CASTING_H
 # define RAY_CASTING_H
 
 # define FOV 60
-# define GRID_PIX 24
+# define MINI_PIX 16
+# define GRID_PIX 64
+# define TEX_PIX 64
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
 # define PLAYER_S 5
+# define PR_PLANE 1662
 // # define NOSE_LEN 1
 
 # define BLACK 0x000000
@@ -18,13 +32,25 @@
 # define GREY 0x808080
 # define LIGHTBLUE 0xADD8E6
 # define BLUE 0x4169e1
+# define RED 0xFF0000
+# define YELLOW 0xFFFF00
+# define ORANGE 0xFFA500
+# define PINK 0xFFC0CB
+# define PURPLE 0x800080
+# define CYAN 0x00FFFF
+# define LAVENDER 0xE6E6FA
+# define BROWN 0xA52A2A
+# define MAGENTA 0xFF00FF
+# define TEAL 0x008080
 
 # include "cub3d.h"
+# include "map_validation.h"
 
-typedef struct s_data	t_data;
-typedef struct s_cub	t_cub;
-typedef struct s_cbd	t_cbd;
-typedef struct s_line	t_line;
+typedef struct s_data		t_data;
+typedef struct s_cub		t_cub;
+typedef struct s_cbd		t_cbd;
+typedef struct s_line		t_line;
+typedef struct s_tex_img	t_tex_img;
 
 typedef struct s_vector
 {
@@ -43,7 +69,7 @@ typedef struct s_vector
  * @param sx sign of x -> sx = 1 if x1 > x0 | sx = -1 if x1 < x0
  * @param sy sign of y -> sy = 1 if y1 > y0 | sy = -1 if y1 < y0
 */
-typedef	struct s_line
+typedef struct s_line
 {
 	float	x0;
 	float	y0;
@@ -96,9 +122,7 @@ typedef struct s_ray
 	int				dof;
 	float			xa;
 	float			ya;
-	// float			rai;
-	// float			cotan;
-	float				ray_count;
+	float			ray_count;
 	float			center_width;
 	float			center_height;
 	float			pix_x_pos;
@@ -114,6 +138,9 @@ typedef struct s_ray
 	char			shortest;
 	float			distance;
 	float			wall_height;
+	float			tex_x;
+	float			tex_y;
+	void			*texture;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
 	struct s_vector	*vector;
@@ -134,6 +161,7 @@ void	draw_nose(t_ray *ray);
 
 // mlx_utils.c
 void	my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
+unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int		destroy_flag(t_cbd *cbd, int flag);
 int		destroy(t_cbd *cbd);
 
@@ -145,9 +173,11 @@ void	player_orientation_to_angle(t_data *mv, t_ray *ray);
 
 //ray_casting.c
 // void	draw_ray(t_ray *ray);
-// void	cast_rays(t_ray *ray);
+void	cast_rays(t_ray *ray);
+void	texture_wall(t_ray *ray, int pos, int wall, float y_count);
 
 // dda.c
+void	check_inits(t_ray *ray, t_line *line);
 void	check_horizontal_gridline(t_ray *ray, t_line *line);
 void	check_vertical_gridline(t_ray *ray, t_line *line);
 void	compare_draw_rays(t_ray *ray, t_line *line);
@@ -155,11 +185,11 @@ void	compare_draw_rays(t_ray *ray, t_line *line);
 // render.c
 // void	draw_background(t_cbd *cbd);
 void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
-void	init_render_utils(t_cbd *cbd, t_data *mv);
+void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
 
-//making_map.c
-void	make_map(t_cbd *cbd, t_data *mv);
+//make_mini_map.c
 void	draw_player(t_cbd *cbd, t_ray *ray);
+void	make_mini_map(t_cbd *cbd, t_data *mv);
 
 //movement.c
 void	move_frontback(t_ray *ray, char *direction);
@@ -168,5 +198,13 @@ void	move_sideway(t_ray *ray, char *direction);
 //draw_background.c
 void	draw_background(t_ray *ray);
 // void	init_xpm_images(t_data *data);
+
+//draw_utils.c
+int		set_wall_direction(t_ray *ray);
+void	draw_image(t_ray *ray, t_line *line);
+void	color_wall(t_ray *ray, int pos, int wall);
+
+//texture.c
+void	texture_location(t_ray *ray, float y_count, float x, float y);
 
 #endif

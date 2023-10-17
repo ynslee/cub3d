@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:40:02 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:21:42 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,23 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
-	make_map(cbd, mv);
-	draw_player(cbd, ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
+	// printf("ray position:%f, %f\n", ray->pix_x_pos / GRID_PIX, ray->pix_y_pos / GRID_PIX);
 	while (ray->ray_count < WIN_SIZE_X)
 	{
+		check_inits(ray, &line);
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
 		compare_draw_rays(ray, &line);
+		draw_image(ray, &line);
 		ray->ray_count += 1;
-		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
+		ray->ra = fix_angle(ray->ra + (float)FOV / (float) WIN_SIZE_X);
 	}
-	// cast_rays(ray);
-	// draw_nose(ray);
-	// draw_background(cbd);
-	// draw_image(cbd, ray);
+	ray->ra = fix_angle(ray->pa - FOV / 2);
+	make_mini_map(cbd, mv);
+	cast_rays(ray);
+	draw_player(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 
@@ -66,19 +67,17 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	ray->cbd = (t_cbd *)cbd;
 	ray->vector = &vector;
 	ray->line = (t_line *)line;
+	// ray->cub = (t_cub *)cub;
 	ray->distance = 0;
 	ray->wall_height = 0;
-	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	vector.x = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
-	vector.y = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
+	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2;
+	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
 	// init_xpm_images(data);
 }
 
-void	init_render_utils(t_cbd *cbd, t_data *mv)
+void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 {
 	t_ray	ray;
 	t_line	line;
@@ -97,6 +96,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		printf("Error creating mlx image address!\n");
+	init_textures(cub, cbd, mv);
 	render_image(cbd, &ray, mv);
 	set_hooks(cbd, &ray);
 	mlx_loop(cbd->mlx);

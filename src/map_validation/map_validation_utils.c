@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/13 11:11:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 06:37:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,20 @@
  */
 void	free_mv_struct(t_data *mv)
 {
+	int	i;
 	if (mv->map)
 		free_char_array(mv->map);
 	if (mv->map_cpy)
 		free_char_array(mv->map_cpy);
 	if (mv->buffer_cpy)
 		free_char_array(mv->buffer_cpy);
+	i = 0;
+	while (i < 4)
+	{
+		if (mv->texture[i])
+			free (mv->texture[i]);
+		i++;
+	}
 }
 
 /*prints out error message accordingly and free the parsed contents
@@ -32,10 +40,10 @@ void	print_error(t_cub *cub, t_data *mv, char *str, int code)
 {
 	ft_putstr_fd(str, 2);
 	if (code == 1)
-		free_struct(cub);
+		free_cub_struct(cub);
 	if (code == 2)
 	{
-		free_struct(cub);
+		free_cub_struct(cub);
 		free_mv_struct(mv);
 	}
 	exit(1);

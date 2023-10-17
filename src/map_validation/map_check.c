@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/04 12:41:49 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/16 07:09:41 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,12 @@ int	duplicate_player(char *map)
  * Check if there is multiple players
  * @return 1 if everything is valid, 0 if one of the condition is invalid.
  */
-int	map_check(t_cub	*cub, t_data *mv)
+int	map_check(t_cub	*cub, t_data *mv, t_cbd *cbd)
 {
 	int		index;
 	int		height;
 
+	(void)cbd;
 	init_mv(mv);
 	consecutive_new_lines(cub, mv);
 	index = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/11 10:33:07 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 09:22:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@ static void	angle_left_right(char *direction, t_ray *ray)
 {
 	if (!ft_strncmp_all(direction, "left"))
 	{
-		ray->pa = fix_angle(ray->pa + PLAYER_S);
+		ray->pa = fix_angle(ray->pa + 5);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
 	else if (!ft_strncmp_all(direction, "right"))
 	{
-		ray->pa = fix_angle(ray->pa - PLAYER_S);
+		ray->pa = fix_angle(ray->pa - 5);
 		ray->pdx = cos(deg_to_rad(ray->pa)) * PLAYER_S;
 		ray->pdy = -sin(deg_to_rad(ray->pa)) * PLAYER_S;
 	}
-	// render_image(ray->cbd, ray, ray->data);
 }
 
 static void	player_moves(int keysym, t_ray *ray)
@@ -70,6 +69,7 @@ void	set_hooks(t_cbd *cbd, t_ray *ray)
 {
 	mlx_hook(cbd->window, 17, 1L << 5, &destroy, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
+	// render_image(ray->cbd, ray, ray->data, line);
 	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);
 	// mlx_hook(mlx->win_ptr, 06, 1, &mouse_params, &mlx);
 }

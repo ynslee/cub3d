@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/06 10:19:27 by jhusso           ###   ########.fr        #
+#    Updated: 2023/10/13 12:53:52 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,12 @@ FILES = main\
 		render\
 		mlx_utils\
 		hooks\
-		making_map\
+		make_mini_map\
 		line_drawing_utils\
 		movement\
 		rgb_colour\
+		drawing_utils\
+		texture\
 
 HEADER = cub3d.h libft.h file_validation.h
 HEADER := $(addprefix $I/,$(HEADER))

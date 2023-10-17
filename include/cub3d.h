@@ -17,6 +17,11 @@
 # define WIN_SIZE_X 1920
 # define WIN_SIZE_Y 1080
 
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
+
 typedef struct s_cbd
 {
 	void	*mlx;
@@ -35,17 +40,17 @@ typedef struct s_cbd
 
 typedef struct s_cub
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f_color;
-	char	*c_color;
-	char	*map_str;
-	int		id_flag;
-}			t_cub;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*f_color;
+	char			*c_color;
+	char			*map_str;
+	int				id_flag;
+}					t_cub;
 
 void	print_struct(t_cub *cub);
-void	free_struct(t_cub *cub);
+void	free_cub_struct(t_cub *cub);
 
 #endif

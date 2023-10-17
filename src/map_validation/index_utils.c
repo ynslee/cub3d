@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/09/12 10:27:10 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/16 08:56:30 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ void	init_mv(t_data *mv)
 	mv->player_x = 0;
 	mv->player_y = 0;
 	mv->player_view = -1;
+	mv->img_width = 64;
+	mv->img_height = 64;
 }
