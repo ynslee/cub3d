@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 12:20:44 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 12:35:50 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ void	read_file(int fd, t_cub *cub)
 	while (cub->id_flag != 6)
 	{
 		line = get_next_line(fd);
+		printf("line: %s\n", line);
 		if (line == NULL)
-			file_print_error(cub, "Error in get_next_line!\n", 1);
+			file_print_error(cub, "Invalid file!\n", 1);
 		if (line && cub->id_flag == 6 && !is_map(line))
 			file_print_error(cub, "Texture file duplicates!\n", 1);
 		else if (!line || cub->id_flag == 6)
@@ -93,7 +94,7 @@ void	read_file(int fd, t_cub *cub)
 			&& !is_map(line))
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
-			file_print_error(cub, "File does not have required elements!\n", 1);
+			file_print_error(cub, "File does not have required elements or elements are in wrong order!\n", 1);
 		free(line);
 	}
 	read_map(fd, cub);
