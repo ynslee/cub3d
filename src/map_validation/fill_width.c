@@ -6,14 +6,20 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 07:59:19 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 10:37:00 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 #include "../../include/cub3d.h"
 
-char	*fill_temp(t_data *mv, char *temp, int i)
+/// @brief fills temporary map, row by row so that all empty indexes that are
+/// smaller than max width become X
+/// @param mv
+/// @param temp
+/// @param i row number of map
+/// @return filled row
+static char	*fill_row(t_data *mv, char *temp, int i)
 {
 	int	j;
 
@@ -33,6 +39,9 @@ char	*fill_temp(t_data *mv, char *temp, int i)
 	return (temp);
 }
 
+/// @brief loops trough map_cpy row by row, and send rows to be filled in
+/// fill_row
+/// @param mv
 void	fill_width(t_data *mv)
 {
 	int		i;
@@ -44,7 +53,7 @@ void	fill_width(t_data *mv)
 	{
 		if ((int)ft_strlen(mv->map_cpy[i]) < mv->width)
 		{
-			temp = fill_temp(mv, temp, i);
+			temp = fill_row(mv, temp, i);
 			free(mv->map_cpy[i]);
 			mv->map_cpy[i] = ft_strdup(temp);
 			free(temp);
@@ -52,7 +61,7 @@ void	fill_width(t_data *mv)
 		i++;
 	}
 }
-/// @brief Checks tat map_stris not null and then for two consecutive new lines
+/// @brief Checks that map_stris not null and then for two consecutive new lines
 /// @param cub
 /// @param mv
 void	consecutive_new_lines(t_cub *cub, t_data *mv)

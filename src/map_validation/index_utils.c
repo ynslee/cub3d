@@ -6,17 +6,17 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 07:51:38 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 12:22:10 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 #include "../../include/cub3d.h"
 
-/**
- * @brief return the index of the last occurence if c in the string
- * returns -1 if can't find c
- */
+/// @brief return the index of the last occurence if c in the string
+/// @param str
+/// @param c
+/// @return -1 if can't find c
 int	ft_lastchr(char *str, char c)
 {
 	int	i;
@@ -32,14 +32,15 @@ int	ft_lastchr(char *str, char c)
 	}
 	return (index);
 }
-
+/// @brief searches for the player location and saves it in the struct
+/// @param mv
 void	player_location(t_data *mv)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < mv->height) // while(mv->map[i])
+	while (i < mv->height)
 	{
 		j = 0;
 		while (mv->map[i][j])
@@ -54,7 +55,6 @@ void	player_location(t_data *mv)
 		}
 		i++;
 	}
-	// printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
 }
 /// @brief checks if character matches the one that should be in the map,
 /// @param c character fromm the map string

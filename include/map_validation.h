@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 07:07:01 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 10:23:58 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_data
 }	t_data;
 
 //basic_check.c
-int				map_check(t_cub	*cub, t_data *mv, t_cbd *cbd);
+int				map_check(t_cub	*cub, t_data *mv);
 
 //map_validation_utils.c
 void			free_mv_struct(t_data *mv);
