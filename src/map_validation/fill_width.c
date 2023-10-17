@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_width.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/02 10:24:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:59:19 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ void	fill_width(t_data *mv)
 		i++;
 	}
 }
-
+/// @brief Checks tat map_stris not null and then for two consecutive new lines
+/// @param cub
+/// @param mv
 void	consecutive_new_lines(t_cub *cub, t_data *mv)
 {
 	int	i;
 
+	if (cub->map_str == NULL)
+		print_error(cub, mv, "map is null\n", 1);
 	i = 0;
 	while (cub->map_str[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/14 11:13:32 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 07:51:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,9 @@ void	player_location(t_data *mv)
 	}
 	// printf("player position x: %d, y: %d\n", mv->player_x, mv->player_y);
 }
-
-/**
- * @brief if character doesn't matches the one that should be in the map,
- * returns 0. if not, returns 1
- */
+/// @brief checks if character matches the one that should be in the map,
+/// @param c character fromm the map string
+/// @return if character is incorrect returns 0, if not, returns 1
 int	map_character_check(char c)
 {
 	if (c != '1' && c != '0' && c != '\n' && c != 'N' && \
@@ -79,6 +77,4 @@ void	init_mv(t_data *mv)
 	mv->player_x = 0;
 	mv->player_y = 0;
 	mv->player_view = -1;
-	// mv->img_width = 64;
-	// mv->img_height = 64;
 }

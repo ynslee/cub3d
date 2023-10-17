@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/14 12:59:16 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 08:00:09 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	fill_the_wall(t_cub *cub, t_data *mv)
 	}
 	return (0);
 }
-
-/**
- * @brief checks the height of the map and save it to struct.
- */
+/// @brief checks the height of the map and save it to struct.
+/// @param map
+/// @param mv
+/// @return height of the map
 int	height_check(char *map, t_data *mv)
 {
 	int		i;
@@ -61,25 +61,23 @@ int	height_check(char *map, t_data *mv)
 	mv->height = height;
 	return (height);
 }
-
-/**
- * @brief Check if there is two maps.
- * if there is two maps, returns 1, if not returns 0
- */
+/// @brief checks if there is two maps in file
+/// @param cub
+/// @param height
+/// @param mv
+/// @return
 int	two_maps_check(t_cub *cub, int height, t_data *mv)
 {
 	char	**temp;
 	int		i;
 
-	i = 0;
-	if (cub->map_str == NULL)
-		print_error(cub, mv, "map is null\n", 1);
 	mv->map = ft_calloc((height + 1), sizeof(char *));
 	if (!mv->map)
 		print_error(cub, mv, "malloc_error\n", 1);
 	temp = ft_split(cub->map_str, '\n');
 	if (!temp)
-		print_error(cub, mv, "split error\n", 1);
+		print_error(cub, mv, "split error in map check!\n", 1);
+	i = 0;
 	while (temp[i])
 	{
 		mv->map[i] = ft_strdup(temp[i]);
@@ -94,11 +92,9 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 		return (1);
 	return (0);
 }
-
-/**
- * @brief returns 0 if there is only one player.
- * returns 1 if there is no player or more than one player. *
- */
+/// @brief checks if there is just one player.
+/// @param map map string
+/// @return returns 1 if there is only one player, if no player or more then one returns 0
 int	duplicate_player(char *map)
 {
 	int	i;
@@ -111,12 +107,12 @@ int	duplicate_player(char *map)
 		if (ft_strchr("NSEW", map[i]) && !player_flag)
 			player_flag = 1;
 		else if (ft_strchr("NSEW", map[i]) && player_flag)
-			return (1);
+			return (0);
 		i++;
 	}
 	if (player_flag == 0)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 /**
@@ -130,7 +126,7 @@ int	map_check(t_cub	*cub, t_data *mv, t_cbd *cbd)
 	int		index;
 	int		height;
 
-	(void)cbd;
+	(void)cbd; // ??
 	init_mv(mv);
 	consecutive_new_lines(cub, mv);
 	index = -1;
@@ -142,7 +138,7 @@ int	map_check(t_cub	*cub, t_data *mv, t_cbd *cbd)
 			break ;
 		}
 	}
-	if (duplicate_player(cub->map_str))
+	if (!duplicate_player(cub->map_str))
 		print_error(cub, mv, "No player or more than one player!\n", 1);
 	height = height_check(cub->map_str, mv);
 	if (two_maps_check(cub, height, mv))

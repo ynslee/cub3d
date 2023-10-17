@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 07:13:32 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 08:02:42 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	copy_map(t_cub *cub, t_data *mv)
 	int	i;
 	int	width;
 
-	(void)cub;
+	(void)cub; //??
 	i = 0;
 	width = 0;
 	mv->map_cpy = ft_calloc((mv->height + 1), sizeof(char *));
