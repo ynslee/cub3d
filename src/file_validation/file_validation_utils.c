@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:03:09 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:42:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	all_digits(char *number)
 	}
 	return (0);
 }
-/// @brief prints out error messagge to stderr and frees cub struct according to flag
+
+/// @brief prints out error messagge to stderr and frees cub struct according
+/// to flag
 /// @param cub
 /// @param str error message
 /// @param struct_flag if cub struct needs to be freed flag = 1
@@ -37,6 +39,7 @@ void	file_print_error(t_cub *cub, char *str, int struct_flag)
 		free_cub_struct(cub);
 	exit(1);
 }
+
 /// @brief Checks if the current line is part of the map, by checking the first
 /// non whitespace character in the begining of line
 /// @param line

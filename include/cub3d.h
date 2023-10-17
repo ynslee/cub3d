@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
+/*   Updated: 2023/10/17 15:40:10 by jhusso           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -33,10 +44,7 @@ typedef struct s_cbd
 	char	*img_addr;
 	int		img_bpp;
 	int		endian;
-	// double	x_angle;
-	// double	y_angle;
 }	t_cbd;
-
 
 typedef struct s_cub
 {

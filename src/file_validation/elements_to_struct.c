@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:03:25 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:42:22 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 	else
 		file_print_error(cub, "Texture file duplicates!\n", 1);
 }
-/// @brief reads floor and ceiling color if there are spaces between rgb values (ex. F 25, 25, 25)
+
+/// @brief reads floor and ceiling color if there are spaces between rgb
+/// values (ex. F 25, 25, 25)
 /// @param elem line splitted by spaces from file
 /// @param cub
-/// @return returns an array that contains the floor or ceiling color (ex. out[0] = F out[1] = 25,25,25)
-char	**put_elems_str(char **elem, t_cub *cub)
+/// @return returns an array that contains the floor or ceiling color
+/// (ex. out[0] = F out[1] = 25,25,25)
+static char	**put_elems_str(char **elem, t_cub *cub)
 {
 	char	**out;
 	char	*temp;
@@ -61,6 +64,7 @@ char	**put_elems_str(char **elem, t_cub *cub)
 	free_char_array(elem);
 	return (out);
 }
+
 /// @brief searches for lines in file that describe wall textures and
 /// floor and ceilin colors
 /// @param line line read from file with get__next_line

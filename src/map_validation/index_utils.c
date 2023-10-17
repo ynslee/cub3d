@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:09:16 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:45:49 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_lastchr(char *str, char c)
 	}
 	return (index);
 }
+
 /// @brief searches for the player location and saves it in the struct
 /// @param mv
 void	player_location(t_data *mv)
@@ -55,6 +56,7 @@ void	player_location(t_data *mv)
 		i++;
 	}
 }
+
 /// @brief checks if character matches the one that should be in the map,
 /// @param c character fromm the map string
 /// @return if character is incorrect returns 0, if not, returns 1

@@ -6,12 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:00:09 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:51:37 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-// #include "../../include/cub3d.h"
 
 /**
  * @brief free mv_struct
@@ -19,6 +18,7 @@
 void	free_mv_struct(t_data *mv)
 {
 	int	i;
+
 	if (mv->map)
 		free_char_array(mv->map);
 	if (mv->map_cpy)
@@ -36,7 +36,6 @@ void	free_mv_struct(t_data *mv)
 		i++;
 	}
 }
-
 
 /// @brief print the error message, frees struct if its already allocated and
 /// exits
@@ -56,6 +55,7 @@ void	print_error(t_cub *cub, t_data *mv, char *str, int code)
 	}
 	exit(1);
 }
+
 /// @brief makes a copy of mv->map and finds the width of the map
 /// @param cub
 /// @param mv

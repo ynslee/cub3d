@@ -6,12 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:10:34 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:52:42 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-#include "../../include/cub3d.h"
 
 t_tex_img	*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path)
 {
@@ -41,7 +40,7 @@ void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
 	data->texture[EA] = get_new_xpm_img(cbd, data, cub->ea);
 }
 
-unsigned int	rgb_colour(int *arr)
+static unsigned int	rgb_colour(int *arr)
 {
 	unsigned int	colour;
 

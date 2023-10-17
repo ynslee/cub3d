@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:10:18 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:47:20 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	height_check(char *map, t_data *mv)
 	mv->height = height;
 	return (height);
 }
+
 /// @brief checks if there is two maps in file
 /// @param cub
 /// @param height
@@ -102,7 +103,8 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 
 /// @brief checks if there is just one player.
 /// @param map map string
-/// @return returns 1 if there is only one player, if no player or more then one returns 0
+/// @return returns 1 if there is only one player, if no player or more
+/// then one returns 0
 int	duplicate_player(char *map)
 {
 	int	i;
@@ -123,19 +125,17 @@ int	duplicate_player(char *map)
 	return (1);
 }
 
-/**
- * @brief Checks if there is two consecutive new lines in the map or more.
- * Checks if there is other character than 0,1,N,S,E,W
- * Check if there is multiple players
- * @return 1 if everything is valid, 0 if one of the condition is invalid.
- */
+/// @brief Checks if there is two consecutive new lines in the map or more.
+/// Checks if there is other character than 0,1,N,S,E,W
+/// @param cub
+/// @param mv
+/// @return 1 if everything is valid, 0 if one of the condition is invalid.
 int	map_check(t_cub	*cub, t_data *mv)
 {
 	int		index;
 	int		height;
 
 	init_mv(mv);
-	// (void)cub;
 	consecutive_new_lines(cub, mv);
 	index = -1;
 	while (cub->map_str[++index])

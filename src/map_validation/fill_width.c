@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:00:23 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:44:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	fill_width(t_data *mv)
 		i++;
 	}
 }
+
 /// @brief Checks that map_stris not null and then for two consecutive new lines
 /// @param cub
 /// @param mv

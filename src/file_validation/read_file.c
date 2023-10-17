@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 14:59:05 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:43:49 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	check_empty_file(t_cub *cub, char *line, int line_flag)
 
 /// @brief Checks if given map file name ends with '.cub'
 /// @param file_name argv[1]
-/// @return fd if file name is valid and open() is successful, returns -1 if any error occures
+/// @return fd if file name is valid and open() is successful, returns -1
+/// if any error occures
 int	valid_file(char *file_name)
 {
 	char	*ret;
@@ -41,7 +42,8 @@ int	valid_file(char *file_name)
 	return (fd);
 }
 
-/// @brief reads the map line by line with get_next_line and saves in to string to cub struct
+/// @brief reads the map line by line with get_next_line and saves in to
+/// string to cub struct
 /// @param fd
 /// @param cub
 static void	read_map(int fd, t_cub *cub)
@@ -56,7 +58,8 @@ static void	read_map(int fd, t_cub *cub)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		if (cub->id_flag == 6 && !is_map(line) && ft_strncmp_all(line, "\n") != 0)
+		if (cub->id_flag == 6 && !is_map(line) && \
+			ft_strncmp_all(line, "\n") != 0)
 			file_print_error(cub, "Duplicate elements!\n", 1);
 		if (!map_str)
 			map_str = ft_strdup(line);
@@ -70,7 +73,9 @@ static void	read_map(int fd, t_cub *cub)
 	free (map_str);
 	free (line);
 }
-/// @brief reads file one line at a time, and checks that all the required elements are found
+
+/// @brief reads file one line at a time, and checks that all the
+/// required elements are found
 /// in right order
 /// @param fd
 /// @param cub
@@ -83,7 +88,6 @@ void	read_file(int fd, t_cub *cub)
 	while (cub->id_flag != 6)
 	{
 		line = get_next_line(fd);
-		// printf("line: %s\n", line);
 		if (line == NULL)
 			file_print_error(cub, "Invalid file!\n", 1);
 		if (line && cub->id_flag == 6 && !is_map(line))
@@ -94,7 +98,8 @@ void	read_file(int fd, t_cub *cub)
 			&& !is_map(line))
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
-			file_print_error(cub, "File does not have required elements or elements are in wrong order!\n", 1);
+			file_print_error(cub, "File does not have required elements or \
+				elements are in wrong order!\n", 1);
 		free(line);
 	}
 	read_map(fd, cub);
