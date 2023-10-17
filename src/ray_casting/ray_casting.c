@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 13:16:23 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:00:04 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	check_inits(t_ray *ray, t_line *line)
 	line->y1 = 0;
 	line->v_x1 = 0;
 	line->v_y1 = 0;
+	ray->dof = 0;
+	ray->d_tan = 0;
 }
 
 /**
@@ -75,19 +77,18 @@ static void	vray_hits_wall(t_ray *ray, t_line *line)
  */
 void	check_horizontal_gridline(t_ray *ray, t_line *line)
 {
-	ray->dof = 0;
+	if (tan(deg_to_rad(ray->ra)))
+		ray->d_tan = 1.0 / tan(deg_to_rad(ray->ra));
 	if (sin(deg_to_rad(ray->ra)) > 0.001)
 	{
 		line->y1 = (int)(line->y0) / GRID_PIX * GRID_PIX - 0.0001;
-		line->x1 = line->x0 + ((line->y0 - line->y1) * \
-		(1.0 / tan(deg_to_rad(ray->ra))));
+		line->x1 = line->x0 + (line->y0 - line->y1) * ray->d_tan;
 		line->ya = -(GRID_PIX);
 	}
 	else if (sin(deg_to_rad(ray->ra)) < -0.001)
 	{
 		line->y1 = (int)(line->y0) / GRID_PIX * GRID_PIX + GRID_PIX;
-		line->x1 = line->x0 + ((line->y0 - line->y1) * \
-		(1.0 / tan(deg_to_rad(ray->ra))));
+		line->x1 = line->x0 + (line->y0 - line->y1) * ray->d_tan;
 		line->ya = GRID_PIX;
 	}
 	else
@@ -96,7 +97,7 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
 		line->y1 = line->y0;
 		ray->dof = 10000;
 	}
-	line->xa = -line->ya * (1.0 / tan(deg_to_rad(ray->ra)));
+	line->xa = -line->ya * ray->d_tan;
 	hray_hits_wall(ray, line);
 }
 

@@ -6,12 +6,13 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 13:24:27 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:48:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray_casting.h"
-#include "cub3d.h"
+#include "../../include/ray_casting.h"
+#include "../../include/cub3d.h"
+#include "../../include/map_validation.h"
 
 /**
  * @brief draw player on the minimap
@@ -84,17 +85,38 @@ static void	draw_map(t_cbd *cbd, int x, int y, int color)
 	}
 }
 
+static void	fill_map(t_data *mv)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	temp = NULL;
+	while (mv->map[i])
+	{
+		if ((int)ft_strlen(mv->map[i]) < mv->width)
+		{
+			temp = fill_row(mv, mv->map, temp, i);
+			free(mv->map[i]);
+			mv->map[i] = ft_strdup(temp);
+			free(temp);
+		}
+		i++;
+	}
+}
+
 /**
  * @brief make minimap for the cub3D bonus part.
  * draws the preview of the map on the corner of the screen
  */
 void	make_mini_map(t_cbd *cbd, t_data *mv)
 {
-	int	i;
-	int	j;
-	int	color;
+	int				i;
+	int				j;
+	unsigned int	color;
 
 	i = 0;
+	fill_map(mv);
 	while (i < mv->height)
 	{
 		j = 0;
@@ -102,8 +124,12 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 		{
 			if (mv->map[i][j] == '1')
 				color = BLUE;
-			else if (mv->map[i][j] == '0')
+			else if (mv->map[i][j] == '0' || mv->map[i][j] == 'W' \
+			|| mv->map[i][j] == 'E' || mv->map[i][j] == 'N' || \
+			mv->map[i][j] == 'S')
 				color = LIGHTBLUE;
+			else
+				color = WHITE;
 			draw_map(cbd, j * MINI_PIX, i * MINI_PIX, color);
 			j++;
 		}

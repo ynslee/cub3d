@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:08:38 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:41:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define MAP_VALIDATION_H
 
 # include "cub3d.h"
-
-// typedef enum
-// {
-// 	SUCCESS,
-// 	MALLOC_ERROR,
-// 	MAP_INVALID
-// }
 
 typedef struct s_cub	t_cub;
 typedef struct s_ray	t_ray;
@@ -71,6 +64,7 @@ int				map_character_check(char c);
 void			init_mv(t_data *mv);
 
 //fill_width.c
+char			*fill_row(t_data *mv, char **map, char *temp, int i);
 void			consecutive_new_lines(t_cub *cub, t_data *mv);
 void			fill_width(t_data *mv);
 
