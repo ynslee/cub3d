@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 09:41:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:08:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,12 @@ typedef struct s_data
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
 	t_tex_img		*texture[4];
-	// void			*no_tex;
-	// void			*so_tex;
-	// void			*we_tex;
-	// void			*ea_tex;
 	int				img_width;
 	int				img_height;
 }	t_data;
 
 //basic_check.c
-int				map_check(t_cub	*cub, t_data *mv, t_cbd *cbd);
+int				map_check(t_cub	*cub, t_data *mv);
 
 //map_validation_utils.c
 void			free_mv_struct(t_data *mv);
