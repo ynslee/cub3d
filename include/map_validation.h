@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:58:33 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 16:47:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 }	t_data;
 
 // fill_width.c
+char			*fill_row(t_data *mv, char **map, char *temp, int i);
 void			fill_width(t_data *mv);
 void			consecutive_new_lines(t_cub *cub, t_data *mv);
 
