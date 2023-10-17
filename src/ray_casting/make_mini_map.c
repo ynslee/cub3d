@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:53:36 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:24:27 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 		{
 			if (mv->map[i][j] == '1')
 				color = BLUE;
-			else if ((mv->map[i][j] == '0'))
+			else if (mv->map[i][j] == '0')
 				color = LIGHTBLUE;
 			draw_map(cbd, j * MINI_PIX, i * MINI_PIX, color);
 			j++;
