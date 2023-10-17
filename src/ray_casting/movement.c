@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/12 09:50:43 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:14:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	side_wall_check(t_ray *ray, t_vector *next, float degree)
  * @param y next y position
  * @return returns 1 if movable, if not, returns 0
  */
-int	 movable(float x, float y, t_ray *ray)
+int	movable(float x, float y, t_ray *ray)
 {
 	t_vector	next;
 	t_vector	current;
@@ -84,12 +84,13 @@ int	 movable(float x, float y, t_ray *ray)
 	next.x = x / GRID_PIX;
 	next.y = y / GRID_PIX;
 	if (ray->data->map[(int)next.y][(int)next.x] && \
-	(ray->data->map[(int)(next.y + 0.02)][(int)next.x] == '1' || \
-	ray->data->map[(int)(next.y - 0.02)][(int)next.x] == '1' || \
-	ray->data->map[(int)next.y][(int)(next.x + 0.02)] == '1' || \
-	ray->data->map[(int)next.y][(int)(next.x - 0.02)] == '1'))
+	(ray->data->map[(int)(next.y + 0.1)][(int)next.x] == '1' || \
+	ray->data->map[(int)(next.y - 0.1)][(int)next.x] == '1' || \
+	ray->data->map[(int)next.y][(int)(next.x + 0.1)] == '1' || \
+	ray->data->map[(int)next.y][(int)(next.x - 0.1)] == '1'))
 		return (0);
-	if (((int)current.y == (int)next.y) && (int)current.x == (int)next.x)
+	else if (((int)current.y / GRID_PIX == (int)next.y / GRID_PIX) && \
+	(int)current.x / GRID_PIX == (int)next.x / GRID_PIX)
 		return (1);
 	else
 		return (side_wall_check(ray, &next, fix_angle(ray->pa)));
@@ -125,21 +126,16 @@ void	move_frontback(t_ray *ray, char *direction)
 {
 	float	x;
 	float	y;
-	// int		xo;
 
-	// if (ray->pdx < 0)
-	// 	xo -= 20;
-	// else
-	// 	xo = 20;
 	if (ft_strncmp_all(direction, "up"))
 	{
-		x = ray->pix_x_pos - ray->pdx / PLAYER_S;
-		y = ray->pix_y_pos - ray->pdy / PLAYER_S;
+		x = ray->pix_x_pos - ray->pdx;
+		y = ray->pix_y_pos - ray->pdy;
 	}
 	else
 	{
-		x = ray->pix_x_pos + ray->pdx / PLAYER_S;
-		y = ray->pix_y_pos + ray->pdy / PLAYER_S;
+		x = ray->pix_x_pos + ray->pdx;
+		y = ray->pix_y_pos + ray->pdy;
 	}
 	if (movable(x, y, ray))
 	{

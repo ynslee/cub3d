@@ -6,24 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 09:24:50 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:39:26 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 #include "../../include/cub3d.h"
-
-// unsigned int	ft_pixel_get()
-//depth of view
-//smoother line for the walls
-// static void	calculate_distance(t_ray *ray)
-// {
-// 	ray->distance = sqrt(pow(ray->r_end_x - ray->pix_x_pos, 2)
-// 		+ pow(ray->r_end_y - ray->pix_y_pos, 2));
-// 	// printf("ray->distance: %f\n", ray->distance);
-// 	ray->wall_height = ((WIN_SIZE_Y / 2) / ray->distance);
-// 	printf("ray->wall_height: %f\n", ray->wall_height);
-// }
 
 // "WEST" = BLACK
 // "EAST" = WHITE
@@ -76,9 +64,12 @@ int	set_wall_direction(t_ray *ray)
 	return (-1);
 }
 
-/*
-PR_PLANE is Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
-y_count is step size of traversing the image in y axis(top to bottom)*/
+/**
+ * @brief finding the location of texture and draw the image
+ * 
+ * @param PR_PLANE Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
+ * @param y_count step size of traversing the image in y axis(top to bottom)
+ */
 void	draw_image(t_ray *ray, t_line *line)
 {
 	float	y_count;
@@ -86,15 +77,8 @@ void	draw_image(t_ray *ray, t_line *line)
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
 	y_count = TEX_PIX / ray->wall_height;
 	if (ray->shortest == 'h')
-	{
-		// printf("horizontal: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->x1, line->y1);
 		texture_location(ray, y_count, line->x1, line->y1);
-	}
 	else
-	{
-		// printf("vertical: ray.shortest is %c, x is %f, y is %f\n", ray->shortest, line->v_x1, line->v_y1);
 		texture_location(ray, y_count, line->v_x1, line->v_y1);
-	}
-	// color_wall(ray, ray->ray_count, (int)ray->wall_height);
 	texture_wall(ray, ray->ray_count, (int)ray->wall_height, y_count);
 }
