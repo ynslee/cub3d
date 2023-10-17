@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 09:41:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:23:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int				map_character_check(char c);
 void			init_mv(t_data *mv);
 
 //fill_width.c
+char			*fill_temp(t_data *mv, char **map, char *temp, int i);
 void			consecutive_new_lines(t_cub *cub, t_data *mv);
 void			fill_width(t_data *mv);
 

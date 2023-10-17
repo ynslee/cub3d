@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 13:21:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:58:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_ray
 	float			pa;
 	float			ra;
 	int				dof;
+	float			d_tan;
 	float			xa;
 	float			ya;
 	float			ray_count;

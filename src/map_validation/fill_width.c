@@ -6,22 +6,22 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/02 10:24:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:22:55 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 #include "../../include/cub3d.h"
 
-char	*fill_temp(t_data *mv, char *temp, int i)
+char	*fill_temp(t_data *mv, char **map, char *temp, int i)
 {
 	int	j;
 
 	j = 0;
 	temp = ft_calloc(mv->width + 1, sizeof(char));
-	while (mv->map_cpy[i][j])
+	while (map[i][j])
 	{
-		temp[j] = mv->map_cpy[i][j];
+		temp[j] = map[i][j];
 		j++;
 	}
 	while (j < mv->width)
@@ -44,7 +44,7 @@ void	fill_width(t_data *mv)
 	{
 		if ((int)ft_strlen(mv->map_cpy[i]) < mv->width)
 		{
-			temp = fill_temp(mv, temp, i);
+			temp = fill_temp(mv, mv->map_cpy, temp, i);
 			free(mv->map_cpy[i]);
 			mv->map_cpy[i] = ft_strdup(temp);
 			free(temp);
