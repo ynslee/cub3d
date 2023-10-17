@@ -6,12 +6,15 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 11:16:50 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:49:38 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
+/**
+ * @brief calculate the next angle and moves player angle to 5 degrees.
+ */
 static void	angle_left_right(char *direction, t_ray *ray)
 {
 	if (!ft_strncmp_all(direction, "left"))
@@ -28,6 +31,11 @@ static void	angle_left_right(char *direction, t_ray *ray)
 	}
 }
 
+/**
+ * @brief players movement of up, down, right, and left key
+ * 
+ * @param keysym key code of WASD keys
+ */
 static void	player_moves(int keysym, t_ray *ray)
 {
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
@@ -43,6 +51,11 @@ static void	player_moves(int keysym, t_ray *ray)
 	render_image(ray->cbd, ray, ray->data);
 }
 
+/**
+ * @brief moves the player's angle based on left and right key
+ * 
+ * @param keysym keycode of arrow keys on the keyboard
+ */
 static void	angle_moves(int keysym, t_ray *ray)
 {
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
@@ -67,11 +80,13 @@ int	key_event(int keysym, t_ray *ray)
 	return (0);
 }
 
+/**
+ * @brief Set the hooks for the key events
+ */
 void	set_hooks(t_cbd *cbd, t_ray *ray)
 {
 	mlx_hook(cbd->window, 17, 1L << 5, &destroy, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
-	// render_image(ray->cbd, ray, ray->data, line);
 	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);
 	// mlx_hook(mlx->win_ptr, 06, 1, &mouse_params, &mlx);
 }

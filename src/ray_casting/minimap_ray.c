@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_drawing_utils.c                               :+:      :+:    :+:   */
+/*   minimap_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 12:28:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:01:21 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
+/**
+ * @brief returns the absolute value of the integer
+ */
 int	ft_abs(int a)
 {
 	if (a < 0)
-		return (-a);
+		return (-1 * a);
 	return (a);
 }
 
+/**
+ * @brief initialise line struct for the bresenham drawing function
+ */
 void	init_line(t_line *line, t_ray *ray)
 {
 	line->x0 = (int)(ray->pix_x_pos / 4);
@@ -39,6 +45,11 @@ void	init_line(t_line *line, t_ray *ray)
 	line->error2 = line->error * 2;
 }
 
+/**
+ * @brief draws the rays of player(60 degree angle). Uses player's
+ * position and the position of hitting wall with ray's angle and draws
+ * the line inbetween
+ */
 void	bresenham(t_ray *ray, t_line *line, int color)
 {
 	init_line(line, ray);
@@ -62,18 +73,32 @@ void	bresenham(t_ray *ray, t_line *line, int color)
 	}
 }
 
+/**
+ * @brief check if the x, y position hits the wall for bresenham function only
+ * @return 0 if there is no wall, 1 if there is wall
+ */
 static int	bh_hit_wall(t_ray *ray, float x, float y)
 {
-	if (((int)(ray->pix_x_pos / MINI_PIX) == (int)(x / MINI_PIX)) && ((int)(ray->pix_y_pos / MINI_PIX) == (int)(y / MINI_PIX)))
+	int	p;
+
+	p = MINI_PIX;
+	if (((int)(ray->pix_x_pos / MINI_PIX) == (int)(x / MINI_PIX)) && \
+	((int)(ray->pix_y_pos / MINI_PIX) == (int)(y / MINI_PIX)))
 		return (0);
-	if ((ray->data->map[(int)(y / MINI_PIX - 0.01)][(int)x / MINI_PIX] == '1') || \
-		(ray->data->map[(int)(y / MINI_PIX + 0.01)][(int)x / MINI_PIX] == '1') || \
-		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX - 0.01)] == '1') || \
-		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX + 0.01)] == '1'))
+	if ((ray->data->map[(int)(y / p - 0.01)][(int)x / p] == '1') || \
+		(ray->data->map[(int)(y / p + 0.01)][(int)x / p] == '1') || \
+		(ray->data->map[(int)y / p][(int)(x / p - 0.01)] == '1') || \
+		(ray->data->map[(int)y / p][(int)(x / p + 0.01)] == '1'))
 		return (1);
-	return(0);
+	return (0);
 }
 
+/**
+ * @brief using bresenham's function to draw rays on the minimap
+ * 
+ * @param x x's pixel position on the minimap
+ * @param y y's pixel position on the minimap
+ */
 void	cast_rays(t_ray *ray)
 {
 	float	x;

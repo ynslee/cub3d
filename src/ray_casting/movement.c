@@ -6,13 +6,13 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 11:14:52 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:08:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
-int	side_wall_check2(t_ray *ray, t_vector *next, float degree)
+static int	side_wall_check2(t_ray *ray, t_vector *next, float degree)
 {
 	if (degree >= (float)180 && degree < (float)270)
 	{
@@ -42,7 +42,7 @@ int	side_wall_check2(t_ray *ray, t_vector *next, float degree)
  * @param degree player angle
  * @return returns 1 if there is no side_wall, returns 0 if there is side_walls.
  */
-int	side_wall_check(t_ray *ray, t_vector *next, float degree)
+static int	side_wall_check(t_ray *ray, t_vector *next, float degree)
 {
 	if (degree >= (float)0 && degree < (float)90)
 	{
@@ -97,6 +97,9 @@ int	movable(float x, float y, t_ray *ray)
 	return (1);
 }
 
+/**
+ * @brief moves the player left and right
+ */
 void	move_sideway(t_ray *ray, char *direction)
 {
 	double	angle;
@@ -118,9 +121,6 @@ void	move_sideway(t_ray *ray, char *direction)
 
 /**
  * @brief move forward and backwards as a player.
- *  pdx is divided by PLAYER_S so we slow down the player's movement.
- * @param ray
- * @param direction
  */
 void	move_frontback(t_ray *ray, char *direction)
 {

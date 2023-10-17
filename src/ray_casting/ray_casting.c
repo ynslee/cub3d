@@ -6,12 +6,15 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 12:33:18 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:16:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
+/**
+ * @brief initialise the line struct for the DDA algorithm
+ */
 void	check_inits(t_ray *ray, t_line *line)
 {
 	line->x0 = ray->pix_x_pos;
@@ -22,6 +25,9 @@ void	check_inits(t_ray *ray, t_line *line)
 	line->v_y1 = 0;
 }
 
+/**
+ * @brief check if the ray hits the wall and returns the value accordingly
+ */
 static void	hray_hits_wall(t_ray *ray, t_line *line)
 {
 	while (ray->dof < 10000)
@@ -41,6 +47,9 @@ static void	hray_hits_wall(t_ray *ray, t_line *line)
 	}
 }
 
+/**
+ * @brief check if the ray hits the wall and returns the value accordingly
+ */
 static void	vray_hits_wall(t_ray *ray, t_line *line)
 {
 	while (ray->dof < 10000)
@@ -60,6 +69,10 @@ static void	vray_hits_wall(t_ray *ray, t_line *line)
 	}
 }
 
+/**
+ * @brief calculate the x and y's first wall-hitting position of
+ * horizontal grid line
+ */
 void	check_horizontal_gridline(t_ray *ray, t_line *line)
 {
 	ray->dof = 0;
@@ -87,6 +100,10 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
 	hray_hits_wall(ray, line);
 }
 
+/**
+ * @brief calculate the x and y's first wall-hitting position of vertical
+ * grid line
+ */
 void	check_vertical_gridline(t_ray *ray, t_line *line)
 {
 	ray->dof = 0;

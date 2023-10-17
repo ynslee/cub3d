@@ -6,13 +6,16 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:33:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:34:15 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:43:24 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 #include "../../include/cub3d.h"
 
+/**
+ * @brief draw ceiling & floor based on the colour that is given from the map
+ */
 void	draw_background(t_ray *ray)
 {
 	int				x;

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:31:45 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:41:57 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ static int	rays_looking_down(t_ray *ray)
 	return (-1);
 }
 
+/**
+ * @brief Set the wall direction based on the ray's horizontal
+ * and vertical hit and the ray angle.
+ * 
+ * @return side of the wall that the ray hits
+ */
 int	set_wall_direction(t_ray *ray)
 {
 	if ((int)ray->ra >= 0 && (int)ray->ra < 180)
