@@ -1,5 +1,4 @@
 
-#include "../include/map_validation.h"
 #include "../include/cub3d.h"
 
 void	print_struct(t_cub *cub)

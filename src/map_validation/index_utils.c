@@ -6,12 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:22:10 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 12:25:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-#include "../../include/cub3d.h"
 
 /// @brief return the index of the last occurence if c in the string
 /// @param str

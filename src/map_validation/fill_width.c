@@ -6,12 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 10:37:00 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 12:25:45 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-#include "../../include/cub3d.h"
 
 /// @brief fills temporary map, row by row so that all empty indexes that are
 /// smaller than max width become X
