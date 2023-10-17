@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:22:23 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:59:34 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	fill_the_wall(t_cub *cub, t_data *mv)
 	while (mv->map_cpy[x][y] == ' ')
 		y++;
 	if (mv->map_cpy[x][y] != '1')
-		print_error(cub, mv, "map is not closed\n", 2);
+		print_error(cub, mv, "Map is not closed\n", 1);
 	flood_fill(mv, x, y, mv->map_cpy[x][y]);
 	x = 0;
 	while (mv->map_cpy[x])
@@ -78,16 +78,16 @@ int	two_maps_check(t_cub *cub, int height, t_data *mv)
 
 	mv->map = ft_calloc((height + 1), sizeof(char *));
 	if (!mv->map)
-		print_error(cub, mv, "malloc_error\n", 1);
+		print_error(cub, mv, "Malloc_error\n", 1);
 	temp = ft_split(cub->map_str, '\n');
 	if (!temp)
-		print_error(cub, mv, "split error in map check!\n", 1);
+		print_error(cub, mv, "Split error in map check!\n", 1);
 	i = 0;
 	while (temp[i])
 	{
 		mv->map[i] = ft_strdup(temp[i]);
 		if (!mv->map[i])
-			print_error(cub, mv, "malloc_error\n", 2);
+			print_error(cub, mv, "Malloc_error\n", 2);
 		free(temp[i]);
 		i++;
 	}
@@ -135,13 +135,14 @@ int	map_check(t_cub	*cub, t_data *mv)
 	int		height;
 
 	init_mv(mv);
+	// (void)cub;
 	consecutive_new_lines(cub, mv);
 	index = -1;
 	while (cub->map_str[++index])
 	{
 		if (!map_character_check(cub->map_str[index]))
 		{
-			print_error(cub, mv, "map has invalid character!\n", 1);
+			print_error(cub, mv, "Map has invalid character!\n", 1);
 			break ;
 		}
 	}
@@ -149,7 +150,7 @@ int	map_check(t_cub	*cub, t_data *mv)
 		print_error(cub, mv, "No player or more than one player!\n", 1);
 	height = height_check(cub->map_str, mv);
 	if (!two_maps_check(cub, height, mv))
-		print_error(cub, mv, "there are more than one map in the file!\n", 2);
+		print_error(cub, mv, "There are more than one map in the file!\n", 1);
 	wall_check(cub, mv);
 	mv->ceiling_rgb = change_colour(cub->c_color);
 	mv->floor_rgb = change_colour(cub->f_color);

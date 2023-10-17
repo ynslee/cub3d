@@ -6,11 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 10:22:47 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:03:25 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file_validation.h"
+#include "../../include/file_validation.h"
 /// @brief first checks that element information is valid, then adds the
 /// information to cub struct, gives error message if finds duplicate elements
 /// @param element line from file splitted by spaces

@@ -6,11 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 07:36:19 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:03:09 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file_validation.h"
+#include "../../include/file_validation.h"
 
 int	all_digits(char *number)
 {

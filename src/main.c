@@ -88,15 +88,18 @@ int	main(int argc, char **argv)
 		map_check(&cub, &mv);
 		if (mv.height * GRID_PIX > WIN_SIZE_Y || mv.width * GRID_PIX > WIN_SIZE_X)
 		{
-			printf("map is bigger than the window size\n");
+			printf("Map is bigger than the window size\n");
 			return (-1);
 		}
+		(void)cbd;
+		(void)mv;
 		init_render_utils(&cbd, &mv, &cub);
 		// printf("map copy:\n");
 		// int k = -1;
 		// while (++k < mv.height)
 		// 	printf("%s\n", mv.map_cpy[k]);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
+		// printf("Here!\n");
 		free_cub_struct(&cub);
 		free_mv_struct(&mv);
 	}

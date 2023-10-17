@@ -6,11 +6,11 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 12:35:50 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:59:05 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file_validation.h"
+#include "../../include/file_validation.h"
 
 /// @brief Check if the map file is empty, or if there is no map
 /// @param cub
@@ -83,7 +83,7 @@ void	read_file(int fd, t_cub *cub)
 	while (cub->id_flag != 6)
 	{
 		line = get_next_line(fd);
-		printf("line: %s\n", line);
+		// printf("line: %s\n", line);
 		if (line == NULL)
 			file_print_error(cub, "Invalid file!\n", 1);
 		if (line && cub->id_flag == 6 && !is_map(line))

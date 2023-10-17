@@ -6,12 +6,12 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:23:58 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:00:09 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-#include "../../include/cub3d.h"
+// #include "../../include/cub3d.h"
 
 /**
  * @brief free mv_struct
@@ -68,12 +68,12 @@ void	copy_map(t_cub *cub, t_data *mv)
 	width = 0;
 	mv->map_cpy = ft_calloc((mv->height + 1), sizeof(char *));
 	if (!mv->map_cpy)
-		print_error(cub, mv, "malloc_error\n", 2);
+		print_error(cub, mv, "Malloc_error\n", 2);
 	while (i < mv->height && mv->map[i])
 	{
 		mv->map_cpy[i] = ft_strdup(mv->map[i]);
 		if (!mv->map_cpy[i])
-			print_error(cub, mv, "malloc_error\n", 2);
+			print_error(cub, mv, "Malloc_error\n", 2);
 		if ((int)ft_strlen(mv->map_cpy[i]) > width)
 			width = ft_strlen(mv->map_cpy[i]);
 		i++;
@@ -92,7 +92,7 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 	{
-		printf("row index = %i\t%s\n", i, map[i]);
+		printf("Row index = %i\t%s\n", i, map[i]);
 		i++;
 	}
 	printf("\n");

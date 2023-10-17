@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:25:45 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:00:23 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	consecutive_new_lines(t_cub *cub, t_data *mv)
 	int	i;
 
 	if (cub->map_str == NULL)
-		print_error(cub, mv, "map is null\n", 1);
+		print_error(cub, mv, "Map is null\n", 1);
 	i = 0;
 	while (cub->map_str[i])
 	{
 		if (cub->map_str[i] == '\n' && cub->map_str[i + 1] == '\n')
-			print_error(cub, mv, "two consecutive new lines!\n", 1);
+			print_error(cub, mv, "Two consecutive new lines!\n", 1);
 		i++;
 	}
 }

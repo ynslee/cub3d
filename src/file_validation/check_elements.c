@@ -6,11 +6,12 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 09:50:04 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:03:40 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file_validation.h"
+#include "../../include/file_validation.h"
+
 /// @brief checks that floor and ceiling colors have three numbers separated by comma
 /// and that color values are correct
 /// @param element rgb colorvalues separated by comma (second element of an array of splitted line)
@@ -53,6 +54,7 @@ static int	check_textures(char *element)
 	fd = open(element, O_RDONLY);
 	return (fd);
 }
+
 /// @brief Checks that the line that contains wall texture information in file is correct
 /// @param element line from file splitted by spaces
 /// @param cub
@@ -64,7 +66,7 @@ int	check_elements(char **element, t_cub *cub)
 		|| !ft_strncmp_all(element[0], "EA"))
 	{
 		if (check_textures(element[1]) == -1)
-			file_print_error(cub, "invalid wall texture files!\n", 0);
+			file_print_error(cub, "Invalid wall texture files!\n", 0);
 	}
 	else if (!ft_strncmp_all(element[0], "F")
 		|| !ft_strncmp_all(element[0], "C"))
