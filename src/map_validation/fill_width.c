@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:44:53 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:58:40 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 /// @param temp
 /// @param i row number of map
 /// @return filled row
-static char	*fill_row(t_data *mv, char *temp, int i)
+char	*fill_row(t_data *mv, char **map, char *temp, int i)
 {
 	int	j;
 
 	j = 0;
 	temp = ft_calloc(mv->width + 1, sizeof(char));
-	while (mv->map_cpy[i][j])
+	while (map[i][j])
 	{
-		temp[j] = mv->map_cpy[i][j];
+		temp[j] = map[i][j];
 		j++;
 	}
 	while (j < mv->width)
@@ -52,7 +52,7 @@ void	fill_width(t_data *mv)
 	{
 		if ((int)ft_strlen(mv->map_cpy[i]) < mv->width)
 		{
-			temp = fill_row(mv, temp, i);
+			temp = fill_row(mv, mv->map_cpy, temp, i);
 			free(mv->map_cpy[i]);
 			mv->map_cpy[i] = ft_strdup(temp);
 			free(temp);

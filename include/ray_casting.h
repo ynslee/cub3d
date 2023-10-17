@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 13:21:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:47:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,18 @@ typedef struct s_line
 	float	y1;
 	float	xa;
 	float	ya;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	error;
-	int	error2;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		error;
+	int		error2;
 	float	v_x1;
 	float	v_y1;
 	float	v_xa;
 	float	v_ya;
 	float	rx;
 	float	ry;
-	// float	dx;
-	// float	dy;
-	// float	sx;
-	// float	sy;
-	// float	error;
-	// float	error2;
 }	t_line;
 
 /**
@@ -120,6 +114,7 @@ typedef struct s_ray
 	float			pa;
 	float			ra;
 	int				dof;
+	float			d_tan;
 	float			xa;
 	float			ya;
 	float			ray_count;
@@ -150,7 +145,6 @@ int				set_wall_direction(t_ray *ray);
 void			draw_background(t_ray *ray);
 void			draw_image(t_ray *ray, t_line *line);
 // void			color_wall(t_ray *ray, int pos, int wall);
-
 
 // hooks.c
 int				key_event(int keysym, t_ray *ray);
