@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/13 09:01:13 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:14:03 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 		y = 0;
 		while (y < 5)
 		{
-			my_mlx_pixel_put(cbd, x + (ray->pix_x_pos - 2), y + (ray->pix_y_pos - 2), PINK);
+			my_mlx_pixel_put(cbd, x + ((ray->pix_x_pos / 4) - 2), y + ((ray->pix_y_pos / 4) - 2), PINK);
 			y++;
 		}
 		x++;
@@ -37,21 +37,21 @@ static void	draw_grid(t_cbd *cbd, t_data *mv)
 	int	y;
 
 	x = 0;
-	while (x < mv->width * GRID_PIX)
+	while (x < mv->width * MINI_PIX)
 	{
 		y = -1;
-		while (++y < mv->height * GRID_PIX)
+		while (++y < mv->height * MINI_PIX)
 			my_mlx_pixel_put(cbd, x, y, BLACK);
-		x = x + GRID_PIX;
+		x = x + MINI_PIX;
 	}
 	x = -1;
-	while (++x < mv->width * GRID_PIX)
+	while (++x < mv->width * MINI_PIX)
 	{
 		y = 0;
-		while (y < mv->height * GRID_PIX)
+		while (y < mv->height * MINI_PIX)
 		{
 			my_mlx_pixel_put(cbd, x, y, BLACK);
-			y = y + GRID_PIX;
+			y = y + MINI_PIX;
 		}
 	}
 }
@@ -63,10 +63,10 @@ static void	draw_map(t_cbd *cbd, int x, int y, int color)
 
 	i = -1;
 	// printf("in draw_map x: %i\ty: %i\n", x, y);
-	while (++i < GRID_PIX)
+	while (++i < MINI_PIX)
 	{
 		j = -1;
-		while (++j < GRID_PIX)
+		while (++j < MINI_PIX)
 		{
 			// printf("x:%i y:%i\n", i, j);
 			my_mlx_pixel_put(cbd, x + i, y + j, color);
@@ -91,7 +91,7 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 				color = BLUE;
 			else
 				color = LIGHTBLUE;
-			draw_map(cbd, j * GRID_PIX, i * GRID_PIX, color);
+			draw_map(cbd, j * MINI_PIX, i * MINI_PIX, color);
 			j++;
 		}
 		i++;

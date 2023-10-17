@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 16:59:06 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:21:42 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	draw_background(ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	printf("ray position:%f, %f\n", ray->pix_x_pos / GRID_PIX, ray->pix_y_pos / GRID_PIX);
+	// printf("ray position:%f, %f\n", ray->pix_x_pos / GRID_PIX, ray->pix_y_pos / GRID_PIX);
 	while (ray->ray_count < WIN_SIZE_X)
 	{
 		check_inits(ray, &line);
@@ -46,13 +46,12 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		compare_draw_rays(ray, &line);
 		draw_image(ray, &line);
 		ray->ray_count += 1;
-		ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
+		ray->ra = fix_angle(ray->ra + (float)FOV / (float) WIN_SIZE_X);
 	}
-	// ray->ra = fix_angle(ray->pa - FOV / 2);
-	// make_mini_map(cbd, mv);
-	// cast_rays(ray);
-	// draw_player(cbd, ray);
-	(void)mv;
+	ray->ra = fix_angle(ray->pa - FOV / 2);
+	make_mini_map(cbd, mv);
+	cast_rays(ray);
+	draw_player(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 
@@ -71,11 +70,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	// ray->cub = (t_cub *)cub;
 	ray->distance = 0;
 	ray->wall_height = 0;
-	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	vector.x = GRID_PIX * ray->data->player_y + GRID_PIX / 2.5;
-	vector.y = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
-	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2.5;
+	ray->pix_x_pos = GRID_PIX * ray->data->player_y + GRID_PIX / 2;
+	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
 	// init_xpm_images(data);

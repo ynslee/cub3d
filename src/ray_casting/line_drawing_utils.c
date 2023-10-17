@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/13 09:33:08 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:12:39 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	init_line(t_line *line, t_ray *ray)
 	(void)ray;
 	// line->x0 = (int)line->x0;
 	// line->y0 = (int)line->y0;
-	line->x0 = (int)ray->pix_x_pos;
-	line->y0 = (int)ray->pix_y_pos;
+	line->x0 = (int)(ray->pix_x_pos / 4);
+	line->y0 = (int)(ray->pix_y_pos / 4);
 	line->x1 = (int)ray->r_end_x;
 	line->y1 = (int)ray->r_end_y;
 	line->dx = ft_abs(line->x1 - line->x0);

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 16:55:33 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:30:41 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,8 @@ void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
 	pos = WIN_SIZE_X - (pos + 1);
 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
 	wall_end = wall_start + wall;
-	// if (wall_start < 0)
-	// 	wall_start = 0;
-	// if (wall_end > WIN_SIZE_Y)
-	// 	wall_end = WIN_SIZE_Y;
-	// printf("texture_wall : tex_x is %f, tex_y is %f, y_count is %f\n", ray->tex_x, ray->tex_y, y_count);
-	// printf("wall start is %f, wall_end is %f\n", wall_start, wall_end);
 	while ((int)(wall_start + i) < (int)wall_end)
 	{
-		printf("tex_x is %f(%d), tex_y is %f(%d)\n", ray->tex_x, (int)ray->tex_x, ray->tex_y, (int)ray->tex_y);
 		texture = my_mlx_pixel_get(ray->data->texture[set_wall_direction(ray)], \
 		ray->tex_x, ray->tex_y);
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
@@ -69,12 +62,12 @@ void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
 
 static int	bh_hit_wall(t_ray *ray, float x, float y)
 {
-	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && ((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
+	if (((int)(ray->pix_x_pos / MINI_PIX) == (int)(x / MINI_PIX)) && ((int)(ray->pix_y_pos / MINI_PIX) == (int)(y / MINI_PIX)))
 		return (0);
-	if ((ray->data->map[(int)(y / GRID_PIX - 0.01)][(int)x / GRID_PIX] == '1') || \
-		(ray->data->map[(int)(y / GRID_PIX + 0.01)][(int)x / GRID_PIX] == '1') || \
-		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX - 0.01)] == '1') || \
-		(ray->data->map[(int)y / GRID_PIX][(int)(x / GRID_PIX + 0.01)] == '1'))
+	if ((ray->data->map[(int)(y / MINI_PIX - 0.01)][(int)x / MINI_PIX] == '1') || \
+		(ray->data->map[(int)(y / MINI_PIX + 0.01)][(int)x / MINI_PIX] == '1') || \
+		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX - 0.01)] == '1') || \
+		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX + 0.01)] == '1'))
 		return (1);
 	return(0);
 }
@@ -84,25 +77,25 @@ void	cast_rays(t_ray *ray)
 	float	x;
 	float	y;
 
-	x = ray->pix_x_pos;
-	y = ray->pix_y_pos;
+	x = ray->pix_x_pos / 4;
+	y = ray->pix_y_pos / 4;
 	ray->ray_count = 0;
-	while (ray->ray_count < WIN_SIZE_X)
+	while (ray->ray_count < (ray->data->width * MINI_PIX))
 	{
 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
 		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
 		x += ray->pdx;
 		y += ray->pdy;
-		if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' \
+		if (ray->data->map[(int)y / MINI_PIX][(int)x / MINI_PIX] == '1' \
 		|| bh_hit_wall(ray, x, y))
 		{
 			ray->r_end_x = floor(x);
 			ray->r_end_y = floor(y);
 			bresenham(ray, ray->line, BLACK);
 			ray->ray_count += 1;
-			ray->ra = fix_angle(ray->ra + (float)FOV / WIN_SIZE_X);
-			x = ray->pix_x_pos;
-			y = ray->pix_y_pos;
+			ray->ra = fix_angle(ray->ra + (float)FOV / (ray->data->width * MINI_PIX));
+			x = ray->pix_x_pos / 4;
+			y = ray->pix_y_pos / 4;
 		}
 	}
 }
@@ -115,28 +108,19 @@ void	compare_draw_rays(t_ray *ray, t_line *line)
 {
 	float	h_length;
 	float	v_length;
-	float	a;
-	float	b;
 
-	a = line->x0 - line->x1;
-	b = line->y0 - line->y1;
-	h_length = sqrt((a * a) + (b * b));
-	a = line->x0 - line->v_x1;
-	b = line->y0 - line->v_y1;
-	v_length = sqrt((a * a) + (b * b));
-	// v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
-	// pow((line->y0 - line->v_y1), 2));
+	h_length = sqrt(pow((line->x0 - line->x1), 2) + \
+	pow((line->y0 - line->y1), 2));
+	v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
+	pow((line->y0 - line->v_y1), 2));
 	if (h_length != 0.0f && (h_length < v_length || v_length == 0.0f))
 	{
 		ray->shortest = 'h';
 		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
-		printf("shortest is %c, x is %f, y is %f\n", ray->shortest, line->x1 / GRID_PIX, line->y1 / GRID_PIX);
 	}
 	else
 	{
 		ray->shortest = 'v';
 		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
-		printf("shortest is %c, x is %f, y is %f\n", ray->shortest, line->v_x1 / GRID_PIX, line->v_y1/ GRID_PIX);
 	}
-	printf("ray.ra is %f, ray pa is %f, distance is %f\n", ray->ra, ray->pa, ray->distance);
 }

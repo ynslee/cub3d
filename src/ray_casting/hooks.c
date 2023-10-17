@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/12 09:51:38 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:22:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	set_hooks(t_cbd *cbd, t_ray *ray)
 {
 	mlx_hook(cbd->window, 17, 1L << 5, &destroy, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
+	// render_image(ray->cbd, ray, ray->data, line);
 	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);
 	// mlx_hook(mlx->win_ptr, 06, 1, &mouse_params, &mlx);
 }

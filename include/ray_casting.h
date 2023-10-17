@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/10/17 09:33:13 by yoonslee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef RAY_CASTING_H
 # define RAY_CASTING_H
 
 # define FOV 60
-# define GRID_PIX 48
+# define MINI_PIX 16
+# define GRID_PIX 64
 # define TEX_PIX 64
 # define K_ESC 53
 # define ANGLE 5
 # define SPEED 5
 # define PLAYER_S 5
-# define PR_PLANE 770
+# define PR_PLANE 1662
 // # define NOSE_LEN 1
 
 # define BLACK 0x000000
@@ -30,7 +42,6 @@
 # define BROWN 0xA52A2A
 # define MAGENTA 0xFF00FF
 # define TEAL 0x008080
-
 
 # include "cub3d.h"
 # include "map_validation.h"

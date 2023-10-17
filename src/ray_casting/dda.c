@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/16 16:06:11 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:18:49 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
 	// printf("h before wall hitting check is : x1 is %f, y1 is %f\n", line->x1, line->y1);
 	// printf("xa is %f, ya is %f\n", line->xa, line->ya);
 	hray_hits_wall(ray, line);
-	printf("h : x1 is %f, y1 is %f\n", line->x1 / GRID_PIX, line->y1 / GRID_PIX);
+	// printf("h : x1 is %f, y1 is %f\n", line->x1 / GRID_PIX, line->y1 / GRID_PIX);
 }
 
 void	check_vertical_gridline(t_ray *ray, t_line *line)
@@ -119,5 +119,5 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 	// printf("v before wall hitting check is : x1 is %f, y1 is %f\n", line->v_x1, line->v_y1);
 	// printf("xa is %f, ya is %f\n", line->v_xa, line->v_ya);
 	vray_hits_wall(ray, line);
-	printf("v : x1 is %f, y1 is %f\n", line->v_x1 / GRID_PIX, line->v_y1 / GRID_PIX);
+	// printf("v : x1 is %f, y1 is %f\n", line->v_x1 / GRID_PIX, line->v_y1 / GRID_PIX);
 }
