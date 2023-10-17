@@ -1,5 +1,4 @@
 
-#include "../include/map_validation.h"
 #include "../include/cub3d.h"
 
 void	print_struct(t_cub *cub)
@@ -21,6 +20,24 @@ void	print_struct(t_cub *cub)
 		printf("cub->map_str =\n%s", cub->map_str);
 	printf("\n*****************************\n");
 }
+
+// static void print_maps(t_data * data)
+// {
+// 	int i = 0;
+// 	printf("\n******* map_cpy ***********\n");
+// 	while (data->map_cpy[i])
+// 	{
+// 		printf("%s\n", data->map_cpy[i]);
+// 		i++;
+// 	}
+// 	i = 0;
+// 	printf("\n******** buffer_cpy *************\n");
+// 	while (data->buffer_cpy[i])
+// 	{
+// 		printf("%s\n", data->map_cpy[i]);
+// 		i++;
+// 	}
+// }
 
 void	free_cub_struct(t_cub *cub)
 {
@@ -68,10 +85,10 @@ int	main(int argc, char **argv)
 		init_cub_struct(&cub);
 		read_file(fd, &cub);
 		print_struct(&cub);
-		map_check(&cub, &mv, &cbd);
+		map_check(&cub, &mv);
 		// if (mv.height * GRID_PIX > WIN_SIZE_Y || mv.width * GRID_PIX > WIN_SIZE_X)
 		// {
-		// 	printf("map is bigger than the window size\n");
+		// 	printf("Map is bigger than the window size\n");
 		// 	return (-1);
 		// }
 		init_render_utils(&cbd, &mv, &cub);
@@ -80,6 +97,7 @@ int	main(int argc, char **argv)
 		// while (++k < mv.height)
 		// 	printf("%s\n", mv.map_cpy[k]);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
+		// printf("Here!\n");
 		free_cub_struct(&cub);
 		free_mv_struct(&mv);
 	}

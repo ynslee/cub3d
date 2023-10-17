@@ -6,14 +6,19 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:22:55 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:31:03 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
-#include "../../include/cub3d.h"
 
-char	*fill_temp(t_data *mv, char **map, char *temp, int i)
+/// @brief fills temporary map, row by row so that all empty indexes that are
+/// smaller than max width become X
+/// @param mv
+/// @param temp
+/// @param i row number of map
+/// @return filled row
+char	*fill_row(t_data *mv, char **map, char *temp, int i)
 {
 	int	j;
 
@@ -33,6 +38,9 @@ char	*fill_temp(t_data *mv, char **map, char *temp, int i)
 	return (temp);
 }
 
+/// @brief loops trough map_cpy row by row, and send rows to be filled in
+/// fill_row
+/// @param mv
 void	fill_width(t_data *mv)
 {
 	int		i;
@@ -44,7 +52,7 @@ void	fill_width(t_data *mv)
 	{
 		if ((int)ft_strlen(mv->map_cpy[i]) < mv->width)
 		{
-			temp = fill_temp(mv, mv->map_cpy, temp, i);
+			temp = fill_row(mv, mv->map_cpy, temp, i);
 			free(mv->map_cpy[i]);
 			mv->map_cpy[i] = ft_strdup(temp);
 			free(temp);
@@ -52,16 +60,20 @@ void	fill_width(t_data *mv)
 		i++;
 	}
 }
-
+/// @brief Checks that map_stris not null and then for two consecutive new lines
+/// @param cub
+/// @param mv
 void	consecutive_new_lines(t_cub *cub, t_data *mv)
 {
 	int	i;
 
+	if (cub->map_str == NULL)
+		print_error(cub, mv, "Map is null\n", 1);
 	i = 0;
 	while (cub->map_str[i])
 	{
 		if (cub->map_str[i] == '\n' && cub->map_str[i + 1] == '\n')
-			print_error(cub, mv, "two consecutive new lines!\n", 1);
+			print_error(cub, mv, "Two consecutive new lines!\n", 1);
 		i++;
 	}
 }

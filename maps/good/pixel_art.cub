@@ -1,7 +1,7 @@
-NO textures/matrix.xpm
-SO textures/matrix.xpm
-WE textures/matrix.xpm
-EA textures/matrix.xpm
+NO textures/texx_xpm/grass.pixel.xpm
+SO textures/texx_xpm/Pixel_iron_26_.xpm
+WE textures/texx_xpm/Tile2Texture-_44_.xpm
+EA textures/texx_xpm/TileTexture-_42_.xpm
 
 F 0,0,0
 C 0,0,0

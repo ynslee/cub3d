@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 07:51:46 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/02 10:24:35 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:43:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	flood_fill_inside(t_cub *cub, t_data *mv, int x, int y)
 		|| !mv->buffer_cpy[x][y])
 		return ;
 	if (mv->buffer_cpy[x][y] == 'X')
-		print_error(cub, mv, "Wall not closed!\n", 2);
+		print_error(cub, mv, "Wall not closed!\n", 1);
 	if (mv->buffer_cpy[x][y] == ' ')
-		print_error(cub, mv, "Map invalid!\n", 2);
+		print_error(cub, mv, "Map invalid!\n", 1);
 	if (x >= 0 && y >= 0 && (mv->buffer_cpy[x][y] == '0' \
 			|| mv->buffer_cpy[x][y] == mv->player_view))
 	{

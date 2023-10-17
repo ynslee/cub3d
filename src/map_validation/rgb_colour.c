@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_colour.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/16 10:00:12 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:10:34 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,25 @@ t_tex_img	*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path)
 	(void)data;
 	img = (t_tex_img *)ft_calloc(1, sizeof(t_tex_img));
 	if (!img)
-		printf("ERROR callocin\n");
+		printf("Malloc error\n");
 	img->img_ptr = mlx_xpm_file_to_image(cbd->mlx, file_path, \
 		&(img->width), &(img->height));
 	if (!img->img_ptr)
-		printf("ERROR generating img_ptr to texture\n");
+		printf("Could not get MLX image pointer\n");
 	img->img_addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), \
 		&(img->line_length), &(img->endian));
 	if (!img->img_addr)
-		printf("ERROR getting img_addres to texture\n");
+		printf("Could not get MLX image address\n");
 	return (img);
 }
 
 /* init no, so, we, ea t_tex_img struct separately calling another function. */
-
 void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
 {
 	data->texture[NO] = get_new_xpm_img(cbd, data, cub->no);
 	data->texture[SO] = get_new_xpm_img(cbd, data, cub->so);
 	data->texture[WE] = get_new_xpm_img(cbd, data, cub->we);
 	data->texture[EA] = get_new_xpm_img(cbd, data, cub->ea);
-
-	// char	*temp;
-	// temp  = ft_strjoin("./", cub->no);
-	// data->no_tex = mlx_xpm_file_to_image(cbd->mlx, cub->no, &(data->img_width), &(data->img_height));
-	// if (!data->no_tex)
-	// 	printf("Can't convert xpm file to image\n");
-	// free(temp);
-	// temp = ft_strjoin("./", cub->so);
-	// data->so_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
-	// free(temp);
-	// temp = ft_strjoin("./", cub->we);
-	// data->we_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
-	// free(temp);
-	// temp = ft_strjoin("./", cub->ea);
-	// data->ea_tex = mlx_xpm_file_to_image(cbd->mlx, &temp, &data->img_width, &data->img_width);
-	// free(temp);
 }
 
 unsigned int	rgb_colour(int *arr)

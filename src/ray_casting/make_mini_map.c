@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:23:44 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:48:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,6 @@ static void	draw_map(t_cbd *cbd, int x, int y, int color)
 	}
 }
 
-static int	p_pos(char c)
-{
-	if (c == 'W' || c == 'E' || c == 'S' || c == 'N')
-		return (1);
-	else
-		return (0);
-}
-
 static void	fill_map(t_data *mv)
 {
 	int		i;
@@ -104,7 +96,7 @@ static void	fill_map(t_data *mv)
 	{
 		if ((int)ft_strlen(mv->map[i]) < mv->width)
 		{
-			temp = fill_temp(mv, mv->map, temp, i);
+			temp = fill_row(mv, mv->map, temp, i);
 			free(mv->map[i]);
 			mv->map[i] = ft_strdup(temp);
 			free(temp);
@@ -119,13 +111,12 @@ static void	fill_map(t_data *mv)
  */
 void	make_mini_map(t_cbd *cbd, t_data *mv)
 {
-	int	i;
-	int	j;
-	int	color;
+	int				i;
+	int				j;
+	unsigned int	color;
 
 	i = 0;
 	fill_map(mv);
-	print_map(mv->map);
 	while (i < mv->height)
 	{
 		j = 0;
@@ -133,10 +124,12 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 		{
 			if (mv->map[i][j] == '1')
 				color = BLUE;
-			else if (mv->map[i][j] == '0' || p_pos(mv->map[i][j]))
+			else if (mv->map[i][j] == '0' || mv->map[i][j] == 'W' \
+			|| mv->map[i][j] == 'E' || mv->map[i][j] == 'N' || \
+			mv->map[i][j] == 'S')
 				color = LIGHTBLUE;
 			else
-				color = BLACK;
+				color = WHITE;
 			draw_map(cbd, j * MINI_PIX, i * MINI_PIX, color);
 			j++;
 		}
