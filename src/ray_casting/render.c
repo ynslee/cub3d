@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:16:25 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 09:21:42 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:59:54 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 	draw_background(ray);
 	ray->ray_count = 0;
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	// printf("ray position:%f, %f\n", ray->pix_x_pos / GRID_PIX, ray->pix_y_pos / GRID_PIX);
 	while (ray->ray_count < WIN_SIZE_X)
 	{
 		check_inits(ray, &line);
@@ -46,7 +45,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		compare_draw_rays(ray, &line);
 		draw_image(ray, &line);
 		ray->ray_count += 1;
-		ray->ra = fix_angle(ray->ra + (float)FOV / (float) WIN_SIZE_X);
+		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}
 	ray->ra = fix_angle(ray->pa - FOV / 2);
 	make_mini_map(cbd, mv);

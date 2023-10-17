@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 09:22:32 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:16:50 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	player_moves(int keysym, t_ray *ray)
 {
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
-	if (keysym == 0) // LEFT
+	if (keysym == 0)
 		move_sideway(ray, "left");
-	if (keysym == 2) // RIGHT
+	if (keysym == 2)
 		move_sideway(ray, "right");
 	if (keysym == 13)
 		move_frontback(ray, "up");
@@ -45,13 +45,15 @@ static void	player_moves(int keysym, t_ray *ray)
 
 static void	angle_moves(int keysym, t_ray *ray)
 {
-	if (keysym == 123) // LEFT
+	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
+	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
+	if (keysym == 123)
 		angle_left_right("left", ray);
-	if (keysym == 124) // RIGHT
+	if (keysym == 124)
 		angle_left_right("right", ray);
-	if (keysym == 126) // UP
+	if (keysym == 126)
 		move_frontback(ray, "up");
-	if (keysym == 125) // DOWN
+	if (keysym == 125)
 		move_frontback(ray, "down");
 	render_image(ray->cbd, ray, ray->data);
 }

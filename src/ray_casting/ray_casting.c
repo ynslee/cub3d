@@ -6,32 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 09:30:41 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:08:53 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
-
-void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
-{
-	float			wall_start;
-	float			wall_end;
-	float			i;
-	unsigned int	texture;
-
-	i = 0;
-	pos = WIN_SIZE_X - (pos + 1);
-	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
-	wall_end = wall_start + wall;
-	while ((int)(wall_start + i) < (int)wall_end)
-	{
-		texture = my_mlx_pixel_get(ray->data->texture[set_wall_direction(ray)], \
-		ray->tex_x, ray->tex_y);
-		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
-		i++;
-		ray->tex_y += y_count;
-	}
-}
 
 // /**
 //  * @brief
