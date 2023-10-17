@@ -5,101 +5,128 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 07:25:36 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 10:08:53 by yoonslee         ###   ########.fr       */
+/*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
+/*   Updated: 2023/10/17 13:16:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting.h"
 
-// /**
-//  * @brief
-//  *
-//  * @param ray
-//  * @param ray_count (0 to 599)
-//  */
-// void	color_wall(t_ray *ray, int pos, int wall)
-// {
-// 	float		wall_start;
-// 	float		wall_end;
-// 	float		i;
-
-// 	i = 0;
-// 	pos = WIN_SIZE_X - (pos + 1);
-// 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
-// 	wall_end = wall_start + wall;
-// 	if (wall_start < 0)
-// 		wall_start = 0;
-// 	if (wall_end > WIN_SIZE_Y)
-// 		wall_end = WIN_SIZE_Y;
-// 	while ((int)(wall_start + i) < (int)wall_end)
-// 	{
-// 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, GREY);
-// 		i++;
-// 	}
-// }
-
-static int	bh_hit_wall(t_ray *ray, float x, float y)
+/**
+ * @brief initialise the line struct for the DDA algorithm
+ */
+void	check_inits(t_ray *ray, t_line *line)
 {
-	if (((int)(ray->pix_x_pos / MINI_PIX) == (int)(x / MINI_PIX)) && ((int)(ray->pix_y_pos / MINI_PIX) == (int)(y / MINI_PIX)))
-		return (0);
-	if ((ray->data->map[(int)(y / MINI_PIX - 0.01)][(int)x / MINI_PIX] == '1') || \
-		(ray->data->map[(int)(y / MINI_PIX + 0.01)][(int)x / MINI_PIX] == '1') || \
-		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX - 0.01)] == '1') || \
-		(ray->data->map[(int)y / MINI_PIX][(int)(x / MINI_PIX + 0.01)] == '1'))
-		return (1);
-	return(0);
+	line->x0 = ray->pix_x_pos;
+	line->y0 = ray->pix_y_pos;
+	line->x1 = 0;
+	line->y1 = 0;
+	line->v_x1 = 0;
+	line->v_y1 = 0;
 }
 
-void	cast_rays(t_ray *ray)
+/**
+ * @brief check if the ray hits the wall and returns the value accordingly
+ */
+static void	hray_hits_wall(t_ray *ray, t_line *line)
 {
-	float	x;
-	float	y;
-
-	x = ray->pix_x_pos / 4;
-	y = ray->pix_y_pos / 4;
-	ray->ray_count = 0;
-	while (ray->ray_count < (ray->data->width * MINI_PIX))
+	while (ray->dof < 10000)
 	{
-		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
-		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
-		x += ray->pdx;
-		y += ray->pdy;
-		if (ray->data->map[(int)y / MINI_PIX][(int)x / MINI_PIX] == '1' \
-		|| bh_hit_wall(ray, x, y))
+		if ((int)line->x1 / GRID_PIX >= 0 && \
+		(int)line->y1 / GRID_PIX >= 0 && \
+		(int)line->x1 / GRID_PIX < ray->data->width && \
+		(int)line->y1 / GRID_PIX < ray->data->height && \
+		is_wall(ray, line->x1, line->y1))
+			ray->dof = 10000;
+		else
 		{
-			ray->r_end_x = floor(x);
-			ray->r_end_y = floor(y);
-			bresenham(ray, ray->line, BLACK);
-			ray->ray_count += 1;
-			ray->ra = fix_angle(ray->ra + (float)FOV / (ray->data->width * MINI_PIX));
-			x = ray->pix_x_pos / 4;
-			y = ray->pix_y_pos / 4;
+			line->x1 = (line->x1 + line->xa);
+			line->y1 = (line->y1 + line->ya);
+			ray->dof += 1;
 		}
 	}
 }
 
 /**
- * @brief calculate and check the distance between horizontal and vertical length.
- * cosine function is to remove the fish-eye distortion.
+ * @brief check if the ray hits the wall and returns the value accordingly
  */
-void	compare_draw_rays(t_ray *ray, t_line *line)
+static void	vray_hits_wall(t_ray *ray, t_line *line)
 {
-	float	h_length;
-	float	v_length;
-
-	h_length = sqrt(pow((line->x0 - line->x1), 2) + \
-	pow((line->y0 - line->y1), 2));
-	v_length = sqrt(pow((line->x0 - line->v_x1), 2) + \
-	pow((line->y0 - line->v_y1), 2));
-	if (h_length != 0.0f && (h_length < v_length || v_length == 0.0f))
+	while (ray->dof < 10000)
 	{
-		ray->shortest = 'h';
-		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
+		if ((int)line->v_y1 / GRID_PIX >= 0 && \
+		(int)line->v_x1 / GRID_PIX >= 0 && \
+		(int)line->v_y1 / GRID_PIX < ray->data->height && \
+		(int)line->v_x1 / GRID_PIX < ray->data->width && \
+		is_wall(ray, line->v_x1, line->v_y1))
+			ray->dof = 10000;
+		else
+		{
+			line->v_y1 = (line->v_y1 + line->v_ya);
+			line->v_x1 = (line->v_x1 + line->v_xa);
+			ray->dof += 1;
+		}
+	}
+}
+
+/**
+ * @brief calculate the x and y's first wall-hitting position of
+ * horizontal grid line
+ */
+void	check_horizontal_gridline(t_ray *ray, t_line *line)
+{
+	ray->dof = 0;
+	if (sin(deg_to_rad(ray->ra)) > 0.001)
+	{
+		line->y1 = (int)(line->y0) / GRID_PIX * GRID_PIX - 0.0001;
+		line->x1 = line->x0 + ((line->y0 - line->y1) * \
+		(1.0 / tan(deg_to_rad(ray->ra))));
+		line->ya = -(GRID_PIX);
+	}
+	else if (sin(deg_to_rad(ray->ra)) < -0.001)
+	{
+		line->y1 = (int)(line->y0) / GRID_PIX * GRID_PIX + GRID_PIX;
+		line->x1 = line->x0 + ((line->y0 - line->y1) * \
+		(1.0 / tan(deg_to_rad(ray->ra))));
+		line->ya = GRID_PIX;
 	}
 	else
 	{
-		ray->shortest = 'v';
-		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
+		line->x1 = line->x0;
+		line->y1 = line->y0;
+		ray->dof = 10000;
 	}
+	line->xa = -line->ya * (1.0 / tan(deg_to_rad(ray->ra)));
+	hray_hits_wall(ray, line);
+}
+
+/**
+ * @brief calculate the x and y's first wall-hitting position of vertical
+ * grid line
+ */
+void	check_vertical_gridline(t_ray *ray, t_line *line)
+{
+	ray->dof = 0;
+	if (cos(deg_to_rad(ray->ra)) > 0.001)
+	{
+		line->v_x1 = (int)(line->x0) / GRID_PIX * GRID_PIX + GRID_PIX;
+		line->v_y1 = line->y0 + ((line->x0 - line->v_x1) * \
+		tan(deg_to_rad(ray->ra)));
+		line->v_xa = GRID_PIX;
+	}
+	else if (cos(deg_to_rad(ray->ra)) < -0.001)
+	{
+		line->v_x1 = (int)(line->x0) / GRID_PIX * GRID_PIX - 0.0001;
+		line->v_y1 = line->y0 + ((line->x0 - line->v_x1) * \
+		tan(deg_to_rad(ray->ra)));
+		line->v_xa = -(GRID_PIX);
+	}
+	else
+	{
+		line->v_x1 = line->x0;
+		line->v_y1 = line->y0;
+		ray->dof = 10000;
+	}
+	line->v_ya = -line->v_xa * tan(deg_to_rad(ray->ra));
+	vray_hits_wall(ray, line);
 }
