@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 10:34:46 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 13:10:22 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define SPEED 5
 # define PLAYER_S 5
 # define PR_PLANE 1662
+# define SENSITIVITY 0.05
 // # define NOSE_LEN 1
 
 # define BLACK 0x000000
@@ -131,6 +132,8 @@ typedef struct s_ray
 	float			wall_height;
 	float			tex_x;
 	float			tex_y;
+	float			mou_x;
+	int				dragging;
 	void			*texture;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
@@ -165,6 +168,11 @@ void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
 // int				destroy(t_cbd *cbd);
+
+//mouse_hooks.c
+int				mouse_event(int x, int y, t_ray *ray);
+int				mouse_press(int button, int x, int y, t_ray *ray);
+int				mouse_release(int button, int x, int y, t_ray *ray);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);

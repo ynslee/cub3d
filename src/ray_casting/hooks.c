@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 10:35:41 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 13:10:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 	(void)cub;
 	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
-	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);
-	// mlx_hook(mlx->win_ptr, 06, 1, &mouse_params, &mlx);
+	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
+	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);
+	mlx_hook(ray->cbd->window, 5, 1L << 3, &mouse_release, ray);
 }
