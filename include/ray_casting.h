@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:47:56 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:23:15 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,8 @@ void			cast_rays(t_ray *ray);
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
-int				destroy_flag(t_cbd *cbd, int flag);
-int				destroy(t_cbd *cbd);
+int				mlx_exit(t_cbd *cbd, t_data *data, char *message, int flag);
+// int				destroy(t_cbd *cbd);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);

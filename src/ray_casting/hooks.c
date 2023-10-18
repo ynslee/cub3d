@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 12:49:38 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:51:09 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	angle_left_right(char *direction, t_ray *ray)
 
 /**
  * @brief players movement of up, down, right, and left key
- * 
+ *
  * @param keysym key code of WASD keys
  */
 static void	player_moves(int keysym, t_ray *ray)
@@ -53,7 +53,7 @@ static void	player_moves(int keysym, t_ray *ray)
 
 /**
  * @brief moves the player's angle based on left and right key
- * 
+ *
  * @param keysym keycode of arrow keys on the keyboard
  */
 static void	angle_moves(int keysym, t_ray *ray)
@@ -74,7 +74,7 @@ static void	angle_moves(int keysym, t_ray *ray)
 int	key_event(int keysym, t_ray *ray)
 {
 	if (keysym == K_ESC)
-		destroy_flag(ray->cbd, 0);
+		mlx_exit(ray->cbd, ray->data, "*** Thank you for playing! ***\n", 0);
 	player_moves(keysym, ray);
 	angle_moves(keysym, ray);
 	return (0);
@@ -85,7 +85,7 @@ int	key_event(int keysym, t_ray *ray)
  */
 void	set_hooks(t_cbd *cbd, t_ray *ray)
 {
-	mlx_hook(cbd->window, 17, 1L << 5, &destroy, cbd);
+	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);
 	// mlx_hook(mlx->win_ptr, 06, 1, &mouse_params, &mlx);
