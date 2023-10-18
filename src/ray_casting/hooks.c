@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:35 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:04:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	key_event(int keysym, t_ray *ray, t_cub *cub)
 void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
 	(void)cub;
-	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, cbd);
+	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, ray);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
 	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);
