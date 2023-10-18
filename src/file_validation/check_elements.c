@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:03:40 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 14:54:52 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static int	check_textures(char *element)
 	if (ft_strlen(ret) != 4)
 		return (-1);
 	fd = open(element, O_RDONLY);
+	close(fd);
 	return (fd);
 }
 

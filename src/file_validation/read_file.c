@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:43:49 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 14:54:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ void	read_file(int fd, t_cub *cub)
 	read_map(fd, cub);
 	line_flag = 1;
 	check_empty_file(cub, line, line_flag);
+	close(fd);
 }
