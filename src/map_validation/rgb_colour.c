@@ -3,41 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_colour.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 16:47:07 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:41:04 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
 
-t_tex_img	*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path)
+t_tex_img	*get_new_xpm_img(t_ray *ray, char *file_path, t_cub *cub)
 {
 	t_tex_img	*img;
 
-	(void)data;
 	img = (t_tex_img *)ft_calloc(1, sizeof(t_tex_img));
 	if (!img)
-		printf("Malloc error\n");
-	img->img_ptr = mlx_xpm_file_to_image(cbd->mlx, file_path, \
+		mlx_exit(ray, cub, "Error allocating memory for textures!\n", 1);
+	img->img_ptr = mlx_xpm_file_to_image(ray->cbd->mlx, file_path, \
 		&(img->width), &(img->height));
 	if (!img->img_ptr)
-		printf("Could not get MLX image pointer\n");
+		mlx_exit(ray, cub, "Error creating MLX image pointer!\n", 1);
 	img->img_addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), \
 		&(img->line_length), &(img->endian));
 	if (!img->img_addr)
-		printf("Could not get MLX image address\n");
+		mlx_exit(ray, cub, "Error creating MLX image addres!\n", 1);
 	return (img);
 }
 
 /* init no, so, we, ea t_tex_img struct separately calling another function. */
-void	init_textures(t_cub *cub, t_cbd *cbd, t_data *data)
+void	init_textures(t_cub *cub, t_ray *ray)
 {
-	data->texture[NO] = get_new_xpm_img(cbd, data, cub->no);
-	data->texture[SO] = get_new_xpm_img(cbd, data, cub->so);
-	data->texture[WE] = get_new_xpm_img(cbd, data, cub->we);
-	data->texture[EA] = get_new_xpm_img(cbd, data, cub->ea);
+	ray->data->texture[NO] = get_new_xpm_img(ray, cub->no, cub);
+	ray->data->texture[SO] = get_new_xpm_img(ray, cub->so, cub);
+	ray->data->texture[WE] = get_new_xpm_img(ray, cub->we, cub);
+	ray->data->texture[EA] = get_new_xpm_img(ray, cub->ea, cub);
 }
 
 static unsigned int	rgb_colour(int *arr)

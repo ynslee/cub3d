@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 13:05:55 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:58:49 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief puts the colour for on the wall based on x, y position
- * 
+ *
  * @param x pixel position of x on the window
  * @param y pixel position of y on the window
  */
@@ -46,24 +46,40 @@ unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y)
 	return (dst);
 }
 
-/**
- * @brief destroys the window and mlx, then exits if there's error
- * 
- */
-int	destroy_flag(t_cbd *cbd, int flag)
+// static void	free_destroy_images(char)
+
+static void	destroy_images(t_cbd *cbd, t_data *data)
 {
-	mlx_destroy_window(cbd->mlx, cbd->window);
-	if (flag == 1)
-		exit(1);
-	else
-		exit (0);
+	if (cbd->img)
+	{
+		mlx_destroy_image(cbd->mlx, cbd->img);
+		cbd->img = NULL;
+	}
+	if (data->texture[NO])
+		mlx_destroy_image(cbd->mlx, data->texture[NO]->img_ptr);
+	if (data->texture[SO])
+		mlx_destroy_image(cbd->mlx, data->texture[SO]->img_ptr);
+	if (data->texture[EA])
+		mlx_destroy_image(cbd->mlx, data->texture[EA]->img_ptr);
+	if (data->texture[WE])
+		mlx_destroy_image(cbd->mlx, data->texture[WE]->img_ptr);
 }
 
 /**
- * @brief destroys the window and mlx
+ * @brief destroys the window and mlx, then exits if there's error
+ *
  */
-int	destroy(t_cbd *cbd)
+int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
 {
-	mlx_destroy_window(cbd->mlx, cbd->window);
-	exit(0);
+	(void)cub;
+	ft_putstr_fd(message, flag);
+	if (ray->cbd->window)
+	{
+		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
+		ray->cbd->window = NULL;
+	}
+	destroy_images(ray->cbd, ray->data);
+	free_mv_struct(ray->data);
+	// free_cub_struct(cub);
+	exit(flag);
 }

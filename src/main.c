@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:44:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:44:37 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 11:02:13 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ int	main(int argc, char **argv)
 		// 	printf("%s\n", mv.map_cpy[k]);
 		// printf("ft_atoi(argv[1]) = %i\n", ft_atoi(argv[1]));
 		// printf("Here!\n");
-		free_cub_struct(&cub);
-		free_mv_struct(&mv);
+		// free_cub_struct(&cub);
+		// free_mv_struct(&mv);
 	}
 	return (0);
 }

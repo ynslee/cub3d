@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 13:01:21 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:13:57 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	bh_hit_wall(t_ray *ray, float x, float y)
 
 /**
  * @brief using bresenham's function to draw rays on the minimap
- * 
+ *
  * @param x x's pixel position on the minimap
  * @param y y's pixel position on the minimap
  */

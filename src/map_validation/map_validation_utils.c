@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:51:37 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:58:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_error(t_cub *cub, t_data *mv, char *str, int code)
 		free_cub_struct(cub);
 	if (code == 2)
 	{
-		free_cub_struct(cub);
+		// free_cub_struct(cub);
 		free_mv_struct(mv);
 	}
 	exit(1);

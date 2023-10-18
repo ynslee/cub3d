@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 16:47:23 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:27:53 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ void			print_map(char **map);
 void			flood_fill(t_data *mv, int x, int y, char c);
 
 // rgb_colour.c
-t_tex_img		*get_new_xpm_img(t_cbd *cbd, t_data *data, char *file_path);
-void			init_textures(t_cub *cub, t_cbd *cbd, t_data *data);
+t_tex_img		*get_new_xpm_img(t_ray *ray, char *file_path, \
+				t_cub *cub);
+void			init_textures(t_cub *cub, t_ray *ray);
 unsigned int	change_colour(char *colour);
 
 // wall_check.c

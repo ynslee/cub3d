@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 13:01:54 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:10:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	angle_left_right(char *direction, t_ray *ray)
 
 /**
  * @brief players movement of up, down, right, and left key
- * 
+ *
  * @param keysym key code of WASD keys
  */
 static void	player_moves(int keysym, t_ray *ray)
@@ -53,7 +53,7 @@ static void	player_moves(int keysym, t_ray *ray)
 
 /**
  * @brief moves the player's angle based on left and right key
- * 
+ *
  * @param keysym keycode of arrow keys on the keyboard
  */
 static void	angle_moves(int keysym, t_ray *ray)
@@ -71,10 +71,10 @@ static void	angle_moves(int keysym, t_ray *ray)
 	render_image(ray->cbd, ray, ray->data);
 }
 
-int	key_event(int keysym, t_ray *ray)
+int	key_event(int keysym, t_ray *ray, t_cub *cub)
 {
 	if (keysym == K_ESC)
-		destroy_flag(ray->cbd, 0);
+		mlx_exit(ray, cub, "*** Thank you for playing! ***\n", 0);
 	player_moves(keysym, ray);
 	angle_moves(keysym, ray);
 	return (0);
@@ -83,9 +83,10 @@ int	key_event(int keysym, t_ray *ray)
 /**
  * @brief Set the hooks for the key events
  */
-void	set_hooks(t_cbd *cbd, t_ray *ray)
+void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
-	mlx_hook(cbd->window, 17, 1L << 5, &destroy, cbd);
+	(void)cub;
+	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
 	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);
