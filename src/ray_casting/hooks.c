@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 09:51:09 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:35:41 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ static void	angle_moves(int keysym, t_ray *ray)
 	render_image(ray->cbd, ray, ray->data);
 }
 
-int	key_event(int keysym, t_ray *ray)
+int	key_event(int keysym, t_ray *ray, t_cub *cub)
 {
 	if (keysym == K_ESC)
-		mlx_exit(ray->cbd, ray->data, "*** Thank you for playing! ***\n", 0);
+		mlx_exit(ray, cub, "*** Thank you for playing! ***\n", 0);
 	player_moves(keysym, ray);
 	angle_moves(keysym, ray);
 	return (0);
@@ -83,8 +83,9 @@ int	key_event(int keysym, t_ray *ray)
 /**
  * @brief Set the hooks for the key events
  */
-void	set_hooks(t_cbd *cbd, t_ray *ray)
+void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
+	(void)cub;
 	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, cbd);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 	// mlx_mouse_hook(mlx->win_ptr, &mouse_event, mlx);

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 09:23:15 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:34:46 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,8 @@ void			draw_image(t_ray *ray, t_line *line);
 // void			color_wall(t_ray *ray, int pos, int wall);
 
 // hooks.c
-int				key_event(int keysym, t_ray *ray);
-void			set_hooks(t_cbd *cbd, t_ray *ray);
+int				key_event(int keysym, t_ray *ray, t_cub *cub);
+void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 
 //make_mini_map.c
 void			draw_player(t_cbd *cbd, t_ray *ray);
@@ -163,7 +163,7 @@ void			cast_rays(t_ray *ray);
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
-int				mlx_exit(t_cbd *cbd, t_data *data, char *message, int flag);
+int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
 // int				destroy(t_cbd *cbd);
 
 //movement.c

@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 10:10:51 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 10:58:49 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,17 @@ static void	destroy_images(t_cbd *cbd, t_data *data)
  * @brief destroys the window and mlx, then exits if there's error
  *
  */
-int	mlx_exit(t_cbd *cbd, t_data *data, char *message, int flag)
+int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
 {
+	(void)cub;
 	ft_putstr_fd(message, flag);
-	(void)cbd;
-	if (cbd->window)
+	if (ray->cbd->window)
 	{
-		mlx_destroy_window(cbd->mlx, cbd->window);
-		cbd->window = NULL;
+		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
+		ray->cbd->window = NULL;
 	}
-	destroy_images(cbd, data);
-	free_mv_struct(data);
+	destroy_images(ray->cbd, ray->data);
+	free_mv_struct(ray->data);
+	// free_cub_struct(cub);
 	exit(flag);
 }
