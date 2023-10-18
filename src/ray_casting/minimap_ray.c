@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 07:13:57 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/18 11:18:14 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ void	cast_rays(t_ray *ray)
 	x = ray->pix_x_pos / 4;
 	y = ray->pix_y_pos / 4;
 	ray->ray_count = 0;
-	while (ray->ray_count < (ray->data->width * MINI_PIX))
+	while (ray->ray_count < (ray->data->width * MINI_PIX / 2))
 	{
 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
 		ray->pdy = -sin(deg_to_rad(ray->ra)) * 0.2;
-		x += ray->pdx;
-		y += ray->pdy;
+		x += ray->pdx / 2;
+		y += ray->pdy / 2;
 		if (ray->data->map[(int)y / MINI_PIX][(int)x / MINI_PIX] == '1' \
 		|| bh_hit_wall(ray, x, y))
 		{
@@ -121,7 +121,7 @@ void	cast_rays(t_ray *ray)
 			bresenham(ray, ray->line, BLACK);
 			ray->ray_count += 1;
 			ray->ra = fix_angle(ray->ra + \
-			(float)FOV / (ray->data->width * MINI_PIX));
+			(float)FOV / (ray->data->width * MINI_PIX / 2));
 			x = ray->pix_x_pos / 4;
 			y = ray->pix_y_pos / 4;
 		}
