@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 13:37:28 by yoonslee          #+#    #+#              #
-#    Updated: 2023/09/13 12:27:32 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/18 15:02:19 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,17 +32,17 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):$(OBJS)
-		ar rcs $(NAME) $(OBJS)
-		ranlib $(NAME)
+		@ar rcs $(NAME) $(OBJS)
+		@ranlib $(NAME)
 
 $(OBJS):$(SRCS)
-		${CC} -c ${FLAGS} $(SRCS) -I $(HEADER)
+		@${CC} -c ${FLAGS} $(SRCS) -I $(HEADER)
 
 clean:
-		rm -rf $(OBJS)
+		@rm -rf $(OBJS)
 
 fclean: clean
-		rm -rf $(NAME)
+		@rm -rf $(NAME)
 
 re: fclean all
 
