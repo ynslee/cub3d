@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:48:32 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:14:23 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_player(t_cbd *cbd, t_ray *ray)
 		while (y < 5)
 		{
 			my_mlx_pixel_put(cbd, x + ((ray->pix_x_pos / 4) - 2), \
-			y + ((ray->pix_y_pos / 4) - 2), PINK);
+			y + ((ray->pix_y_pos / 4) - 2), MAGENTA);
 			y++;
 		}
 		x++;
@@ -67,7 +67,7 @@ static void	draw_grid(t_cbd *cbd, t_data *mv)
 }
 
 /**
- * @brief draw minimap's wall and path based on 
+ * @brief draw minimap's wall and path based on
  */
 static void	draw_map(t_cbd *cbd, int x, int y, int color)
 {
