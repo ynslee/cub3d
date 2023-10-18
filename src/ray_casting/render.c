@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 17:04:29 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:13:48 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	ray->pix_y_pos = GRID_PIX * ray->data->player_x + GRID_PIX / 2;
 	ray->center_width = WIN_SIZE_X / 2;
 	ray->center_height = WIN_SIZE_Y / 2;
+	ray->mou_x = 0;
+	ray->dragging = 0;
 }
 
 /**

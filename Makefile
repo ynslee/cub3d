@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/17 17:05:37 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/18 08:48:33 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ FILES = main\
 		make_mini_map\
 		minimap_ray\
 		mlx_utils\
+		mouse_hooks\
 		movement\
 		render\
 		ray_casting_utils\
