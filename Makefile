@@ -71,13 +71,13 @@ MLX_LNK	= -L ./mlx -lmlx -framework OpenGL -framework AppKit
 NAME = cub3D
 
 ### RULES ###
-all: $(MLX) $(LIBFT) $(NAME)
+all: $(NAME)
 
 $O/%.o: $S/%.c $(HEADER)
 	@mkdir -p $(O_DIRS)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(MLX) $(LIBFT) $(NAME)
 	@echo "Compiling cub3D..."
 	@$(CC) $(CFLAGS) $(MLX) $(MLX_LNK) $(LIBFT) $(OBJS) -o $(NAME)
 	@echo "$(COLOUR_GREEN) $(NAME) created$(COLOUR_END)"
