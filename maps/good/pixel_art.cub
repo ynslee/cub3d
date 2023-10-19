@@ -3,8 +3,8 @@ SO textures/texx_xpm/Pixel_iron_26_.xpm
 WE textures/texx_xpm/Tile2Texture-_44_.xpm
 EA textures/texx_xpm/TileTexture-_42_.xpm
 
-F 0,0,0
-C 0,0,0
+F 112,41,99
+C 150,75,0
 
 111111111111111111111
 101000001000000000001
