@@ -6,7 +6,7 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 
 ## Collaborators
 
-[Yooonseon Lee](https://github.com/ynslee) , [Josefinna Husso](https://github.com/hussojo)
+[Yoonseon Lee](https://github.com/ynslee) , [Josefina Husso](https://github.com/hussojo)
 
 ## Language Used
 
