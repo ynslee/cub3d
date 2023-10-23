@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 14:54:52 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/19 12:21:55 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// and that color values are correct
 /// @param element rgb colorvalues separated by comma (second element of an array of splitted line)
 /// @return 0 upon success, -1 if failure
-static int	check_colors(char *element)
+static int	check_colors(t_cub *cub, char *element)
 {
 	char	**colors;
 	int		i;
@@ -31,7 +31,9 @@ static int	check_colors(char *element)
 			free_char_array(colors);
 			return (-1);
 		}
-		if (ft_atoi(colors[i]) >= 0 && ft_atoi(colors[i]) < 256)
+		if (ft_atoi(colors[i]) < 0 || ft_atoi(colors[i]) > 255)
+			file_print_error(cub, "Invalid RGB value!\n", 0);
+		else
 			i++;
 	}
 	free_char_array(colors);
@@ -72,7 +74,7 @@ int	check_elements(char **element, t_cub *cub)
 	else if (!ft_strncmp_all(element[0], "F")
 		|| !ft_strncmp_all(element[0], "C"))
 	{
-		if (check_colors(element[1]) == -1)
+		if (check_colors(cub, element[1]) == -1)
 			file_print_error(cub, "Invalid colors for ceiling or floor!\n", 0);
 	}
 	return (0);
