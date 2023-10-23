@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/23 13:51:40 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:54:12 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,14 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 /// values (ex. F 25, 25, 25)
 /// @param elem line splitted by spaces from file
 /// @param cub
-/// @return returns an array that contains the floor or ceiling color
-/// (ex. out[0] = F out[1] = 25,25,25)
-static char	**put_elems_str(char **elem, t_cub *cub)
+static void	put_elems_str(char **elem, t_cub *cub)
 {
-	char	**out;
-	char	*temp;
 	int		len;
 
 	len = ft_arrlen(elem);
-	if (len > 4)
+	if (len > 2)
 		file_print_error(cub, "Invalid colors for ceiling or floor!\n", 0);
-	out = ft_calloc(3, sizeof(char *));
-	if (!out)
-		file_print_error(cub, "Could not allocate memory for RGB values!\n", 0);
-	out[0] = ft_strdup(elem[0]);
-	if (len == 3)
-		out[1] = ft_strjoin(elem[1], elem[2]);
-	else if (len == 4)
-	{
-		temp = ft_strjoin(elem[1], elem[2]);
-		out[1] = ft_strjoin(temp, elem[3]);
-		free(temp);
-	}
-	free_char_array(elem);
-	return (out);
+	multiple_commas(cub, elem[1]);
 }
 
 /// @brief searches for lines in file that describe wall textures and
@@ -76,9 +59,9 @@ void	find_element(char *line, t_cub *cub)
 
 	trim_line = ft_strtrim(line, " \t\n");
 	line_elem = ft_split(trim_line, ' ');
-	if (ft_arrlen(line_elem) > 2 && (!ft_strncmp_all(line_elem[0], "F") || \
+	if ((!ft_strncmp_all(line_elem[0], "F") || \
 		!ft_strncmp_all(line_elem[0], "C")))
-		line_elem = put_elems_str(line_elem, cub);
+		put_elems_str(line_elem, cub);
 	if (ft_strncmp_all(line_elem[0], "NO") == 0
 		|| ft_strncmp_all(line_elem[0], "SO") == 0
 		|| ft_strncmp_all(line_elem[0], "WE") == 0
