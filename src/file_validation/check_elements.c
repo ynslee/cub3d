@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/19 12:21:55 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:51:38 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ int	check_elements(char **element, t_cub *cub)
 	{
 		if (check_textures(element[1]) == -1)
 			file_print_error(cub, "Invalid wall texture files!\n", 0);
+		return (1);
 	}
 	else if (!ft_strncmp_all(element[0], "F")
 		|| !ft_strncmp_all(element[0], "C"))
 	{
 		if (check_colors(cub, element[1]) == -1)
 			file_print_error(cub, "Invalid colors for ceiling or floor!\n", 0);
+		return (1);
 	}
 	return (0);
 }

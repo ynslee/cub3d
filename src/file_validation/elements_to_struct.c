@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:42:22 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:51:40 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	find_element(char *line, t_cub *cub)
 		|| ft_strncmp_all(line_elem[0], "F") == 0
 		|| ft_strncmp_all(line_elem[0], "C") == 0)
 		put_elem_to_struct(line_elem, cub);
+	else
+		file_print_error(cub, "Invalid element!\n", 0);
 	cub->id_flag++;
 	free(trim_line);
 	free_char_array(line_elem);

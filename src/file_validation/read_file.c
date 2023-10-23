@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 14:54:38 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 13:54:04 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	read_file(int fd, t_cub *cub)
 			find_element(line, cub);
 		else if (is_map(line) && cub->id_flag != 6)
 			file_print_error(cub, "File does not have required elements or \
-				elements are in wrong order!\n", 1);
+elements are in wrong order!\n", 1);
 		free(line);
 	}
 	read_map(fd, cub);
