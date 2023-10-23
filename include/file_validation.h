@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:08:23 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:44:18 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:28:46 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		check_elements(char **element, t_cub *cub);
 void	find_element(char *line, t_cub *cub);
 
 //file_validation_utils.c
+void	multiple_commas(t_cub *cub, char *rgb_values);
 int		all_digits(char *number);
 void	file_print_error(t_cub *cub, char *str, int struct_flag);
 int		is_map(char *line);
