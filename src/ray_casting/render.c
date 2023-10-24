@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:48 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:44:46 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 {
 	t_line	line;
 
+	(void)mv;
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
 	ray->ray_count = 0;
@@ -36,9 +37,9 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	make_mini_map(cbd, mv);
-	cast_rays(ray);
-	draw_player(cbd, ray);
+	// make_mini_map(cbd, mv);
+	// cast_rays(ray);
+	// draw_player(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
 }
 

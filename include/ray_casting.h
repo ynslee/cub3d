@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:43:46 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,14 +154,14 @@ int				key_event(int keysym, t_ray *ray, t_cub *cub);
 void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 
 //make_mini_map.c
-void			draw_player(t_cbd *cbd, t_ray *ray);
-void			make_mini_map(t_cbd *cbd, t_data *mv);
+// void			draw_player(t_cbd *cbd, t_ray *ray);
+// void			make_mini_map(t_cbd *cbd, t_data *mv);
 
 // minimap_ray.c
-int				ft_abs(int a);
-void			init_line(t_line *line, t_ray *ray);
-void			bresenham(t_ray *ray, t_line *line, int color);
-void			cast_rays(t_ray *ray);
+// int				ft_abs(int a);
+// void			init_line(t_line *line, t_ray *ray);
+// void			bresenham(t_ray *ray, t_line *line, int color);
+// void			cast_rays(t_ray *ray);
 
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
