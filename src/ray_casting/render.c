@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 12:44:46 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:07:16 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
  * renders the ceiling and floor, then draw the wall image with xpm files,
  * then draws the minimap on the top
  */
-void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
+void	render_image(t_cbd *cbd, t_ray *ray)
 {
 	t_line	line;
 
-	(void)mv;
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
 	ray->ray_count = 0;
@@ -37,7 +36,7 @@ void	render_image(t_cbd *cbd, t_ray *ray, t_data *mv)
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}
 	ray->ra = fix_angle(ray->pa - FOV / 2);
-	// make_mini_map(cbd, mv);
+	// make_mini_map(cbd, ray->data);
 	// cast_rays(ray);
 	// draw_player(cbd, ray);
 	mlx_put_image_to_window(cbd->mlx, cbd->window, cbd->img, 0, 0);
@@ -98,7 +97,7 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 	if (!cbd->img_addr)
 		mlx_exit(&ray, cub, "Error creating mlx image address!\n", 1);
 	init_textures(cub, &ray);
-	render_image(cbd, &ray, mv);
+	render_image(cbd, &ray);
 	set_hooks(cbd, &ray, cub);
 	mlx_loop(cbd->mlx);
 }

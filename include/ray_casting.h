@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 12:43:46 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:07:11 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void			check_horizontal_gridline(t_ray *ray, t_line *line);
 void			check_vertical_gridline(t_ray *ray, t_line *line);
 
 // render.c
-void			render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
+void			render_image(t_cbd *cbd, t_ray *ray);
 void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
 t_line *line);
 void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
