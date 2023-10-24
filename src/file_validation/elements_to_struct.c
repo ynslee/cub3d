@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements_to_struct.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 12:49:46 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:55:50 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,33 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 		file_print_error(cub, "Texture file duplicates!\n", 1);
 }
 
-/// @brief reads floor and ceiling color if there are spaces between rgb
-/// values (ex. F 25, 25, 25)
-/// @param elem line splitted by spaces from file
-/// @param cub
+/**
+ * @brief check elements each and see if the RGB value has spaces
+ * in between
+ * 
+ * @param elem str that is splitted by spces from file
+ * @param len len of elem str
+ */
+static void	check_elem(char **elem, int len, t_cub *cub)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+	{
+		if (!ft_strncmp_all(elem[i], ",") || \
+		(elem[i][0] == ',' && ft_isdigit(elem[i][1])))
+			file_print_error(cub, "Invalid RGB value!\n", 0);
+	}
+	if (len > 4)
+		file_print_error(cub, "Invalid RGB value!\n", 0);
+}
+
+/** @brief reads floor and ceiling color if there are spaces between rgb
+* values (ex. F 25, 25, 25)
+* @param elem line splitted by spaces from file
+* @param cub
+*/
 static char	**put_elems_str(char **elem, t_cub *cub)
 {
 	char	**out;
@@ -45,8 +68,8 @@ static char	**put_elems_str(char **elem, t_cub *cub)
 	int		len;
 
 	len = ft_arrlen(elem);
-	if (len > 4)
-		file_print_error(cub, "Invalid colors for ceiling or floor!\n", 0);
+	if (len > 2)
+		check_elem(elem, len, cub);
 	out = ft_calloc(3, sizeof(char *));
 	if (!out)
 		file_print_error(cub, "Could not allocate memory for RGB values!\n", 0);
@@ -76,7 +99,7 @@ void	find_element(char *line, t_cub *cub)
 	line_elem = ft_split(trim_line, ' ');
 	if ((ft_arrlen(line_elem) > 2) && (!ft_strncmp_all(line_elem[0], "F") || \
 		!ft_strncmp_all(line_elem[0], "C")))
-		put_elems_str(line_elem, cub);
+		line_elem = put_elems_str(line_elem, cub);
 	if (ft_strncmp_all(line_elem[0], "NO") == 0
 		|| ft_strncmp_all(line_elem[0], "SO") == 0
 		|| ft_strncmp_all(line_elem[0], "WE") == 0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 13:14:35 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:55:54 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
 	ray->ray_count = 0;
 	ray->data = (t_data *)data;
 	ray->cbd = (t_cbd *)cbd;
+	ray->cbd->mlx = NULL;
+	ray->cbd->window = NULL;
 	ray->vector = &vector;
 	ray->line = (t_line *)line;
 	ray->distance = 0;
@@ -83,6 +85,9 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
 		mlx_exit(&ray, cub, "Error connecting to mlx!\n", 1);
+	if (WIN_SIZE_X != 1920 || WIN_SIZE_Y != 1080)
+		mlx_exit(&ray, cub, "Window size should remain the same for the best \
+experience!(X : 1920, Y:1080)\n", 0);
 	cbd->window = mlx_new_window(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y, "cub");
 	if (cbd->window == NULL)
 		mlx_exit(&ray, cub, "Error creating mlx window!\n", 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/18 10:58:49 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:12:36 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,16 @@ static void	destroy_images(t_cbd *cbd, t_data *data)
 int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
 {
 	(void)cub;
-	ft_putstr_fd(message, flag);
+	ft_putstr_fd(message, 2);
 	if (ray->cbd->window)
 	{
 		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
 		ray->cbd->window = NULL;
 	}
-	destroy_images(ray->cbd, ray->data);
-	free_mv_struct(ray->data);
-	// free_cub_struct(cub);
+	if (flag)
+	{
+		destroy_images(ray->cbd, ray->data);
+		free_mv_struct(ray->data);
+	}
 	exit(flag);
 }
