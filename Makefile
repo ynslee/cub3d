@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/23 16:38:32 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/24 14:31:30 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,22 +45,47 @@ FILES = main\
 		drawing_utils\
 		drawing\
 		hooks\
-		make_mini_map\
-		minimap_ray\
 		mlx_utils\
-		mouse_hooks\
 		movement\
 		render\
 		ray_casting_utils\
 		ray_casting\
 		texture\
 
-HEADER = cub3d.h libft.h file_validation.h
+B_FILES = main\
+		elements_to_struct\
+		check_elements\
+		file_validation_utils\
+		read_file\
+		map_check\
+		map_validation_utils\
+		index_utils\
+		fill_width\
+		wall_check\
+		rgb_colour\
+		drawing_utils\
+		drawing\
+		hooks_bonus\
+		make_mini_map_bonus\
+		minimap_ray_bonus\
+		mlx_utils\
+		mouse_hooks_bonus\
+		movement\
+		render_bonus\
+		ray_casting_utils\
+		ray_casting\
+		texture\		
+
+HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting.h
 HEADER := $(addprefix $I/,$(HEADER))
 
 SRCS := $(foreach FILE,$(FILES),$(shell find $S -type f -name '$(FILE).c'))
 OBJS = $(patsubst $S/%,$O/%,$(SRCS:.c=.o))
 O_DIRS = $(dir $(OBJS))
+
+B_SRCS := $(foreach B_FILE,$(B_FILES),$(shell find $S -type f -name '$(B_FILE).c'))
+B_OBJS = $(patsubst $S/%,$O/%,$(B_SRCS:.c=.o))
+B_O_DIRS = $(dir $(B_OBJS))
 
 #Minilibx
 MLX_PATH	= mlx/
@@ -69,6 +94,7 @@ MLX			= $(MLX_PATH)$(MLX_NAME)
 MLX_LNK	= -L ./mlx -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3D
+NAME_BONUS = cub3D_bonus
 
 ### RULES ###
 all: $(NAME)
@@ -81,6 +107,17 @@ $(NAME): $(OBJS) $(MLX) $(LIBFT)
 	@echo "Compiling cub3D..."
 	@$(CC) $(CFLAGS) $(MLX) $(MLX_LNK) $(LIBFT) $(OBJS) -o $(NAME)
 	@echo "$(COLOUR_GREEN) $(NAME) created$(COLOUR_END)"
+
+bonus: $(NAME_BONUS)
+
+$O/%.o: $S/%.c $(HEADER)
+	@mkdir -p $(B_O_DIRS)
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+$(NAME_BONUS): $(B_OBJS) $(MLX) $(LIBFT)
+	@echo "Compiling cub3D_bonus..."
+	@$(CC) $(CFLAGS) $(MLX) $(MLX_LNK) $(LIBFT) $(B_OBJS) -o $(NAME_BONUS)
+	@echo "$(COLOUR_GREEN) $(NAME_BONUS) created$(COLOUR_END)"
 
 ### MLX
 $(MLX):
@@ -102,13 +139,15 @@ $(LIBFT):
 clean:
 	@cd libft && $(MAKE) clean
 	@$(RM) $(OBJS)
+	@$(RM) $(B_OBJS)	
 	@if [ -d $O ]; then $(RM) -rf $(O_DIRS) $O; fi
 
 fclean : clean
 	@cd libft && $(MAKE) fclean
 	@echo "$(COLOUR_RED) $(LIBFT) removed$(COLOUR_END)"
 	@$(RM) $(NAME)
-	@echo "$(COLOUR_RED) $(NAME) removed$(COLOUR_END)"
+	@$(RM) $(NAME_BONUS)
+	@echo "$(COLOUR_RED) $(NAME) or $(NAME_BONUS) removed$(COLOUR_END)"
 
 re: fclean all
 
