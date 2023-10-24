@@ -6,15 +6,16 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 09:45:44 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:59:23 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/file_validation.h"
 
-/// @brief checks that floor and ceiling colors have three numbers separated by comma
-/// and that color values are correct
-/// @param element rgb colorvalues separated by comma (second element of an array of splitted line)
+/// @brief checks that floor and ceiling colors have three numbers
+/// separated by comma and that color values are correct
+/// @param element rgb colorvalues separated by comma
+/// (second element of an array of splitted line)
 /// @return 0 upon success, -1 if failure
 static int	check_colors(t_cub *cub, char *element)
 {
@@ -59,7 +60,7 @@ static int	check_textures(char *element)
 	return (fd);
 }
 
-/// @brief Checks that the line that contains wall texture information in file is correct
+/// @brief Checks that wall texture information line in file is correct
 /// @param element line from file splitted by spaces
 /// @param cub
 /// @return 0 if no problems
