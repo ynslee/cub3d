@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 13:07:11 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:14:02 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,26 +153,10 @@ void			draw_image(t_ray *ray, t_line *line);
 int				key_event(int keysym, t_ray *ray, t_cub *cub);
 void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 
-//make_mini_map.c
-// void			draw_player(t_cbd *cbd, t_ray *ray);
-// void			make_mini_map(t_cbd *cbd, t_data *mv);
-
-// minimap_ray.c
-// int				ft_abs(int a);
-// void			init_line(t_line *line, t_ray *ray);
-// void			bresenham(t_ray *ray, t_line *line, int color);
-// void			cast_rays(t_ray *ray);
-
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
-// int				destroy(t_cbd *cbd);
-
-//mouse_hooks.c
-int				mouse_event(int x, int y, t_ray *ray);
-int				mouse_press(int button, int x, int y, t_ray *ray);
-int				mouse_release(int button, int x, int y, t_ray *ray);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);
