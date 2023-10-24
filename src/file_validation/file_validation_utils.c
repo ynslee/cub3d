@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   file_validation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:01:42 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/17 15:42:38 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 16:48:34 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/file_validation.h"
+
+void	multiple_commas(t_cub *cub, char *rgb_values)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(rgb_values);
+	if (rgb_values[i] == ',')
+		file_print_error(cub, "Invalid rgb values!\n", 0);
+	while (i < len)
+	{
+		if (rgb_values[i] == ',' && rgb_values[i + 1] == ',')
+			file_print_error(cub, "Invalid rgb values!\n", 0);
+		i++;
+	}
+	if (rgb_values[i - 1] == ',')
+		file_print_error(cub, "Invalid rgb values!\n", 0);
+}
 
 int	all_digits(char *number)
 {

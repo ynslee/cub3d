@@ -6,7 +6,7 @@
 /*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:44:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/23 13:51:41 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:55:41 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,8 @@ int	main(int argc, char **argv)
 			file_print_error(&cub, "Invalid file\n", 0);
 		init_cub_struct(&cub);
 		read_file(fd, &cub);
-		// print_struct(&cub);
 		map_check(&cub, &mv);
 		init_render_utils(&cbd, &mv, &cub);
-		// free_cub_struct(&cub);
-		// free_mv_struct(&mv);
 	}
 	else
 	{

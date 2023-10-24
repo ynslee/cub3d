@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements_to_struct.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/23 13:51:40 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 16:47:48 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static void	put_elem_to_struct(char **element, t_cub *cub)
 /// values (ex. F 25, 25, 25)
 /// @param elem line splitted by spaces from file
 /// @param cub
-/// @return returns an array that contains the floor or ceiling color
-/// (ex. out[0] = F out[1] = 25,25,25)
 static char	**put_elems_str(char **elem, t_cub *cub)
 {
 	char	**out;

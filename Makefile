@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/18 16:03:46 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/23 16:38:32 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ $O/%.o: $S/%.c $(HEADER)
 	@mkdir -p $(O_DIRS)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-$(NAME): $(OBJS) $(MLX) $(LIBFT) $(NAME)
+$(NAME): $(OBJS) $(MLX) $(LIBFT)
 	@echo "Compiling cub3D..."
 	@$(CC) $(CFLAGS) $(MLX) $(MLX_LNK) $(LIBFT) $(OBJS) -o $(NAME)
 	@echo "$(COLOUR_GREEN) $(NAME) created$(COLOUR_END)"

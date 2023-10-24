@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:13:30 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/23 13:51:38 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/23 16:48:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	check_colors(t_cub *cub, char *element)
 	char	**colors;
 	int		i;
 
+	multiple_commas(cub, element);
 	colors = ft_split(element, ',');
 	i = 0;
 	while (i < 3)
