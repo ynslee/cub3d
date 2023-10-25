@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 13:10:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:15:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,11 @@ void			init_line(t_line *line, t_ray *ray);
 void			bresenham(t_ray *ray, t_line *line, int color);
 void			cast_rays(t_ray *ray);
 
+
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
-// int				destroy(t_cbd *cbd);
 
 //mouse_hooks.c
 int				mouse_event(int x, int y, t_ray *ray);
@@ -192,7 +192,7 @@ void			check_horizontal_gridline(t_ray *ray, t_line *line);
 void			check_vertical_gridline(t_ray *ray, t_line *line);
 
 // render.c
-void			render_image(t_cbd *cbd, t_ray *ray, t_data *mv);
+void			render_image(t_cbd *cbd, t_ray *ray);
 void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
 t_line *line);
 void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 08:14:54 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 13:09:01 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:05:10 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	mouse_event(int x, int y, t_ray *ray)
 		}
 		ray->mou_x = x;
 	}
-	render_image(ray->cbd, ray, ray->data);
+	render_image(ray->cbd, ray);
 	return (0);
 }
 

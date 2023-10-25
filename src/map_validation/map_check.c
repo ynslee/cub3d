@@ -52,11 +52,9 @@ int	height_check(char *map, t_data *mv)
 {
 	int		i;
 	int		height;
-	int		width;
 
 	i = 0;
 	height = 1;
-	width = 0;
 	while (map[i])
 	{
 		if (map[i] == '\n')
