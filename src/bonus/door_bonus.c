@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:39:10 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 15:52:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:05:01 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_closable(t_ray *ray)
 	int	y;
 
 	x = (int)ray->pix_x_pos / GRID_PIX;
-	y = (int)ray->pix_x_pos / GRID_PIX;
+	y = (int)ray->pix_y_pos / GRID_PIX;
 	if (ray->data->map[y][x] == 'O')
 		ray->data->map[y][x] = 'D';
 	else if (ray->data->map[y][x - 1] == 'O')
@@ -32,7 +32,6 @@ int	check_closable(t_ray *ray)
 		ray->data->map[y + 1][x] = 'D';
 	else
 		return (0);
-	printf("closed the door\n");
 	return (1);
 }
 
@@ -43,8 +42,7 @@ int	check_openable(t_ray *ray)
 	int	y;
 
 	x = (int)ray->pix_x_pos / GRID_PIX;
-	y = (int)ray->pix_x_pos / GRID_PIX;
-	printf("x is %d, y is %d\n", x, y);
+	y = (int)ray->pix_y_pos / GRID_PIX;
 	if (ray->data->map[y][x] == 'D')
 		ray->data->map[y][x] = 'O';
 	else if (ray->data->map[y][x - 1] == 'D')
@@ -57,6 +55,5 @@ int	check_openable(t_ray *ray)
 		ray->data->map[y + 1][x] = 'O';
 	else
 		return (0);
-	printf("opened the door\n");
 	return (1);
 }
