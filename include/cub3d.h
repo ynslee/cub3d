@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 09:59:59 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:48:05 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <fcntl.h>
 # include "file_validation.h"
 # include "map_validation.h"
-# include "ray_casting.h"
 # include "ray_casting_bonus.h"
 # include "../libft/libft.h"
 
@@ -33,6 +32,7 @@
 # define SO 1
 # define WE 2
 # define EA 3
+# define DOOR 4
 
 typedef struct s_cbd
 {

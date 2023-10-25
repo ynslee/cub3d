@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:12:23 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:41:57 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:49:49 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 #include "../../include/cub3d.h"
 
 static int	rays_looking_up(t_ray *ray)

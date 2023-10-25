@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 13:12:36 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:49:45 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief puts the colour for on the wall based on x, y position
@@ -63,6 +63,8 @@ static void	destroy_images(t_cbd *cbd, t_data *data)
 		mlx_destroy_image(cbd->mlx, data->texture[EA]->img_ptr);
 	if (data->texture[WE])
 		mlx_destroy_image(cbd->mlx, data->texture[WE]->img_ptr);
+	if (data->texture[DOOR])
+		mlx_destroy_image(cbd->mlx, data->texture[DOOR]->img_ptr);
 }
 
 /**

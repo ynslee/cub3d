@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:55:44 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 12:45:05 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:53:06 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	read_map(int fd, t_cub *cub)
 			break ;
 		if (cub->id_flag == 6 && !is_map(line) && \
 			ft_strncmp_all(line, "\n") != 0)
-			file_print_error(cub, "Duplicate elements!\n", 1);
+			file_print_error(cub, "Duplicate elements or map is opened\n", 1);
 		if (!map_str)
 			map_str = ft_strdup(line);
 		else

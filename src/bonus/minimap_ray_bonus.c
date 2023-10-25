@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:48 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:45:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ static int	bh_hit_wall(t_ray *ray, float x, float y)
 		(ray->data->map[(int)y / p][(int)(x / p - 0.01)] == '1') || \
 		(ray->data->map[(int)y / p][(int)(x / p + 0.01)] == '1'))
 		return (1);
+	if ((ray->data->map[(int)(y / p - 0.01)][(int)x / p] == 'D') || \
+		(ray->data->map[(int)(y / p + 0.01)][(int)x / p] == 'D') || \
+		(ray->data->map[(int)y / p][(int)(x / p - 0.01)] == 'D') || \
+		(ray->data->map[(int)y / p][(int)(x / p + 0.01)] == 'D'))
+		return (1);
 	return (0);
 }
 
@@ -106,7 +111,6 @@ void	cast_rays(t_ray *ray)
 
 	x = ray->pix_x_pos / 4;
 	y = ray->pix_y_pos / 4;
-	ray->ray_count = 0;
 	while (ray->ray_count < (ray->data->width * MINI_PIX / 2))
 	{
 		ray->pdx = cos(deg_to_rad(ray->ra)) * 0.2;
@@ -114,6 +118,7 @@ void	cast_rays(t_ray *ray)
 		x += ray->pdx / 2;
 		y += ray->pdy / 2;
 		if (ray->data->map[(int)y / MINI_PIX][(int)x / MINI_PIX] == '1' \
+		|| ray->data->map[(int)y / MINI_PIX][(int)x / MINI_PIX] == 'D' \
 		|| bh_hit_wall(ray, x, y))
 		{
 			ray->r_end_x = floor(x);

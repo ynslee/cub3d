@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:45:49 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/25 12:27:53 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	player_location(t_data *mv)
 int	map_character_check(char c)
 {
 	if (c != '1' && c != '0' && c != '\n' && c != 'N' && \
-	c != 'S' && c != 'E' && c != 'W' && c != 32)
+	c != 'S' && c != 'E' && c != 'W' && c != 32 && c != 'D')
 		return (0);
 	return (1);
 }

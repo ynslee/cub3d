@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_colour.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 10:41:04 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/25 13:32:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	init_textures(t_cub *cub, t_ray *ray)
 	ray->data->texture[SO] = get_new_xpm_img(ray, cub->so, cub);
 	ray->data->texture[WE] = get_new_xpm_img(ray, cub->we, cub);
 	ray->data->texture[EA] = get_new_xpm_img(ray, cub->ea, cub);
+	ray->data->texture[DOOR] = \
+	get_new_xpm_img(ray, "textures/rocks/door.xpm", cub);
 }
 
 static unsigned int	rgb_colour(int *arr)

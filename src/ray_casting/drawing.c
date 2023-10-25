@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:33:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:43:24 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:49:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 #include "../../include/cub3d.h"
 
 /**
@@ -43,17 +43,15 @@ void	draw_background(t_ray *ray)
  * @param PR_PLANE Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
  * @param y_count step size of traversing the image in y axis(top to bottom)
  */
-void	draw_image(t_ray *ray, t_line *line)
+void	draw_image(t_ray *ray, t_line *line, int door)
 {
-	float	y_count;
-
 	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
-	y_count = TEX_PIX / ray->wall_height;
+	ray->y_count = TEX_PIX / ray->wall_height;
 	if (ray->shortest == 'h')
-		texture_location(ray, y_count, line->x1, line->y1);
+		texture_location(ray, ray->y_count, line->x1, line->y1);
 	else
-		texture_location(ray, y_count, line->v_x1, line->v_y1);
-	texture_wall(ray, ray->ray_count, (int)ray->wall_height, y_count);
+		texture_location(ray, ray->y_count, line->v_x1, line->v_y1);
+	texture_wall(ray, ray->ray_count, (int)ray->wall_height, door);
 }
 
 // /**

@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 14:16:11 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:49:39 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief rernders the image when opens the screen or the key is used.
@@ -20,6 +20,7 @@
 void	render_image(t_cbd *cbd, t_ray *ray)
 {
 	t_line	line;
+	int		door;
 
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
@@ -30,8 +31,9 @@ void	render_image(t_cbd *cbd, t_ray *ray)
 		check_inits(ray, &line);
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
-		compare_draw_rays(ray, &line);
-		draw_image(ray, &line);
+		door = 0;
+		door = compare_draw_rays(ray, &line, door);
+		draw_image(ray, &line, door);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}

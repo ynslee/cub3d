@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/25 12:21:33 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/25 15:47:33 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ B_FILES = main\
 		make_mini_map_bonus\
 		minimap_ray_bonus\
 		mouse_hooks_bonus\
-		render_bonus\	
+		render_bonus\
+		door_bonus\
 
 HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting.h
 HEADER := $(addprefix $I/,$(HEADER))

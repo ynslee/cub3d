@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 10:01:35 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:15:53 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_data
 	char			player_view;
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
-	t_tex_img		*texture[4];
+	t_tex_img		*texture[5];
 	int				img_width;
 	int				img_height;
 }	t_data;

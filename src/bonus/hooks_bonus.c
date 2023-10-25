@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:55:31 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static void	player_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 1)
 		move_frontback(ray, "down");
+	if (keysym == 36)
+	{
+		printf("key is pressed\n");
+		if (!check_openable(ray))
+			check_closable(ray);
+	}
 	render_image(ray->cbd, ray);
 }
 
