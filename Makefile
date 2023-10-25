@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/24 14:31:30 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/25 11:48:50 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ LIBFT = libft/libft.a
 S = src
 O = obj
 I = include
+B = bonus_obj
 
 FILES = main\
 		elements_to_struct\
@@ -83,8 +84,11 @@ SRCS := $(foreach FILE,$(FILES),$(shell find $S -type f -name '$(FILE).c'))
 OBJS = $(patsubst $S/%,$O/%,$(SRCS:.c=.o))
 O_DIRS = $(dir $(OBJS))
 
+B_HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting_bonus.h
+B_HEADER := $(addprefix $I/,$(B_HEADER))
+
 B_SRCS := $(foreach B_FILE,$(B_FILES),$(shell find $S -type f -name '$(B_FILE).c'))
-B_OBJS = $(patsubst $S/%,$O/%,$(B_SRCS:.c=.o))
+B_OBJS = $(patsubst $S/%,$B/%,$(B_SRCS:.c=.o))
 B_O_DIRS = $(dir $(B_OBJS))
 
 #Minilibx
@@ -110,7 +114,7 @@ $(NAME): $(OBJS) $(MLX) $(LIBFT)
 
 bonus: $(NAME_BONUS)
 
-$O/%.o: $S/%.c $(HEADER)
+$B/%.o: $S/%.c $(B_HEADER)
 	@mkdir -p $(B_O_DIRS)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
@@ -138,9 +142,8 @@ $(LIBFT):
 
 clean:
 	@cd libft && $(MAKE) clean
-	@$(RM) $(OBJS)
-	@$(RM) $(B_OBJS)	
 	@if [ -d $O ]; then $(RM) -rf $(O_DIRS) $O; fi
+	@if [ -d $B ]; then $(RM) -rf $(O_DIRS) $B; fi
 
 fclean : clean
 	@cd libft && $(MAKE) fclean

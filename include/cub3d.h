@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 13:14:11 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:59:59 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "file_validation.h"
 # include "map_validation.h"
 # include "ray_casting.h"
+# include "ray_casting_bonus.h"
 # include "../libft/libft.h"
 
 # define WIN_SIZE_X 1920

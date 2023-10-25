@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_mini_map.c                                    :+:      :+:    :+:   */
+/*   make_mini_map_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/18 07:14:23 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/25 09:44:45 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
 #include "../../include/cub3d.h"
 #include "../../include/map_validation.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief draw player on the minimap

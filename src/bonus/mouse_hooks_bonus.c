@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_hooks.c                                      :+:      :+:    :+:   */
+/*   mouse_hooks_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 08:14:54 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/24 14:05:10 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:44:51 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 int	mouse_event(int x, int y, t_ray *ray)
 {
