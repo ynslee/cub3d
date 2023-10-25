@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 10:01:31 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:23:43 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,6 @@ typedef struct s_vector		t_vector;
 typedef struct s_line		t_line;
 typedef struct s_ray		t_ray;
 
-//draw_utils.c
-int				set_wall_direction(t_ray *ray);
-
-//drawing.c
-void			draw_background(t_ray *ray);
-void			draw_image(t_ray *ray, t_line *line);
-// void			color_wall(t_ray *ray, int pos, int wall);
-
 // hooks.c
 int				key_event(int keysym, t_ray *ray, t_cub *cub);
 void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
@@ -78,16 +70,29 @@ void			init_line(t_line *line, t_ray *ray);
 void			bresenham(t_ray *ray, t_line *line, int color);
 void			cast_rays(t_ray *ray);
 
+//mouse_hooks.c
+int				mouse_event(int x, int y, t_ray *ray);
+int				mouse_press(int button, int x, int y, t_ray *ray);
+int				mouse_release(int button, int x, int y, t_ray *ray);
+
+// render_bonus.c
+void			render_image(t_cbd *cbd, t_ray *ray);
+void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
+t_line *line);
+void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
+
+//draw_utils.c
+int				set_wall_direction(t_ray *ray);
+
+//drawing.c
+void			draw_background(t_ray *ray);
+void			draw_image(t_ray *ray, t_line *line);
+// void			color_wall(t_ray *ray, int pos, int wall);
 
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
-
-//mouse_hooks.c
-int				mouse_event(int x, int y, t_ray *ray);
-int				mouse_press(int button, int x, int y, t_ray *ray);
-int				mouse_release(int button, int x, int y, t_ray *ray);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);
@@ -106,14 +111,9 @@ void			check_inits(t_ray *ray, t_line *line);
 void			check_horizontal_gridline(t_ray *ray, t_line *line);
 void			check_vertical_gridline(t_ray *ray, t_line *line);
 
-// render.c
-void			render_image(t_cbd *cbd, t_ray *ray);
-void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
-t_line *line);
-void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
-
 //texture.c
 void			texture_wall(t_ray *ray, int pos, int wall, float y_count);
 void			texture_location(t_ray *ray, float y_count, float x, float y);
+
 
 #endif

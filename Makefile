@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/25 11:48:50 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/25 12:21:33 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT = libft/libft.a
 S = src
 O = obj
 I = include
-B = bonus_obj
+B = obj_bonus
 
 FILES = main\
 		elements_to_struct\
@@ -66,16 +66,16 @@ B_FILES = main\
 		rgb_colour\
 		drawing_utils\
 		drawing\
+		mlx_utils\
+		movement\
+		ray_casting_utils\
+		ray_casting\
+		texture\
 		hooks_bonus\
 		make_mini_map_bonus\
 		minimap_ray_bonus\
-		mlx_utils\
 		mouse_hooks_bonus\
-		movement\
-		render_bonus\
-		ray_casting_utils\
-		ray_casting\
-		texture\		
+		render_bonus\	
 
 HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting.h
 HEADER := $(addprefix $I/,$(HEADER))
