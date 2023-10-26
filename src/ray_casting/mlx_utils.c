@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:02:46 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 10:44:25 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	destroy_images(t_cbd *cbd, t_data *data)
 int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
 {
 	(void)cub;
+	if (!message)
+		message = NULL;
 	ft_putstr_fd(message, 2);
 	if (ray->cbd->window)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_colour_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:28:54 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 10:36:01 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_textures_b(t_cub *cub, t_ray *ray)
 	ray->data->textures[WE] = get_new_xpm_img_b(ray, cub->we, cub);
 	ray->data->textures[EA] = get_new_xpm_img_b(ray, cub->ea, cub);
 	ray->data->textures[DOOR] = \
-	get_new_xpm_img_b(ray, "textures/rocks/door.xpm", cub);
+	get_new_xpm_img_b(ray, "textures/retro_door.xpm", cub);
 }
 
 static unsigned int	rgb_colour(int *arr)

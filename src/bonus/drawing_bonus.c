@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:33:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:09:44 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:41:14 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

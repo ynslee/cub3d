@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:29:32 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 10:18:24 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting_bonus.h"
+#include "../../include/ray_casting.h"
 
 /**
  * @brief rernders the image when opens the screen or the key is used.
@@ -80,7 +81,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
  * map is stored
  * @param cub stores the xpm image's address for this function
  */
-void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
+void	init_render_utils_b(t_cbd *cbd, t_data *mv, t_cub *cub)
 {
 	t_ray	ray;
 	t_line	line;

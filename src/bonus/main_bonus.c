@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:44:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:13:25 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:17:05 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
+#include "../../include/ray_casting_bonus.h"
 
 void	print_struct(t_cub *cub)
 {
@@ -95,7 +96,7 @@ int	main(int argc, char **argv)
 		init_cub_struct(&cub);
 		read_file(fd, &cub);
 		map_check_b(&cub, &mv);
-		init_render_utils(&cbd, &mv, &cub);
+		init_render_utils_b(&cbd, &mv, &cub);
 	}
 	else
 	{

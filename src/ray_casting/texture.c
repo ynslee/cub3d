@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 13:21:33 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:32:38 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	texture_location(t_ray *ray, float y_count, float x, float y)
 	dir = set_wall_direction(ray);
 	if (dir == -1)
 		ft_putstr_fd("Wall position can't be found\n", 2);
-	// if (dir == NO)
-	// 	ray->tex_x = TEX_PIX - 1 - ((int)x % TEX_PIX);
 	if (dir == NO)
 		ray->tex_x = ((int)(x - 1) % TEX_PIX);
 	else if (dir == WE)
@@ -68,6 +66,4 @@ void	texture_location(t_ray *ray, float y_count, float x, float y)
 		ray->tex_x = (int)x % TEX_PIX;
 	else if (dir == EA)
 		ray->tex_x = TEX_PIX - 1 - ((int)y % TEX_PIX);
-	// else if (dir == EA)
-	// 	ray->tex_x = ((int)(y - 1) % TEX_PIX);
 }

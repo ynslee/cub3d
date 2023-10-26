@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_utils_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 02:56:30 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:21:12 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param y next position of y
  * @return 1 if there is wall, 0 if there isn't any wall
  */
-int	is_wall(t_ray *ray, float x, float y)
+int	is_wall_b(t_ray *ray, float x, float y)
 {
 	if (((int)(ray->pix_x_pos / GRID_PIX) == (int)(x / GRID_PIX)) && \
 	((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))

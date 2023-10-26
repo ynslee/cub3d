@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_casting.c                                      :+:      :+:    :+:   */
+/*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 09:40:10 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 09:19:36 by yoonslee         ###   ########.fr       */
+/*   Created: 2023/10/26 09:20:03 by yoonslee          #+#    #+#             */
+/*   Updated: 2023/10/26 09:31:01 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_inits(t_ray *ray, t_line *line)
 /**
  * @brief check if the ray hits the wall and returns the value accordingly
  */
-static void	hray_hits_wall(t_ray *ray, t_line *line)
+static void	hray_hits_wall_b(t_ray *ray, t_line *line)
 {
 	while (ray->dof < 10000)
 	{
@@ -38,7 +38,7 @@ static void	hray_hits_wall(t_ray *ray, t_line *line)
 		(int)line->y1 / GRID_PIX >= 0 && \
 		(int)line->x1 / GRID_PIX < ray->data->width && \
 		(int)line->y1 / GRID_PIX < ray->data->height && \
-		is_wall(ray, line->x1, line->y1))
+		is_wall_b(ray, line->x1, line->y1))
 			ray->dof = 10000;
 		else
 		{
@@ -52,7 +52,7 @@ static void	hray_hits_wall(t_ray *ray, t_line *line)
 /**
  * @brief check if the ray hits the wall and returns the value accordingly
  */
-static void	vray_hits_wall(t_ray *ray, t_line *line)
+static void	vray_hits_wall_b(t_ray *ray, t_line *line)
 {
 	while (ray->dof < 10000)
 	{
@@ -60,7 +60,7 @@ static void	vray_hits_wall(t_ray *ray, t_line *line)
 		(int)line->v_x1 / GRID_PIX >= 0 && \
 		(int)line->v_y1 / GRID_PIX < ray->data->height && \
 		(int)line->v_x1 / GRID_PIX < ray->data->width && \
-		is_wall(ray, line->v_x1, line->v_y1))
+		is_wall_b(ray, line->v_x1, line->v_y1))
 			ray->dof = 10000;
 		else
 		{
@@ -98,7 +98,7 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
 		ray->dof = 10000;
 	}
 	line->xa = -line->ya * ray->d_tan;
-	hray_hits_wall(ray, line);
+	hray_hits_wall_b(ray, line);
 }
 
 /**
@@ -129,5 +129,5 @@ void	check_vertical_gridline(t_ray *ray, t_line *line)
 		ray->dof = 10000;
 	}
 	line->v_ya = -line->v_xa * tan(deg_to_rad(ray->ra));
-	vray_hits_wall(ray, line);
+	vray_hits_wall_b(ray, line);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+         #
+#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/26 03:26:14 by yoonseonlee      ###   ########.fr        #
+#    Updated: 2023/10/26 10:23:23 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
 ### SET UP ###
-CC = cc -arch x86_64
+CC = cc #-arch x86_64
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 CFLAGS =  -I$I -Wall -Wextra -Werror #-fsanitize=address,undefined #-g
 
@@ -57,11 +57,10 @@ B_FILES = elements_to_struct\
 		check_elements\
 		file_validation_utils\
 		read_file\
-		map_validation_utils\
 		fill_width\
 		drawing_utils\
 		movement_bonus\
-		ray_casting\
+		map_validation_utils\
 		door_bonus\
 		drawing_bonus\
 		hooks_bonus\
@@ -69,9 +68,11 @@ B_FILES = elements_to_struct\
 		main_bonus\
 		make_mini_map_bonus\
 		map_check_bonus\
+		map_validation_utils_bonus\
 		minimap_ray_bonus\
 		mlx_utils_bonus\
 		mouse_hooks_bonus\
+		ray_casting_bonus\
 		ray_casting_utils_bonus\
 		render_bonus\
 		rgb_colour_bonus\

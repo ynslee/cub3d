@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:39:10 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 16:05:01 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:31:43 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	check_closable(t_ray *ray)
 		return (0);
 	return (1);
 }
-
 
 int	check_openable(t_ray *ray)
 {

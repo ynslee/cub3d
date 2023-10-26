@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 02:55:53 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:37:11 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	texture_wall_b(t_ray *ray, int pos, int wall, int door)
 		w_pos = set_wall_direction(ray);
 	while (wall_start + i < wall_start + wall)
 	{
-		texture = my_mlx_pixel_get(ray->data->texture[w_pos], \
+		texture = my_mlx_pixel_get(ray->data->textures[w_pos], \
 		(int)ray->tex_x, (int)ray->tex_y);
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
 		i++;

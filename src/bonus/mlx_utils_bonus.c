@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:26:54 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 10:22:39 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief puts the colour for on the wall based on x, y position
@@ -64,7 +64,7 @@ static void	destroy_images_b(t_cbd *cbd, t_data *data)
 	if (data->textures[WE])
 		mlx_destroy_image(cbd->mlx, data->textures[WE]->img_ptr);
 	if (data->textures[DOOR])
-		mlx_destroy_image(cbd->mlx, data->textures[WE]->img_ptr);
+		mlx_destroy_image(cbd->mlx, data->textures[DOOR]->img_ptr);
 }
 
 /**
@@ -74,7 +74,8 @@ static void	destroy_images_b(t_cbd *cbd, t_data *data)
 int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 {
 	(void)cub;
-	ft_putstr_fd(message, 2);
+	if (message)
+		ft_putstr_fd(message, 2);
 	if (ray->cbd->window)
 	{
 		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
@@ -83,7 +84,7 @@ int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 	if (flag)
 	{
 		destroy_images_b(ray->cbd, ray->data);
-		free_mv_struct(ray->data);
+		free_mv_struct_b(ray->data);
 	}
 	exit(flag);
 }

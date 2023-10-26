@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:30:41 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:21:37 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				mouse_release(int button, int x, int y, t_ray *ray);
 void			render_image_b(t_cbd *cbd, t_ray *ray);
 void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
 t_line *line);
-void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
+void			init_render_utils_b(t_cbd *cbd, t_data *mv, t_cub *cub);
 
 //door_bonus.c
 int				check_closable(t_ray *ray);
@@ -102,7 +102,7 @@ void			move_frontback(t_ray *ray, char *direction);
 void			move_sideway(t_ray *ray, char *direction);
 
 // ray_casting_utils_bonus.c
-int				is_wall(t_ray *ray, float x, float y);
+int				is_wall_b(t_ray *ray, float x, float y);
 float			fix_angle(float a);
 float			deg_to_rad(float a);
 void			player_orientation_to_angle(t_data *mv, t_ray *ray);

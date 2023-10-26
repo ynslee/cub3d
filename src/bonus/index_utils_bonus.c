@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   index_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:07:01 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 09:50:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
+#include "../../include/map_validation_bonus.h"
 
 /// @brief return the index of the last occurence if c in the string
 /// @param str
