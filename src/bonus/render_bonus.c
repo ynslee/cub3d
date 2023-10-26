@@ -6,7 +6,7 @@
 /*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:17:41 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 03:29:32 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 	init_ray_struct(&ray, mv, cbd, &line);
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
-		mlx_exit(&ray, cub, "Error connecting to mlx!\n", 1);
+		mlx_exit_b(&ray, cub, "Error connecting to mlx!\n", 1);
 	cbd->window = mlx_new_window(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y, "cub");
 	if (cbd->window == NULL)
-		mlx_exit(&ray, cub, "Error creating mlx window!\n", 1);
+		mlx_exit_b(&ray, cub, "Error creating mlx window!\n", 1);
 	cbd->img = mlx_new_image(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y);
 	if (!cbd->img)
-		mlx_exit(&ray, cub, "Error creating mlx image!\n", 1);
+		mlx_exit_b(&ray, cub, "Error creating mlx image!\n", 1);
 	cbd->img_addr = mlx_get_data_addr(cbd->img, &cbd->img_bpp,
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
-		mlx_exit(&ray, cub, "Error creating mlx image address!\n", 1);
+		mlx_exit_b(&ray, cub, "Error creating mlx image address!\n", 1);
 	init_textures_b(cub, &ray);
 	render_image_b(cbd, &ray);
 	set_hooks(cbd, &ray, cub);

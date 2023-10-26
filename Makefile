@@ -6,7 +6,7 @@
 #    By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/26 03:13:43 by yoonseonlee      ###   ########.fr        #
+#    Updated: 2023/10/26 03:26:14 by yoonseonlee      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,30 +53,30 @@ FILES = main\
 		ray_casting\
 		texture\
 
-B_FILES = main_bonus\
-		elements_to_struct\
+B_FILES = elements_to_struct\
 		check_elements\
 		file_validation_utils\
 		read_file\
-		map_check_bonus\
 		map_validation_utils\
-		index_utils_bonus\
 		fill_width\
-		wall_check_bonus\
-		rgb_colour_bonus\
 		drawing_utils\
-		drawing_bonus\
-		mlx_utils\
 		movement_bonus\
-		ray_casting_utils_bonus\
 		ray_casting\
-		texture_bonus\
-		hooks_bonus\
-		make_mini_map_bonus\
-		minimap_ray_bonus\
-		mouse_hooks_bonus\
-		render_bonus\
 		door_bonus\
+		drawing_bonus\
+		hooks_bonus\
+		index_utils_bonus\
+		main_bonus\
+		make_mini_map_bonus\
+		map_check_bonus\
+		minimap_ray_bonus\
+		mlx_utils_bonus\
+		mouse_hooks_bonus\
+		ray_casting_utils_bonus\
+		render_bonus\
+		rgb_colour_bonus\
+		texture_bonus\
+		wall_check_bonus\
 
 HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting.h
 HEADER := $(addprefix $I/,$(HEADER))

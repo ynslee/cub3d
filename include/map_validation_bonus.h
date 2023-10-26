@@ -6,7 +6,7 @@
 /*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:15:18 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 03:32:04 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			print_map(char **map);
 void			flood_fill(t_data *mv, int x, int y, char c);
 
 // rgb_colour.c
-t_tex_img		*get_new_xpm_img(t_ray *ray, char *file_path, \
+t_tex_img		*get_new_xpm_img_b(t_ray *ray, char *file_path, \
 				t_cub *cub);
 void			init_textures_b(t_cub *cub, t_ray *ray);
 unsigned int	change_colour(char *colour);

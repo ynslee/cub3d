@@ -6,7 +6,7 @@
 /*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:02:28 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 03:26:54 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 	}
 	if (flag)
 	{
-		destroy_images(ray->cbd, ray->data);
+		destroy_images_b(ray->cbd, ray->data);
 		free_mv_struct(ray->data);
 	}
 	exit(flag);
