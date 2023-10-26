@@ -34,7 +34,6 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 | Space  | Close door      |
 | Mouse - Click and drag  | Turn   |
 | ESC  | Close window      |
-<br><br>
 
 ## Images
 
