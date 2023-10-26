@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 03:30:35 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 11:14:00 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
+int				mouse_exit(t_ray *ray);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);

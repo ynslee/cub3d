@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 13:14:31 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/26 11:14:29 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int	key_event(int keysym, t_ray *ray, t_cub *cub)
 void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
 	(void)cub;
-	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, ray);
+	mlx_hook(cbd->window, 17, 1L << 5, &mouse_exit, ray);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 }

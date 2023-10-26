@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 10:22:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:17:04 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,20 @@ int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 		free_mv_struct_b(ray->data);
 	}
 	exit(flag);
+}
+
+/**
+ * @brief exits with mouse
+ */
+int	mouse_exit(t_ray *ray)
+{
+	ft_putstr_fd("*** Thank you for playing! ***\n", 2);
+	if (ray->cbd->window)
+	{
+		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
+		ray->cbd->window = NULL;
+		destroy_images_b(ray->cbd, ray->data);
+		free_mv_struct_b(ray->data);
+	}
+	exit(0);
 }
