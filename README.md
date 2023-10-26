@@ -24,8 +24,8 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 | -------------  |:-------------:|
 | W              | Move forward |
 | A       | Move left      |
-| D  | Move right      |
 | S  | Move backward      |
+| D  | Move right      |
 | Left Arrow  | Turn Left      |
 | Right Arrow  | Turn Right      |
 | Up Arrow  | Move forward      |
