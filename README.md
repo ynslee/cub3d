@@ -18,7 +18,7 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 
 **2. Running the Program:**
 
-## Controls
+## Key and Mouse Control
 
 | __Key__        | __Action__   |
 | -------------  |:-------------:|
