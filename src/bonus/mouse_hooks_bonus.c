@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hooks_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 08:14:54 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:51 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:18:28 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	mouse_event(int x, int y, t_ray *ray)
 		}
 		ray->mou_x = x;
 	}
-	render_image(ray->cbd, ray);
+	render_image_b(ray->cbd, ray);
 	return (0);
 }
 

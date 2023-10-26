@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 15:48:05 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:14:52 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <fcntl.h>
 # include "file_validation.h"
 # include "map_validation.h"
+# include "map_validation_bonus.h"
+# include "ray_casting.h"
 # include "ray_casting_bonus.h"
 # include "../libft/libft.h"
 

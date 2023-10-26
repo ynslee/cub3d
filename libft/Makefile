@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
+#    By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 13:37:28 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/18 15:02:19 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/26 02:09:34 by yoonseonlee      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ ft_strtrim_last.c
 OBJS = $(SRCS:.c=.o)
 
 HEADER = libft.h
-CC = cc
+CC = cc -arch x86_64
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)

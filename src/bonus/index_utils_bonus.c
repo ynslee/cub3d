@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_utils.c                                      :+:      :+:    :+:   */
+/*   index_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:45:49 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/10/26 03:07:01 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	player_location(t_data *mv)
 /// @brief checks if character matches the one that should be in the map,
 /// @param c character fromm the map string
 /// @return if character is incorrect returns 0, if not, returns 1
-int	map_character_check(char c)
+int	map_character_check_b(char c)
 {
 	if (c != '1' && c != '0' && c != '\n' && c != 'N' && \
-	c != 'S' && c != 'E' && c != 'W' && c != 32)
+	c != 'S' && c != 'E' && c != 'W' && c != 32 && c != 'D')
 		return (0);
 	return (1);
 }

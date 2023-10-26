@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   mlx_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:02:46 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/26 03:02:28 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/ray_casting.h"
 
 /**
  * @brief puts the colour for on the wall based on x, y position
@@ -48,28 +48,30 @@ unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y)
 
 // static void	free_destroy_images(char)
 
-static void	destroy_images(t_cbd *cbd, t_data *data)
+static void	destroy_images_b(t_cbd *cbd, t_data *data)
 {
 	if (cbd->img)
 	{
 		mlx_destroy_image(cbd->mlx, cbd->img);
 		cbd->img = NULL;
 	}
-	if (data->texture[NO])
-		mlx_destroy_image(cbd->mlx, data->texture[NO]->img_ptr);
-	if (data->texture[SO])
-		mlx_destroy_image(cbd->mlx, data->texture[SO]->img_ptr);
-	if (data->texture[EA])
-		mlx_destroy_image(cbd->mlx, data->texture[EA]->img_ptr);
-	if (data->texture[WE])
-		mlx_destroy_image(cbd->mlx, data->texture[WE]->img_ptr);
+	if (data->textures[NO])
+		mlx_destroy_image(cbd->mlx, data->textures[NO]->img_ptr);
+	if (data->textures[SO])
+		mlx_destroy_image(cbd->mlx, data->textures[SO]->img_ptr);
+	if (data->textures[EA])
+		mlx_destroy_image(cbd->mlx, data->textures[EA]->img_ptr);
+	if (data->textures[WE])
+		mlx_destroy_image(cbd->mlx, data->textures[WE]->img_ptr);
+	if (data->textures[DOOR])
+		mlx_destroy_image(cbd->mlx, data->textures[WE]->img_ptr);
 }
 
 /**
  * @brief destroys the window and mlx, then exits if there's error
  *
  */
-int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
+int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 {
 	(void)cub;
 	ft_putstr_fd(message, 2);

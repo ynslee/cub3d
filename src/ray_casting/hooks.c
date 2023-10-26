@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:18:11 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/10/24 13:14:31 by jhusso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/ray_casting.h"
 
 /**
  * @brief calculate the next angle and moves player angle to 5 degrees.
@@ -48,12 +48,7 @@ static void	player_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 1)
 		move_frontback(ray, "down");
-	if (keysym == 36)
-	{
-		if (!check_openable(ray))
-			check_closable(ray);
-	}
-	render_image_b(ray->cbd, ray);
+	render_image(ray->cbd, ray);
 }
 
 /**
@@ -73,7 +68,7 @@ static void	angle_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 125)
 		move_frontback(ray, "down");
-	render_image_b(ray->cbd, ray);
+	render_image(ray->cbd, ray);
 }
 
 int	key_event(int keysym, t_ray *ray, t_cub *cub)
@@ -93,7 +88,4 @@ void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 	(void)cub;
 	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, ray);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
-	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
-	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);
-	mlx_hook(ray->cbd->window, 5, 1L << 3, &mouse_release, ray);
 }

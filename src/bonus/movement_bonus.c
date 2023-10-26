@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 13:08:47 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:49:44 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 static int	side_wall_check2(t_ray *ray, t_vector *next, float degree)
 {
@@ -89,6 +89,12 @@ int	movable(float x, float y, t_ray *ray)
 	ray->data->map[(int)next.y][(int)(next.x + 0.1)] == '1' || \
 	ray->data->map[(int)next.y][(int)(next.x - 0.1)] == '1'))
 		return (0);
+	if (ray->data->map[(int)next.y][(int)next.x] && \
+	(ray->data->map[(int)(next.y + 0.1)][(int)next.x] == 'D' || \
+	ray->data->map[(int)(next.y - 0.1)][(int)next.x] == 'D' || \
+	ray->data->map[(int)next.y][(int)(next.x + 0.1)] == 'D' || \
+	ray->data->map[(int)next.y][(int)(next.x - 0.1)] == 'D'))
+		return (0);
 	else if (((int)current.y / GRID_PIX == (int)next.y / GRID_PIX) && \
 	(int)current.x / GRID_PIX == (int)next.x / GRID_PIX)
 		return (1);
@@ -143,3 +149,4 @@ void	move_frontback(t_ray *ray, char *direction)
 		ray->pix_y_pos = y;
 	}
 }
+

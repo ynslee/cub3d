@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 15:49:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 02:19:00 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/ray_casting.h"
 
 /**
  * @brief rernders the image when opens the screen or the key is used.
@@ -20,7 +20,6 @@
 void	render_image(t_cbd *cbd, t_ray *ray)
 {
 	t_line	line;
-	int		door;
 
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
@@ -31,9 +30,8 @@ void	render_image(t_cbd *cbd, t_ray *ray)
 		check_inits(ray, &line);
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
-		door = 0;
-		door = compare_draw_rays(ray, &line, door);
-		draw_image(ray, &line, door);
+		compare_draw_rays(ray, &line);
+		draw_image(ray, &line);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}

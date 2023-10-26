@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 15:49:53 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:20:01 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,125 +45,39 @@
 # define TEAL 0x008080
 
 # include "cub3d.h"
-# include "map_validation.h"
+# include "map_validation_bonus.h"
+# include "ray_casting.h"
 
 typedef struct s_data		t_data;
 typedef struct s_cub		t_cub;
 typedef struct s_cbd		t_cbd;
 typedef struct s_line		t_line;
 typedef struct s_tex_img	t_tex_img;
+typedef struct s_vector		t_vector;
+typedef struct s_line		t_line;
+typedef struct s_ray		t_ray;
 
-typedef struct s_vector
-{
-	float	x;
-	float	y;
-	float	pa;
-}	t_vector;
-
-/**
- * @param x0 line starting x position
- * @param y0 line starting y position
- * @param x1 line ending x
- * @param y1 line ending y
- * @param dx absolute difference between x0 and x1
- * @param dy absolute difference between y0 and y1
- * @param sx sign of x -> sx = 1 if x1 > x0 | sx = -1 if x1 < x0
- * @param sy sign of y -> sy = 1 if y1 > y0 | sy = -1 if y1 < y0
-*/
-typedef struct s_line
-{
-	float	x0;
-	float	y0;
-	float	x1;
-	float	y1;
-	float	xa;
-	float	ya;
-	int		dx;
-	int		dy;
-	int		sx;
-	int		sy;
-	int		error;
-	int		error2;
-	float	v_x1;
-	float	v_y1;
-	float	v_xa;
-	float	v_ya;
-	float	rx;
-	float	ry;
-}	t_line;
-
-/**
- * @param pa angle of the player Degrees
- * @param ra ray angle starting position (pa + FOV / 2),
- * rays are casted from player right to left
- * @param rai ray angle iteration
-//  * @param cotan line length(cotan)
- * @param center_x center of the window_width
- * @param center_y center of the window_height
-//  * @param xo x's offset
-//  * @param yo y's offset
- * @param pdx position delta x, delta represents a change
- * in variable
- * @param pdy position delta y
- * @param r_cos rays cos incrementation
- * @param r_sin rays sin incrementation
- * @param pix_x_pos player's x position in pixel
- * @param pix_y_pos player's y position in pixel
- */
-typedef struct s_ray
-{
-	float			pa;
-	float			ra;
-	int				dof;
-	float			d_tan;
-	float			xa;
-	float			ya;
-	float			ray_count;
-	float			center_width;
-	float			center_height;
-	float			pix_x_pos;
-	float			pix_y_pos;
-	float			pdx;
-	float			pdy;
-	float			r_end_x;
-	float			r_end_y;
-	char			shortest;
-	float			distance;
-	float			wall_height;
-	float			tex_x;
-	float			tex_y;
-	float			mou_x;
-	float			y_count;
-	int				dragging;
-	int				door;
-	void			*texture;
-	struct s_data	*data;
-	struct s_cbd	*cbd;
-	struct s_vector	*vector;
-	struct s_line	*line;
-}	t_ray;
-
-// hooks.c
+// hooks_bonus.c
 int				key_event(int keysym, t_ray *ray, t_cub *cub);
 void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 
-//make_mini_map.c
+//make_mini_map_bonus.c
 void			draw_player(t_cbd *cbd, t_ray *ray);
 void			make_mini_map(t_cbd *cbd, t_data *mv);
 
-// minimap_ray.c
+// minimap_ray_bonus.c
 int				ft_abs(int a);
 void			init_line(t_line *line, t_ray *ray);
 void			bresenham(t_ray *ray, t_line *line, int color);
 void			cast_rays(t_ray *ray);
 
-//mouse_hooks.c
+//mouse_hooks_bonus.c
 int				mouse_event(int x, int y, t_ray *ray);
 int				mouse_press(int button, int x, int y, t_ray *ray);
 int				mouse_release(int button, int x, int y, t_ray *ray);
 
 // render_bonus.c
-void			render_image(t_cbd *cbd, t_ray *ray);
+void			render_image_b(t_cbd *cbd, t_ray *ray);
 void			init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, \
 t_line *line);
 void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
@@ -172,39 +86,35 @@ void			init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub);
 int				check_closable(t_ray *ray);
 int				check_openable(t_ray *ray);
 
-//draw_utils.c
-int				set_wall_direction(t_ray *ray);
-
-//drawing.c
+//drawing_bonus.c
 void			draw_background(t_ray *ray);
-void			draw_image(t_ray *ray, t_line *line, int door);
+void			draw_image_b(t_ray *ray, t_line *line, int door);
 // void			color_wall(t_ray *ray, int pos, int wall);
 
 // mlx_utils.c
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
-int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
+int				mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag);
 
-//movement.c
+//movement_bonus.c
 int				movable(float x, float y, t_ray *ray);
 void			move_frontback(t_ray *ray, char *direction);
 void			move_sideway(t_ray *ray, char *direction);
 
-// ray_casting_utils.c
+// ray_casting_utils_bonus.c
 int				is_wall(t_ray *ray, float x, float y);
 float			fix_angle(float a);
 float			deg_to_rad(float a);
 void			player_orientation_to_angle(t_data *mv, t_ray *ray);
-int				compare_draw_rays(t_ray *ray, t_line *line, int door);
+int				compare_draw_rays_b(t_ray *ray, t_line *line, int door);
 
 //ray_casting.c
 void			check_inits(t_ray *ray, t_line *line);
 void			check_horizontal_gridline(t_ray *ray, t_line *line);
 void			check_vertical_gridline(t_ray *ray, t_line *line);
 
-//texture.c
-void			texture_wall(t_ray *ray, int pos, int wall, int door);
+//texture_bonus.c
+void			texture_wall_b(t_ray *ray, int pos, int wall, int door);
 void			texture_location(t_ray *ray, float y_count, float x, float y);
-
 
 #endif

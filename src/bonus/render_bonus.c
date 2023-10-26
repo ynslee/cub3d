@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 15:24:45 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:17:41 by yoonseonlee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * renders the ceiling and floor, then draw the wall image with xpm files,
  * then draws the minimap on the top
  */
-void	render_image(t_cbd *cbd, t_ray *ray)
+void	render_image_b(t_cbd *cbd, t_ray *ray)
 {
 	t_line	line;
 	int		door;
@@ -32,8 +32,8 @@ void	render_image(t_cbd *cbd, t_ray *ray)
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
 		door = 0;
-		door = compare_draw_rays(ray, &line, door);
-		draw_image(ray, &line, door);
+		door = compare_draw_rays_b(ray, &line, door);
+		draw_image_b(ray, &line, door);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}
@@ -99,8 +99,8 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
 		mlx_exit(&ray, cub, "Error creating mlx image address!\n", 1);
-	init_textures(cub, &ray);
-	render_image(cbd, &ray);
+	init_textures_b(cub, &ray);
+	render_image_b(cbd, &ray);
 	set_hooks(cbd, &ray, cub);
 	mlx_loop(cbd->mlx);
 }
