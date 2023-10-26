@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:45 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:50:22 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,12 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 	int				j;
 	unsigned int	color;
 
-	i = 0;
+	i = -1;
 	fill_map(mv);
-	while (i < mv->height)
+	while (++i < mv->height)
 	{
-		j = 0;
-		while (j < mv->width)
+		j = -1;
+		while (++j < mv->width)
 		{
 			if (mv->map[i][j] == '1')
 				color = BLUE;
@@ -128,12 +128,12 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 			|| mv->map[i][j] == 'E' || mv->map[i][j] == 'N' || \
 			mv->map[i][j] == 'S')
 				color = LIGHTBLUE;
+			else if (mv->map[i][j] == 'D' || mv->map[i][j] == 'O')
+				color = GREY;
 			else
 				color = WHITE;
 			draw_map(cbd, j * MINI_PIX, i * MINI_PIX, color);
-			j++;
 		}
-		i++;
 	}
 	draw_grid(cbd, mv);
 }

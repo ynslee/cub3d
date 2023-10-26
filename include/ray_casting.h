@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 09:57:49 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:14:00 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,9 @@ typedef struct s_ray
 	float			tex_x;
 	float			tex_y;
 	float			mou_x;
+	float			y_count;
 	int				dragging;
+	int				door;
 	void			*texture;
 	struct s_data	*data;
 	struct s_cbd	*cbd;
@@ -157,7 +159,7 @@ void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 void			my_mlx_pixel_put(t_cbd *cbd, int x, int y, int color);
 unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y);
 int				mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag);
-
+int				mouse_exit(t_ray *ray);
 
 //movement.c
 int				movable(float x, float y, t_ray *ray);

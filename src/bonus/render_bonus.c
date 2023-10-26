@@ -6,20 +6,22 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:55 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:18:24 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ray_casting_bonus.h"
+#include "../../include/ray_casting.h"
 
 /**
  * @brief rernders the image when opens the screen or the key is used.
  * renders the ceiling and floor, then draw the wall image with xpm files,
  * then draws the minimap on the top
  */
-void	render_image(t_cbd *cbd, t_ray *ray)
+void	render_image_b(t_cbd *cbd, t_ray *ray)
 {
 	t_line	line;
+	int		door;
 
 	mlx_clear_window(cbd->mlx, cbd->window);
 	draw_background(ray);
@@ -30,12 +32,14 @@ void	render_image(t_cbd *cbd, t_ray *ray)
 		check_inits(ray, &line);
 		check_horizontal_gridline(ray, &line);
 		check_vertical_gridline(ray, &line);
-		compare_draw_rays(ray, &line);
-		draw_image(ray, &line);
+		door = 0;
+		door = compare_draw_rays_b(ray, &line, door);
+		draw_image_b(ray, &line, door);
 		ray->ray_count += 1;
 		ray->ra = fix_angle(ray->ra + (float)FOV / (float)WIN_SIZE_X);
 	}
 	ray->ra = fix_angle(ray->pa - FOV / 2);
+	ray->ray_count = 0;
 	make_mini_map(cbd, ray->data);
 	cast_rays(ray);
 	draw_player(cbd, ray);
@@ -77,7 +81,7 @@ void	init_ray_struct(t_ray *ray, t_data *data, t_cbd *cbd, t_line *line)
  * map is stored
  * @param cub stores the xpm image's address for this function
  */
-void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
+void	init_render_utils_b(t_cbd *cbd, t_data *mv, t_cub *cub)
 {
 	t_ray	ray;
 	t_line	line;
@@ -85,19 +89,19 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 	init_ray_struct(&ray, mv, cbd, &line);
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
-		mlx_exit(&ray, cub, "Error connecting to mlx!\n", 1);
+		mlx_exit_b(&ray, cub, "Error connecting to mlx!\n", 1);
 	cbd->window = mlx_new_window(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y, "cub");
 	if (cbd->window == NULL)
-		mlx_exit(&ray, cub, "Error creating mlx window!\n", 1);
+		mlx_exit_b(&ray, cub, "Error creating mlx window!\n", 1);
 	cbd->img = mlx_new_image(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y);
 	if (!cbd->img)
-		mlx_exit(&ray, cub, "Error creating mlx image!\n", 1);
+		mlx_exit_b(&ray, cub, "Error creating mlx image!\n", 1);
 	cbd->img_addr = mlx_get_data_addr(cbd->img, &cbd->img_bpp,
 			&cbd->img_len, &cbd->endian);
 	if (!cbd->img_addr)
-		mlx_exit(&ray, cub, "Error creating mlx image address!\n", 1);
-	init_textures(cub, &ray);
-	render_image(cbd, &ray);
+		mlx_exit_b(&ray, cub, "Error creating mlx image address!\n", 1);
+	init_textures_b(cub, &ray);
+	render_image_b(cbd, &ray);
 	set_hooks(cbd, &ray, cub);
 	mlx_loop(cbd->mlx);
 }

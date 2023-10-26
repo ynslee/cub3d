@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/25 12:21:33 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/10/26 10:23:23 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
 ### SET UP ###
-CC = cc
+CC = cc #-arch x86_64
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 CFLAGS =  -I$I -Wall -Wextra -Werror #-fsanitize=address,undefined #-g
 
@@ -53,29 +53,31 @@ FILES = main\
 		ray_casting\
 		texture\
 
-B_FILES = main\
-		elements_to_struct\
+B_FILES = elements_to_struct\
 		check_elements\
 		file_validation_utils\
 		read_file\
-		map_check\
-		map_validation_utils\
-		index_utils\
 		fill_width\
-		wall_check\
-		rgb_colour\
 		drawing_utils\
-		drawing\
-		mlx_utils\
-		movement\
-		ray_casting_utils\
-		ray_casting\
-		texture\
+		movement_bonus\
+		map_validation_utils\
+		door_bonus\
+		drawing_bonus\
 		hooks_bonus\
+		index_utils_bonus\
+		main_bonus\
 		make_mini_map_bonus\
+		map_check_bonus\
+		map_validation_utils_bonus\
 		minimap_ray_bonus\
+		mlx_utils_bonus\
 		mouse_hooks_bonus\
-		render_bonus\	
+		ray_casting_bonus\
+		ray_casting_utils_bonus\
+		render_bonus\
+		rgb_colour_bonus\
+		texture_bonus\
+		wall_check_bonus\
 
 HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting.h
 HEADER := $(addprefix $I/,$(HEADER))
@@ -84,7 +86,7 @@ SRCS := $(foreach FILE,$(FILES),$(shell find $S -type f -name '$(FILE).c'))
 OBJS = $(patsubst $S/%,$O/%,$(SRCS:.c=.o))
 O_DIRS = $(dir $(OBJS))
 
-B_HEADER = cub3d.h libft.h file_validation.h map_validation.h ray_casting_bonus.h
+B_HEADER = cub3d.h libft.h file_validation.h map_validation_bonus.h ray_casting_bonus.h
 B_HEADER := $(addprefix $I/,$(B_HEADER))
 
 B_SRCS := $(foreach B_FILE,$(B_FILES),$(shell find $S -type f -name '$(B_FILE).c'))

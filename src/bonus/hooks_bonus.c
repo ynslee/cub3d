@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 09:44:39 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:33:50 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ static void	player_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 1)
 		move_frontback(ray, "down");
-	render_image(ray->cbd, ray);
+	if (keysym == 36)
+		check_openable(ray);
+	if (keysym == 49)
+		check_closable(ray);
+	render_image_b(ray->cbd, ray);
 }
 
 /**
@@ -68,13 +72,13 @@ static void	angle_moves(int keysym, t_ray *ray)
 		move_frontback(ray, "up");
 	if (keysym == 125)
 		move_frontback(ray, "down");
-	render_image(ray->cbd, ray);
+	render_image_b(ray->cbd, ray);
 }
 
 int	key_event(int keysym, t_ray *ray, t_cub *cub)
 {
 	if (keysym == K_ESC)
-		mlx_exit(ray, cub, "*** Thank you for playing! ***\n", 0);
+		mlx_exit_b(ray, cub, "*** Thank you for playing! ***\n", 0);
 	player_moves(keysym, ray);
 	angle_moves(keysym, ray);
 	return (0);
@@ -86,7 +90,7 @@ int	key_event(int keysym, t_ray *ray, t_cub *cub)
 void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
 	(void)cub;
-	mlx_hook(cbd->window, 17, 1L << 5, &mlx_exit, ray);
+	mlx_hook(cbd->window, 17, 1L << 5, &mouse_exit, ray);
 	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
 	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
 	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);

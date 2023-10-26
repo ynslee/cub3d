@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   mlx_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:17:33 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 11:13:40 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:17:04 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,34 @@ unsigned int	my_mlx_pixel_get(t_tex_img *img, int x, int y)
 
 // static void	free_destroy_images(char)
 
-static void	destroy_images(t_cbd *cbd, t_data *data)
+static void	destroy_images_b(t_cbd *cbd, t_data *data)
 {
 	if (cbd->img)
 	{
 		mlx_destroy_image(cbd->mlx, cbd->img);
 		cbd->img = NULL;
 	}
-	if (data->texture[NO])
-		mlx_destroy_image(cbd->mlx, data->texture[NO]->img_ptr);
-	if (data->texture[SO])
-		mlx_destroy_image(cbd->mlx, data->texture[SO]->img_ptr);
-	if (data->texture[EA])
-		mlx_destroy_image(cbd->mlx, data->texture[EA]->img_ptr);
-	if (data->texture[WE])
-		mlx_destroy_image(cbd->mlx, data->texture[WE]->img_ptr);
+	if (data->textures[NO])
+		mlx_destroy_image(cbd->mlx, data->textures[NO]->img_ptr);
+	if (data->textures[SO])
+		mlx_destroy_image(cbd->mlx, data->textures[SO]->img_ptr);
+	if (data->textures[EA])
+		mlx_destroy_image(cbd->mlx, data->textures[EA]->img_ptr);
+	if (data->textures[WE])
+		mlx_destroy_image(cbd->mlx, data->textures[WE]->img_ptr);
+	if (data->textures[DOOR])
+		mlx_destroy_image(cbd->mlx, data->textures[DOOR]->img_ptr);
 }
 
 /**
  * @brief destroys the window and mlx, then exits if there's error
  *
  */
-int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
+int	mlx_exit_b(t_ray *ray, t_cub *cub, char *message, int flag)
 {
 	(void)cub;
-	if (!message)
-		message = NULL;
-	ft_putstr_fd(message, 2);
+	if (message)
+		ft_putstr_fd(message, 2);
 	if (ray->cbd->window)
 	{
 		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
@@ -82,8 +83,8 @@ int	mlx_exit(t_ray *ray, t_cub *cub, char *message, int flag)
 	}
 	if (flag)
 	{
-		destroy_images(ray->cbd, ray->data);
-		free_mv_struct(ray->data);
+		destroy_images_b(ray->cbd, ray->data);
+		free_mv_struct_b(ray->data);
 	}
 	exit(flag);
 }
@@ -98,8 +99,8 @@ int	mouse_exit(t_ray *ray)
 	{
 		mlx_destroy_window(ray->cbd->mlx, ray->cbd->window);
 		ray->cbd->window = NULL;
-		destroy_images(ray->cbd, ray->data);
-		free_mv_struct(ray->data);
+		destroy_images_b(ray->cbd, ray->data);
+		free_mv_struct_b(ray->data);
 	}
 	exit(0);
 }

@@ -1,43 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 10:32:38 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 09:37:11 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include "../../include/ray_casting.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief based on the x,y position of wall & its texture position,
  * we paint the wall of the maps with xpm images
  * 
  * @param wall height of the wall
+ * @param w_pos wall_position : North, West, South, East and Door
  * @param y_count how fast we need to chage the position of the y of texture.
  */
-void	texture_wall(t_ray *ray, int pos, int wall, float y_count)
+void	texture_wall_b(t_ray *ray, int pos, int wall, int door)
 {
 	int				wall_start;
-	int				wall_end;
+	int				w_pos;
 	int				i;
 	unsigned int	texture;
 
 	i = 0;
+	w_pos = 0;
 	pos = WIN_SIZE_X - (pos + 1);
 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
-	wall_end = wall_start + wall;
-	while (wall_start + i < wall_end)
+	if (door)
+		w_pos = DOOR;
+	else
+		w_pos = set_wall_direction(ray);
+	while (wall_start + i < wall_start + wall)
 	{
-		texture = my_mlx_pixel_get(ray->data->texture[set_wall_direction(ray)], \
+		texture = my_mlx_pixel_get(ray->data->textures[w_pos], \
 		(int)ray->tex_x, (int)ray->tex_y);
 		my_mlx_pixel_put(ray->cbd, pos, wall_start + i, texture);
 		i++;
-		ray->tex_y += y_count;
+		ray->tex_y += ray->y_count;
 	}
 }
 

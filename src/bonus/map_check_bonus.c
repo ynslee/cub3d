@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:34 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/25 12:32:07 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/10/26 09:50:07 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/map_validation.h"
+#include "../../include/map_validation_bonus.h"
 
 /// @brief
 /// @param cub
@@ -128,7 +129,7 @@ int	duplicate_player(char *map)
 /// @param cub
 /// @param mv
 /// @return 1 if everything is valid, 0 if one of the condition is invalid.
-int	map_check(t_cub	*cub, t_data *mv)
+int	map_check_b(t_cub	*cub, t_data *mv)
 {
 	int		index;
 	int		height;
@@ -138,17 +139,17 @@ int	map_check(t_cub	*cub, t_data *mv)
 	index = -1;
 	while (cub->map_str[++index])
 	{
-		if (!map_character_check(cub->map_str[index]))
+		if (!map_character_check_b(cub->map_str[index]))
 		{
-			print_error(cub, mv, "Map has invalid character!\n", 1);
+			print_error_b(cub, mv, "Map has invalid character!\n", 1);
 			break ;
 		}
 	}
 	if (!duplicate_player(cub->map_str))
-		print_error(cub, mv, "No player or more than one player!\n", 1);
+		print_error_b(cub, mv, "No player or more than one player!\n", 1);
 	height = height_check(cub->map_str, mv);
 	if (!two_maps_check(cub, height, mv))
-		print_error(cub, mv, "There are more than one map in the file!\n", 1);
+		print_error_b(cub, mv, "There are more than one map in the file!\n", 1);
 	wall_check(cub, mv);
 	mv->ceiling_rgb = change_colour(cub->c_color);
 	mv->floor_rgb = change_colour(cub->f_color);
