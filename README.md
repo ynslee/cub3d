@@ -18,6 +18,23 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 
 **2. Running the Program:**
 
+## Controls
+
+| __Key__        | __Action__   |
+| -------------  |:-------------:|
+| W              | Move forward |
+| A       | Move left      |
+| D  | Move right      |
+| S  | Move backward      |
+| Left Arrow  | Turn Left      |
+| Right Arrow  | Turn Right      |
+| Up Arrow  | Move forward      |
+| Down Arrow  | Move backward      |
+| Return  | Open door      |
+| Space  | Close door      |
+| Mouse - Click and drag  | Turn   |
+| ESC  | Close window      |
+<br><br>
 
 ## Images
 
