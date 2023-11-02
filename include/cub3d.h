@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
-/*   Updated: 2023/11/02 10:39:56 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:59:07 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define WE 2
 # define EA 3
 # define DOOR 4
+# define COLLECTIBLE 5
 
 typedef struct s_cbd
 {

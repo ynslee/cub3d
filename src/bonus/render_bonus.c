@@ -6,11 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:29 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:07:48 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief rernders the image when opens the screen or the key is used.
@@ -29,8 +30,8 @@ void	render_image_b(t_cbd *cbd, t_ray *ray)
 	while (ray->ray_count < WIN_SIZE_X)
 	{
 		check_inits(ray, &line);
-		check_horizontal_gridline(ray, &line);
-		check_vertical_gridline(ray, &line);
+		check_horizontal_gridline_b(ray, &line);
+		check_vertical_gridline_b(ray, &line);
 		door = 0;
 		door = compare_draw_rays_b(ray, &line, door);
 		draw_image_b(ray, &line, door);

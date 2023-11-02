@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:18 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:33:52 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	movable(float x, float y, t_ray *ray)
 /**
  * @brief moves the player left and right
  */
-void	move_sideway(t_ray *ray, char *direction)
+void	move_sideway_b(t_ray *ray, char *direction)
 {
 	double	angle;
 	float	x;
@@ -120,6 +120,8 @@ void	move_sideway(t_ray *ray, char *direction)
 	y = ray->pix_y_pos + (-sin(deg_to_rad(angle)) * PLAYER_S);
 	if (movable(x, y, ray))
 	{
+		if (ray->data->map[(int)ray->pix_y_pos / GRID_PIX][(int)ray->pix_x_pos / GRID_PIX] == 'C')
+			ray->data->map[(int)ray->pix_y_pos / GRID_PIX][(int)ray->pix_x_pos / GRID_PIX] = '0';
 		ray->pix_x_pos = x;
 		ray->pix_y_pos = y;
 	}
@@ -128,7 +130,7 @@ void	move_sideway(t_ray *ray, char *direction)
 /**
  * @brief move forward and backwards as a player.
  */
-void	move_frontback(t_ray *ray, char *direction)
+void	move_frontback_b(t_ray *ray, char *direction)
 {
 	float	x;
 	float	y;
@@ -145,6 +147,8 @@ void	move_frontback(t_ray *ray, char *direction)
 	}
 	if (movable(x, y, ray))
 	{
+		if (ray->data->map[(int)ray->pix_y_pos / GRID_PIX][(int)ray->pix_x_pos / GRID_PIX] == 'C')
+			ray->data->map[(int)ray->pix_y_pos / GRID_PIX][(int)ray->pix_x_pos / GRID_PIX] = '0';
 		ray->pix_x_pos = x;
 		ray->pix_y_pos = y;
 	}

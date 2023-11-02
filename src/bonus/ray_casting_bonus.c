@@ -6,11 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:20:03 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:22 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:02:19 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief initialise the line struct for the DDA algorithm
@@ -75,7 +76,7 @@ static void	vray_hits_wall_b(t_ray *ray, t_line *line)
  * @brief calculate the x and y's first wall-hitting position of
  * horizontal grid line
  */
-void	check_horizontal_gridline(t_ray *ray, t_line *line)
+void	check_horizontal_gridline_b(t_ray *ray, t_line *line)
 {
 	if (tan(deg_to_rad(ray->ra)))
 		ray->d_tan = 1.0 / tan(deg_to_rad(ray->ra));
@@ -105,7 +106,7 @@ void	check_horizontal_gridline(t_ray *ray, t_line *line)
  * @brief calculate the x and y's first wall-hitting position of vertical
  * grid line
  */
-void	check_vertical_gridline(t_ray *ray, t_line *line)
+void	check_vertical_gridline_b(t_ray *ray, t_line *line)
 {
 	ray->dof = 0;
 	if (cos(deg_to_rad(ray->ra)) > 0.001)

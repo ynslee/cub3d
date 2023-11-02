@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 10:32:38 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:31:22 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	texture_location(t_ray *ray, float y_count, float x, float y)
 	if (dir == -1)
 		ft_putstr_fd("Wall position can't be found\n", 2);
 	if (dir == NO)
-		ray->tex_x = ((int)(x - 1) % TEX_PIX);
+		ray->tex_x = TEX_PIX - 1 - ((int)x % TEX_PIX);
 	else if (dir == WE)
 		ray->tex_x = (int)y % TEX_PIX;
 	else if (dir == SO)

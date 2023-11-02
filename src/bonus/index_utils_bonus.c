@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:12 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:02:23 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:01:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	player_location(t_data *mv)
 int	map_character_check_b(char c)
 {
 	if (c != '1' && c != '0' && c != '\n' && c != 'N' && \
-	c != 'S' && c != 'E' && c != 'W' && c != 32 && c != 'D')
+	c != 'S' && c != 'E' && c != 'W' && c != 32 && c != 'D'\
+	&& c != 'C')
 		return (0);
 	return (1);
 }

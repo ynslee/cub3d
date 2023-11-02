@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:31:40 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 02:53:37 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/11/02 13:58:25 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_data
 	unsigned int	floor_rgb;
 	unsigned int	ceiling_rgb;
 	t_tex_img		*texture[4];
-	t_tex_img		*textures[5];
+	t_tex_img		*textures[6];
 	int				img_width;
 	int				img_height;
 }	t_data;

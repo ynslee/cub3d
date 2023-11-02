@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:46 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:02:37 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:04:17 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	make_mini_map(t_cbd *cbd, t_data *mv)
 				color = BLUE;
 			else if (mv->map[i][j] == '0' || mv->map[i][j] == 'W' \
 			|| mv->map[i][j] == 'E' || mv->map[i][j] == 'N' || \
-			mv->map[i][j] == 'S')
+			mv->map[i][j] == 'S' || mv->map[i][j] == 'C')
 				color = LIGHTBLUE;
 			else if (mv->map[i][j] == 'D' || mv->map[i][j] == 'O')
 				color = GREY;

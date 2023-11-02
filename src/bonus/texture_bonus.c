@@ -6,11 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:35 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:31:49 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief based on the x,y position of wall & its texture position,
@@ -31,8 +32,10 @@ void	texture_wall_b(t_ray *ray, int pos, int wall, int door)
 	w_pos = 0;
 	pos = WIN_SIZE_X - (pos + 1);
 	wall_start = WIN_SIZE_Y / 2 - (wall / 2);
-	if (door)
+	if (door == 1)
 		w_pos = DOOR;
+	else if (door == 2)
+		w_pos = COLLECTIBLE;
 	else
 		w_pos = set_wall_direction(ray);
 	while (wall_start + i < wall_start + wall)
@@ -63,7 +66,7 @@ void	texture_location(t_ray *ray, float y_count, float x, float y)
 	if (dir == -1)
 		ft_putstr_fd("Wall position can't be found\n", 2);
 	if (dir == NO)
-		ray->tex_x = ((int)(x - 1) % TEX_PIX);
+		ray->tex_x = TEX_PIX - 1 - ((int)x % TEX_PIX);
 	else if (dir == WE)
 		ray->tex_x = (int)y % TEX_PIX;
 	else if (dir == SO)

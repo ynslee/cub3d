@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_check.c                                       :+:      :+:    :+:   */
+/*   wall_check_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 07:51:46 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 13:01:00 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:09:07 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	flood_fill_inside(t_cub *cub, t_data *mv, int x, int y)
 	if (mv->buffer_cpy[x][y] == ' ')
 		print_error(cub, mv, "Map invalid!\n", 1);
 	if (x >= 0 && y >= 0 && (mv->buffer_cpy[x][y] == '0' || \
-	mv->buffer_cpy[x][y] == 'D' || mv->buffer_cpy[x][y] == mv->player_view))
+	mv->buffer_cpy[x][y] == 'D' || mv->buffer_cpy[x][y] == 'C' \
+	|| mv->buffer_cpy[x][y] == mv->player_view))
 	{
 		mv->buffer_cpy[x][y] = 'V';
 		if (x < mv->height + 2)

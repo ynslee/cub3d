@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/11/02 10:38:06 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:51:30 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ static void	angle_left_right(char *direction, t_ray *ray)
  *
  * @param keysym key code of WASD keys
  */
-static void	player_moves(int keysym, t_ray *ray)
+static void	player_moves_b(int keysym, t_ray *ray)
 {
 	ray->pdx = cos(deg_to_rad(ray->pa)) * 20;
 	ray->pdy = -sin(deg_to_rad(ray->pa)) * 20;
 	if (keysym == 0)
-		move_sideway(ray, "left");
+		move_sideway_b(ray, "left");
 	if (keysym == 2)
-		move_sideway(ray, "right");
+		move_sideway_b(ray, "right");
 	if (keysym == 13)
-		move_frontback(ray, "up");
+		move_frontback_b(ray, "up");
 	if (keysym == 1)
-		move_frontback(ray, "down");
+		move_frontback_b(ray, "down");
 	if (keysym == 36)
 		check_openable(ray);
 	if (keysym == 49)
@@ -69,17 +69,17 @@ static void	angle_moves(int keysym, t_ray *ray)
 	if (keysym == 124)
 		angle_left_right("right", ray);
 	if (keysym == 126)
-		move_frontback(ray, "up");
+		move_frontback_b(ray, "up");
 	if (keysym == 125)
-		move_frontback(ray, "down");
+		move_frontback_b(ray, "down");
 	render_image_b(ray->cbd, ray);
 }
 
-int	key_event(int keysym, t_ray *ray, t_cub *cub)
+int	key_event_b(int keysym, t_ray *ray, t_cub *cub)
 {
 	if (keysym == K_ESC)
 		mlx_exit_b(ray, cub, "*** Thank you for playing! ***\n", 0);
-	player_moves(keysym, ray);
+	player_moves_b(keysym, ray);
 	angle_moves(keysym, ray);
 	return (0);
 }
@@ -91,7 +91,7 @@ void	set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub)
 {
 	(void)cub;
 	mlx_hook(cbd->window, 17, 1L << 5, &mouse_exit, ray);
-	mlx_hook(cbd->window, 2, 1L << 0, &key_event, ray);
+	mlx_hook(cbd->window, 2, 1L << 0, &key_event_b, ray);
 	mlx_hook(cbd->window, 4, 1L << 2, &mouse_press, ray);
 	mlx_hook(ray->cbd->window, 6, 1L << 6, &mouse_event, ray);
 	mlx_hook(ray->cbd->window, 5, 1L << 3, &mouse_release, ray);

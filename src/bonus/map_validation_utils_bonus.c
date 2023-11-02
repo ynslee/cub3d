@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:02:48 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:58:13 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_mv_struct_b(t_data *mv)
 	if (mv->buffer_cpy)
 		free_char_array(mv->buffer_cpy);
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (mv->textures[i])
 		{

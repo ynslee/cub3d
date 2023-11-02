@@ -6,11 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:32 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:12:29 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+#include "../../include/map_validation_bonus.h"
 
 t_tex_img	*get_new_xpm_img_b(t_ray *ray, char *file_path, t_cub *cub)
 {
@@ -39,6 +40,8 @@ void	init_textures_b(t_cub *cub, t_ray *ray)
 	ray->data->textures[EA] = get_new_xpm_img_b(ray, cub->ea, cub);
 	ray->data->textures[DOOR] = \
 	get_new_xpm_img_b(ray, "textures/retro_door.xpm", cub);
+	ray->data->textures[COLLECTIBLE] = \
+	get_new_xpm_img_b(ray, "textures/doggo/chicken.xpm", cub);
 }
 
 static unsigned int	rgb_colour(int *arr)

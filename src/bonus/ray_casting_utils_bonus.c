@@ -6,11 +6,12 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:29 by jhusso            #+#    #+#             */
-/*   Updated: 2023/11/02 10:03:26 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:28:06 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief check if there is wall in the next position with dda algorithm
@@ -25,7 +26,8 @@ int	is_wall_b(t_ray *ray, float x, float y)
 	((int)(ray->pix_y_pos / GRID_PIX) == (int)(y / GRID_PIX)))
 		return (0);
 	if (ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == '1' || \
-	ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == 'D')
+	ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == 'D' || \
+	ray->data->map[(int)y / GRID_PIX][(int)x / GRID_PIX] == 'C')
 		return (1);
 	return (0);
 }
@@ -93,17 +95,31 @@ int	compare_draw_rays_b(t_ray *ray, t_line *line, int door)
 	{
 		ray->shortest = 'h';
 		ray->distance = h_length * cos(deg_to_rad(ray->ra - ray->pa));
-		if (ray->data->map[(int)(line->y1 / GRID_PIX)]
+		if ((int)(line->y1 / GRID_PIX) < ray->data->height && 
+		(int)(line->x1 / GRID_PIX) < ray->data->width && \
+		ray->data->map[(int)(line->y1 / GRID_PIX)]
 		[(int)(line->x1 / GRID_PIX)] == 'D')
 			door = 1;
+		if ((int)(line->y1 / GRID_PIX) < ray->data->height && 
+		(int)(line->x1 / GRID_PIX) < ray->data->width && \
+		ray->data->map[(int)(line->y1 / GRID_PIX)]
+		[(int)(line->x1 / GRID_PIX)] == 'C')
+			door = 2;
 	}
 	else
 	{
 		ray->shortest = 'v';
 		ray->distance = v_length * cos(deg_to_rad(ray->ra - ray->pa));
-		if (ray->data->map[(int)(line->v_y1 / GRID_PIX)]
+		if ((int)(line->v_y1 / GRID_PIX) < ray->data->height && 
+		(int)(line->v_x1 / GRID_PIX) < ray->data->width && \
+		ray->data->map[(int)(line->v_y1 / GRID_PIX)]
 		[(int)(line->v_x1 / GRID_PIX)] == 'D')
 			door = 1;
+		if ((int)(line->v_y1 / GRID_PIX) < ray->data->height && 
+		(int)(line->v_x1 / GRID_PIX) < ray->data->width && \
+		ray->data->map[(int)(line->v_y1 / GRID_PIX)]
+		[(int)(line->v_x1 / GRID_PIX)] == 'C')
+			door = 2;
 	}
 	return (door);
 }

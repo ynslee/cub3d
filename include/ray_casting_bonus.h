@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/11/02 10:33:20 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:36:04 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_line		t_line;
 typedef struct s_ray		t_ray;
 
 // hooks_bonus.c
-int				key_event(int keysym, t_ray *ray, t_cub *cub);
+int				key_event_b(int keysym, t_ray *ray, t_cub *cub);
 void			set_hooks(t_cbd *cbd, t_ray *ray, t_cub *cub);
 
 //make_mini_map_bonus.c
@@ -95,8 +95,8 @@ int				mouse_exit(t_ray *ray);
 
 //movement_bonus.c
 int				movable(float x, float y, t_ray *ray);
-void			move_frontback(t_ray *ray, char *direction);
-void			move_sideway(t_ray *ray, char *direction);
+void			move_frontback_b(t_ray *ray, char *direction);
+void			move_sideway_b(t_ray *ray, char *direction);
 
 // ray_casting_utils_bonus.c
 int				is_wall_b(t_ray *ray, float x, float y);
@@ -107,8 +107,8 @@ int				compare_draw_rays_b(t_ray *ray, t_line *line, int door);
 
 //ray_casting.c
 void			check_inits(t_ray *ray, t_line *line);
-void			check_horizontal_gridline(t_ray *ray, t_line *line);
-void			check_vertical_gridline(t_ray *ray, t_line *line);
+void			check_horizontal_gridline_b(t_ray *ray, t_line *line);
+void			check_vertical_gridline_b(t_ray *ray, t_line *line);
 
 //texture_bonus.c
 void			texture_wall_b(t_ray *ray, int pos, int wall, int door);
