@@ -1,6 +1,6 @@
 
-F      20,      20,     20
-C 200,200,
+F  , , 20 
+C 200,200,200
 
 NO textures/test/north.xpm
 SO textures/test/south.xpm

@@ -6,7 +6,7 @@
 #    By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 12:17:49 by yoonslee          #+#    #+#              #
-#    Updated: 2023/10/26 10:23:23 by yoonslee         ###   ########.fr        #
+#    Updated: 2023/11/02 10:10:34 by yoonslee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOUR_END=\033[0m
 ### SET UP ###
 CC = cc #-arch x86_64
 #MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS =  -I$I -Wall -Wextra -Werror #-fsanitize=address,undefined #-g
+CFLAGS =  -I$I -Wall -Wextra -Werror -O3 #-fsanitize=address,undefined #-g
 
 RM = /bin/rm -f
 RMDIR = /bin/rmdir -p

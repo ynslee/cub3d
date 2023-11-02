@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:04:28 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 11:18:26 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:02:48 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/map_validation.h"
+#include "../../include/cub3d.h"
 
 /**
  * @brief free mv_struct

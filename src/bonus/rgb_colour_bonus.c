@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:47:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 10:36:01 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:03:32 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/map_validation_bonus.h"
+#include "../../include/cub3d.h"
 
 t_tex_img	*get_new_xpm_img_b(t_ray *ray, char *file_path, t_cub *cub)
 {

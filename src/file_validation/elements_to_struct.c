@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:57:39 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/24 13:55:50 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:05:16 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ static void	check_elem(char **elem, int len, t_cub *cub)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (++i < len)
 	{
 		if (!ft_strncmp_all(elem[i], ",") || \
 		(elem[i][0] == ',' && ft_isdigit(elem[i][1])))
+			file_print_error(cub, "Invalid RGB value!\n", 0);
+		else if (!ft_strchr(elem[i], ',') && i < (len - 1))
 			file_print_error(cub, "Invalid RGB value!\n", 0);
 	}
 	if (len > 4)
@@ -97,6 +99,8 @@ void	find_element(char *line, t_cub *cub)
 
 	trim_line = ft_strtrim(line, " \t\n");
 	line_elem = ft_split(trim_line, ' ');
+	if (ft_arrlen(line_elem) < 2)
+		file_print_error(cub, "Invalid element!\n", 0);
 	if ((ft_arrlen(line_elem) > 2) && (!ft_strncmp_all(line_elem[0], "F") || \
 		!ft_strncmp_all(line_elem[0], "C")))
 		line_elem = put_elems_str(line_elem, cub);

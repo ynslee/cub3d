@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:09:04 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 11:14:00 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:34:22 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # define ANGLE 5
 # define SPEED 5
 # define PLAYER_S 5
-# define PR_PLANE 1662
 # define SENSITIVITY 0.05
-// # define NOSE_LEN 1
 
 # define BLACK 0x000000
 # define WHITE 0xffffff

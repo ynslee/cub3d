@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoonseonlee <yoonseonlee@student.42.fr>    +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:40:08 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 03:14:52 by yoonseonlee      ###   ########.fr       */
+/*   Updated: 2023/11/02 10:39:56 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include "ray_casting_bonus.h"
 # include "../libft/libft.h"
 
-# define WIN_SIZE_X 1920
-# define WIN_SIZE_Y 1080
+# define WIN_SIZE_X 1000
+# define WIN_SIZE_Y 800
 
 # define NO 0
 # define SO 1

@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:20:03 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 09:31:01 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:03:22 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting.h"
+#include "../../include/cub3d.h"
 
 /**
  * @brief initialise the line struct for the DDA algorithm

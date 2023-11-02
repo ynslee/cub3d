@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:00:33 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 09:22:09 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:26:47 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ void	init_render_utils(t_cbd *cbd, t_data *mv, t_cub *cub)
 	cbd->mlx = mlx_init();
 	if (!cbd->mlx)
 		mlx_exit(&ray, cub, "Error connecting to mlx!\n", 1);
-	if (WIN_SIZE_X != 1920 || WIN_SIZE_Y != 1080)
-		mlx_exit(&ray, cub, "Window size should remain the same for the best \
-experience!(X : 1920, Y:1080)\n", 0);
+	if ((WIN_SIZE_X > 2550 || WIN_SIZE_Y > 1395) || \
+	(WIN_SIZE_X < 100 || WIN_SIZE_Y < 80))
+		mlx_exit(&ray, cub, "Window size is not for the best \
+experience!\n X range: (100 - 2550), Y range: (80 - 1395)\n", 0);
 	cbd->window = mlx_new_window(cbd->mlx, WIN_SIZE_X, WIN_SIZE_Y, "cub");
 	if (cbd->window == NULL)
 		mlx_exit(&ray, cub, "Error creating mlx window!\n", 1);

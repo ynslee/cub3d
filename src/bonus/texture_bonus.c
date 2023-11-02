@@ -6,12 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 09:18:41 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 09:37:11 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:03:35 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include "../../include/ray_casting_bonus.h"
 
 /**
  * @brief based on the x,y position of wall & its texture position,

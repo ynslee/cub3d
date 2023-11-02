@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_width.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhusso <jhusso@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:05:53 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 15:58:40 by jhusso           ###   ########.fr       */
+/*   Updated: 2023/11/02 10:04:04 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	consecutive_new_lines(t_cub *cub, t_data *mv)
 	while (cub->map_str[i])
 	{
 		if (cub->map_str[i] == '\n' && cub->map_str[i + 1] == '\n')
-			print_error(cub, mv, "Two consecutive new lines!\n", 1);
+			print_error(cub, mv, "Two or more consecutive new lines!\n", 1);
 		i++;
 	}
 }

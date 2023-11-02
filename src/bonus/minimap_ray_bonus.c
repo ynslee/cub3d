@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:54:20 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/25 14:45:17 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:02:55 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/cub3d.h"
 
 /**
  * @brief returns the absolute value of the integer

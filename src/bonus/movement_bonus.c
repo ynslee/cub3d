@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:57 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/26 10:32:04 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:03:18 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/cub3d.h"
 
 static int	side_wall_check2(t_ray *ray, t_vector *next, float degree)
 {

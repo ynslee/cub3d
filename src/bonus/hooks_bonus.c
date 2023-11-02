@@ -6,11 +6,11 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:19:49 by jhusso            #+#    #+#             */
-/*   Updated: 2023/10/26 11:33:50 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:38:06 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ray_casting_bonus.h"
+#include "../../include/cub3d.h"
 
 /**
  * @brief calculate the next angle and moves player angle to 5 degrees.

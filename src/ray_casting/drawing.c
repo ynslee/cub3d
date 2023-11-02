@@ -6,7 +6,7 @@
 /*   By: yoonslee <yoonslee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:33:18 by yoonslee          #+#    #+#             */
-/*   Updated: 2023/10/17 12:43:24 by yoonslee         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:10:06 by yoonslee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ void	draw_background(t_ray *ray)
 /**
  * @brief finding the location of texture and draw the image
  * 
- * @param PR_PLANE Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
+ * @param pr_plane Project plane :(WINDOW_WIDTH / 2) / tan(30degree)
  * @param y_count step size of traversing the image in y axis(top to bottom)
  */
 void	draw_image(t_ray *ray, t_line *line)
 {
 	float	y_count;
+	float	pr_plane;
 
-	ray->wall_height = GRID_PIX / ray->distance * PR_PLANE;
+	pr_plane = (WIN_SIZE_X / 2) / tan(deg_to_rad(30));
+	ray->wall_height = (int)(GRID_PIX / ray->distance * (pr_plane * 0.75));
 	y_count = TEX_PIX / ray->wall_height;
 	if (ray->shortest == 'h')
 		texture_location(ray, y_count, line->x1, line->y1);
