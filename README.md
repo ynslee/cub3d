@@ -36,6 +36,7 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 | ESC  | Close window      |
 
 ## Images
+![map_with_nose](https://github.com/ynslee/cub3d/assets/112563002/1758172a-9b37-4c75-8abf-8bd5fa884192)
 
 
 ## External resources
