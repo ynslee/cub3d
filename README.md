@@ -69,7 +69,7 @@ To run the program:
 ./cub3D path/to/map.cub
 ./cub3D_bonus path/to/map.cub
 ```
-The program takes a map file as an argument. Maps are available in the `maps` directory. Under 'maps' directory, 'good' directory should run smoothly with program, and 'bad' should be rejected. If you would like to see the doors, you should find 'bonus'under 'good' maps directory.
+The program takes a map file as an argument. Maps are available in the `maps` directory. Under 'maps' directory, 'good' directory should run smoothly with program, and 'bad' should be rejected. If you would like to see the doors, you should find 'bonus'under 'good' maps directory.<br/>
 For example:
 
 - `./cub3D maps/good/lava.cub` should run.
