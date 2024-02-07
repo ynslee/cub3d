@@ -66,8 +66,8 @@ make
 
 To run the program:
 ```shell
-./cub3D <path/to/map.cub>
-./cub3D_bonus <path/to/map.cub>
+./cub3D path/to/map.cub
+./cub3D_bonus path/to/map.cub
 ```
 The program takes a map file as an argument. Maps are available in the `maps` directory. Under 'maps' directory, 'good' directory should run smoothly with program, and 'bad' should be rejected. If you would like to see the doors, you should find 'bonus'under 'good' maps directory.
 For example:
