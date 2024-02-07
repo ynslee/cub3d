@@ -23,8 +23,10 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Running the tests](#running_the_tests)
-
+- [Key and Mouse Control](#key_and_mouse)
+- [Images](#images)
+- [External resources](#sources)
+  
 ## 🧐 About <a name = "about"></a>
 
 First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, calculate the player's angle and render the graphic on the screen based on player's point of view.
@@ -41,12 +43,14 @@ First Raycasting project in Hive. Goal of the assignment is to read 2D mapfile, 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-**1. Compilation:**
+### 1. Compilation:
+
+```shell
+git clone the repository 
 ```
-Git clone the repository 
-```
-**2. Running the Program:**
-There are two versions of the program: cub3D and cub3D_bonus. cub3D_bonus adds wall collision, a minimap, ability to rotate the view by moving the mouse and opening and closing the door.
+
+### 2. Running the Program:
+There are two versions of the program: cub3D and cub3D_bonus. cub3D_bonus adds wall collision, a minimap, ability to rotate the view by moving the mouse and opening and closing the door. With cub3D_bonus, if you use 'maps/good/bonus/doggo.cub' as argument, you can also eat chicken blocks by going through it.
 
 To compile the mandatory, do :
 
@@ -72,7 +76,7 @@ For example:
 - `./cub3D_bonus maps/good/bonus/doggo.cub` should run.
 - `./cub3D_bonus maps/bad/bad.cub` should fail. (for the forbidden.cub, please do 'chmod 000 maps/bad/forbidden.cub' and run)
 
-## Key and Mouse Control
+## Key and Mouse Control <a name = "key_and_mouse"></a>
 
 | __Key__        | __Action__   |
 | -------------  |:-------------:|
@@ -89,10 +93,16 @@ For example:
 | Mouse - Click and drag  | Turn   |
 | ESC  | Close window      |
 
-## Images
+## Images <a name = "images"></a>
+
+### example 1 - ./cub3D_bonus maps/good/bonus/doggo.cub
+<img width="1920" alt="doggo" src="https://github.com/ynslee/cub3d/assets/112563002/f4861526-927e-421f-9bae-cb1658c4e3c8">
+
+### example2 - ./cub3D_bonus maps/good/bonus/frozen.cub
+<img width="1920" alt="frozen" src="https://github.com/ynslee/cub3d/assets/112563002/311df614-c0c1-42fa-9870-631218ce0f5f">
 
 
-## External resources
+## External resources <a name = "sources"></a>
 
 + [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html)
 + [Bresenham's line algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
