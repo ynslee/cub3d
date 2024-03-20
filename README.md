@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/cub3de.png" alt="Cub3D 42 project badge"/>
+  <img src="https://cestoliv.com/projects/imgs/42/cub3d.mp4" alt="Cub3D 42 project badge"/>
 </p>
 
 <h3 align="center">Cub3D</h3>
