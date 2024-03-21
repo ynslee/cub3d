@@ -1,9 +1,10 @@
 
 <p align="center">
-  <img src="https://cestoliv.com/projects/imgs/42/cub3d.mp4" alt="Cub3D 42 project badge"/>
+  <a href="" rel="noopener">
+   <img width=400px height=200px src="https://blog.kakaocdn.net/dn/GxuVd/btqGexq5xu5/9tRFLpU6t9Tz8tONghC5L1/img.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Cub3D</h3>
+<h3 align="center">Simple Wolfenstein</h3>
 
 <div align="center">
 
